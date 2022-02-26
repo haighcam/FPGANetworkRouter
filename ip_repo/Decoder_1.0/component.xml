@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>utoronto.ca</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>Decoder</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>S_AXIS</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_tstrb</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>WIZ_DATA_WIDTH</spirit:name>
+          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S_AXIS.WIZ_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197">32</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>M_AXIS</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="axis_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tdata</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tstrb</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TLAST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tlast</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tvalid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_tready</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>TUSER</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>m_axis_t_user</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>WIZ_DATA_WIDTH</spirit:name>
+          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.M_AXIS.WIZ_DATA_WIDTH" spirit:choiceRef="choice_list_6fc15197">32</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>aresetn</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>aresetn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.ARESETN.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>aclk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>aclk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.ACLK.ASSOCIATED_RESET">aresetn</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.ACLK.ASSOCIATED_BUSIF">M_AXIS:S_AXIS</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesis</spirit:name>
+        <spirit:displayName>Verilog Synthesis</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>Decoder_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>abf4bec5</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogbehavioralsimulation</spirit:name>
+        <spirit:displayName>Verilog Simulation</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>Decoder_v1_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>abf4bec5</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>a404de83</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>bd_tcl</spirit:name>
+        <spirit:displayName>Block Diagram</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:block.diagram</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>bd_tcl_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>16328387</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>aclk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>aresetn</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tstrb</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_t_user</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_M_AXIS_TUSER_WIDTH&apos;)) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>m_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_tdata</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AXIS_TDATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_tstrb</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AXIS_TDATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_tlast</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_tvalid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axis_tready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
+        <spirit:name>C_M_AXIS_START_COUNT</spirit:name>
+        <spirit:displayName>C M AXIS START COUNT</spirit:displayName>
+        <spirit:description>Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.</spirit:description>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXIS_START_COUNT" spirit:order="4" spirit:minimum="1" spirit:rangeType="long">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_AXIS_TDATA_WIDTH</spirit:name>
+        <spirit:displayName>C Axis Tdata Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_AXIS_TDATA_WIDTH">32</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>C_M_AXIS_TUSER_WIDTH</spirit:name>
+        <spirit:displayName>C M Axis Tuser Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_M_AXIS_TUSER_WIDTH">4</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_list_6fc15197</spirit:name>
+      <spirit:enumeration>32</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>hdl/Decoder_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_abf4bec5</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>hdl/Decoder_v1_0.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/Decoder_v1_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_a404de83</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>bd_tcl_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>bd/bd.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>Removes Encapsulation from Network Packet</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>C_M_AXIS_START_COUNT</spirit:name>
+      <spirit:displayName>C M AXIS START COUNT</spirit:displayName>
+      <spirit:description>Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.</spirit:description>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M_AXIS_START_COUNT" spirit:order="4" spirit:minimum="1" spirit:rangeType="long">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">Decoder_v1_0</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_AXIS_TDATA_WIDTH</spirit:name>
+      <spirit:displayName>C_AXIS_TDATA_WIDTH</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_AXIS_TDATA_WIDTH">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_M_AXIS_TUSER_WIDTH</spirit:name>
+      <spirit:displayName>C M Axis Tuser Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_M_AXIS_TUSER_WIDTH">4</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Pre-Production">artix7</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>Decoder_v1.0</xilinx:displayName>
+      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:upgrades>
+        <xilinx:canUpgradeFrom>utoronto.ca:user:Decoder:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>utoronto.ca:user:decoder:1.0</xilinx:canUpgradeFrom>
+      </xilinx:upgrades>
+      <xilinx:coreCreationDateTime>2022-02-26T19:10:33Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27d6966e_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@16751c37_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a6aaeeb_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a5b1695_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a7b6c6_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c39df2a_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73e3920f_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41184e62_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@32661da7_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23525422_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c51b623_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dc62e68_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a55a5e6_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1561509a_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c4bdfd6_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41ace520_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c5efb63_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@456c3f5d_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13eff37e_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@726866e3_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@64c4d443_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70f6d14_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65524fb_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51b94c5a_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73f167dd_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@66b0df99_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5895dce6_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@272f87f2_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29941020_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56d09867_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6116112_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14ba5916_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@186c0f90_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8c6bc83_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6dc60fe1_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7da1792f_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@70f03b0f_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fadaa4c_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57a15155_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@526a96f5_ARCHIVE_LOCATION">c:/Users/haighcam/IP/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b6b3a01_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a1c0bc_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36670c5e_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@29a2b680_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58d7c47a_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bb67328_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@430da926_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47d9452_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cbcf579_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12fa2e29_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48512cfd_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac0b412_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c007eea_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78ac9546_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@58870709_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d824b09_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e5b12f7_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5dde556e_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a5b08c_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@22d757b5_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@86501ce_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1e8d960e_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dc21734_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@466879b9_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d4cfc3c_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ad642e8_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@18afd34c_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a9f398_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e570e0f_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13aa79b8_ARCHIVE_LOCATION">c:/Users/haighcam/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a846358_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f3e021a_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@73703f8c_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@137cee9a_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a421846_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37d50acd_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f6aaa99_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5c1bfe84_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@548157d9_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@757d2d3d_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23849904_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@123077af_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27aee48b_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3467895f_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a5d9a79_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@760347e2_ARCHIVE_LOCATION">c:/Users/haighcam/NetworkRouter/ip/ip_repo/decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56478059_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e346db7_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b668018_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@110698f1_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@284cec07_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@161beaf8_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ec843ba_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4fdfe039_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac95743_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d58eba4_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cd9ed9f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@397d479_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b37622_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4676379e_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@245ab88b_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@8241923_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2892c374_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f6dae58_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52a41f0f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d6521_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1022b8dd_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cc0a986_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@719d62d5_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13c7abbe_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@748cbc66_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6f7f3de3_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/Decoder_1.0</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2018.3.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="340d536a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a0839cc7"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="a4f724eb"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="06f6c332"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="ee34bf7c"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>
