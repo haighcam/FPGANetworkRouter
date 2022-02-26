@@ -110,7 +110,7 @@
             <spirit:name>TUSER</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
-            <spirit:name>m_t_user</spirit:name>
+            <spirit:name>m_axis_t_user</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
       </spirit:portMaps>
