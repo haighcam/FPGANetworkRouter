@@ -42,6 +42,8 @@ module decoder_v1_1 # (
     output [15:0] alt_udp_dest_port,
     output [15:0] alt_udp_src_port,
     output encapsualted,
+    output valid,
+    input ready,
 
     // optional extra packet data out
     output [47:0] dest_addr_1,
@@ -56,7 +58,9 @@ module decoder_v1_1 # (
     output [15:0] udp_src_port_1,
     output [15:0] alt_udp_dest_port_1,
     output [15:0] alt_udp_src_port_1,
-    output encapsualted_1
+    output encapsualted_1,
+    output valid_1,
+    input ready_1
 );
 
 assign dest_addr_1 = dest_addr;
@@ -87,6 +91,8 @@ parse_packet #(.FIFO_SIZE(FIFO_SIZE)) parse_packet_inst (
     .alt_udp_dest_port(alt_udp_dest_port),
     .alt_udp_src_port(alt_udp_src_port),
     .encapsualted(encapsualted),
+    .valid(valid),
+    .ready(ready && ready_1),
     .m_axis_tdata(m_axis_packet_tdata),
     .m_axis_tkeep(m_axis_packet_tstrb),
     .m_axis_tvalid(m_axis_packet_tvalid),

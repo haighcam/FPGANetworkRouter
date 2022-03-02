@@ -54,6 +54,8 @@ module gen_packet #(
     input [15:0] in_alt_udp_dest_port,
     input [15:0] in_alt_udp_src_port,
     input in_encapsulated,
+    input valid,
+    output reg ready,
 
     output reg [31:0] m_axis_txc_tdata,
     output reg [3:0] m_axis_txc_tkeep,
@@ -74,7 +76,8 @@ module gen_packet #(
     output s_axis_tready,
 
     input axis_resetn,
-    input axis_clk
+    input axis_clk,
+    input in_flush
 );
 function integer clogb2 (input integer bit_depth);
 begin
@@ -94,14 +97,16 @@ reg [47:0] dest_addr, src_addr, alt_src_addr, alt_dest_addr;
 reg [31:0] ip_dest_addr, ip_src_addr, alt_ip_dest_addr, alt_ip_src_addr;
 reg [15:0] udp_dest_port, udp_src_port, alt_udp_dest_port, alt_udp_src_port, txc_cnt, txc_cnt_int;
 reg encapsulated, m_axis_txd_tvalid_int, m_axis_txd_tlast_int, m_axis_txc_tvalid_int, m_axis_txc_tlast_int;
-reg flush_fifo, mst_exec_state, send_header;
+reg flush_fifo_int, mst_exec_state, send_header;
 
 wire [7:0] data_fifo [FIFO_SIZE-1:0];
 wire [15:0] ip_checksum_data [8:0];
 wire [15:0] udp_checksum_data [2:0];
 wire [FIFO_SIZE-1:0] data_len;
 wire [15:0] cur_eth_pkt_size, cur_udp_pkt_size, ip_header_checksum, udp_header_checksum;
-wire packet_ready, cur_pkt_last_word, pkt_last_word, txc_last_word;
+wire packet_ready, cur_pkt_last_word, pkt_last_word, txc_last_word, flush_fifo;
+
+assign flush_fifo = flush_fifo_int || in_flush;
 
 s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
@@ -146,10 +151,12 @@ always @ (posedge axis_clk) begin
     else
     case (mst_exec_state)
     WAIT_FOR_PACKET:
-        if (!packet_ready) begin
-            flush_fifo <= 0;
+        if (!packet_ready && !valid) begin
+            flush_fifo_int <= 0;
+            ready <= 1;
             mst_exec_state <= WAIT_FOR_PACKET;
         end else begin
+            ready <= 0;
             src_addr <= in_src_addr;
             dest_addr <= in_dest_addr;
             ip_src_addr <= in_ip_src_addr;
@@ -168,7 +175,7 @@ always @ (posedge axis_clk) begin
         end
     SEND_PACKET:
         if (pkt_last_word) begin
-            flush_fifo <= 1;
+            flush_fifo_int <= 1;
             send_ptr <= 0;
             send_header <= 1;
             mst_exec_state <= WAIT_FOR_PACKET;

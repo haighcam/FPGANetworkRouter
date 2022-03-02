@@ -40,7 +40,10 @@ module encoder_v1_0 #(
     input [15:0] udp_src_port,
     input [15:0] alt_udp_dest_port,
     input [15:0] alt_udp_src_port,
-    input encapsulated
+    input encapsulated,
+    input valid,
+    output ready,
+    input drop
 );
 
 gen_packet #(.FIFO_SIZE(FIFO_SIZE)) gen_packet_inst (
@@ -56,7 +59,10 @@ gen_packet #(.FIFO_SIZE(FIFO_SIZE)) gen_packet_inst (
     .in_udp_src_port(udp_src_port),
     .in_alt_udp_dest_port(alt_udp_dest_port),
     .in_alt_udp_src_port(alt_udp_src_port),
-    .encapsulated(in_encapsulated),
+    .encapsulated(encapsulated),
+    .ready(ready),
+    .valid(valid),
+    .in_flush(drop),
     .m_axis_txc_tdata(m_axis_txc_tdata),
     .m_axis_txc_tkeep(m_axis_txc_tstrb),
     .m_axis_txc_tvalid(m_axis_txc_tvalid),

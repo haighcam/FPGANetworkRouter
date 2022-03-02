@@ -3,8 +3,8 @@
   <spirit:vendor>utoronto.ca</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>packet_header_rtl</spirit:name>
-  <spirit:version>1.0</spirit:version>
-  <spirit:busType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header" spirit:version="1.0"/>
+  <spirit:version>1.1</spirit:version>
+  <spirit:busType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header" spirit:version="1.1"/>
   <spirit:ports>
     <spirit:port>
       <spirit:logicalName>dest_addr</spirit:logicalName>
@@ -13,11 +13,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -31,11 +29,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -49,11 +45,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -67,11 +61,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>48</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -85,11 +77,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -103,11 +93,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -121,11 +109,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -139,11 +125,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>32</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -157,11 +141,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -175,11 +157,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -193,11 +173,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -211,11 +189,9 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
         </spirit:onMaster>
         <spirit:onSlave>
-          <spirit:presence>required</spirit:presence>
           <spirit:width>16</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
@@ -229,6 +205,19 @@
           <spirit:isData>true</spirit:isData>
         </spirit:qualifier>
         <spirit:onMaster>
+          <spirit:width>1</spirit:width>
+        </spirit:onMaster>
+        <spirit:onSlave>
+          <spirit:width>1</spirit:width>
+          <spirit:direction>in</spirit:direction>
+        </spirit:onSlave>
+        <spirit:defaultValue>0</spirit:defaultValue>
+      </spirit:wire>
+    </spirit:port>
+    <spirit:port>
+      <spirit:logicalName>valid</spirit:logicalName>
+      <spirit:wire>
+        <spirit:onMaster>
           <spirit:presence>required</spirit:presence>
           <spirit:width>1</spirit:width>
         </spirit:onMaster>
@@ -238,6 +227,20 @@
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
         <spirit:defaultValue>0</spirit:defaultValue>
+      </spirit:wire>
+    </spirit:port>
+    <spirit:port>
+      <spirit:logicalName>ready</spirit:logicalName>
+      <spirit:wire>
+        <spirit:onMaster>
+          <spirit:presence>required</spirit:presence>
+          <spirit:width>1</spirit:width>
+          <spirit:direction>in</spirit:direction>
+        </spirit:onMaster>
+        <spirit:onSlave>
+          <spirit:width>1</spirit:width>
+        </spirit:onSlave>
+        <spirit:defaultValue>1</spirit:defaultValue>
       </spirit:wire>
     </spirit:port>
   </spirit:ports>

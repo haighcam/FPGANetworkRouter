@@ -3,7 +3,7 @@
   <spirit:vendor>utoronto.ca</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>encoder</spirit:name>
-  <spirit:version>1.0</spirit:version>
+  <spirit:version>1.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>m_axis_txd</spirit:name>
@@ -217,8 +217,8 @@
     </spirit:busInterface>
     <spirit:busInterface>
       <spirit:name>packet_header</spirit:name>
-      <spirit:busType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header" spirit:version="1.0"/>
-      <spirit:abstractionType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header_rtl" spirit:version="1.0"/>
+      <spirit:busType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header" spirit:version="1.1"/>
+      <spirit:abstractionType spirit:vendor="utoronto.ca" spirit:library="user" spirit:name="packet_header_rtl" spirit:version="1.1"/>
       <spirit:slave/>
       <spirit:portMaps>
         <spirit:portMap>
@@ -247,6 +247,14 @@
         </spirit:portMap>
         <spirit:portMap>
           <spirit:logicalPort>
+            <spirit:name>valid</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>valid</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
             <spirit:name>ip_dest_addr</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
@@ -275,6 +283,14 @@
           </spirit:logicalPort>
           <spirit:physicalPort>
             <spirit:name>encapsulated</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ready</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>ready</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -342,7 +358,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>a2620437</spirit:value>
+            <spirit:value>f3eaef1d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -358,7 +374,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>a2620437</spirit:value>
+            <spirit:value>f3eaef1d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -842,6 +858,45 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>valid</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>ready</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>drop</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>s_axis_tready</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -888,7 +943,7 @@
       <spirit:file>
         <spirit:name>hdl/encoder_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_f2cb6e82</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_9a3ba4a3</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -909,7 +964,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/encoder_v1_0.tcl</spirit:name>
+        <spirit:name>xgui/encoder_v1_1.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_c7b31c1d</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -943,9 +998,12 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>encoder_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>5</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-02-26T20:10:42Z</xilinx:coreCreationDateTime>
+      <xilinx:displayName>encoder_v1.1</xilinx:displayName>
+      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:upgrades>
+        <xilinx:canUpgradeFrom>utoronto.ca:user:encoder:1.0</xilinx:canUpgradeFrom>
+      </xilinx:upgrades>
+      <xilinx:coreCreationDateTime>2022-03-02T17:03:08Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@228569c3_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/encoder_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@40d59d19_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/encoder_1.0</xilinx:tag>
@@ -1032,13 +1090,59 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@36f63be4_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/encoder_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@265385df_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/encoder_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@30f4bbeb_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79097c52_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3385d3f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6471bf1e_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19d1bf36_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37b2fd0a_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@93a049f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65d6e4d7_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@46354f8a_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@479457a9_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@464da875_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bce6af8_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3ee47d43_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c8d4046_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7851246d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15f9e088_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@639d021d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bbe35f7_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51880ad0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b602add_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ec506ec_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@23217f62_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1fa3b272_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a485678_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27675dc8_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@315f03d7_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b00daad_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@197a34c1_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@500a2f0f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c5136be_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@a84548a_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@524cd0ed_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e32ff62_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@583cf257_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50e6012e_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@212eb5b0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@78ca37f0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@115a7fbc_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@617017b_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@c6a980d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@311a9a21_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65fde7aa_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33a542d4_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f239c4d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@e160bb3_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a2c1686_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68b67240_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532-main/ECE532-main/ip_repo/encoder_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="414e27c2"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="5547f5ae"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="33d2c638"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="e6850802"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="441fb261"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="37424331"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="ffefd1ee"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="23b9d27f"/>
     </xilinx:packagingInfo>

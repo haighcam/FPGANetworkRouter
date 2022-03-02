@@ -54,6 +54,8 @@ module parse_packet #(
     output reg [15:0] alt_udp_dest_port,
     output reg [15:0] alt_udp_src_port,
     output reg encapsualted,
+    output reg valid,
+    input ready,
 
     output reg [31:0] m_axis_tdata,
     output reg [3:0] m_axis_tkeep,
@@ -77,11 +79,13 @@ begin
 end
 endfunction
 
-localparam  FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
-localparam  WAIT_FOR_PACKET = 1'd0,
-            SEND_PACKET  = 1'd1;
+localparam FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
+localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
+                    SEND_PACKET = 2'd1,
+                    WAIT = 2'd2;
 
-reg flush_fifo, mst_exec_state;
+reg [1:0] mst_exec_state;
+reg flush_fifo;
 reg [FIFO_SIZE-1:0] send_ptr;
 reg m_axis_tvalid_int, m_axis_tlast_int;
 
@@ -112,6 +116,7 @@ always @ (posedge axis_clk) begin
     WAIT_FOR_PACKET:
         if (!packet_ready) begin
             flush_fifo <= 0;
+            valid <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
         end else begin
             if ({data_fifo[42], data_fifo[43], data_fifo[44], data_fifo[45]} == 32'h40006559) begin
@@ -203,6 +208,7 @@ always @ (posedge axis_clk) begin
                 encapsualted <= 1'b0;
                 send_ptr <= 42;
             end
+            valid <= 1;
             mst_exec_state <= SEND_PACKET;
         end
     SEND_PACKET:
@@ -210,8 +216,15 @@ always @ (posedge axis_clk) begin
             flush_fifo <= 1;
             send_ptr <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
-        end else
-            mst_exec_state <= SEND_PACKET;
+        end else begin
+            valid <= 0;
+            mst_exec_state <= WAIT;
+        end
+    WAIT:
+        if (ready)
+            mst_exec_state <= WAIT_FOR_PACKET;
+        else
+            mst_exec_state <= WAIT;
     endcase
 end
 
