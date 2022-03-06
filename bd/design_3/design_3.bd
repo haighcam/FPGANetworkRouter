@@ -1,0 +1,151 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x2AD10A96DE217F2E",
+      "device": "xc7a200tsbg484-1",
+      "name": "design_3",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2018.3.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "axi4stream_vip_0": "",
+      "decoder_0": "",
+      "encoder_0": ""
+    },
+    "ports": {
+      "aclk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "aresetn",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_3_aclk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "aresetn": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "drop": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "axi4stream_vip_0": {
+        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
+        "xci_name": "design_3_axi4stream_vip_0_0",
+        "parameters": {
+          "HAS_ACLKEN": {
+            "value": "0"
+          },
+          "HAS_TKEEP": {
+            "value": "0"
+          },
+          "HAS_TLAST": {
+            "value": "1"
+          },
+          "HAS_TREADY": {
+            "value": "1"
+          },
+          "HAS_TSTRB": {
+            "value": "1"
+          },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
+          "TDATA_NUM_BYTES": {
+            "value": "4"
+          },
+          "TDEST_WIDTH": {
+            "value": "0"
+          },
+          "TID_WIDTH": {
+            "value": "0"
+          },
+          "TUSER_WIDTH": {
+            "value": "0"
+          }
+        }
+      },
+      "decoder_0": {
+        "vlnv": "utoronto.ca:user:decoder:1.2",
+        "xci_name": "design_3_decoder_0_1"
+      },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_3_encoder_0_1"
+      }
+    },
+    "interface_nets": {
+      "axi4stream_vip_0_M_AXIS": {
+        "interface_ports": [
+          "axi4stream_vip_0/M_AXIS",
+          "decoder_0/s_axis_rxd"
+        ]
+      },
+      "decoder_0_m_axis_packet": {
+        "interface_ports": [
+          "encoder_0/s_axis",
+          "decoder_0/m_axis_packet"
+        ]
+      },
+      "decoder_0_packet_header": {
+        "interface_ports": [
+          "decoder_0/packet_header",
+          "encoder_0/packet_header"
+        ]
+      }
+    },
+    "nets": {
+      "aclk_1": {
+        "ports": [
+          "aclk",
+          "axi4stream_vip_0/aclk",
+          "decoder_0/aclk",
+          "encoder_0/aclk"
+        ]
+      },
+      "rst_aclk_100M_peripheral_aresetn": {
+        "ports": [
+          "aresetn",
+          "axi4stream_vip_0/aresetn",
+          "decoder_0/aresetn",
+          "encoder_0/aresetn"
+        ]
+      },
+      "drop_1": {
+        "ports": [
+          "drop",
+          "encoder_0/drop"
+        ]
+      }
+    }
+  }
+}

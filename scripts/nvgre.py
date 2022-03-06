@@ -120,9 +120,10 @@ class UDP:
   def __init__(self, src, dst, payload):
     self.src = get_port(src)
     self.dst = get_port(dst)
+    self.payload = payload
     assert len(self.src) == 2
     assert len(self.dst) == 2
-    self.header = self.src.to_bytes(2, "big") + self.dst.to_bytes(2, "big") + (4 + len(self.payload)).to_bytes(2, "big")
+    self.header = self.src + self.dst + (4 + len(self.payload)).to_bytes(2, "big")
     self.header += self.checksum().to_bytes(2, "big")
 
   def checksum(self):
@@ -301,3 +302,18 @@ class NVGRE_MOD:
     src_udp = int.from_bytes(packet[24:26], "big")
     dst_udp = int.from_bytes(packet[26:28], "big")
     return NVGRE(src_eth, dst_eth, src_ip, dst_ip, src_udp, dst_udp, packet[28:])
+  
+  
+  
+def byte_to_hex(byte):
+  ret = hex(byte)[2:]
+  if len(ret) == 1:
+    return '0'+ret
+  return ret
+
+def packet_to_mem(data, file, big_endian=True):
+  chars = [byte_to_hex(i) for i in data]
+  chars += ['00'] * (4 - len(chars)%4)
+  words = [''.join(chars[i:i+4][::1 if big_endian else -1]) for i in range(0, len(chars), 4)]
+  with open(file, "w") as f:
+    f.write('\n'.join(words))

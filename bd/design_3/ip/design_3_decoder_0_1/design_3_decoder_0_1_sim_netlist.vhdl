@@ -1,0 +1,600 @@
+-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-- --------------------------------------------------------------------------------
+-- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
+-- Date        : Sat Mar  5 20:35:12 2022
+-- Host        : BA3155WS10 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               c:/Users/haighcam/ECE532/bd/design_3/ip/design_3_decoder_0_1/design_3_decoder_0_1_sim_netlist.vhdl
+-- Design      : design_3_decoder_0_1
+-- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
+--               synthesized. This netlist cannot be used for SDF annotated simulation.
+-- Device      : xc7a200tsbg484-1
+-- --------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity design_3_decoder_0_1_parse_packet is
+  port (
+    m_axis_packet_tstrb : out STD_LOGIC_VECTOR ( 0 to 0 );
+    m_axis_packet_tlast : out STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    aclk : in STD_LOGIC
+  );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_3_decoder_0_1_parse_packet : entity is "parse_packet";
+end design_3_decoder_0_1_parse_packet;
+
+architecture STRUCTURE of design_3_decoder_0_1_parse_packet is
+begin
+\m_axis_tkeep_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => aclk,
+      CE => '1',
+      D => aresetn,
+      Q => m_axis_packet_tstrb(0),
+      R => '0'
+    );
+m_axis_tlast_int_reg: unisim.vcomponents.FDRE
+     port map (
+      C => aclk,
+      CE => '1',
+      D => aresetn,
+      Q => m_axis_packet_tlast,
+      R => '0'
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity design_3_decoder_0_1_decoder_v1_1 is
+  port (
+    m_axis_packet_tstrb : out STD_LOGIC_VECTOR ( 0 to 0 );
+    m_axis_packet_tlast : out STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    aclk : in STD_LOGIC
+  );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_3_decoder_0_1_decoder_v1_1 : entity is "decoder_v1_1";
+end design_3_decoder_0_1_decoder_v1_1;
+
+architecture STRUCTURE of design_3_decoder_0_1_decoder_v1_1 is
+begin
+parse_packet_inst: entity work.design_3_decoder_0_1_parse_packet
+     port map (
+      aclk => aclk,
+      aresetn => aresetn,
+      m_axis_packet_tlast => m_axis_packet_tlast,
+      m_axis_packet_tstrb(0) => m_axis_packet_tstrb(0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity design_3_decoder_0_1 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    m_axis_packet_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    m_axis_packet_tstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    m_axis_packet_tlast : out STD_LOGIC;
+    m_axis_packet_tvalid : out STD_LOGIC;
+    m_axis_packet_tready : in STD_LOGIC;
+    dest_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    alt_dest_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    alt_src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    ip_dest_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    alt_ip_dest_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    alt_ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    udp_dest_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    udp_src_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    alt_udp_dest_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    alt_udp_src_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    encapsualted : out STD_LOGIC;
+    valid : out STD_LOGIC;
+    ready : in STD_LOGIC;
+    s_axis_rxs_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axis_rxs_tstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axis_rxs_tlast : in STD_LOGIC;
+    s_axis_rxs_tvalid : in STD_LOGIC;
+    s_axis_rxs_tready : out STD_LOGIC;
+    s_axis_rxd_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axis_rxd_tstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axis_rxd_tlast : in STD_LOGIC;
+    s_axis_rxd_tvalid : in STD_LOGIC;
+    s_axis_rxd_tready : out STD_LOGIC
+  );
+  attribute NotValidForBitStream : boolean;
+  attribute NotValidForBitStream of design_3_decoder_0_1 : entity is true;
+  attribute CHECK_LICENSE_TYPE : string;
+  attribute CHECK_LICENSE_TYPE of design_3_decoder_0_1 : entity is "design_3_decoder_0_1,decoder_v1_1,{}";
+  attribute DowngradeIPIdentifiedWarnings : string;
+  attribute DowngradeIPIdentifiedWarnings of design_3_decoder_0_1 : entity is "yes";
+  attribute X_CORE_INFO : string;
+  attribute X_CORE_INFO of design_3_decoder_0_1 : entity is "decoder_v1_1,Vivado 2018.3.1";
+end design_3_decoder_0_1;
+
+architecture STRUCTURE of design_3_decoder_0_1 is
+  signal \<const0>\ : STD_LOGIC;
+  signal \^m_axis_packet_tstrb\ : STD_LOGIC_VECTOR ( 2 to 2 );
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of aclk : signal is "xilinx.com:signal:clock:1.0 aclk CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of aclk : signal is "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, ASSOCIATED_BUSIF m_axis_packet:s_axis_rxs:s_axis_rxd:packet_header_1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn RST";
+  attribute X_INTERFACE_PARAMETER of aresetn : signal is "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of encapsualted : signal is "utoronto.ca:user:packet_header:1.1 packet_header encapsulated";
+  attribute X_INTERFACE_INFO of m_axis_packet_tlast : signal is "xilinx.com:interface:axis:1.0 m_axis_packet TLAST";
+  attribute X_INTERFACE_INFO of m_axis_packet_tready : signal is "xilinx.com:interface:axis:1.0 m_axis_packet TREADY";
+  attribute X_INTERFACE_PARAMETER of m_axis_packet_tready : signal is "XIL_INTERFACENAME m_axis_packet, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of m_axis_packet_tvalid : signal is "xilinx.com:interface:axis:1.0 m_axis_packet TVALID";
+  attribute X_INTERFACE_INFO of ready : signal is "utoronto.ca:user:packet_header:1.1 packet_header ready";
+  attribute X_INTERFACE_INFO of s_axis_rxd_tlast : signal is "xilinx.com:interface:axis:1.0 s_axis_rxd TLAST";
+  attribute X_INTERFACE_INFO of s_axis_rxd_tready : signal is "xilinx.com:interface:axis:1.0 s_axis_rxd TREADY";
+  attribute X_INTERFACE_PARAMETER of s_axis_rxd_tready : signal is "XIL_INTERFACENAME s_axis_rxd, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of s_axis_rxd_tvalid : signal is "xilinx.com:interface:axis:1.0 s_axis_rxd TVALID";
+  attribute X_INTERFACE_INFO of s_axis_rxs_tlast : signal is "xilinx.com:interface:axis:1.0 s_axis_rxs TLAST";
+  attribute X_INTERFACE_INFO of s_axis_rxs_tready : signal is "xilinx.com:interface:axis:1.0 s_axis_rxs TREADY";
+  attribute X_INTERFACE_PARAMETER of s_axis_rxs_tready : signal is "XIL_INTERFACENAME s_axis_rxs, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_INFO of s_axis_rxs_tvalid : signal is "xilinx.com:interface:axis:1.0 s_axis_rxs TVALID";
+  attribute X_INTERFACE_INFO of valid : signal is "utoronto.ca:user:packet_header:1.1 packet_header valid";
+  attribute X_INTERFACE_INFO of alt_dest_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_dest_addr";
+  attribute X_INTERFACE_INFO of alt_ip_dest_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_dest_addr";
+  attribute X_INTERFACE_INFO of alt_ip_src_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_src_addr";
+  attribute X_INTERFACE_INFO of alt_src_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_src_addr";
+  attribute X_INTERFACE_INFO of alt_udp_dest_port : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_dest_port";
+  attribute X_INTERFACE_INFO of alt_udp_src_port : signal is "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_src_port";
+  attribute X_INTERFACE_INFO of dest_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header dest_addr";
+  attribute X_INTERFACE_INFO of ip_dest_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header ip_dest_addr";
+  attribute X_INTERFACE_INFO of ip_src_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header ip_src_addr";
+  attribute X_INTERFACE_INFO of m_axis_packet_tdata : signal is "xilinx.com:interface:axis:1.0 m_axis_packet TDATA";
+  attribute X_INTERFACE_INFO of m_axis_packet_tstrb : signal is "xilinx.com:interface:axis:1.0 m_axis_packet TSTRB";
+  attribute X_INTERFACE_INFO of s_axis_rxd_tdata : signal is "xilinx.com:interface:axis:1.0 s_axis_rxd TDATA";
+  attribute X_INTERFACE_INFO of s_axis_rxd_tstrb : signal is "xilinx.com:interface:axis:1.0 s_axis_rxd TSTRB";
+  attribute X_INTERFACE_INFO of s_axis_rxs_tdata : signal is "xilinx.com:interface:axis:1.0 s_axis_rxs TDATA";
+  attribute X_INTERFACE_INFO of s_axis_rxs_tstrb : signal is "xilinx.com:interface:axis:1.0 s_axis_rxs TSTRB";
+  attribute X_INTERFACE_INFO of src_addr : signal is "utoronto.ca:user:packet_header:1.1 packet_header src_addr";
+  attribute X_INTERFACE_INFO of udp_dest_port : signal is "utoronto.ca:user:packet_header:1.1 packet_header udp_dest_port";
+  attribute X_INTERFACE_INFO of udp_src_port : signal is "utoronto.ca:user:packet_header:1.1 packet_header udp_src_port";
+begin
+  alt_dest_addr(47) <= \<const0>\;
+  alt_dest_addr(46) <= \<const0>\;
+  alt_dest_addr(45) <= \<const0>\;
+  alt_dest_addr(44) <= \<const0>\;
+  alt_dest_addr(43) <= \<const0>\;
+  alt_dest_addr(42) <= \<const0>\;
+  alt_dest_addr(41) <= \<const0>\;
+  alt_dest_addr(40) <= \<const0>\;
+  alt_dest_addr(39) <= \<const0>\;
+  alt_dest_addr(38) <= \<const0>\;
+  alt_dest_addr(37) <= \<const0>\;
+  alt_dest_addr(36) <= \<const0>\;
+  alt_dest_addr(35) <= \<const0>\;
+  alt_dest_addr(34) <= \<const0>\;
+  alt_dest_addr(33) <= \<const0>\;
+  alt_dest_addr(32) <= \<const0>\;
+  alt_dest_addr(31) <= \<const0>\;
+  alt_dest_addr(30) <= \<const0>\;
+  alt_dest_addr(29) <= \<const0>\;
+  alt_dest_addr(28) <= \<const0>\;
+  alt_dest_addr(27) <= \<const0>\;
+  alt_dest_addr(26) <= \<const0>\;
+  alt_dest_addr(25) <= \<const0>\;
+  alt_dest_addr(24) <= \<const0>\;
+  alt_dest_addr(23) <= \<const0>\;
+  alt_dest_addr(22) <= \<const0>\;
+  alt_dest_addr(21) <= \<const0>\;
+  alt_dest_addr(20) <= \<const0>\;
+  alt_dest_addr(19) <= \<const0>\;
+  alt_dest_addr(18) <= \<const0>\;
+  alt_dest_addr(17) <= \<const0>\;
+  alt_dest_addr(16) <= \<const0>\;
+  alt_dest_addr(15) <= \<const0>\;
+  alt_dest_addr(14) <= \<const0>\;
+  alt_dest_addr(13) <= \<const0>\;
+  alt_dest_addr(12) <= \<const0>\;
+  alt_dest_addr(11) <= \<const0>\;
+  alt_dest_addr(10) <= \<const0>\;
+  alt_dest_addr(9) <= \<const0>\;
+  alt_dest_addr(8) <= \<const0>\;
+  alt_dest_addr(7) <= \<const0>\;
+  alt_dest_addr(6) <= \<const0>\;
+  alt_dest_addr(5) <= \<const0>\;
+  alt_dest_addr(4) <= \<const0>\;
+  alt_dest_addr(3) <= \<const0>\;
+  alt_dest_addr(2) <= \<const0>\;
+  alt_dest_addr(1) <= \<const0>\;
+  alt_dest_addr(0) <= \<const0>\;
+  alt_ip_dest_addr(31) <= \<const0>\;
+  alt_ip_dest_addr(30) <= \<const0>\;
+  alt_ip_dest_addr(29) <= \<const0>\;
+  alt_ip_dest_addr(28) <= \<const0>\;
+  alt_ip_dest_addr(27) <= \<const0>\;
+  alt_ip_dest_addr(26) <= \<const0>\;
+  alt_ip_dest_addr(25) <= \<const0>\;
+  alt_ip_dest_addr(24) <= \<const0>\;
+  alt_ip_dest_addr(23) <= \<const0>\;
+  alt_ip_dest_addr(22) <= \<const0>\;
+  alt_ip_dest_addr(21) <= \<const0>\;
+  alt_ip_dest_addr(20) <= \<const0>\;
+  alt_ip_dest_addr(19) <= \<const0>\;
+  alt_ip_dest_addr(18) <= \<const0>\;
+  alt_ip_dest_addr(17) <= \<const0>\;
+  alt_ip_dest_addr(16) <= \<const0>\;
+  alt_ip_dest_addr(15) <= \<const0>\;
+  alt_ip_dest_addr(14) <= \<const0>\;
+  alt_ip_dest_addr(13) <= \<const0>\;
+  alt_ip_dest_addr(12) <= \<const0>\;
+  alt_ip_dest_addr(11) <= \<const0>\;
+  alt_ip_dest_addr(10) <= \<const0>\;
+  alt_ip_dest_addr(9) <= \<const0>\;
+  alt_ip_dest_addr(8) <= \<const0>\;
+  alt_ip_dest_addr(7) <= \<const0>\;
+  alt_ip_dest_addr(6) <= \<const0>\;
+  alt_ip_dest_addr(5) <= \<const0>\;
+  alt_ip_dest_addr(4) <= \<const0>\;
+  alt_ip_dest_addr(3) <= \<const0>\;
+  alt_ip_dest_addr(2) <= \<const0>\;
+  alt_ip_dest_addr(1) <= \<const0>\;
+  alt_ip_dest_addr(0) <= \<const0>\;
+  alt_ip_src_addr(31) <= \<const0>\;
+  alt_ip_src_addr(30) <= \<const0>\;
+  alt_ip_src_addr(29) <= \<const0>\;
+  alt_ip_src_addr(28) <= \<const0>\;
+  alt_ip_src_addr(27) <= \<const0>\;
+  alt_ip_src_addr(26) <= \<const0>\;
+  alt_ip_src_addr(25) <= \<const0>\;
+  alt_ip_src_addr(24) <= \<const0>\;
+  alt_ip_src_addr(23) <= \<const0>\;
+  alt_ip_src_addr(22) <= \<const0>\;
+  alt_ip_src_addr(21) <= \<const0>\;
+  alt_ip_src_addr(20) <= \<const0>\;
+  alt_ip_src_addr(19) <= \<const0>\;
+  alt_ip_src_addr(18) <= \<const0>\;
+  alt_ip_src_addr(17) <= \<const0>\;
+  alt_ip_src_addr(16) <= \<const0>\;
+  alt_ip_src_addr(15) <= \<const0>\;
+  alt_ip_src_addr(14) <= \<const0>\;
+  alt_ip_src_addr(13) <= \<const0>\;
+  alt_ip_src_addr(12) <= \<const0>\;
+  alt_ip_src_addr(11) <= \<const0>\;
+  alt_ip_src_addr(10) <= \<const0>\;
+  alt_ip_src_addr(9) <= \<const0>\;
+  alt_ip_src_addr(8) <= \<const0>\;
+  alt_ip_src_addr(7) <= \<const0>\;
+  alt_ip_src_addr(6) <= \<const0>\;
+  alt_ip_src_addr(5) <= \<const0>\;
+  alt_ip_src_addr(4) <= \<const0>\;
+  alt_ip_src_addr(3) <= \<const0>\;
+  alt_ip_src_addr(2) <= \<const0>\;
+  alt_ip_src_addr(1) <= \<const0>\;
+  alt_ip_src_addr(0) <= \<const0>\;
+  alt_src_addr(47) <= \<const0>\;
+  alt_src_addr(46) <= \<const0>\;
+  alt_src_addr(45) <= \<const0>\;
+  alt_src_addr(44) <= \<const0>\;
+  alt_src_addr(43) <= \<const0>\;
+  alt_src_addr(42) <= \<const0>\;
+  alt_src_addr(41) <= \<const0>\;
+  alt_src_addr(40) <= \<const0>\;
+  alt_src_addr(39) <= \<const0>\;
+  alt_src_addr(38) <= \<const0>\;
+  alt_src_addr(37) <= \<const0>\;
+  alt_src_addr(36) <= \<const0>\;
+  alt_src_addr(35) <= \<const0>\;
+  alt_src_addr(34) <= \<const0>\;
+  alt_src_addr(33) <= \<const0>\;
+  alt_src_addr(32) <= \<const0>\;
+  alt_src_addr(31) <= \<const0>\;
+  alt_src_addr(30) <= \<const0>\;
+  alt_src_addr(29) <= \<const0>\;
+  alt_src_addr(28) <= \<const0>\;
+  alt_src_addr(27) <= \<const0>\;
+  alt_src_addr(26) <= \<const0>\;
+  alt_src_addr(25) <= \<const0>\;
+  alt_src_addr(24) <= \<const0>\;
+  alt_src_addr(23) <= \<const0>\;
+  alt_src_addr(22) <= \<const0>\;
+  alt_src_addr(21) <= \<const0>\;
+  alt_src_addr(20) <= \<const0>\;
+  alt_src_addr(19) <= \<const0>\;
+  alt_src_addr(18) <= \<const0>\;
+  alt_src_addr(17) <= \<const0>\;
+  alt_src_addr(16) <= \<const0>\;
+  alt_src_addr(15) <= \<const0>\;
+  alt_src_addr(14) <= \<const0>\;
+  alt_src_addr(13) <= \<const0>\;
+  alt_src_addr(12) <= \<const0>\;
+  alt_src_addr(11) <= \<const0>\;
+  alt_src_addr(10) <= \<const0>\;
+  alt_src_addr(9) <= \<const0>\;
+  alt_src_addr(8) <= \<const0>\;
+  alt_src_addr(7) <= \<const0>\;
+  alt_src_addr(6) <= \<const0>\;
+  alt_src_addr(5) <= \<const0>\;
+  alt_src_addr(4) <= \<const0>\;
+  alt_src_addr(3) <= \<const0>\;
+  alt_src_addr(2) <= \<const0>\;
+  alt_src_addr(1) <= \<const0>\;
+  alt_src_addr(0) <= \<const0>\;
+  alt_udp_dest_port(15) <= \<const0>\;
+  alt_udp_dest_port(14) <= \<const0>\;
+  alt_udp_dest_port(13) <= \<const0>\;
+  alt_udp_dest_port(12) <= \<const0>\;
+  alt_udp_dest_port(11) <= \<const0>\;
+  alt_udp_dest_port(10) <= \<const0>\;
+  alt_udp_dest_port(9) <= \<const0>\;
+  alt_udp_dest_port(8) <= \<const0>\;
+  alt_udp_dest_port(7) <= \<const0>\;
+  alt_udp_dest_port(6) <= \<const0>\;
+  alt_udp_dest_port(5) <= \<const0>\;
+  alt_udp_dest_port(4) <= \<const0>\;
+  alt_udp_dest_port(3) <= \<const0>\;
+  alt_udp_dest_port(2) <= \<const0>\;
+  alt_udp_dest_port(1) <= \<const0>\;
+  alt_udp_dest_port(0) <= \<const0>\;
+  alt_udp_src_port(15) <= \<const0>\;
+  alt_udp_src_port(14) <= \<const0>\;
+  alt_udp_src_port(13) <= \<const0>\;
+  alt_udp_src_port(12) <= \<const0>\;
+  alt_udp_src_port(11) <= \<const0>\;
+  alt_udp_src_port(10) <= \<const0>\;
+  alt_udp_src_port(9) <= \<const0>\;
+  alt_udp_src_port(8) <= \<const0>\;
+  alt_udp_src_port(7) <= \<const0>\;
+  alt_udp_src_port(6) <= \<const0>\;
+  alt_udp_src_port(5) <= \<const0>\;
+  alt_udp_src_port(4) <= \<const0>\;
+  alt_udp_src_port(3) <= \<const0>\;
+  alt_udp_src_port(2) <= \<const0>\;
+  alt_udp_src_port(1) <= \<const0>\;
+  alt_udp_src_port(0) <= \<const0>\;
+  dest_addr(47) <= \<const0>\;
+  dest_addr(46) <= \<const0>\;
+  dest_addr(45) <= \<const0>\;
+  dest_addr(44) <= \<const0>\;
+  dest_addr(43) <= \<const0>\;
+  dest_addr(42) <= \<const0>\;
+  dest_addr(41) <= \<const0>\;
+  dest_addr(40) <= \<const0>\;
+  dest_addr(39) <= \<const0>\;
+  dest_addr(38) <= \<const0>\;
+  dest_addr(37) <= \<const0>\;
+  dest_addr(36) <= \<const0>\;
+  dest_addr(35) <= \<const0>\;
+  dest_addr(34) <= \<const0>\;
+  dest_addr(33) <= \<const0>\;
+  dest_addr(32) <= \<const0>\;
+  dest_addr(31) <= \<const0>\;
+  dest_addr(30) <= \<const0>\;
+  dest_addr(29) <= \<const0>\;
+  dest_addr(28) <= \<const0>\;
+  dest_addr(27) <= \<const0>\;
+  dest_addr(26) <= \<const0>\;
+  dest_addr(25) <= \<const0>\;
+  dest_addr(24) <= \<const0>\;
+  dest_addr(23) <= \<const0>\;
+  dest_addr(22) <= \<const0>\;
+  dest_addr(21) <= \<const0>\;
+  dest_addr(20) <= \<const0>\;
+  dest_addr(19) <= \<const0>\;
+  dest_addr(18) <= \<const0>\;
+  dest_addr(17) <= \<const0>\;
+  dest_addr(16) <= \<const0>\;
+  dest_addr(15) <= \<const0>\;
+  dest_addr(14) <= \<const0>\;
+  dest_addr(13) <= \<const0>\;
+  dest_addr(12) <= \<const0>\;
+  dest_addr(11) <= \<const0>\;
+  dest_addr(10) <= \<const0>\;
+  dest_addr(9) <= \<const0>\;
+  dest_addr(8) <= \<const0>\;
+  dest_addr(7) <= \<const0>\;
+  dest_addr(6) <= \<const0>\;
+  dest_addr(5) <= \<const0>\;
+  dest_addr(4) <= \<const0>\;
+  dest_addr(3) <= \<const0>\;
+  dest_addr(2) <= \<const0>\;
+  dest_addr(1) <= \<const0>\;
+  dest_addr(0) <= \<const0>\;
+  encapsualted <= \<const0>\;
+  ip_dest_addr(31) <= \<const0>\;
+  ip_dest_addr(30) <= \<const0>\;
+  ip_dest_addr(29) <= \<const0>\;
+  ip_dest_addr(28) <= \<const0>\;
+  ip_dest_addr(27) <= \<const0>\;
+  ip_dest_addr(26) <= \<const0>\;
+  ip_dest_addr(25) <= \<const0>\;
+  ip_dest_addr(24) <= \<const0>\;
+  ip_dest_addr(23) <= \<const0>\;
+  ip_dest_addr(22) <= \<const0>\;
+  ip_dest_addr(21) <= \<const0>\;
+  ip_dest_addr(20) <= \<const0>\;
+  ip_dest_addr(19) <= \<const0>\;
+  ip_dest_addr(18) <= \<const0>\;
+  ip_dest_addr(17) <= \<const0>\;
+  ip_dest_addr(16) <= \<const0>\;
+  ip_dest_addr(15) <= \<const0>\;
+  ip_dest_addr(14) <= \<const0>\;
+  ip_dest_addr(13) <= \<const0>\;
+  ip_dest_addr(12) <= \<const0>\;
+  ip_dest_addr(11) <= \<const0>\;
+  ip_dest_addr(10) <= \<const0>\;
+  ip_dest_addr(9) <= \<const0>\;
+  ip_dest_addr(8) <= \<const0>\;
+  ip_dest_addr(7) <= \<const0>\;
+  ip_dest_addr(6) <= \<const0>\;
+  ip_dest_addr(5) <= \<const0>\;
+  ip_dest_addr(4) <= \<const0>\;
+  ip_dest_addr(3) <= \<const0>\;
+  ip_dest_addr(2) <= \<const0>\;
+  ip_dest_addr(1) <= \<const0>\;
+  ip_dest_addr(0) <= \<const0>\;
+  ip_src_addr(31) <= \<const0>\;
+  ip_src_addr(30) <= \<const0>\;
+  ip_src_addr(29) <= \<const0>\;
+  ip_src_addr(28) <= \<const0>\;
+  ip_src_addr(27) <= \<const0>\;
+  ip_src_addr(26) <= \<const0>\;
+  ip_src_addr(25) <= \<const0>\;
+  ip_src_addr(24) <= \<const0>\;
+  ip_src_addr(23) <= \<const0>\;
+  ip_src_addr(22) <= \<const0>\;
+  ip_src_addr(21) <= \<const0>\;
+  ip_src_addr(20) <= \<const0>\;
+  ip_src_addr(19) <= \<const0>\;
+  ip_src_addr(18) <= \<const0>\;
+  ip_src_addr(17) <= \<const0>\;
+  ip_src_addr(16) <= \<const0>\;
+  ip_src_addr(15) <= \<const0>\;
+  ip_src_addr(14) <= \<const0>\;
+  ip_src_addr(13) <= \<const0>\;
+  ip_src_addr(12) <= \<const0>\;
+  ip_src_addr(11) <= \<const0>\;
+  ip_src_addr(10) <= \<const0>\;
+  ip_src_addr(9) <= \<const0>\;
+  ip_src_addr(8) <= \<const0>\;
+  ip_src_addr(7) <= \<const0>\;
+  ip_src_addr(6) <= \<const0>\;
+  ip_src_addr(5) <= \<const0>\;
+  ip_src_addr(4) <= \<const0>\;
+  ip_src_addr(3) <= \<const0>\;
+  ip_src_addr(2) <= \<const0>\;
+  ip_src_addr(1) <= \<const0>\;
+  ip_src_addr(0) <= \<const0>\;
+  m_axis_packet_tdata(31) <= \<const0>\;
+  m_axis_packet_tdata(30) <= \<const0>\;
+  m_axis_packet_tdata(29) <= \<const0>\;
+  m_axis_packet_tdata(28) <= \<const0>\;
+  m_axis_packet_tdata(27) <= \<const0>\;
+  m_axis_packet_tdata(26) <= \<const0>\;
+  m_axis_packet_tdata(25) <= \<const0>\;
+  m_axis_packet_tdata(24) <= \<const0>\;
+  m_axis_packet_tdata(23) <= \<const0>\;
+  m_axis_packet_tdata(22) <= \<const0>\;
+  m_axis_packet_tdata(21) <= \<const0>\;
+  m_axis_packet_tdata(20) <= \<const0>\;
+  m_axis_packet_tdata(19) <= \<const0>\;
+  m_axis_packet_tdata(18) <= \<const0>\;
+  m_axis_packet_tdata(17) <= \<const0>\;
+  m_axis_packet_tdata(16) <= \<const0>\;
+  m_axis_packet_tdata(15) <= \<const0>\;
+  m_axis_packet_tdata(14) <= \<const0>\;
+  m_axis_packet_tdata(13) <= \<const0>\;
+  m_axis_packet_tdata(12) <= \<const0>\;
+  m_axis_packet_tdata(11) <= \<const0>\;
+  m_axis_packet_tdata(10) <= \<const0>\;
+  m_axis_packet_tdata(9) <= \<const0>\;
+  m_axis_packet_tdata(8) <= \<const0>\;
+  m_axis_packet_tdata(7) <= \<const0>\;
+  m_axis_packet_tdata(6) <= \<const0>\;
+  m_axis_packet_tdata(5) <= \<const0>\;
+  m_axis_packet_tdata(4) <= \<const0>\;
+  m_axis_packet_tdata(3) <= \<const0>\;
+  m_axis_packet_tdata(2) <= \<const0>\;
+  m_axis_packet_tdata(1) <= \<const0>\;
+  m_axis_packet_tdata(0) <= \<const0>\;
+  m_axis_packet_tstrb(3) <= \^m_axis_packet_tstrb\(2);
+  m_axis_packet_tstrb(2) <= \^m_axis_packet_tstrb\(2);
+  m_axis_packet_tstrb(1) <= \^m_axis_packet_tstrb\(2);
+  m_axis_packet_tstrb(0) <= \^m_axis_packet_tstrb\(2);
+  m_axis_packet_tvalid <= \<const0>\;
+  s_axis_rxd_tready <= \<const0>\;
+  src_addr(47) <= \<const0>\;
+  src_addr(46) <= \<const0>\;
+  src_addr(45) <= \<const0>\;
+  src_addr(44) <= \<const0>\;
+  src_addr(43) <= \<const0>\;
+  src_addr(42) <= \<const0>\;
+  src_addr(41) <= \<const0>\;
+  src_addr(40) <= \<const0>\;
+  src_addr(39) <= \<const0>\;
+  src_addr(38) <= \<const0>\;
+  src_addr(37) <= \<const0>\;
+  src_addr(36) <= \<const0>\;
+  src_addr(35) <= \<const0>\;
+  src_addr(34) <= \<const0>\;
+  src_addr(33) <= \<const0>\;
+  src_addr(32) <= \<const0>\;
+  src_addr(31) <= \<const0>\;
+  src_addr(30) <= \<const0>\;
+  src_addr(29) <= \<const0>\;
+  src_addr(28) <= \<const0>\;
+  src_addr(27) <= \<const0>\;
+  src_addr(26) <= \<const0>\;
+  src_addr(25) <= \<const0>\;
+  src_addr(24) <= \<const0>\;
+  src_addr(23) <= \<const0>\;
+  src_addr(22) <= \<const0>\;
+  src_addr(21) <= \<const0>\;
+  src_addr(20) <= \<const0>\;
+  src_addr(19) <= \<const0>\;
+  src_addr(18) <= \<const0>\;
+  src_addr(17) <= \<const0>\;
+  src_addr(16) <= \<const0>\;
+  src_addr(15) <= \<const0>\;
+  src_addr(14) <= \<const0>\;
+  src_addr(13) <= \<const0>\;
+  src_addr(12) <= \<const0>\;
+  src_addr(11) <= \<const0>\;
+  src_addr(10) <= \<const0>\;
+  src_addr(9) <= \<const0>\;
+  src_addr(8) <= \<const0>\;
+  src_addr(7) <= \<const0>\;
+  src_addr(6) <= \<const0>\;
+  src_addr(5) <= \<const0>\;
+  src_addr(4) <= \<const0>\;
+  src_addr(3) <= \<const0>\;
+  src_addr(2) <= \<const0>\;
+  src_addr(1) <= \<const0>\;
+  src_addr(0) <= \<const0>\;
+  udp_dest_port(15) <= \<const0>\;
+  udp_dest_port(14) <= \<const0>\;
+  udp_dest_port(13) <= \<const0>\;
+  udp_dest_port(12) <= \<const0>\;
+  udp_dest_port(11) <= \<const0>\;
+  udp_dest_port(10) <= \<const0>\;
+  udp_dest_port(9) <= \<const0>\;
+  udp_dest_port(8) <= \<const0>\;
+  udp_dest_port(7) <= \<const0>\;
+  udp_dest_port(6) <= \<const0>\;
+  udp_dest_port(5) <= \<const0>\;
+  udp_dest_port(4) <= \<const0>\;
+  udp_dest_port(3) <= \<const0>\;
+  udp_dest_port(2) <= \<const0>\;
+  udp_dest_port(1) <= \<const0>\;
+  udp_dest_port(0) <= \<const0>\;
+  udp_src_port(15) <= \<const0>\;
+  udp_src_port(14) <= \<const0>\;
+  udp_src_port(13) <= \<const0>\;
+  udp_src_port(12) <= \<const0>\;
+  udp_src_port(11) <= \<const0>\;
+  udp_src_port(10) <= \<const0>\;
+  udp_src_port(9) <= \<const0>\;
+  udp_src_port(8) <= \<const0>\;
+  udp_src_port(7) <= \<const0>\;
+  udp_src_port(6) <= \<const0>\;
+  udp_src_port(5) <= \<const0>\;
+  udp_src_port(4) <= \<const0>\;
+  udp_src_port(3) <= \<const0>\;
+  udp_src_port(2) <= \<const0>\;
+  udp_src_port(1) <= \<const0>\;
+  udp_src_port(0) <= \<const0>\;
+  valid <= \<const0>\;
+  s_axis_rxs_tready <= 'Z';
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
+inst: entity work.design_3_decoder_0_1_decoder_v1_1
+     port map (
+      aclk => aclk,
+      aresetn => aresetn,
+      m_axis_packet_tlast => m_axis_packet_tlast,
+      m_axis_packet_tstrb(0) => \^m_axis_packet_tstrb\(2)
+    );
+end STRUCTURE;
