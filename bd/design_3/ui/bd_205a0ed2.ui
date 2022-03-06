@@ -9,12 +9,12 @@ preplace inst decoder_0 -pg 1 -lvl 2 -y 100 -defaultsOSRD
 preplace inst encoder_0 -pg 1 -lvl 3 -y 130 -defaultsOSRD
 preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 70 -defaultsOSRD
 preplace netloc axi4stream_vip_0_M_AXIS 1 1 1 N
-preplace netloc drop_1 1 0 3 NJ 210 NJ 210 520J
+preplace netloc drop_1 1 0 3 NJ 210 NJ 210 530J
 preplace netloc decoder_0_m_axis_packet 1 2 1 N
-preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 20 150 240 200 510J
+preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 20 150 240 200 520J
 preplace netloc decoder_0_packet_header 1 2 1 N
-preplace netloc aclk_1 1 0 3 30 140 230 190 500J
-levelinfo -pg 1 0 130 370 660 810 -top 0 -bot 230
+preplace netloc aclk_1 1 0 3 30 140 230 190 510J
+levelinfo -pg 1 0 130 380 680 830 -top 0 -bot 230
 "
 }
 {

@@ -8,7 +8,7 @@ import design_3_axi4stream_vip_0_0_pkg::*;
 // testbench entry point
 module encoder_decoder_tb();
 
-localparam PACKET_LEN = 12; //12 decap, 19 cap
+localparam PACKET_LEN = 19; //12 decap, 19 cap
 
 integer i;
 reg aclk;
@@ -17,8 +17,10 @@ reg drop;
 reg [31:0] packet [PACKET_LEN-1:0];
 reg [3:0] packet_strb [PACKET_LEN-1:0];
 initial begin
-    $readmemh("packet_big.mem", packet);
-    $readmemh("packet_big_strb.mem", packet_strb);
+//    $readmemh("packet_little.mem", packet);
+//    $readmemb("packet_little_strb.mem", packet_strb);
+    $readmemh("packet_cap_little.mem", packet);
+    $readmemb("packet_cap_little_strb.mem", packet_strb);
 end
 
 // instantiate the "design under test" module
@@ -50,6 +52,7 @@ axi4stream_transaction wr_transaction;
 design_3_axi4stream_vip_0_0_mst_t mst_agent;
 
 initial begin
+    drop = 0;
     mst_agent = new("master data agent",DUT.design_3_i.axi4stream_vip_0.inst.IF);
 
     mst_agent.start_master();

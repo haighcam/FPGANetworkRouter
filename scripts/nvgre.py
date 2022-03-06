@@ -123,7 +123,7 @@ class UDP:
     self.payload = payload
     assert len(self.src) == 2
     assert len(self.dst) == 2
-    self.header = self.src + self.dst + (4 + len(self.payload)).to_bytes(2, "big")
+    self.header = self.src + self.dst + (8 + len(self.payload)).to_bytes(2, "big")
     self.header += self.checksum().to_bytes(2, "big")
 
   def checksum(self):

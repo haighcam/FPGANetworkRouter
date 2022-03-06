@@ -2,7 +2,7 @@
 `timescale 1 ns / 1 ps
 
 module encoder_v1_0 #(
-    parameter integer FIFO_ADDR_SIZE = 16
+    parameter integer FIFO_SIZE = 1024
 ) (
     input wire  aclk,
     input wire  aresetn,
@@ -46,7 +46,7 @@ module encoder_v1_0 #(
     input drop
 );
 
-gen_packet #(.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) gen_packet_inst (
+gen_packet #(.FIFO_SIZE(FIFO_SIZE)) gen_packet_inst (
     .in_dest_addr(dest_addr),
     .in_src_addr(src_addr),
     .in_alt_dest_addr(alt_dest_addr),
@@ -79,6 +79,6 @@ gen_packet #(.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) gen_packet_inst (
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tready(s_axis_tready),
     .axis_resetn(aresetn),
-    .axis_clk(aresetn)
+    .axis_clk(aclk)
 );
 endmodule

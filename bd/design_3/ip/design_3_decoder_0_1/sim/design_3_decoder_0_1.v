@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:decoder:1.2
-// IP Revision: 3
+// IP Revision: 5
 
 `timescale 1ns/1ps
 
@@ -159,7 +159,7 @@ input wire s_axis_rxd_tvalid;
 output wire s_axis_rxd_tready;
 
   decoder_v1_1 #(
-    .FIFO_ADDR_SIZE(16)
+    .FIFO_SIZE(1024)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),

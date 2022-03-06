@@ -39,7 +39,7 @@
 `timescale 1ps/1ps
 
 module parse_packet #(
-    parameter integer FIFO_ADDR_SIZE = 16
+    parameter integer FIFO_SIZE = 1024
 ) (
     output reg [47:0] dest_addr,
     output reg [47:0] src_addr,
@@ -72,6 +72,14 @@ module parse_packet #(
     input axis_resetn,
     input axis_clk
 );
+function integer clogb2 (input integer bit_depth);
+begin
+    for(clogb2=0; bit_depth>0; clogb2=clogb2+1)
+        bit_depth = bit_depth >> 1;
+end
+endfunction
+
+localparam FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
 localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
                     SEND_PACKET = 2'd1,
                     WAIT = 2'd2;
@@ -81,11 +89,11 @@ reg flush_fifo;
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
 reg m_axis_tvalid_int, m_axis_tlast_int;
 
-wire [7:0] data_fifo [FIFO_ADDR_SIZE-1:0];
+wire [7:0] data_fifo [FIFO_SIZE-1:0];
 wire [FIFO_ADDR_SIZE-1:0] data_len;
-wire packet_ready, cur_pkt_last_word, pkt_last_word;
+wire packet_ready, pkt_last_word;
 
-s_axis_fifo #(.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
+s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
 	.aresetn(axis_resetn),
     .s_axis_tdata(s_axis_tdata),
@@ -203,15 +211,14 @@ always @ (posedge axis_clk) begin
             valid <= 1;
             mst_exec_state <= SEND_PACKET;
         end
-    SEND_PACKET:
+    SEND_PACKET: begin
         if (pkt_last_word) begin
             flush_fifo <= 1;
             send_ptr <= 0;
-            mst_exec_state <= WAIT_FOR_PACKET;
-        end else begin
-            valid <= 0;
             mst_exec_state <= WAIT;
         end
+		valid <= 0;
+	end
     WAIT:
         if (ready)
             mst_exec_state <= WAIT_FOR_PACKET;
@@ -220,17 +227,17 @@ always @ (posedge axis_clk) begin
     endcase
 end
 
-assign cur_pkt_last_word = m_axis_tready && m_axis_tlast_int;
-assign pkt_last_word = (send_ptr >= data_len);
+assign pkt_last_word = ((send_ptr+4) >= data_len) || (mst_exec_state == WAIT);
 assign m_axis_tlast = m_axis_tlast_int;
 assign m_axis_tvalid = m_axis_tvalid_int;
 
 always @ (posedge axis_clk) begin
     if (!axis_resetn) begin
         m_axis_tdata <= 0;
-    end else if (m_axis_tvalid_int && m_axis_tready) begin
+    end else if ((mst_exec_state == SEND_PACKET) && m_axis_tready) begin
         m_axis_tdata <= {data_fifo[send_ptr+3],  data_fifo[send_ptr+2], data_fifo[send_ptr+1],  data_fifo[send_ptr]};
-        send_ptr <= send_ptr + 4;
+        if (!pkt_last_word)
+			send_ptr <= send_ptr + 4;
     end
 end
 
@@ -243,9 +250,7 @@ always @ (posedge axis_clk) begin
         m_axis_tvalid_int <= mst_exec_state == SEND_PACKET;
         m_axis_tlast_int <= pkt_last_word;
         if (pkt_last_word) begin
-            //case (cur_pkt_size[1:0])
-            // probably needs some work
-            case (data_len[1:0])
+            case (data_len - send_ptr)
                 1: m_axis_tkeep <= 4'h1;
                 2: m_axis_tkeep <= 4'h3;
                 3: m_axis_tkeep <= 4'h7;

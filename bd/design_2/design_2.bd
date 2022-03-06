@@ -504,16 +504,28 @@
       }
     },
     "interface_nets": {
-      "axi_ethernet_0_rgmii": {
+      "decoder_0_m_axis_packet": {
         "interface_ports": [
-          "eth_rgmii",
-          "axi_ethernet_0/rgmii"
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis"
         ]
       },
-      "encoder_0_m_axis_txc": {
+      "decoder_0_packet_header": {
         "interface_ports": [
-          "encoder_0/m_axis_txc",
-          "axi_ethernet_0/s_axis_txc"
+          "decoder_0/packet_header",
+          "encoder_0/packet_header"
+        ]
+      },
+      "encoder_0_m_axis_txd": {
+        "interface_ports": [
+          "encoder_0/m_axis_txd",
+          "axi_ethernet_0/s_axis_txd"
+        ]
+      },
+      "ethernet_controller_0_m_axi": {
+        "interface_ports": [
+          "ethernet_controller_0/m_axi",
+          "axi_ethernet_0/s_axi"
         ]
       },
       "axi_ethernet_0_mdio": {
@@ -528,34 +540,22 @@
           "axi_ethernet_0/m_axis_rxd"
         ]
       },
-      "decoder_0_m_axis_packet": {
+      "axi_ethernet_0_rgmii": {
         "interface_ports": [
-          "decoder_0/m_axis_packet",
-          "encoder_0/s_axis"
+          "eth_rgmii",
+          "axi_ethernet_0/rgmii"
+        ]
+      },
+      "encoder_0_m_axis_txc": {
+        "interface_ports": [
+          "encoder_0/m_axis_txc",
+          "axi_ethernet_0/s_axis_txc"
         ]
       },
       "axi_ethernet_0_m_axis_rxs": {
         "interface_ports": [
           "decoder_0/s_axis_rxs",
           "axi_ethernet_0/m_axis_rxs"
-        ]
-      },
-      "ethernet_controller_0_m_axi": {
-        "interface_ports": [
-          "ethernet_controller_0/m_axi",
-          "axi_ethernet_0/s_axi"
-        ]
-      },
-      "encoder_0_m_axis_txd": {
-        "interface_ports": [
-          "encoder_0/m_axis_txd",
-          "axi_ethernet_0/s_axis_txd"
-        ]
-      },
-      "decoder_0_packet_header": {
-        "interface_ports": [
-          "decoder_0/packet_header",
-          "encoder_0/packet_header"
         ]
       }
     },

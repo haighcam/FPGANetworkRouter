@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:encoder:1.1
-// IP Revision: 3
+// IP Revision: 5
 
 `timescale 1ns/1ps
 
@@ -161,7 +161,7 @@ input wire drop;
 output wire s_axis_tready;
 
   encoder_v1_0 #(
-    .FIFO_ADDR_SIZE(16)
+    .FIFO_SIZE(1024)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),

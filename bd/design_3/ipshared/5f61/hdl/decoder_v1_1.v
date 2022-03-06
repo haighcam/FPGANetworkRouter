@@ -2,7 +2,7 @@
 `timescale 1 ns / 1 ps
 
 module decoder_v1_1 # (
-    parameter integer FIFO_ADDR_SIZE = 16
+    parameter integer FIFO_SIZE = 1024
 ) (
     input aclk,
     input aresetn,
@@ -77,7 +77,7 @@ assign alt_udp_dest_port_1 = alt_udp_dest_port;
 assign alt_udp_src_port_1 = alt_udp_src_port;
 assign encapsualted_1 = encapsualted;
 
-parse_packet #(.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) parse_packet_inst (
+parse_packet #(.FIFO_SIZE(FIFO_SIZE)) parse_packet_inst (
     .dest_addr(dest_addr),
     .src_addr(src_addr),
     .alt_dest_addr(alt_dest_addr),

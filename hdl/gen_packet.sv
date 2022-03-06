@@ -39,7 +39,7 @@
 `timescale 1ps/1ps
 
 module gen_packet #(
-    parameter integer FIFO_ADDR_SIZE = 16
+    parameter integer FIFO_SIZE = 1024
 ) (
     input [47:0] in_dest_addr,
     input [47:0] in_src_addr,
@@ -55,7 +55,7 @@ module gen_packet #(
     input [15:0] in_alt_udp_src_port,
     input in_encapsulated,
     input valid,
-    output reg ready,
+    output ready,
 
     output reg [31:0] m_axis_txc_tdata,
     output reg [3:0] m_axis_txc_tkeep,
@@ -79,8 +79,17 @@ module gen_packet #(
     input axis_clk,
     input in_flush
 );
+function integer clogb2 (input integer bit_depth);
+begin
+    for(clogb2=0; bit_depth>0; clogb2=clogb2+1)
+        bit_depth = bit_depth >> 1;
+end
+endfunction
+
+localparam  FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
 localparam  IP_HEADER_LEN = 20,
-            UDP_HEADER_LEN = 8;
+            UDP_HEADER_LEN = 8,
+			NVGRE_HEADER_LEN = 28;
 localparam  WAIT_FOR_PACKET = 1'd0,
             SEND_PACKET  = 1'd1;
 
@@ -89,18 +98,18 @@ reg [47:0] dest_addr, src_addr, alt_src_addr, alt_dest_addr;
 reg [31:0] ip_dest_addr, ip_src_addr, alt_ip_dest_addr, alt_ip_src_addr;
 reg [15:0] udp_dest_port, udp_src_port, alt_udp_dest_port, alt_udp_src_port, txc_cnt, txc_cnt_int;
 reg encapsulated, m_axis_txd_tvalid_int, m_axis_txd_tlast_int, m_axis_txc_tvalid_int, m_axis_txc_tlast_int;
-reg flush_fifo_int, mst_exec_state, send_header;
+reg flush_fifo_int, mst_exec_state, send_header, valid_int;
 
-wire [7:0] data_fifo [FIFO_ADDR_SIZE-1:0];
+wire [7:0] data_fifo [FIFO_SIZE-1:0];
 wire [15:0] ip_checksum_data [8:0];
 wire [15:0] udp_checksum_data [2:0];
 wire [FIFO_ADDR_SIZE-1:0] data_len;
 wire [15:0] cur_eth_pkt_size, cur_udp_pkt_size, ip_header_checksum, udp_header_checksum;
-wire packet_ready, cur_pkt_last_word, pkt_last_word, txc_last_word, flush_fifo;
+wire packet_ready, pkt_last_word, txc_last_word, flush_fifo;
 
 assign flush_fifo = flush_fifo_int || in_flush;
 
-s_axis_fifo #(.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
+s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
 	.aresetn(axis_resetn),
     .s_axis_tdata(s_axis_tdata),
@@ -129,64 +138,85 @@ ip_checksum ip_checksum_inst (
 );
 
 assign udp_checksum_data[0] = udp_src_port;
-assign udp_checksum_data[0] = udp_dest_port;
-assign udp_checksum_data[0] = cur_udp_pkt_size;
+assign udp_checksum_data[1] = udp_dest_port;
+assign udp_checksum_data[2] = cur_udp_pkt_size;
 udp_checksum udp_checksum_inst (
     .data(udp_checksum_data),
     .checksum(udp_header_checksum)
 );
 
+assign ready = !valid_int;
+always @(posedge axis_clk) begin
+	if (!axis_resetn)
+		valid_int <= 0;
+	else if (valid) begin
+		valid_int <= 1;
+		encapsulated <= in_encapsulated;
+		if (in_encapsulated) begin
+			src_addr <= in_alt_src_addr;
+			dest_addr <= in_alt_dest_addr;
+			ip_src_addr <= in_alt_ip_src_addr;
+			ip_dest_addr <= in_alt_ip_dest_addr;
+			udp_src_port <= in_alt_udp_src_port;
+			udp_dest_port <= in_alt_udp_dest_port;
+			
+			alt_src_addr <= in_src_addr;
+			alt_dest_addr <= in_dest_addr;
+			alt_ip_src_addr <= in_ip_src_addr;
+			alt_ip_dest_addr <= in_ip_dest_addr;
+			alt_udp_src_port <= in_udp_src_port;
+			alt_udp_dest_port <= in_udp_dest_port;
+		end else begin
+			src_addr <= in_src_addr;
+			dest_addr <= in_dest_addr;
+			ip_src_addr <= in_ip_src_addr;
+			ip_dest_addr <= in_ip_dest_addr;
+			udp_src_port <= in_udp_src_port;
+			udp_dest_port <= in_udp_dest_port;
+			
+			alt_dest_addr <= 48'd0;
+			alt_src_addr <= 48'd0;
+			alt_ip_src_addr <= 32'd0;
+			alt_ip_dest_addr <= 32'd0;
+			alt_udp_src_port <= 16'd0;
+			alt_udp_dest_port <= 16'd0;
+		end
+	end
+end
+
+
 // Control state machine implementation
-always @ (posedge axis_clk) begin
+always @(posedge axis_clk) begin
     if (!axis_resetn) // Synchronous reset (active low)
         mst_exec_state <= WAIT_FOR_PACKET;
     else
     case (mst_exec_state)
     WAIT_FOR_PACKET:
-        if (!packet_ready && !valid) begin
-            flush_fifo_int <= 0;
-            ready <= 1;
-            mst_exec_state <= WAIT_FOR_PACKET;
-        end else begin
-            ready <= 0;
-            src_addr <= in_src_addr;
-            dest_addr <= in_dest_addr;
-            ip_src_addr <= in_ip_src_addr;
-            ip_dest_addr <= in_ip_dest_addr;
-            udp_src_port <= in_udp_src_port;
-            udp_dest_port <= in_udp_dest_port;
-            alt_src_addr <= in_alt_src_addr;
-            alt_dest_addr <= in_alt_dest_addr;
-            alt_ip_src_addr <= in_alt_ip_src_addr;
-            alt_ip_dest_addr <= in_alt_ip_dest_addr;
-            alt_udp_src_port <= in_alt_udp_src_port;
-            alt_udp_dest_port <= in_alt_udp_dest_port;
-            encapsulated <= in_encapsulated;
-            send_header <= 0;
+		if (packet_ready && valid_int) begin
+			send_header <= 1;
+			send_ptr <= 0;
             mst_exec_state <= SEND_PACKET;
-        end
+		end else
+			flush_fifo_int <= 0;
     SEND_PACKET:
         if (pkt_last_word) begin
             flush_fifo_int <= 1;
-            send_ptr <= 0;
-            send_header <= 1;
+			valid_int <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
-        end else
-            mst_exec_state <= SEND_PACKET;
+        end
     endcase
 end
 
-assign cur_pkt_last_word = m_axis_txd_tready && m_axis_txd_tlast_int;
-assign cur_eth_pkt_size = data_len + UDP_HEADER_LEN + IP_HEADER_LEN;
-assign cur_udp_pkt_size = data_len;
-assign pkt_last_word = (send_ptr >= data_len);
+assign cur_udp_pkt_size = data_len + UDP_HEADER_LEN + (encapsulated ? NVGRE_HEADER_LEN : 0);
+assign cur_eth_pkt_size = cur_udp_pkt_size + IP_HEADER_LEN;
+assign pkt_last_word = (((send_ptr+4) >= data_len) && !send_header);
 assign m_axis_txd_tlast = m_axis_txd_tlast_int;
 assign m_axis_txd_tvalid = m_axis_txd_tvalid_int;
 
 always @ (posedge axis_clk) begin
     if (!axis_resetn) begin
         m_axis_txd_tdata <= 0;
-    end else if (m_axis_txd_tvalid_int && m_axis_txd_tready) begin
+    end else if ((mst_exec_state == SEND_PACKET) && m_axis_txd_tready) begin
         if (send_header)
             case (send_ptr)
                 // eth header
@@ -232,7 +262,7 @@ always @ (posedge axis_clk) begin
                     m_axis_txd_tdata <= {cur_udp_pkt_size[7:0],  cur_udp_pkt_size[15:8], udp_dest_port[7:0],  udp_dest_port[15:8]};
                     send_ptr <= send_ptr + 1;
                 end
-                // encapsualted header ?
+                // encapsulated header ?
                 10 : begin
                     if (encapsulated) begin
                         m_axis_txd_tdata <= {8'h00,  8'h40, udp_header_checksum[7:0],  udp_header_checksum[15:8]};
@@ -276,7 +306,8 @@ always @ (posedge axis_clk) begin
             endcase
         else begin
             m_axis_txd_tdata <= {data_fifo[send_ptr+3],  data_fifo[send_ptr+2], data_fifo[send_ptr+1],  data_fifo[send_ptr]};
-            send_ptr <= send_ptr + 4;
+            if (!pkt_last_word)
+				send_ptr <= send_ptr + 4;
         end
     end
 end
@@ -284,15 +315,13 @@ end
 always @ (posedge axis_clk) begin
     if (!axis_resetn) begin
         m_axis_txd_tkeep <= 0;
-        m_axis_txd_tvalid_int    <= 0;
-        m_axis_txd_tlast_int     <= 0;
+        m_axis_txd_tvalid_int <= 0;
+        m_axis_txd_tlast_int <= 0;
     end else begin
-        m_axis_txd_tvalid_int    <= mst_exec_state == SEND_PACKET;
-        m_axis_txd_tlast_int     <= pkt_last_word;
+        m_axis_txd_tvalid_int <= mst_exec_state == SEND_PACKET;
+        m_axis_txd_tlast_int <= pkt_last_word;
         if (pkt_last_word) begin
-            //case (cur_pkt_size[1:0])
-            // probably needs some work
-            case (data_len[1:0])
+            case (data_len - send_ptr)
                 1: m_axis_txd_tkeep <= 4'h1;
                 2: m_axis_txd_tkeep <= 4'h3;
                 3: m_axis_txd_tkeep <= 4'h7;
@@ -329,13 +358,13 @@ end
 always @ (posedge axis_clk) begin
     if (!axis_resetn) begin
         m_axis_txc_tdata <= 32'h05487B9A;
-        m_axis_txc_tvalid_int    <= 0;
-        m_axis_txc_tlast_int     <= 0;
-        m_axis_txc_tkeep     <= 0;
+        m_axis_txc_tvalid_int <= 0;
+        m_axis_txc_tlast_int <= 0;
+        m_axis_txc_tkeep <= 0;
     end else begin
-        m_axis_txc_tvalid_int    <= (|txc_cnt_int);
-        m_axis_txc_tlast_int     <= txc_last_word;
-        m_axis_txc_tkeep     <= 4'hF;
+        m_axis_txc_tvalid_int <= (|txc_cnt_int);
+        m_axis_txc_tlast_int <= txc_last_word;
+        m_axis_txc_tkeep <= 4'hF;
         case (txc_cnt_int)
             1: begin
                 m_axis_txc_tdata <= 32'h1a5aa5a5;
