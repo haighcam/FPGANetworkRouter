@@ -184,6 +184,12 @@ proc create_root_design { parentCell } {
   # Create instance: encoder_0, and set properties
   set encoder_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:encoder:1.1 encoder_0 ]
 
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $xlconstant_0
+
   # Create interface connections
   connect_bd_intf_net -intf_net axi4stream_vip_0_M_AXIS [get_bd_intf_pins axi4stream_vip_0/M_AXIS] [get_bd_intf_pins decoder_0/s_axis_rxd]
   connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis]
@@ -193,6 +199,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net aclk_1 [get_bd_ports aclk] [get_bd_pins axi4stream_vip_0/aclk] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk]
   connect_bd_net -net drop_1 [get_bd_ports drop] [get_bd_pins encoder_0/drop]
   connect_bd_net -net rst_aclk_100M_peripheral_aresetn [get_bd_ports aresetn] [get_bd_pins axi4stream_vip_0/aresetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins decoder_0/s_axis_rxs_tvalid] [get_bd_pins xlconstant_0/dout]
 
   # Create address segments
 

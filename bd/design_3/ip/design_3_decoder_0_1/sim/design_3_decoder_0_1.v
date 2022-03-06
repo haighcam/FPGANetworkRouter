@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:decoder:1.2
-// IP Revision: 5
+// IP Revision: 6
 
 `timescale 1ns/1ps
 

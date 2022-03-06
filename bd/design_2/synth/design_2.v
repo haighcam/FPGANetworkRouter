@@ -1,8 +1,8 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Sat Mar  5 19:25:24 2022
-//Host        : BA3155WS10 running 64-bit major release  (build 9200)
+//Date        : Sun Mar  6 17:44:13 2022
+//Host        : BA3155WS04 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
 //Purpose     : IP block netlist
@@ -61,40 +61,25 @@ module design_2
   wire clk_wiz_1_clk_out2;
   wire clk_wiz_1_clk_out3;
   wire clk_wiz_1_locked;
-  wire [47:0]decoder_0_alt_dest_addr_1;
-  wire [31:0]decoder_0_alt_ip_dest_addr_1;
-  wire [31:0]decoder_0_alt_ip_src_addr_1;
-  wire [47:0]decoder_0_alt_src_addr_1;
-  wire [15:0]decoder_0_alt_udp_dest_port_1;
-  wire [15:0]decoder_0_alt_udp_src_port_1;
-  wire [47:0]decoder_0_dest_addr_1;
-  wire decoder_0_encapsualted_1;
-  wire [31:0]decoder_0_ip_dest_addr_1;
-  wire [31:0]decoder_0_ip_src_addr_1;
+  wire [47:0]decoder_0_alt_dest_addr;
+  wire [31:0]decoder_0_alt_ip_dest_addr;
+  wire [31:0]decoder_0_alt_ip_src_addr;
+  wire [47:0]decoder_0_alt_src_addr;
+  wire [15:0]decoder_0_alt_udp_dest_port;
+  wire [15:0]decoder_0_alt_udp_src_port;
+  wire [47:0]decoder_0_dest_addr;
+  wire decoder_0_encapsualted;
+  wire [31:0]decoder_0_ip_dest_addr;
+  wire [31:0]decoder_0_ip_src_addr;
   wire [31:0]decoder_0_m_axis_packet_TDATA;
   wire decoder_0_m_axis_packet_TLAST;
   wire decoder_0_m_axis_packet_TREADY;
   wire [3:0]decoder_0_m_axis_packet_TSTRB;
   wire decoder_0_m_axis_packet_TVALID;
-  wire [47:0]decoder_0_packet_header_alt_dest_addr;
-  wire [31:0]decoder_0_packet_header_alt_ip_dest_addr;
-  wire [31:0]decoder_0_packet_header_alt_ip_src_addr;
-  wire [47:0]decoder_0_packet_header_alt_src_addr;
-  wire [15:0]decoder_0_packet_header_alt_udp_dest_port;
-  wire [15:0]decoder_0_packet_header_alt_udp_src_port;
-  wire [47:0]decoder_0_packet_header_dest_addr;
-  wire decoder_0_packet_header_encapsulated;
-  wire [31:0]decoder_0_packet_header_ip_dest_addr;
-  wire [31:0]decoder_0_packet_header_ip_src_addr;
-  wire decoder_0_packet_header_ready;
-  wire [47:0]decoder_0_packet_header_src_addr;
-  wire [15:0]decoder_0_packet_header_udp_dest_port;
-  wire [15:0]decoder_0_packet_header_udp_src_port;
-  wire decoder_0_packet_header_valid;
-  wire [47:0]decoder_0_src_addr_1;
-  wire [15:0]decoder_0_udp_dest_port_1;
-  wire [15:0]decoder_0_udp_src_port_1;
-  wire decoder_0_valid_1;
+  wire [47:0]decoder_0_src_addr;
+  wire [15:0]decoder_0_udp_dest_port;
+  wire [15:0]decoder_0_udp_src_port;
+  wire decoder_0_valid;
   wire [31:0]encoder_0_m_axis_txc_TDATA;
   wire encoder_0_m_axis_txc_TLAST;
   wire encoder_0_m_axis_txc_TREADY;
@@ -103,6 +88,7 @@ module design_2
   wire encoder_0_m_axis_txd_TLAST;
   wire encoder_0_m_axis_txd_TREADY;
   wire encoder_0_m_axis_txd_TVALID;
+  wire encoder_0_ready;
   wire ethernet_controller_0_control_ready;
   wire [31:0]ethernet_controller_0_m_axi_ARADDR;
   wire ethernet_controller_0_m_axi_ARREADY;
@@ -127,7 +113,6 @@ module design_2
   wire [3:0]vio_0_probe_out0;
   wire [0:0]vio_0_probe_out1;
   wire [0:0]vio_0_probe_out2;
-  wire [0:0]vio_0_probe_out3;
   wire [0:0]xlconstant_0_dout;
 
   assign axi_ethernet_0_mdio_MDIO_I = eth_mdio_mdc_mdio_i;
@@ -144,10 +129,10 @@ module design_2
   assign reset_1 = reset;
   assign sys_clock_1 = sys_clock;
   design_2_axi_ethernet_0_0 axi_ethernet_0
-       (.axi_rxd_arstn(1'b1),
-        .axi_rxs_arstn(1'b1),
-        .axi_txc_arstn(1'b1),
-        .axi_txd_arstn(1'b1),
+       (.axi_rxd_arstn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .axi_rxs_arstn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .axi_txc_arstn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .axi_txd_arstn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .axis_clk(clk_wiz_1_clk_out1),
         .gtx_clk(clk_wiz_1_clk_out3),
         .m_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
@@ -208,34 +193,23 @@ module design_2
         .resetn(reset_1));
   design_2_decoder_0_0 decoder_0
        (.aclk(clk_wiz_1_clk_out1),
-        .alt_dest_addr(decoder_0_packet_header_alt_dest_addr),
-        .alt_dest_addr_1(decoder_0_alt_dest_addr_1),
-        .alt_ip_dest_addr(decoder_0_packet_header_alt_ip_dest_addr),
-        .alt_ip_dest_addr_1(decoder_0_alt_ip_dest_addr_1),
-        .alt_ip_src_addr(decoder_0_packet_header_alt_ip_src_addr),
-        .alt_ip_src_addr_1(decoder_0_alt_ip_src_addr_1),
-        .alt_src_addr(decoder_0_packet_header_alt_src_addr),
-        .alt_src_addr_1(decoder_0_alt_src_addr_1),
-        .alt_udp_dest_port(decoder_0_packet_header_alt_udp_dest_port),
-        .alt_udp_dest_port_1(decoder_0_alt_udp_dest_port_1),
-        .alt_udp_src_port(decoder_0_packet_header_alt_udp_src_port),
-        .alt_udp_src_port_1(decoder_0_alt_udp_src_port_1),
+        .alt_dest_addr(decoder_0_alt_dest_addr),
+        .alt_ip_dest_addr(decoder_0_alt_ip_dest_addr),
+        .alt_ip_src_addr(decoder_0_alt_ip_src_addr),
+        .alt_src_addr(decoder_0_alt_src_addr),
+        .alt_udp_dest_port(decoder_0_alt_udp_dest_port),
+        .alt_udp_src_port(decoder_0_alt_udp_src_port),
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .dest_addr(decoder_0_packet_header_dest_addr),
-        .dest_addr_1(decoder_0_dest_addr_1),
-        .encapsualted(decoder_0_packet_header_encapsulated),
-        .encapsualted_1(decoder_0_encapsualted_1),
-        .ip_dest_addr(decoder_0_packet_header_ip_dest_addr),
-        .ip_dest_addr_1(decoder_0_ip_dest_addr_1),
-        .ip_src_addr(decoder_0_packet_header_ip_src_addr),
-        .ip_src_addr_1(decoder_0_ip_src_addr_1),
+        .dest_addr(decoder_0_dest_addr),
+        .encapsualted(decoder_0_encapsualted),
+        .ip_dest_addr(decoder_0_ip_dest_addr),
+        .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_packet_tdata(decoder_0_m_axis_packet_TDATA),
         .m_axis_packet_tlast(decoder_0_m_axis_packet_TLAST),
         .m_axis_packet_tready(decoder_0_m_axis_packet_TREADY),
         .m_axis_packet_tstrb(decoder_0_m_axis_packet_TSTRB),
         .m_axis_packet_tvalid(decoder_0_m_axis_packet_TVALID),
-        .ready(decoder_0_packet_header_ready),
-        .ready_1(vio_0_probe_out3),
+        .ready(encoder_0_ready),
         .s_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
         .s_axis_rxd_tlast(axi_ethernet_0_m_axis_rxd_TLAST),
         .s_axis_rxd_tready(axi_ethernet_0_m_axis_rxd_TREADY),
@@ -246,28 +220,24 @@ module design_2
         .s_axis_rxs_tready(axi_ethernet_0_m_axis_rxs_TREADY),
         .s_axis_rxs_tstrb({1'b1,1'b1,1'b1,1'b1}),
         .s_axis_rxs_tvalid(axi_ethernet_0_m_axis_rxs_TVALID),
-        .src_addr(decoder_0_packet_header_src_addr),
-        .src_addr_1(decoder_0_src_addr_1),
-        .udp_dest_port(decoder_0_packet_header_udp_dest_port),
-        .udp_dest_port_1(decoder_0_udp_dest_port_1),
-        .udp_src_port(decoder_0_packet_header_udp_src_port),
-        .udp_src_port_1(decoder_0_udp_src_port_1),
-        .valid(decoder_0_packet_header_valid),
-        .valid_1(decoder_0_valid_1));
+        .src_addr(decoder_0_src_addr),
+        .udp_dest_port(decoder_0_udp_dest_port),
+        .udp_src_port(decoder_0_udp_src_port),
+        .valid(decoder_0_valid));
   design_2_encoder_0_0 encoder_0
        (.aclk(clk_wiz_1_clk_out1),
-        .alt_dest_addr(decoder_0_packet_header_alt_dest_addr),
-        .alt_ip_dest_addr(decoder_0_packet_header_alt_ip_dest_addr),
-        .alt_ip_src_addr(decoder_0_packet_header_alt_ip_src_addr),
-        .alt_src_addr(decoder_0_packet_header_alt_src_addr),
-        .alt_udp_dest_port(decoder_0_packet_header_alt_udp_dest_port),
-        .alt_udp_src_port(decoder_0_packet_header_alt_udp_src_port),
+        .alt_dest_addr(decoder_0_alt_src_addr),
+        .alt_ip_dest_addr(decoder_0_alt_ip_src_addr),
+        .alt_ip_src_addr(decoder_0_alt_ip_dest_addr),
+        .alt_src_addr(decoder_0_alt_dest_addr),
+        .alt_udp_dest_port(decoder_0_alt_udp_src_port),
+        .alt_udp_src_port(decoder_0_alt_udp_dest_port),
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .dest_addr(decoder_0_packet_header_dest_addr),
+        .dest_addr(decoder_0_dest_addr),
         .drop(xlconstant_0_dout),
-        .encapsulated(decoder_0_packet_header_encapsulated),
-        .ip_dest_addr(decoder_0_packet_header_ip_dest_addr),
-        .ip_src_addr(decoder_0_packet_header_ip_src_addr),
+        .encapsulated(decoder_0_encapsualted),
+        .ip_dest_addr(decoder_0_ip_dest_addr),
+        .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_txc_tdata(encoder_0_m_axis_txc_TDATA),
         .m_axis_txc_tlast(encoder_0_m_axis_txc_TLAST),
         .m_axis_txc_tready(encoder_0_m_axis_txc_TREADY),
@@ -276,16 +246,16 @@ module design_2
         .m_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .m_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
         .m_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID),
-        .ready(decoder_0_packet_header_ready),
+        .ready(encoder_0_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
         .s_axis_tlast(decoder_0_m_axis_packet_TLAST),
         .s_axis_tready(decoder_0_m_axis_packet_TREADY),
         .s_axis_tstrb(decoder_0_m_axis_packet_TSTRB),
         .s_axis_tvalid(decoder_0_m_axis_packet_TVALID),
-        .src_addr(decoder_0_packet_header_src_addr),
-        .udp_dest_port(decoder_0_packet_header_udp_dest_port),
-        .udp_src_port(decoder_0_packet_header_udp_src_port),
-        .valid(decoder_0_packet_header_valid));
+        .src_addr(decoder_0_src_addr),
+        .udp_dest_port(decoder_0_udp_dest_port),
+        .udp_src_port(decoder_0_udp_src_port),
+        .valid(decoder_0_valid));
   design_2_ethernet_controller_0_0 ethernet_controller_0
        (.control_data(vio_0_probe_out0),
         .control_ready(ethernet_controller_0_control_ready),
@@ -320,24 +290,9 @@ module design_2
   design_2_vio_0_0 vio_0
        (.clk(clk_wiz_1_clk_out1),
         .probe_in0(ethernet_controller_0_control_ready),
-        .probe_in1(decoder_0_src_addr_1),
-        .probe_in10(decoder_0_udp_dest_port_1),
-        .probe_in11(decoder_0_alt_udp_src_port_1),
-        .probe_in12(decoder_0_alt_udp_dest_port_1),
-        .probe_in13(decoder_0_encapsualted_1),
-        .probe_in14(decoder_0_valid_1),
-        .probe_in2(decoder_0_dest_addr_1),
-        .probe_in3(decoder_0_alt_src_addr_1),
-        .probe_in4(decoder_0_alt_dest_addr_1),
-        .probe_in5(decoder_0_ip_src_addr_1),
-        .probe_in6(decoder_0_ip_dest_addr_1),
-        .probe_in7(decoder_0_alt_ip_src_addr_1),
-        .probe_in8(decoder_0_alt_ip_dest_addr_1),
-        .probe_in9(decoder_0_udp_src_port_1),
         .probe_out0(vio_0_probe_out0),
         .probe_out1(vio_0_probe_out1),
-        .probe_out2(vio_0_probe_out2),
-        .probe_out3(vio_0_probe_out3));
+        .probe_out2(vio_0_probe_out2));
   design_2_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
 endmodule

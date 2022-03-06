@@ -5,7 +5,8 @@
       "device": "xc7a200tsbg484-1",
       "name": "design_2",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2018.3.1"
+      "tool_version": "2018.3.1",
+      "validated": "true"
     },
     "design_tree": {
       "ethernet_controller_0": "",
@@ -14,13 +15,19 @@
       "rst_clk_wiz_1_100M": "",
       "vio_0": "",
       "xlconstant_0": "",
-      "decoder_0": "",
-      "encoder_0": ""
+      "encoder_0": "",
+      "decoder_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
         "mode": "Master",
-        "vlnv": "xilinx.com:interface:mdio_rtl:1.0"
+        "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
+        "parameters": {
+          "CAN_DEBUG": {
+            "value": "false",
+            "value_src": "default"
+          }
+        }
       },
       "eth_rgmii": {
         "mode": "Master",
@@ -32,12 +39,26 @@
         "type": "rst",
         "direction": "O",
         "left": "0",
-        "right": "0"
+        "right": "0",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "user_prop"
+          }
+        }
       },
       "reset": {
         "type": "rst",
         "direction": "I",
         "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
           "POLARITY": {
             "value": "ACTIVE_LOW"
           }
@@ -47,8 +68,16 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_2_sys_clock",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
           },
           "PHASE": {
             "value": "0.000"
@@ -277,11 +306,39 @@
         "ports": {
           "m_axi_aclk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_BUSIF": {
+                "value": "m_axi",
+                "value_src": "constant"
+              },
+              "ASSOCIATED_RESET": {
+                "value": "m_axi_aresetn",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_1_clk_out1",
+                "value_src": "ip_prop"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "m_axi_aresetn": {
             "type": "rst",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
           },
           "control_data": {
             "direction": "I",
@@ -380,7 +437,7 @@
                   "width": "32",
                   "usage": "register",
                   "bank_blocks": {
-                    "SEG_eth_buf_REG;Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;eth_buf;S_AXI;NONE;NONE": {
+                    "SEG_eth_buf_REG;/eth_buf/S_AXI/Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;/eth_buf;S_AXI;NONE;NONE": {
                       "base_address": "0",
                       "range": "256K",
                       "width": "32",
@@ -470,10 +527,10 @@
         "xci_name": "design_2_vio_0_0",
         "parameters": {
           "C_NUM_PROBE_IN": {
-            "value": "15"
+            "value": "1"
           },
           "C_NUM_PROBE_OUT": {
-            "value": "4"
+            "value": "3"
           },
           "C_PROBE_OUT0_WIDTH": {
             "value": "4"
@@ -489,18 +546,18 @@
           }
         }
       },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_2_encoder_0_0"
+      },
       "decoder_0": {
         "vlnv": "utoronto.ca:user:decoder:1.2",
         "xci_name": "design_2_decoder_0_0",
         "parameters": {
           "HEADERS_OUT": {
-            "value": "2"
+            "value": "1"
           }
         }
-      },
-      "encoder_0": {
-        "vlnv": "utoronto.ca:user:encoder:1.1",
-        "xci_name": "design_2_encoder_0_0"
       }
     },
     "interface_nets": {
@@ -508,12 +565,6 @@
         "interface_ports": [
           "decoder_0/m_axis_packet",
           "encoder_0/s_axis"
-        ]
-      },
-      "decoder_0_packet_header": {
-        "interface_ports": [
-          "decoder_0/packet_header",
-          "encoder_0/packet_header"
         ]
       },
       "encoder_0_m_axis_txd": {
@@ -534,16 +585,10 @@
           "axi_ethernet_0/mdio"
         ]
       },
-      "axi_ethernet_0_m_axis_rxd": {
+      "axi_ethernet_0_m_axis_rxs": {
         "interface_ports": [
-          "decoder_0/s_axis_rxd",
-          "axi_ethernet_0/m_axis_rxd"
-        ]
-      },
-      "axi_ethernet_0_rgmii": {
-        "interface_ports": [
-          "eth_rgmii",
-          "axi_ethernet_0/rgmii"
+          "decoder_0/s_axis_rxs",
+          "axi_ethernet_0/m_axis_rxs"
         ]
       },
       "encoder_0_m_axis_txc": {
@@ -552,10 +597,16 @@
           "axi_ethernet_0/s_axis_txc"
         ]
       },
-      "axi_ethernet_0_m_axis_rxs": {
+      "axi_ethernet_0_rgmii": {
         "interface_ports": [
-          "decoder_0/s_axis_rxs",
-          "axi_ethernet_0/m_axis_rxs"
+          "eth_rgmii",
+          "axi_ethernet_0/rgmii"
+        ]
+      },
+      "axi_ethernet_0_m_axis_rxd": {
+        "interface_ports": [
+          "decoder_0/s_axis_rxd",
+          "axi_ethernet_0/m_axis_rxd"
         ]
       }
     },
@@ -568,8 +619,8 @@
           "rst_clk_wiz_1_100M/slowest_sync_clk",
           "axi_ethernet_0/axis_clk",
           "vio_0/clk",
-          "decoder_0/aclk",
-          "encoder_0/aclk"
+          "encoder_0/aclk",
+          "decoder_0/aclk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -577,8 +628,12 @@
           "rst_clk_wiz_1_100M/peripheral_aresetn",
           "ethernet_controller_0/m_axi_aresetn",
           "axi_ethernet_0/s_axi_lite_resetn",
-          "decoder_0/aresetn",
-          "encoder_0/aresetn"
+          "encoder_0/aresetn",
+          "axi_ethernet_0/axi_txd_arstn",
+          "axi_ethernet_0/axi_txc_arstn",
+          "axi_ethernet_0/axi_rxd_arstn",
+          "axi_ethernet_0/axi_rxs_arstn",
+          "decoder_0/aresetn"
         ]
       },
       "clk_wiz_1_locked": {
@@ -642,100 +697,100 @@
           "vio_0/probe_in0"
         ]
       },
-      "decoder_0_src_addr_1": {
-        "ports": [
-          "decoder_0/src_addr_1",
-          "vio_0/probe_in1"
-        ]
-      },
-      "decoder_0_dest_addr_1": {
-        "ports": [
-          "decoder_0/dest_addr_1",
-          "vio_0/probe_in2"
-        ]
-      },
-      "decoder_0_alt_dest_addr_1": {
-        "ports": [
-          "decoder_0/alt_dest_addr_1",
-          "vio_0/probe_in4"
-        ]
-      },
-      "decoder_0_alt_src_addr_1": {
-        "ports": [
-          "decoder_0/alt_src_addr_1",
-          "vio_0/probe_in3"
-        ]
-      },
-      "decoder_0_alt_ip_dest_addr_1": {
-        "ports": [
-          "decoder_0/alt_ip_dest_addr_1",
-          "vio_0/probe_in8"
-        ]
-      },
-      "decoder_0_ip_dest_addr_1": {
-        "ports": [
-          "decoder_0/ip_dest_addr_1",
-          "vio_0/probe_in6"
-        ]
-      },
-      "decoder_0_alt_ip_src_addr_1": {
-        "ports": [
-          "decoder_0/alt_ip_src_addr_1",
-          "vio_0/probe_in7"
-        ]
-      },
-      "decoder_0_ip_src_addr_1": {
-        "ports": [
-          "decoder_0/ip_src_addr_1",
-          "vio_0/probe_in5"
-        ]
-      },
-      "decoder_0_alt_udp_src_port_1": {
-        "ports": [
-          "decoder_0/alt_udp_src_port_1",
-          "vio_0/probe_in11"
-        ]
-      },
-      "decoder_0_alt_udp_dest_port_1": {
-        "ports": [
-          "decoder_0/alt_udp_dest_port_1",
-          "vio_0/probe_in12"
-        ]
-      },
-      "decoder_0_udp_src_port_1": {
-        "ports": [
-          "decoder_0/udp_src_port_1",
-          "vio_0/probe_in9"
-        ]
-      },
-      "decoder_0_udp_dest_port_1": {
-        "ports": [
-          "decoder_0/udp_dest_port_1",
-          "vio_0/probe_in10"
-        ]
-      },
-      "decoder_0_encapsualted_1": {
-        "ports": [
-          "decoder_0/encapsualted_1",
-          "vio_0/probe_in13"
-        ]
-      },
-      "decoder_0_valid_1": {
-        "ports": [
-          "decoder_0/valid_1",
-          "vio_0/probe_in14"
-        ]
-      },
-      "vio_0_probe_out3": {
-        "ports": [
-          "vio_0/probe_out3",
-          "decoder_0/ready_1"
-        ]
-      },
       "xlconstant_0_dout": {
         "ports": [
           "xlconstant_0/dout",
           "encoder_0/drop"
+        ]
+      },
+      "decoder_0_alt_dest_addr": {
+        "ports": [
+          "decoder_0/alt_dest_addr",
+          "encoder_0/alt_src_addr"
+        ]
+      },
+      "decoder_0_alt_src_addr": {
+        "ports": [
+          "decoder_0/alt_src_addr",
+          "encoder_0/alt_dest_addr"
+        ]
+      },
+      "decoder_0_alt_udp_dest_port": {
+        "ports": [
+          "decoder_0/alt_udp_dest_port",
+          "encoder_0/alt_udp_src_port"
+        ]
+      },
+      "decoder_0_alt_udp_src_port": {
+        "ports": [
+          "decoder_0/alt_udp_src_port",
+          "encoder_0/alt_udp_dest_port"
+        ]
+      },
+      "decoder_0_alt_ip_dest_addr": {
+        "ports": [
+          "decoder_0/alt_ip_dest_addr",
+          "encoder_0/alt_ip_src_addr"
+        ]
+      },
+      "decoder_0_alt_ip_src_addr": {
+        "ports": [
+          "decoder_0/alt_ip_src_addr",
+          "encoder_0/alt_ip_dest_addr"
+        ]
+      },
+      "decoder_0_udp_src_port": {
+        "ports": [
+          "decoder_0/udp_src_port",
+          "encoder_0/udp_src_port"
+        ]
+      },
+      "decoder_0_src_addr": {
+        "ports": [
+          "decoder_0/src_addr",
+          "encoder_0/src_addr"
+        ]
+      },
+      "decoder_0_valid": {
+        "ports": [
+          "decoder_0/valid",
+          "encoder_0/valid"
+        ]
+      },
+      "decoder_0_ip_dest_addr": {
+        "ports": [
+          "decoder_0/ip_dest_addr",
+          "encoder_0/ip_dest_addr"
+        ]
+      },
+      "decoder_0_udp_dest_port": {
+        "ports": [
+          "decoder_0/udp_dest_port",
+          "encoder_0/udp_dest_port"
+        ]
+      },
+      "decoder_0_encapsualted": {
+        "ports": [
+          "decoder_0/encapsualted",
+          "encoder_0/encapsulated"
+        ]
+      },
+      "encoder_0_ready": {
+        "ports": [
+          "encoder_0/ready",
+          "decoder_0/ready"
+        ]
+      },
+      "decoder_0_dest_addr": {
+        "ports": [
+          "decoder_0/dest_addr",
+          "encoder_0/dest_addr"
+        ]
+      },
+      "decoder_0_ip_src_addr": {
+        "ports": [
+          "decoder_0/ip_src_addr",
+          "encoder_0/ip_src_addr"
         ]
       }
     },
@@ -752,14 +807,6 @@
                 "range": "256K"
               }
             }
-          }
-        }
-      },
-      "/decoder_0": {
-        "address_spaces": {
-          "packet_header_1": {
-            "range": "4G",
-            "width": "32"
           }
         }
       }

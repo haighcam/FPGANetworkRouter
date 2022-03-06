@@ -257,7 +257,7 @@ proc create_root_design { parentCell } {
   # Create instance: decoder_0, and set properties
   set decoder_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:decoder:1.2 decoder_0 ]
   set_property -dict [ list \
-   CONFIG.HEADERS_OUT {2} \
+   CONFIG.HEADERS_OUT {1} \
  ] $decoder_0
 
   # Create instance: encoder_0, and set properties
@@ -284,8 +284,8 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {15} \
-   CONFIG.C_NUM_PROBE_OUT {4} \
+   CONFIG.C_NUM_PROBE_IN {1} \
+   CONFIG.C_NUM_PROBE_OUT {3} \
    CONFIG.C_PROBE_OUT0_WIDTH {4} \
  ] $vio_0
 
@@ -301,7 +301,6 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net axi_ethernet_0_mdio [get_bd_intf_ports eth_mdio_mdc] [get_bd_intf_pins axi_ethernet_0/mdio]
   connect_bd_intf_net -intf_net axi_ethernet_0_rgmii [get_bd_intf_ports eth_rgmii] [get_bd_intf_pins axi_ethernet_0/rgmii]
   connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis]
-  connect_bd_intf_net -intf_net decoder_0_packet_header [get_bd_intf_pins decoder_0/packet_header] [get_bd_intf_pins encoder_0/packet_header]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txc [get_bd_intf_pins axi_ethernet_0/s_axis_txc] [get_bd_intf_pins encoder_0/m_axis_txc]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txd [get_bd_intf_pins axi_ethernet_0/s_axis_txd] [get_bd_intf_pins encoder_0/m_axis_txd]
   connect_bd_intf_net -intf_net ethernet_controller_0_m_axi [get_bd_intf_pins axi_ethernet_0/s_axi] [get_bd_intf_pins ethernet_controller_0/m_axi]
@@ -312,28 +311,28 @@ proc create_root_design { parentCell } {
   connect_bd_net -net clk_wiz_1_clk_out2 [get_bd_pins axi_ethernet_0/ref_clk] [get_bd_pins clk_wiz_1/clk_out2]
   connect_bd_net -net clk_wiz_1_clk_out3 [get_bd_pins axi_ethernet_0/gtx_clk] [get_bd_pins clk_wiz_1/clk_out3]
   connect_bd_net -net clk_wiz_1_locked [get_bd_pins clk_wiz_1/locked] [get_bd_pins rst_clk_wiz_1_100M/dcm_locked]
-  connect_bd_net -net decoder_0_alt_dest_addr_1 [get_bd_pins decoder_0/alt_dest_addr_1] [get_bd_pins vio_0/probe_in4]
-  connect_bd_net -net decoder_0_alt_ip_dest_addr_1 [get_bd_pins decoder_0/alt_ip_dest_addr_1] [get_bd_pins vio_0/probe_in8]
-  connect_bd_net -net decoder_0_alt_ip_src_addr_1 [get_bd_pins decoder_0/alt_ip_src_addr_1] [get_bd_pins vio_0/probe_in7]
-  connect_bd_net -net decoder_0_alt_src_addr_1 [get_bd_pins decoder_0/alt_src_addr_1] [get_bd_pins vio_0/probe_in3]
-  connect_bd_net -net decoder_0_alt_udp_dest_port_1 [get_bd_pins decoder_0/alt_udp_dest_port_1] [get_bd_pins vio_0/probe_in12]
-  connect_bd_net -net decoder_0_alt_udp_src_port_1 [get_bd_pins decoder_0/alt_udp_src_port_1] [get_bd_pins vio_0/probe_in11]
-  connect_bd_net -net decoder_0_dest_addr_1 [get_bd_pins decoder_0/dest_addr_1] [get_bd_pins vio_0/probe_in2]
-  connect_bd_net -net decoder_0_encapsualted_1 [get_bd_pins decoder_0/encapsualted_1] [get_bd_pins vio_0/probe_in13]
-  connect_bd_net -net decoder_0_ip_dest_addr_1 [get_bd_pins decoder_0/ip_dest_addr_1] [get_bd_pins vio_0/probe_in6]
-  connect_bd_net -net decoder_0_ip_src_addr_1 [get_bd_pins decoder_0/ip_src_addr_1] [get_bd_pins vio_0/probe_in5]
-  connect_bd_net -net decoder_0_src_addr_1 [get_bd_pins decoder_0/src_addr_1] [get_bd_pins vio_0/probe_in1]
-  connect_bd_net -net decoder_0_udp_dest_port_1 [get_bd_pins decoder_0/udp_dest_port_1] [get_bd_pins vio_0/probe_in10]
-  connect_bd_net -net decoder_0_udp_src_port_1 [get_bd_pins decoder_0/udp_src_port_1] [get_bd_pins vio_0/probe_in9]
-  connect_bd_net -net decoder_0_valid_1 [get_bd_pins decoder_0/valid_1] [get_bd_pins vio_0/probe_in14]
+  connect_bd_net -net decoder_0_alt_dest_addr [get_bd_pins decoder_0/alt_dest_addr] [get_bd_pins encoder_0/alt_src_addr]
+  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins encoder_0/alt_ip_src_addr]
+  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins encoder_0/alt_ip_dest_addr]
+  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins encoder_0/alt_dest_addr]
+  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins encoder_0/alt_udp_src_port]
+  connect_bd_net -net decoder_0_alt_udp_src_port [get_bd_pins decoder_0/alt_udp_src_port] [get_bd_pins encoder_0/alt_udp_dest_port]
+  connect_bd_net -net decoder_0_dest_addr [get_bd_pins decoder_0/dest_addr] [get_bd_pins encoder_0/dest_addr]
+  connect_bd_net -net decoder_0_encapsualted [get_bd_pins decoder_0/encapsualted] [get_bd_pins encoder_0/encapsulated]
+  connect_bd_net -net decoder_0_ip_dest_addr [get_bd_pins decoder_0/ip_dest_addr] [get_bd_pins encoder_0/ip_dest_addr]
+  connect_bd_net -net decoder_0_ip_src_addr [get_bd_pins decoder_0/ip_src_addr] [get_bd_pins encoder_0/ip_src_addr]
+  connect_bd_net -net decoder_0_src_addr [get_bd_pins decoder_0/src_addr] [get_bd_pins encoder_0/src_addr]
+  connect_bd_net -net decoder_0_udp_dest_port [get_bd_pins decoder_0/udp_dest_port] [get_bd_pins encoder_0/udp_dest_port]
+  connect_bd_net -net decoder_0_udp_src_port [get_bd_pins decoder_0/udp_src_port] [get_bd_pins encoder_0/udp_src_port]
+  connect_bd_net -net decoder_0_valid [get_bd_pins decoder_0/valid] [get_bd_pins encoder_0/valid]
+  connect_bd_net -net encoder_0_ready [get_bd_pins decoder_0/ready] [get_bd_pins encoder_0/ready]
   connect_bd_net -net ethernet_controller_0_control_ready [get_bd_pins ethernet_controller_0/control_ready] [get_bd_pins vio_0/probe_in0]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_1/resetn] [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
-  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_ethernet_0/s_axi_lite_resetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn] [get_bd_pins ethernet_controller_0/m_axi_aresetn] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
+  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_ethernet_0/axi_rxd_arstn] [get_bd_pins axi_ethernet_0/axi_rxs_arstn] [get_bd_pins axi_ethernet_0/axi_txc_arstn] [get_bd_pins axi_ethernet_0/axi_txd_arstn] [get_bd_pins axi_ethernet_0/s_axi_lite_resetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn] [get_bd_pins ethernet_controller_0/m_axi_aresetn] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_1/clk_in1]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins ethernet_controller_0/control_data] [get_bd_pins vio_0/probe_out0]
   connect_bd_net -net vio_0_probe_out1 [get_bd_pins ethernet_controller_0/control_valid] [get_bd_pins vio_0/probe_out1]
   connect_bd_net -net vio_0_probe_out2 [get_bd_pins ethernet_controller_0/start_config] [get_bd_pins vio_0/probe_out2]
-  connect_bd_net -net vio_0_probe_out3 [get_bd_pins decoder_0/ready_1] [get_bd_pins vio_0/probe_out3]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins encoder_0/drop] [get_bd_pins xlconstant_0/dout]
 
   # Create address segments

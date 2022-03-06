@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  6 14:04:13 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  6 16:59:34 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_3" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
@@ -119,7 +119,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
+    <MODULE COREREVISION="6" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="FIFO_SIZE" VALUE="1024"/>
@@ -241,7 +241,11 @@
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxs_tdata" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="3" NAME="s_axis_rxs_tstrb" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" NAME="s_axis_rxs_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="s_axis_rxs_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="s_axis_rxs_tvalid" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="s_axis_rxs_tready" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxd_tdata" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tdata">
           <CONNECTIONS>
@@ -588,6 +592,23 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="5" FULLNAME="/xlconstant_0" HWVERSION="1.1" INSTANCE="xlconstant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_3_xlconstant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="s_axis_rxs_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
   </MODULES>
 

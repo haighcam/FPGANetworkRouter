@@ -1,9 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar  5 19:25:25 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  6 17:44:13 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_2" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="O" LEFT="0" NAME="phy_reset_out" RIGHT="0" SIGIS="rst" SIGNAME="axi_ethernet_0_phy_rst_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="phy_rst_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="clk_wiz_1" PORT="resetn"/>
+        <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="ext_reset_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_mdio_mdc_mdc" SIGIS="clk" SIGNAME="axi_ethernet_0_mdio_mdc">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdc"/>
@@ -52,22 +68,6 @@
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_rgmii_txc" SIGIS="clk" SIGNAME="axi_ethernet_0_rgmii_txc">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_ethernet_0" PORT="rgmii_txc"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="phy_reset_out" RIGHT="0" SIGIS="rst" SIGNAME="axi_ethernet_0_phy_rst_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="phy_rst_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_1" PORT="resetn"/>
-        <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="ext_reset_in"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -4963,10 +4963,26 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="axi_txd_arstn" SIGIS="rst"/>
-        <PORT DIR="I" NAME="axi_txc_arstn" SIGIS="rst"/>
-        <PORT DIR="I" NAME="axi_rxd_arstn" SIGIS="rst"/>
-        <PORT DIR="I" NAME="axi_rxs_arstn" SIGIS="rst"/>
+        <PORT DIR="I" NAME="axi_txd_arstn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_txc_arstn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_rxd_arstn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="axi_rxs_arstn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="interrupt" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
         <PORT CLKFREQUENCY="125000000" DIR="I" NAME="gtx_clk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out3">
           <CONNECTIONS>
@@ -5953,9 +5969,9 @@
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_lite_clk"/>
             <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axis_clk"/>
-            <CONNECTION INSTANCE="decoder_0" PORT="aclk"/>
             <CONNECTION INSTANCE="vio_0" PORT="clk"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="O" NAME="clk_out2" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out2">
@@ -5976,12 +5992,12 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
+    <MODULE COREREVISION="7" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="FIFO_SIZE" VALUE="1024"/>
         <PARAMETER NAME="Component_Name" VALUE="design_2_decoder_0_0"/>
-        <PARAMETER NAME="HEADERS_OUT" VALUE="2"/>
+        <PARAMETER NAME="HEADERS_OUT" VALUE="1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -6032,12 +6048,12 @@
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_dest_addr"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_src_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_src_addr"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_dest_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr">
@@ -6052,12 +6068,12 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_dest_addr"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_src_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_src_addr"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_dest_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port">
@@ -6072,12 +6088,12 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_dest_port"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_src_port"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_src_port"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_dest_port"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="encapsualted" SIGIS="undef" SIGNAME="decoder_0_encapsualted">
@@ -6090,84 +6106,9 @@
             <CONNECTION INSTANCE="encoder_0" PORT="valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="decoder_0_ready">
+        <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="encoder_0_ready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="encoder_0" PORT="ready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="47" NAME="dest_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in2"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="47" NAME="src_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="47" NAME="alt_dest_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in4"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="47" NAME="alt_src_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in3"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="ip_dest_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in6"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="ip_src_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in5"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="alt_ip_dest_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in8"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="alt_ip_src_addr_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in7"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="udp_dest_port_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in10"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="udp_src_port_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_src_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in9"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="alt_udp_dest_port_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in12"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="alt_udp_src_port_1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in11"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="encapsualted_1" SIGIS="undef" SIGNAME="decoder_0_encapsualted_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in13"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="valid_1" SIGIS="undef" SIGNAME="decoder_0_valid_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_in14"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ready_1" SIGIS="undef" SIGNAME="vio_0_probe_out3">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_out3"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxs_tdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_m_axis_rxs_tdata">
@@ -6283,7 +6224,7 @@
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_packet_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="decoder_0_packet_header" NAME="packet_header" TYPE="INITIATOR" VLNV="utoronto.ca:user:packet_header:1.1">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="packet_header" TYPE="INITIATOR" VLNV="utoronto.ca:user:packet_header:1.1">
           <PORTMAPS>
             <PORTMAP LOGICAL="udp_src_port" PHYSICAL="udp_src_port"/>
             <PORTMAP LOGICAL="src_addr" PHYSICAL="src_addr"/>
@@ -6302,32 +6243,13 @@
             <PORTMAP LOGICAL="alt_src_addr" PHYSICAL="alt_src_addr"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="packet_header_1" TYPE="MASTER" VLNV="utoronto.ca:user:packet_header:1.1">
-          <PORTMAPS>
-            <PORTMAP LOGICAL="udp_src_port" PHYSICAL="udp_src_port_1"/>
-            <PORTMAP LOGICAL="src_addr" PHYSICAL="src_addr_1"/>
-            <PORTMAP LOGICAL="alt_dest_addr" PHYSICAL="alt_dest_addr_1"/>
-            <PORTMAP LOGICAL="valid" PHYSICAL="valid_1"/>
-            <PORTMAP LOGICAL="ip_dest_addr" PHYSICAL="ip_dest_addr_1"/>
-            <PORTMAP LOGICAL="alt_ip_dest_addr" PHYSICAL="alt_ip_dest_addr_1"/>
-            <PORTMAP LOGICAL="udp_dest_port" PHYSICAL="udp_dest_port_1"/>
-            <PORTMAP LOGICAL="encapsulated" PHYSICAL="encapsualted_1"/>
-            <PORTMAP LOGICAL="ready" PHYSICAL="ready_1"/>
-            <PORTMAP LOGICAL="dest_addr" PHYSICAL="dest_addr_1"/>
-            <PORTMAP LOGICAL="alt_ip_src_addr" PHYSICAL="alt_ip_src_addr_1"/>
-            <PORTMAP LOGICAL="alt_udp_dest_port" PHYSICAL="alt_udp_dest_port_1"/>
-            <PORTMAP LOGICAL="ip_src_addr" PHYSICAL="ip_src_addr_1"/>
-            <PORTMAP LOGICAL="alt_udp_src_port" PHYSICAL="alt_udp_src_port_1"/>
-            <PORTMAP LOGICAL="alt_src_addr" PHYSICAL="alt_src_addr_1"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
       </BUSINTERFACES>
       <MEMORYMAP/>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="encoder_0"/>
       </PERIPHERALS>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
+    <MODULE COREREVISION="5" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="FIFO_SIZE" VALUE="1024"/>
@@ -6417,14 +6339,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="src_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_dest_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
+        <PORT DIR="I" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="alt_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_dest_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr">
@@ -6437,14 +6359,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="ip_src_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_dest_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
+        <PORT DIR="I" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_dest_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port">
@@ -6457,14 +6379,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="udp_src_port"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_dest_port"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
+        <PORT DIR="I" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_src_port"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_dest_port"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="encapsulated" SIGIS="undef" SIGNAME="decoder_0_encapsualted">
@@ -6477,7 +6399,7 @@
             <CONNECTION INSTANCE="decoder_0" PORT="valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="decoder_0_ready">
+        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="encoder_0_ready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="ready"/>
           </CONNECTIONS>
@@ -6563,7 +6485,7 @@
             <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="decoder_0_packet_header" NAME="packet_header" TYPE="TARGET" VLNV="utoronto.ca:user:packet_header:1.1">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="packet_header" TYPE="TARGET" VLNV="utoronto.ca:user:packet_header:1.1">
           <PORTMAPS>
             <PORTMAP LOGICAL="udp_src_port" PHYSICAL="udp_src_port"/>
             <PORTMAP LOGICAL="src_addr" PHYSICAL="src_addr"/>
@@ -6822,8 +6744,12 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_lite_resetn"/>
-            <CONNECTION INSTANCE="decoder_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_txd_arstn"/>
+            <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_txc_arstn"/>
+            <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxd_arstn"/>
+            <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxs_arstn"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6852,9 +6778,9 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="0"/>
         <PARAMETER NAME="C_BUS_ADDR_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="15"/>
+        <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="1"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="3"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN0_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN1_WIDTH" VALUE="48"/>
@@ -7638,76 +7564,6 @@
             <CONNECTION INSTANCE="ethernet_controller_0" PORT="control_ready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="47" NAME="probe_in1" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="src_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="47" NAME="probe_in2" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="dest_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="47" NAME="probe_in3" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_src_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="47" NAME="probe_in4" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_dest_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in5" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="ip_src_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in6" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="ip_dest_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in7" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_src_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="probe_in8" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_dest_addr_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe_in9" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_src_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="udp_src_port_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe_in10" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="udp_dest_port_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe_in11" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_src_port_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe_in12" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_dest_port_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in13" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_encapsualted_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="encapsualted_1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in14" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_valid_1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="valid_1"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" LEFT="3" NAME="probe_out0" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ethernet_controller_0" PORT="control_data"/>
@@ -7721,11 +7577,6 @@
         <PORT DIR="O" LEFT="0" NAME="probe_out2" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out2">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ethernet_controller_0" PORT="start_config"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="probe_out3" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out3">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="ready_1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
