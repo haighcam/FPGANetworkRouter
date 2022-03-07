@@ -2,60 +2,62 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
 #  -string -flagsOSRD
-preplace port eth_rgmii -pg 1 -y 1230 -defaultsOSRD
-preplace port eth_mdio_mdc -pg 1 -y 1210 -defaultsOSRD
-preplace port sys_clock -pg 1 -y 1170 -defaultsOSRD
-preplace port reset -pg 1 -y 1030 -defaultsOSRD
-preplace portBus phy_reset_out -pg 1 -y 1290 -defaultsOSRD
-preplace inst vio_0 -pg 1 -lvl 3 -y 960 -defaultsOSRD
-preplace inst decoder_0 -pg 1 -lvl 3 -y 660 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 3 -y 400 -defaultsOSRD
-preplace inst encoder_0 -pg 1 -lvl 4 -y 250 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 4 -y 680 -defaultsOSRD
-preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 1050 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 1160 -defaultsOSRD
-preplace inst axi_ethernet_0 -pg 1 -lvl 5 -y 1250 -defaultsOSRD
-preplace inst ethernet_controller_0 -pg 1 -lvl 4 -y 960 -defaultsOSRD
-preplace netloc decoder_0_src_addr 1 3 1 1020
-preplace netloc decoder_0_udp_dest_port 1 3 1 1050
-preplace netloc decoder_0_alt_ip_src_addr 1 3 1 1080
-preplace netloc decoder_0_alt_udp_src_port 1 3 1 990
+preplace port eth_rgmii -pg 1 -y 720 -defaultsOSRD
+preplace port eth_mdio_mdc -pg 1 -y 700 -defaultsOSRD
+preplace port sys_clock -pg 1 -y 980 -defaultsOSRD
+preplace port reset -pg 1 -y 960 -defaultsOSRD
+preplace portBus phy_reset_out -pg 1 -y 780 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 3 -y 1070 -defaultsOSRD
+preplace inst decoder_0 -pg 1 -lvl 3 -y 220 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 3 -y 500 -defaultsOSRD
+preplace inst encoder_0 -pg 1 -lvl 4 -y 300 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 4 -y 770 -defaultsOSRD
+preplace inst ila_1 -pg 1 -lvl 3 -y 640 -defaultsOSRD
+preplace inst ila_2 -pg 1 -lvl 5 -y 960 -defaultsOSRD
+preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 1080 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 970 -defaultsOSRD
+preplace inst axi_ethernet_0 -pg 1 -lvl 5 -y 740 -defaultsOSRD
+preplace inst ethernet_controller_0 -pg 1 -lvl 4 -y 1080 -defaultsOSRD
+preplace netloc decoder_0_src_addr 1 3 1 1090
+preplace netloc decoder_0_udp_dest_port 1 3 1 1010
+preplace netloc decoder_0_alt_ip_src_addr 1 3 1 1060
+preplace netloc decoder_0_alt_udp_src_port 1 3 1 920
 preplace netloc axi_ethernet_0_rgmii 1 5 1 NJ
-preplace netloc decoder_0_ip_dest_addr 1 3 1 970
-preplace netloc decoder_0_alt_ip_dest_addr 1 3 1 1040
+preplace netloc decoder_0_ip_dest_addr 1 3 1 1050
+preplace netloc decoder_0_alt_ip_dest_addr 1 3 1 990
 preplace netloc axi_ethernet_0_phy_rst_n 1 5 1 NJ
-preplace netloc decoder_0_alt_udp_dest_port 1 3 1 1090
+preplace netloc decoder_0_alt_udp_dest_port 1 3 1 940
 preplace netloc sys_clock_1 1 0 1 NJ
-preplace netloc ethernet_controller_0_m_axi 1 4 1 1450
-preplace netloc decoder_0_m_axis_packet 1 3 1 910
-preplace netloc decoder_0_dest_addr 1 3 1 1030
-preplace netloc vio_0_probe_out0 1 3 1 940
-preplace netloc xlconstant_0_dout 1 3 1 930
-preplace netloc vio_0_probe_out1 1 3 1 990
-preplace netloc encoder_0_m_axis_txc 1 4 1 1440
-preplace netloc decoder_0_alt_dest_addr 1 3 1 1010
-preplace netloc ethernet_controller_0_control_ready 1 2 3 590 1070 NJ 1070 1430
-preplace netloc vio_0_probe_out2 1 3 1 1040
-preplace netloc clk_wiz_1_locked 1 1 1 210
-preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 3 560 340 950 1200 1460
-preplace netloc clk_wiz_1_clk_out1 1 1 4 200 950 550 330 1070 1220 1450
-preplace netloc axi_ethernet_0_m_axis_rxd 1 2 4 580 1060 NJ 1060 NJ 1060 1750
-preplace netloc encoder_0_m_axis_txd 1 4 1 1460
+preplace netloc ethernet_controller_0_m_axi 1 4 1 1430
+preplace netloc decoder_0_m_axis_packet 1 3 1 1090
+preplace netloc decoder_0_dest_addr 1 3 1 1020
+preplace netloc vio_0_probe_out0 1 3 1 1080
+preplace netloc xlconstant_0_dout 1 3 1 970J
+preplace netloc vio_0_probe_out1 1 3 1 1080
+preplace netloc encoder_0_m_axis_txc 1 4 1 1460
+preplace netloc decoder_0_alt_dest_addr 1 3 1 1030
+preplace netloc ethernet_controller_0_control_ready 1 2 3 600 1190 NJ 1190 1410
+preplace netloc vio_0_probe_out2 1 3 1 1080
+preplace netloc clk_wiz_1_locked 1 1 1 200
+preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 3 580 980 930 550 1440
+preplace netloc clk_wiz_1_clk_out1 1 1 4 220 940 570 570 1000 570 1420
+preplace netloc axi_ethernet_0_m_axis_rxd 1 2 4 590 970 950J 980 1410J 1030 1720
+preplace netloc encoder_0_m_axis_txd 1 4 1 1450
 preplace netloc decoder_0_valid 1 3 1 960
-preplace netloc decoder_0_udp_src_port 1 3 1 1060
-preplace netloc clk_wiz_1_clk_out2 1 1 4 NJ 1150 NJ 1150 NJ 1150 1430
+preplace netloc decoder_0_udp_src_port 1 3 1 1070
+preplace netloc clk_wiz_1_clk_out2 1 1 4 NJ 960 560J 990 970J 970 1410
 preplace netloc decoder_0_ip_src_addr 1 3 1 980
-preplace netloc encoder_0_ready 1 3 1 920
-preplace netloc clk_wiz_1_clk_out3 1 1 4 NJ 1170 NJ 1170 NJ 1170 1420
-preplace netloc axi_ethernet_0_m_axis_rxs 1 2 4 570 1080 NJ 1080 NJ 1080 1740
-preplace netloc decoder_0_encapsualted 1 3 1 1000
-preplace netloc decoder_0_alt_src_addr 1 3 1 940
-preplace netloc reset_1 1 0 2 20 1030 NJ
+preplace netloc encoder_0_ready 1 3 1 1040
+preplace netloc clk_wiz_1_clk_out3 1 1 4 210J 1180 NJ 1180 NJ 1180 1440
+preplace netloc axi_ethernet_0_m_axis_rxs 1 2 4 600 560 NJ 560 NJ 560 1730
+preplace netloc decoder_0_encapsualted 1 3 1 950
+preplace netloc decoder_0_alt_src_addr 1 3 1 1080
+preplace netloc reset_1 1 0 2 20 1060 NJ
 preplace netloc axi_ethernet_0_mdio 1 5 1 NJ
-levelinfo -pg 1 0 110 380 750 1260 1610 1770 -top 0 -bot 1420
+levelinfo -pg 1 0 110 390 760 1250 1590 1750 -top 0 -bot 1200
 "
 }
 {
    "da_board_cnt":"6",
-   "da_clkrst_cnt":"4"
+   "da_clkrst_cnt":"6"
 }

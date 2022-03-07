@@ -180,6 +180,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: decoder_0, and set properties
   set decoder_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:decoder:1.2 decoder_0 ]
+  set_property -dict [ list \
+   CONFIG.NUM_HEADERS {1} \
+ ] $decoder_0
 
   # Create instance: encoder_0, and set properties
   set encoder_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:encoder:1.1 encoder_0 ]

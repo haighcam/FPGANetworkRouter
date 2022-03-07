@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Sun Mar  6 18:42:14 2022
+//Date        : Sun Mar  6 20:47:45 2022
 //Host        : BA3155WS04 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=4,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=6,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
 module design_2
    (eth_mdio_mdc_mdc,
     eth_mdio_mdc_mdio_i,
@@ -39,6 +39,7 @@ module design_2
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN design_2_sys_clock, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) input sys_clock;
 
   wire [31:0]axi_ethernet_0_m_axis_rxd_TDATA;
+  wire [3:0]axi_ethernet_0_m_axis_rxd_TKEEP;
   wire axi_ethernet_0_m_axis_rxd_TLAST;
   wire axi_ethernet_0_m_axis_rxd_TREADY;
   wire axi_ethernet_0_m_axis_rxd_TVALID;
@@ -87,6 +88,7 @@ module design_2
   wire [31:0]encoder_0_m_axis_txd_TDATA;
   wire encoder_0_m_axis_txd_TLAST;
   wire encoder_0_m_axis_txd_TREADY;
+  wire [3:0]encoder_0_m_axis_txd_TSTRB;
   wire encoder_0_m_axis_txd_TVALID;
   wire encoder_0_ready;
   wire ethernet_controller_0_control_ready;
@@ -136,6 +138,7 @@ module design_2
         .axis_clk(clk_wiz_1_clk_out1),
         .gtx_clk(clk_wiz_1_clk_out3),
         .m_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
+        .m_axis_rxd_tkeep(axi_ethernet_0_m_axis_rxd_TKEEP),
         .m_axis_rxd_tlast(axi_ethernet_0_m_axis_rxd_TLAST),
         .m_axis_rxd_tready(axi_ethernet_0_m_axis_rxd_TREADY),
         .m_axis_rxd_tvalid(axi_ethernet_0_m_axis_rxd_TVALID),
@@ -245,6 +248,7 @@ module design_2
         .m_axis_txd_tdata(encoder_0_m_axis_txd_TDATA),
         .m_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .m_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
+        .m_axis_txd_tstrb(encoder_0_m_axis_txd_TSTRB),
         .m_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID),
         .ready(encoder_0_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
@@ -296,6 +300,28 @@ module design_2
         .probe7(decoder_0_alt_src_addr),
         .probe8(decoder_0_alt_ip_dest_addr),
         .probe9(decoder_0_alt_ip_src_addr));
+  design_2_ila_1_0 ila_1
+       (.clk(clk_wiz_1_clk_out1),
+        .probe0(axi_ethernet_0_m_axis_rxd_TREADY),
+        .probe1(axi_ethernet_0_m_axis_rxd_TDATA),
+        .probe2({1'b1,1'b1,1'b1,1'b1}),
+        .probe3(axi_ethernet_0_m_axis_rxd_TVALID),
+        .probe4(axi_ethernet_0_m_axis_rxd_TLAST),
+        .probe5(1'b0),
+        .probe6(axi_ethernet_0_m_axis_rxd_TKEEP),
+        .probe7(1'b0),
+        .probe8(1'b0));
+  design_2_ila_1_1 ila_2
+       (.clk(clk_wiz_1_clk_out1),
+        .probe0(encoder_0_m_axis_txd_TREADY),
+        .probe1(encoder_0_m_axis_txd_TDATA),
+        .probe2(encoder_0_m_axis_txd_TSTRB),
+        .probe3(encoder_0_m_axis_txd_TVALID),
+        .probe4(encoder_0_m_axis_txd_TLAST),
+        .probe5(1'b0),
+        .probe6({1'b1,1'b1,1'b1,1'b1}),
+        .probe7(1'b0),
+        .probe8(1'b0));
   design_2_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_100M
        (.aux_reset_in(1'b1),
         .dcm_locked(clk_wiz_1_locked),

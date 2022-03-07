@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:decoder:1.2
-// IP Revision: 7
+// IP Revision: 8
 
 (* X_CORE_INFO = "decoder_v1_1,Vivado 2018.3.1" *)
 (* CHECK_LICENSE_TYPE = "design_2_decoder_0_0,decoder_v1_1,{}" *)
@@ -159,7 +159,8 @@ input wire s_axis_rxd_tvalid;
 output wire s_axis_rxd_tready;
 
   decoder_v1_1 #(
-    .FIFO_SIZE(1024)
+    .FIFO_SIZE(1024),
+    .NUM_HEADERS(1)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),

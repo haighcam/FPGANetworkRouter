@@ -4,8 +4,8 @@ proc init_gui { IPINST } {
   #Adding Page
   ipgui::add_page $IPINST -name "Page 0"
 
-  ipgui::add_param $IPINST -name "HEADERS_OUT" -widget comboBox
   ipgui::add_param $IPINST -name "FIFO_SIZE"
+  ipgui::add_param $IPINST -name "NUM_HEADERS" -widget comboBox
 
 }
 
@@ -18,12 +18,12 @@ proc validate_PARAM_VALUE.FIFO_SIZE { PARAM_VALUE.FIFO_SIZE } {
 	return true
 }
 
-proc update_PARAM_VALUE.HEADERS_OUT { PARAM_VALUE.HEADERS_OUT } {
-	# Procedure called to update HEADERS_OUT when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.NUM_HEADERS { PARAM_VALUE.NUM_HEADERS } {
+	# Procedure called to update NUM_HEADERS when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.HEADERS_OUT { PARAM_VALUE.HEADERS_OUT } {
-	# Procedure called to validate HEADERS_OUT
+proc validate_PARAM_VALUE.NUM_HEADERS { PARAM_VALUE.NUM_HEADERS } {
+	# Procedure called to validate NUM_HEADERS
 	return true
 }
 
@@ -31,5 +31,10 @@ proc validate_PARAM_VALUE.HEADERS_OUT { PARAM_VALUE.HEADERS_OUT } {
 proc update_MODELPARAM_VALUE.FIFO_SIZE { MODELPARAM_VALUE.FIFO_SIZE PARAM_VALUE.FIFO_SIZE } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.FIFO_SIZE}] ${MODELPARAM_VALUE.FIFO_SIZE}
+}
+
+proc update_MODELPARAM_VALUE.NUM_HEADERS { MODELPARAM_VALUE.NUM_HEADERS PARAM_VALUE.NUM_HEADERS } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.NUM_HEADERS}] ${MODELPARAM_VALUE.NUM_HEADERS}
 }
 

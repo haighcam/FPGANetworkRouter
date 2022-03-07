@@ -172,6 +172,36 @@
 						"WSTRB": { "actual": "m_axi_wstrb"},
 						"WVALID": { "actual": "m_axi_wvalid"}
 					}
+				},
+				"/ila_1/SLOT_0_AXIS": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"TDATA": { "actual": "probe1"},
+						"TDEST": { "actual": "probe7"},
+						"TID": { "actual": "probe8"},
+						"TKEEP": { "actual": "probe6"},
+						"TLAST": { "actual": "probe4"},
+						"TREADY": { "actual": "probe0"},
+						"TSTRB": { "actual": "probe2"},
+						"TUSER": { "actual": "probe5"},
+						"TVALID": { "actual": "probe3"}
+					}
+				},
+				"/ila_2/SLOT_0_AXIS": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"TDATA": { "actual": "probe1"},
+						"TDEST": { "actual": "probe7"},
+						"TID": { "actual": "probe8"},
+						"TKEEP": { "actual": "probe6"},
+						"TLAST": { "actual": "probe4"},
+						"TREADY": { "actual": "probe0"},
+						"TSTRB": { "actual": "probe2"},
+						"TUSER": { "actual": "probe5"},
+						"TVALID": { "actual": "probe3"}
+					}
 				}
 			}
 		}

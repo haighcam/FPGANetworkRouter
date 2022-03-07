@@ -5,7 +5,8 @@
       "device": "xc7a200tsbg484-1",
       "name": "design_3",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2018.3.1"
+      "tool_version": "2018.3.1",
+      "validated": "true"
     },
     "design_tree": {
       "axi4stream_vip_0": "",
@@ -18,14 +19,40 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "aresetn",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_3_aclk",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
           }
         }
       },
       "aresetn": {
         "type": "rst",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       },
       "drop": {
         "direction": "I"
@@ -83,10 +110,21 @@
       },
       "decoder_0": {
         "vlnv": "utoronto.ca:user:decoder:1.2",
-        "xci_name": "design_3_decoder_0_1"
+        "xci_name": "design_3_decoder_0_1",
+        "parameters": {
+          "NUM_HEADERS": {
+            "value": "1"
+          }
+        }
       }
     },
     "interface_nets": {
+      "decoder_0_packet_header": {
+        "interface_ports": [
+          "decoder_0/packet_header",
+          "encoder_0/packet_header"
+        ]
+      },
       "axi4stream_vip_0_M_AXIS": {
         "interface_ports": [
           "axi4stream_vip_0/M_AXIS",
@@ -97,12 +135,6 @@
         "interface_ports": [
           "encoder_0/s_axis",
           "decoder_0/m_axis_packet"
-        ]
-      },
-      "decoder_0_packet_header": {
-        "interface_ports": [
-          "decoder_0/packet_header",
-          "encoder_0/packet_header"
         ]
       }
     },

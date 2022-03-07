@@ -746,7 +746,6 @@
       <spirit:master>
         <spirit:addressSpaceRef spirit:addressSpaceRef="packet_header_1"/>
       </spirit:master>
-      <spirit:connectionRequired>true</spirit:connectionRequired>
       <spirit:portMaps>
         <spirit:portMap>
           <spirit:logicalPort>
@@ -872,7 +871,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.packet_header_1" xilinx:dependency="spirit:decode(id(&apos;PARAM_VALUE.HEADERS_OUT&apos;)) >= 2">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.packet_header_1" xilinx:dependency="spirit:decode(id(&apos;MODELPARAM_VALUE.NUM_HEADERS&apos;)) >= 2">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -899,11 +898,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 22:44:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 01:47:45 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8de3dc2d</spirit:value>
+            <spirit:value>9:0fc5bba3</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -919,11 +918,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 22:44:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 01:47:45 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8de3dc2d</spirit:value>
+            <spirit:value>9:0fc5bba3</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -939,11 +938,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 22:44:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 01:47:45 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0734d385</spirit:value>
+            <spirit:value>9:2402eea5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -959,11 +958,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 22:44:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 01:47:45 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0734d385</spirit:value>
+            <spirit:value>9:2402eea5</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -977,11 +976,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 22:53:46 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 01:57:30 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8de3dc2d</spirit:value>
+            <spirit:value>9:0fc5bba3</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1830,6 +1829,11 @@
         <spirit:displayName>Fifo Size</spirit:displayName>
         <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.FIFO_SIZE">1024</spirit:value>
       </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>NUM_HEADERS</spirit:name>
+        <spirit:displayName>Num Headers</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.NUM_HEADERS">1</spirit:value>
+      </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
   <spirit:choices>
@@ -1860,7 +1864,7 @@
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/3180/hdl/decoder_v1_1.v</spirit:name>
+        <spirit:name>../../ipshared/4eb9/hdl/decoder_v1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1883,7 +1887,7 @@
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/3180/hdl/decoder_v1_1.v</spirit:name>
+        <spirit:name>../../ipshared/4eb9/hdl/decoder_v1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1939,20 +1943,20 @@
       <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">design_2_decoder_0_0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
-      <spirit:name>HEADERS_OUT</spirit:name>
-      <spirit:displayName>Headers Out</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.HEADERS_OUT" spirit:choiceRef="choice_list_8aad6ae4">1</spirit:value>
-    </spirit:parameter>
-    <spirit:parameter>
       <spirit:name>FIFO_SIZE</spirit:name>
       <spirit:displayName>Fifo Size</spirit:displayName>
       <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FIFO_SIZE">1024</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>NUM_HEADERS</spirit:name>
+      <spirit:displayName>Num Headers</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.NUM_HEADERS" spirit:choiceRef="choice_list_8aad6ae4">1</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>decoder_v1.2</xilinx:displayName>
-      <xilinx:coreRevision>7</xilinx:coreRevision>
+      <xilinx:coreRevision>8</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@248efc83_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/decoder_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@479fd5e4_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip/ip_repo/decoder_1.1</xilinx:tag>
@@ -2315,6 +2319,36 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@651667a1_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@48874128_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@692e3643_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ce4a8e1_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12243c7d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@47f5e773_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76c15e9d_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@14719413_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49dd0423_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7bd7ddc7_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68df2533_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@27a04471_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@463e7413_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@459a5658_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@60661082_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@660f95b0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1db66e6f_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f9f622c_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ead81a0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@56dc5881_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b9ea90b_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6a518360_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34ff62e0_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59c97f86_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@12bfabf6_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26123c37_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@199aa63e_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@433f9ae1_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@65ea0629_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@379768f9_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@251e4412_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48fe01a3_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c442df5_ARCHIVE_LOCATION">c:/Users/haighcam/ECE532/ip_repo/decoder</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ACLK.CLK_DOMAIN" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
@@ -2353,17 +2387,16 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_RXS.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_RXS.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS_RXS.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.HEADERS_OUT" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.3.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="188b4a8b"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="855e7446"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="2749a4f5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a733654a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="165c97c2"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="eda39ba1"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="ffefd1ee"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="28351784"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="fd61ba17"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="a24f47b1"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
