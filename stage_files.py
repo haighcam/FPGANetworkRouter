@@ -9,5 +9,5 @@ while items != []:
     if os.path.isdir(os.path.join(*item)):
         for child in os.listdir(os.path.join(*item)):
             items.append(item + [child])
-    elif (item[0] == 'proj' and item[-1].split('.')[-1] in ['xpr', 'bit', 'hdf']) or item[0] != 'proj':
+    elif (item[0] == 'proj' and item[-1].split('.')[-1] in ['xpr', 'bit', 'hdf', 'ltx']) or item[0] != 'proj':
         subprocess.Popen(git_path, 'add', '-Av', os.path.join(*item), stdout=subprocess.PIPE)

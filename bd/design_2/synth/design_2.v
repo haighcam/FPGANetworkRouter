@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Sun Mar  6 17:44:13 2022
+//Date        : Sun Mar  6 18:42:13 2022
 //Host        : BA3155WS04 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=8,numReposBlks=8,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=4,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=4,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
 module design_2
    (eth_mdio_mdc_mdc,
     eth_mdio_mdc_mdio_i,
@@ -61,25 +61,25 @@ module design_2
   wire clk_wiz_1_clk_out2;
   wire clk_wiz_1_clk_out3;
   wire clk_wiz_1_locked;
-  wire [47:0]decoder_0_alt_dest_addr;
-  wire [31:0]decoder_0_alt_ip_dest_addr;
-  wire [31:0]decoder_0_alt_ip_src_addr;
-  wire [47:0]decoder_0_alt_src_addr;
-  wire [15:0]decoder_0_alt_udp_dest_port;
-  wire [15:0]decoder_0_alt_udp_src_port;
-  wire [47:0]decoder_0_dest_addr;
-  wire decoder_0_encapsualted;
-  wire [31:0]decoder_0_ip_dest_addr;
-  wire [31:0]decoder_0_ip_src_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_alt_dest_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_alt_ip_dest_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_alt_ip_src_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_alt_src_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_alt_udp_dest_port;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_alt_udp_src_port;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_dest_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_encapsualted;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_dest_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_src_addr;
   wire [31:0]decoder_0_m_axis_packet_TDATA;
   wire decoder_0_m_axis_packet_TLAST;
   wire decoder_0_m_axis_packet_TREADY;
   wire [3:0]decoder_0_m_axis_packet_TSTRB;
   wire decoder_0_m_axis_packet_TVALID;
-  wire [47:0]decoder_0_src_addr;
-  wire [15:0]decoder_0_udp_dest_port;
-  wire [15:0]decoder_0_udp_src_port;
-  wire decoder_0_valid;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_src_addr;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_dest_port;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_src_port;
+  (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_valid;
   wire [31:0]encoder_0_m_axis_txc_TDATA;
   wire encoder_0_m_axis_txc_TLAST;
   wire encoder_0_m_axis_txc_TREADY;
@@ -280,6 +280,22 @@ module design_2
         .m_axi_wstrb(ethernet_controller_0_m_axi_WSTRB),
         .m_axi_wvalid(ethernet_controller_0_m_axi_WVALID),
         .start_config(vio_0_probe_out2));
+  design_2_ila_0_0 ila_0
+       (.clk(clk_wiz_1_clk_out1),
+        .probe0(decoder_0_dest_addr),
+        .probe1(decoder_0_src_addr),
+        .probe10(decoder_0_alt_udp_dest_port),
+        .probe11(decoder_0_alt_udp_src_port),
+        .probe12(decoder_0_encapsualted),
+        .probe13(decoder_0_valid),
+        .probe2(decoder_0_ip_dest_addr),
+        .probe3(decoder_0_ip_src_addr),
+        .probe4(decoder_0_udp_dest_port),
+        .probe5(decoder_0_udp_src_port),
+        .probe6(decoder_0_alt_dest_addr),
+        .probe7(decoder_0_alt_src_addr),
+        .probe8(decoder_0_alt_ip_dest_addr),
+        .probe9(decoder_0_alt_ip_src_addr));
   design_2_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_100M
        (.aux_reset_in(1'b1),
         .dcm_locked(clk_wiz_1_locked),

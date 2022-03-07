@@ -16,7 +16,8 @@
       "vio_0": "",
       "xlconstant_0": "",
       "encoder_0": "",
-      "decoder_0": ""
+      "decoder_0": "",
+      "ila_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
@@ -558,6 +559,24 @@
             "value": "1"
           }
         }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_2_ila_0_0",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "14"
+          },
+          "C_SLOT_0_AXI_PROTOCOL": {
+            "value": "AXI4S"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -620,7 +639,8 @@
           "axi_ethernet_0/axis_clk",
           "vio_0/clk",
           "encoder_0/aclk",
-          "decoder_0/aclk"
+          "decoder_0/aclk",
+          "ila_0/clk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -706,74 +726,182 @@
       "decoder_0_alt_dest_addr": {
         "ports": [
           "decoder_0/alt_dest_addr",
-          "encoder_0/alt_src_addr"
-        ]
+          "encoder_0/alt_src_addr",
+          "ila_0/probe6"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_alt_src_addr": {
         "ports": [
           "decoder_0/alt_src_addr",
-          "encoder_0/alt_dest_addr"
-        ]
+          "encoder_0/alt_dest_addr",
+          "ila_0/probe7"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_alt_udp_dest_port": {
         "ports": [
           "decoder_0/alt_udp_dest_port",
-          "encoder_0/alt_udp_src_port"
-        ]
+          "encoder_0/alt_udp_src_port",
+          "ila_0/probe10"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_alt_udp_src_port": {
         "ports": [
           "decoder_0/alt_udp_src_port",
-          "encoder_0/alt_udp_dest_port"
-        ]
+          "encoder_0/alt_udp_dest_port",
+          "ila_0/probe11"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_alt_ip_dest_addr": {
         "ports": [
           "decoder_0/alt_ip_dest_addr",
-          "encoder_0/alt_ip_src_addr"
-        ]
+          "encoder_0/alt_ip_src_addr",
+          "ila_0/probe8"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_alt_ip_src_addr": {
         "ports": [
           "decoder_0/alt_ip_src_addr",
-          "encoder_0/alt_ip_dest_addr"
-        ]
+          "encoder_0/alt_ip_dest_addr",
+          "ila_0/probe9"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_udp_src_port": {
         "ports": [
           "decoder_0/udp_src_port",
-          "encoder_0/udp_src_port"
-        ]
+          "encoder_0/udp_src_port",
+          "ila_0/probe5"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_src_addr": {
         "ports": [
           "decoder_0/src_addr",
-          "encoder_0/src_addr"
-        ]
+          "encoder_0/src_addr",
+          "ila_0/probe1"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_valid": {
         "ports": [
           "decoder_0/valid",
-          "encoder_0/valid"
-        ]
+          "encoder_0/valid",
+          "ila_0/probe13"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_ip_dest_addr": {
         "ports": [
           "decoder_0/ip_dest_addr",
-          "encoder_0/ip_dest_addr"
-        ]
+          "encoder_0/ip_dest_addr",
+          "ila_0/probe2"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_udp_dest_port": {
         "ports": [
           "decoder_0/udp_dest_port",
-          "encoder_0/udp_dest_port"
-        ]
+          "encoder_0/udp_dest_port",
+          "ila_0/probe4"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_encapsualted": {
         "ports": [
           "decoder_0/encapsualted",
-          "encoder_0/encapsulated"
-        ]
+          "encoder_0/encapsulated",
+          "ila_0/probe12"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "encoder_0_ready": {
         "ports": [
@@ -784,14 +912,32 @@
       "decoder_0_dest_addr": {
         "ports": [
           "decoder_0/dest_addr",
-          "encoder_0/dest_addr"
-        ]
+          "encoder_0/dest_addr",
+          "ila_0/probe0"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "decoder_0_ip_src_addr": {
         "ports": [
           "decoder_0/ip_src_addr",
-          "encoder_0/ip_src_addr"
-        ]
+          "encoder_0/ip_src_addr",
+          "ila_0/probe3"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       }
     },
     "addressing": {
