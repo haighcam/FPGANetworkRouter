@@ -14,12 +14,12 @@
       "clk_wiz_1": "",
       "rst_clk_wiz_1_100M": "",
       "vio_0": "",
-      "xlconstant_0": "",
-      "encoder_0": "",
       "ila_0": "",
       "ila_1": "",
       "ila_2": "",
-      "decoder_0": ""
+      "ila_3": "",
+      "decoder_0": "",
+      "encoder_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
@@ -533,25 +533,12 @@
             "value": "1"
           },
           "C_NUM_PROBE_OUT": {
-            "value": "3"
+            "value": "4"
           },
           "C_PROBE_OUT0_WIDTH": {
             "value": "4"
           }
         }
-      },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "design_2_xlconstant_0_0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          }
-        }
-      },
-      "encoder_0": {
-        "vlnv": "utoronto.ca:user:encoder:1.1",
-        "xci_name": "design_2_encoder_0_0"
       },
       "ila_0": {
         "vlnv": "xilinx.com:ip:ila:6.2",
@@ -595,16 +582,50 @@
           }
         }
       },
+      "ila_3": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_2_ila_2_0",
+        "parameters": {
+          "C_NUM_OF_PROBES": {
+            "value": "9"
+          },
+          "C_SLOT_0_AXI_PROTOCOL": {
+            "value": "AXI4S"
+          }
+        }
+      },
       "decoder_0": {
         "vlnv": "utoronto.ca:user:decoder:1.2",
         "xci_name": "design_2_decoder_0_0"
+      },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_2_encoder_0_0"
       }
     },
     "interface_nets": {
+      "axi_ethernet_0_mdio": {
+        "interface_ports": [
+          "eth_mdio_mdc",
+          "axi_ethernet_0/mdio"
+        ]
+      },
       "decoder_0_m_axis_packet": {
         "interface_ports": [
           "decoder_0/m_axis_packet",
-          "encoder_0/s_axis"
+          "encoder_0/s_axis_packet"
+        ]
+      },
+      "axi_ethernet_0_rgmii": {
+        "interface_ports": [
+          "eth_rgmii",
+          "axi_ethernet_0/rgmii"
+        ]
+      },
+      "ethernet_controller_0_m_axi": {
+        "interface_ports": [
+          "ethernet_controller_0/m_axi",
+          "axi_ethernet_0/s_axi"
         ]
       },
       "encoder_0_m_axis_txd": {
@@ -614,34 +635,17 @@
           "ila_2/SLOT_0_AXIS"
         ]
       },
-      "ethernet_controller_0_m_axi": {
+      "encoder_0_m_axis_txc": {
         "interface_ports": [
-          "ethernet_controller_0/m_axi",
-          "axi_ethernet_0/s_axi"
-        ]
-      },
-      "axi_ethernet_0_mdio": {
-        "interface_ports": [
-          "eth_mdio_mdc",
-          "axi_ethernet_0/mdio"
+          "encoder_0/m_axis_txc",
+          "axi_ethernet_0/s_axis_txc",
+          "ila_3/SLOT_0_AXIS"
         ]
       },
       "axi_ethernet_0_m_axis_rxs": {
         "interface_ports": [
           "decoder_0/s_axis_rxs",
           "axi_ethernet_0/m_axis_rxs"
-        ]
-      },
-      "encoder_0_m_axis_txc": {
-        "interface_ports": [
-          "encoder_0/m_axis_txc",
-          "axi_ethernet_0/s_axis_txc"
-        ]
-      },
-      "axi_ethernet_0_rgmii": {
-        "interface_ports": [
-          "eth_rgmii",
-          "axi_ethernet_0/rgmii"
         ]
       },
       "axi_ethernet_0_m_axis_rxd": {
@@ -661,11 +665,12 @@
           "rst_clk_wiz_1_100M/slowest_sync_clk",
           "axi_ethernet_0/axis_clk",
           "vio_0/clk",
-          "encoder_0/aclk",
           "ila_0/clk",
           "ila_1/clk",
           "ila_2/clk",
-          "decoder_0/aclk"
+          "ila_3/clk",
+          "decoder_0/aclk",
+          "encoder_0/aclk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -673,12 +678,12 @@
           "rst_clk_wiz_1_100M/peripheral_aresetn",
           "ethernet_controller_0/m_axi_aresetn",
           "axi_ethernet_0/s_axi_lite_resetn",
-          "encoder_0/aresetn",
           "axi_ethernet_0/axi_txd_arstn",
           "axi_ethernet_0/axi_txc_arstn",
           "axi_ethernet_0/axi_rxd_arstn",
           "axi_ethernet_0/axi_rxs_arstn",
-          "decoder_0/aresetn"
+          "decoder_0/aresetn",
+          "encoder_0/aresetn"
         ]
       },
       "clk_wiz_1_locked": {
@@ -742,17 +747,11 @@
           "vio_0/probe_in0"
         ]
       },
-      "xlconstant_0_dout": {
-        "ports": [
-          "xlconstant_0/dout",
-          "encoder_0/drop"
-        ]
-      },
       "decoder_0_alt_dest_addr": {
         "ports": [
           "decoder_0/alt_dest_addr",
-          "encoder_0/alt_src_addr",
-          "ila_0/probe6"
+          "ila_0/probe6",
+          "encoder_0/alt_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -766,8 +765,8 @@
       "decoder_0_alt_src_addr": {
         "ports": [
           "decoder_0/alt_src_addr",
-          "encoder_0/alt_dest_addr",
-          "ila_0/probe7"
+          "ila_0/probe7",
+          "encoder_0/alt_dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -781,8 +780,8 @@
       "decoder_0_alt_udp_dest_port": {
         "ports": [
           "decoder_0/alt_udp_dest_port",
-          "encoder_0/alt_udp_src_port",
-          "ila_0/probe10"
+          "ila_0/probe10",
+          "encoder_0/alt_udp_src_port"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -796,8 +795,8 @@
       "decoder_0_alt_udp_src_port": {
         "ports": [
           "decoder_0/alt_udp_src_port",
-          "encoder_0/alt_udp_dest_port",
-          "ila_0/probe11"
+          "ila_0/probe11",
+          "encoder_0/alt_udp_dest_port"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -811,8 +810,8 @@
       "decoder_0_alt_ip_dest_addr": {
         "ports": [
           "decoder_0/alt_ip_dest_addr",
-          "encoder_0/alt_ip_src_addr",
-          "ila_0/probe8"
+          "ila_0/probe8",
+          "encoder_0/alt_ip_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -826,8 +825,8 @@
       "decoder_0_alt_ip_src_addr": {
         "ports": [
           "decoder_0/alt_ip_src_addr",
-          "encoder_0/alt_ip_dest_addr",
-          "ila_0/probe9"
+          "ila_0/probe9",
+          "encoder_0/alt_ip_dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -841,8 +840,8 @@
       "decoder_0_udp_src_port": {
         "ports": [
           "decoder_0/udp_src_port",
-          "encoder_0/udp_src_port",
-          "ila_0/probe5"
+          "ila_0/probe5",
+          "encoder_0/udp_src_port"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -856,8 +855,8 @@
       "decoder_0_src_addr": {
         "ports": [
           "decoder_0/src_addr",
-          "encoder_0/src_addr",
-          "ila_0/probe1"
+          "ila_0/probe1",
+          "encoder_0/src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -871,8 +870,8 @@
       "decoder_0_valid": {
         "ports": [
           "decoder_0/valid",
-          "encoder_0/valid",
-          "ila_0/probe13"
+          "ila_0/probe13",
+          "encoder_0/valid"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -886,8 +885,8 @@
       "decoder_0_ip_dest_addr": {
         "ports": [
           "decoder_0/ip_dest_addr",
-          "encoder_0/ip_dest_addr",
-          "ila_0/probe2"
+          "ila_0/probe2",
+          "encoder_0/ip_dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -901,8 +900,8 @@
       "decoder_0_udp_dest_port": {
         "ports": [
           "decoder_0/udp_dest_port",
-          "encoder_0/udp_dest_port",
-          "ila_0/probe4"
+          "ila_0/probe4",
+          "encoder_0/udp_dest_port"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -916,8 +915,8 @@
       "decoder_0_encapsualted": {
         "ports": [
           "decoder_0/encapsualted",
-          "encoder_0/encapsulated",
-          "ila_0/probe12"
+          "ila_0/probe12",
+          "encoder_0/encapsulated"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -937,8 +936,8 @@
       "decoder_0_dest_addr": {
         "ports": [
           "decoder_0/dest_addr",
-          "encoder_0/dest_addr",
-          "ila_0/probe0"
+          "ila_0/probe0",
+          "encoder_0/dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -952,8 +951,8 @@
       "decoder_0_ip_src_addr": {
         "ports": [
           "decoder_0/ip_src_addr",
-          "encoder_0/ip_src_addr",
-          "ila_0/probe3"
+          "ila_0/probe3",
+          "encoder_0/ip_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -963,6 +962,12 @@
             "value": "true"
           }
         }
+      },
+      "vio_0_probe_out3": {
+        "ports": [
+          "vio_0/probe_out3",
+          "encoder_0/drop"
+        ]
       }
     },
     "addressing": {

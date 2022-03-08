@@ -162,15 +162,16 @@ proc create_root_design { parentCell } {
  ] $aclk
   set aresetn [ create_bd_port -dir I -type rst aresetn ]
   set drop [ create_bd_port -dir I drop ]
+  set m_axis_txd_tready_0 [ create_bd_port -dir I m_axis_txd_tready_0 ]
 
   # Create instance: axi4stream_vip_0, and set properties
   set axi4stream_vip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi4stream_vip:1.1 axi4stream_vip_0 ]
   set_property -dict [ list \
    CONFIG.HAS_ACLKEN {0} \
-   CONFIG.HAS_TKEEP {0} \
+   CONFIG.HAS_TKEEP {1} \
    CONFIG.HAS_TLAST {1} \
    CONFIG.HAS_TREADY {1} \
-   CONFIG.HAS_TSTRB {1} \
+   CONFIG.HAS_TSTRB {0} \
    CONFIG.INTERFACE_MODE {MASTER} \
    CONFIG.TDATA_NUM_BYTES {4} \
    CONFIG.TDEST_WIDTH {0} \
@@ -195,12 +196,13 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi4stream_vip_0_M_AXIS [get_bd_intf_pins axi4stream_vip_0/M_AXIS] [get_bd_intf_pins decoder_0/s_axis_rxd]
-  connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis]
+  connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis_packet]
   connect_bd_intf_net -intf_net decoder_0_packet_header [get_bd_intf_pins decoder_0/packet_header] [get_bd_intf_pins encoder_0/packet_header]
 
   # Create port connections
   connect_bd_net -net aclk_1 [get_bd_ports aclk] [get_bd_pins axi4stream_vip_0/aclk] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk]
   connect_bd_net -net drop_1 [get_bd_ports drop] [get_bd_pins encoder_0/drop]
+  connect_bd_net -net m_axis_txd_tready_0_1 [get_bd_ports m_axis_txd_tready_0] [get_bd_pins encoder_0/m_axis_txd_tready]
   connect_bd_net -net rst_aclk_100M_peripheral_aresetn [get_bd_ports aresetn] [get_bd_pins axi4stream_vip_0/aresetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins decoder_0/s_axis_rxs_tvalid] [get_bd_pins xlconstant_0/dout]
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  6 20:45:50 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar  7 15:27:13 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_3" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
@@ -23,6 +23,11 @@
         <CONNECTION INSTANCE="encoder_0" PORT="drop"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="m_axis_txd_tready_0" SIGIS="undef" SIGNAME="External_Ports_m_axis_txd_tready_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="encoder_0" PORT="m_axis_txd_tready"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
@@ -33,7 +38,7 @@
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi4stream_vip;v=v1_1;d=pg277-axi4stream-vip.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="C_AXI4STREAM_SIGNAL_SET" VALUE="0b00000000000000000000000000010111"/>
+        <PARAMETER NAME="C_AXI4STREAM_SIGNAL_SET" VALUE="0b00000000000000000000000000011011"/>
         <PARAMETER NAME="C_AXI4STREAM_INTERFACE_MODE" VALUE="0"/>
         <PARAMETER NAME="C_AXI4STREAM_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_AXI4STREAM_USER_BITS_PER_BYTE" VALUE="0"/>
@@ -49,8 +54,8 @@
         <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
         <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
         <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-        <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-        <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+        <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+        <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
         <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
         <PARAMETER NAME="HAS_ACLKEN" VALUE="0"/>
         <PARAMETER NAME="HAS_ARESETN" VALUE="1"/>
@@ -83,9 +88,9 @@
             <CONNECTION INSTANCE="decoder_0" PORT="s_axis_rxd_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="m_axis_tstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tstrb">
+        <PORT DIR="O" LEFT="3" NAME="m_axis_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tkeep">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="s_axis_rxd_tstrb"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="s_axis_rxd_tkeep"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="m_axis_tlast" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tlast">
@@ -101,8 +106,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -111,19 +116,19 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_tdata"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="m_axis_tkeep"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="m_axis_tlast"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_tready"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="m_axis_tstrb"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="8" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
+    <MODULE COREREVISION="16" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="FIFO_SIZE" VALUE="1024"/>
         <PARAMETER NAME="NUM_HEADERS" VALUE="1"/>
+        <PARAMETER NAME="FIFO_SIZE_WORDS" VALUE="256"/>
         <PARAMETER NAME="Component_Name" VALUE="design_3_decoder_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -143,9 +148,9 @@
             <CONNECTION INSTANCE="encoder_0" PORT="s_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="m_axis_packet_tstrb" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tstrb">
+        <PORT DIR="O" LEFT="3" NAME="m_axis_packet_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tkeep">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="encoder_0" PORT="s_axis_tstrb"/>
+            <CONNECTION INSTANCE="encoder_0" PORT="s_axis_tkeep"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_packet_tlast" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tlast">
@@ -239,7 +244,7 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxs_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="3" NAME="s_axis_rxs_tstrb" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="3" NAME="s_axis_rxs_tkeep" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" NAME="s_axis_rxs_tlast" SIGIS="undef"/>
         <PORT DIR="I" NAME="s_axis_rxs_tvalid" SIGIS="undef" SIGNAME="xlconstant_0_dout">
           <CONNECTIONS>
@@ -252,9 +257,9 @@
             <CONNECTION INSTANCE="axi4stream_vip_0" PORT="m_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="s_axis_rxd_tstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tstrb">
+        <PORT DIR="I" LEFT="3" NAME="s_axis_rxd_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tkeep">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi4stream_vip_0" PORT="m_axis_tstrb"/>
+            <CONNECTION INSTANCE="axi4stream_vip_0" PORT="m_axis_tkeep"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_rxd_tlast" SIGIS="undef" SIGNAME="axi4stream_vip_0_m_axis_tlast">
@@ -281,8 +286,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -291,10 +296,10 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_rxd_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="s_axis_rxd_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="s_axis_rxd_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_rxd_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_rxd_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="s_axis_rxd_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="s_axis_rxs" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
@@ -304,8 +309,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -314,10 +319,10 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_rxs_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="s_axis_rxs_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="s_axis_rxs_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_rxs_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_rxs_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="s_axis_rxs_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="decoder_0_m_axis_packet" NAME="m_axis_packet" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
@@ -327,8 +332,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -337,10 +342,10 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_packet_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="m_axis_packet_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="m_axis_packet_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_packet_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_packet_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="m_axis_packet_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="decoder_0_packet_header" NAME="packet_header" TYPE="INITIATOR" VLNV="utoronto.ca:user:packet_header:1.1">
@@ -368,10 +373,10 @@
         <PERIPHERAL INSTANCE="encoder_0"/>
       </PERIPHERALS>
     </MODULE>
-    <MODULE COREREVISION="5" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
+    <MODULE COREREVISION="11" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="FIFO_SIZE" VALUE="1024"/>
+        <PARAMETER NAME="FIFO_SIZE_WORDS" VALUE="256"/>
         <PARAMETER NAME="Component_Name" VALUE="design_3_encoder_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -387,23 +392,27 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="m_axis_txc_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="3" NAME="m_axis_txc_tstrb" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="m_axis_txc_tkeep" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_axis_txc_tlast" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_axis_txc_tvalid" SIGIS="undef"/>
         <PORT DIR="I" NAME="m_axis_txc_tready" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="m_axis_txd_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="3" NAME="m_axis_txd_tstrb" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="m_axis_txd_tkeep" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_axis_txd_tlast" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_axis_txd_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="m_axis_txd_tready" SIGIS="undef"/>
+        <PORT DIR="I" NAME="m_axis_txd_tready" SIGIS="undef" SIGNAME="External_Ports_m_axis_txd_tready_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="m_axis_txd_tready_0"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="31" NAME="s_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="m_axis_packet_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="s_axis_tstrb" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tstrb">
+        <PORT DIR="I" LEFT="3" NAME="s_axis_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tkeep">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="m_axis_packet_tstrb"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="m_axis_packet_tkeep"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_tlast" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tlast">
@@ -510,8 +519,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -520,10 +529,10 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_txd_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="m_axis_txd_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="m_axis_txd_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_txd_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_txd_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="m_axis_txd_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m_axis_txc" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
@@ -533,8 +542,8 @@
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -543,21 +552,21 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="m_axis_txc_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="m_axis_txc_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="m_axis_txc_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_txc_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_txc_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="m_axis_txc_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="decoder_0_m_axis_packet" NAME="s_axis" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="decoder_0_m_axis_packet" NAME="s_axis_packet" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="WIZ_DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-          <PARAMETER NAME="HAS_TSTRB" VALUE="1"/>
-          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
           <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
@@ -566,10 +575,10 @@
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="s_axis_tdata"/>
-            <PORTMAP LOGICAL="TSTRB" PHYSICAL="s_axis_tstrb"/>
             <PORTMAP LOGICAL="TLAST" PHYSICAL="s_axis_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="s_axis_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="s_axis_tready"/>
+            <PORTMAP LOGICAL="TKEEP" PHYSICAL="s_axis_tkeep"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="decoder_0_packet_header" NAME="packet_header" TYPE="TARGET" VLNV="utoronto.ca:user:packet_header:1.1">

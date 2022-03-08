@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar  6 15:56:35 2022
--- Host        : BA3155WS04 running 64-bit major release  (build 9200)
+-- Date        : Mon Mar  7 14:12:43 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_vio_0_0/design_2_vio_0_0_sim_netlist.vhdl
+--               C:/Users/haighcam/test/ECE532/bd/design_2/ip/design_2_vio_0_0/design_2_vio_0_0_sim_netlist.vhdl
 -- Design      : design_2_vio_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,23 +20,22 @@ entity design_2_vio_0_0_vio_v3_0_19_decoder is
     in0 : out STD_LOGIC;
     SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     \xsdb_addr_2_0_p1_reg[1]_0\ : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    Read_int_i_5 : out STD_LOGIC;
     \rd_en_reg[6]_0\ : out STD_LOGIC;
+    Read_int_i_3_0 : out STD_LOGIC;
+    Read_int_i_4_0 : out STD_LOGIC;
+    s_den_o_INST_0 : out STD_LOGIC;
     Hold_probe_in_reg_0 : out STD_LOGIC;
     \Bus_data_out_reg[15]_0\ : out STD_LOGIC_VECTOR ( 15 downto 0 );
     s_rst_o : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \out\ : in STD_LOGIC;
-    s_daddr_o : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_daddr_o : in STD_LOGIC_VECTOR ( 16 downto 0 );
     addr_count : in STD_LOGIC;
     \Bus_data_out_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \Bus_data_out_reg[2]_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe_width_int : in STD_LOGIC_VECTOR ( 0 to 0 );
     s_den_o : in STD_LOGIC;
-    s_dwe_o : in STD_LOGIC;
-    \rd_en_reg[6]_1\ : in STD_LOGIC;
-    \rd_en_reg[6]_2\ : in STD_LOGIC;
-    \rd_en_reg[6]_3\ : in STD_LOGIC
+    s_dwe_o : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of design_2_vio_0_0_vio_v3_0_19_decoder : entity is "vio_v3_0_19_decoder";
@@ -64,18 +63,23 @@ architecture STRUCTURE of design_2_vio_0_0_vio_v3_0_19_decoder is
   signal \Bus_data_out[8]_i_1_n_0\ : STD_LOGIC;
   signal \Bus_data_out[9]_i_1_n_0\ : STD_LOGIC;
   signal Hold_probe_in : STD_LOGIC;
-  signal \^read_int_i_5\ : STD_LOGIC;
+  signal \^read_int_i_3_0\ : STD_LOGIC;
+  signal \^read_int_i_4_0\ : STD_LOGIC;
   signal \^sr\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \data_info_probe_in__58\ : STD_LOGIC_VECTOR ( 2 to 2 );
   signal \^in0\ : STD_LOGIC;
   signal internal_cnt_rst : STD_LOGIC;
   signal probe_out_modified : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal \rd_en[6]_i_1_n_0\ : STD_LOGIC;
+  signal \rd_en[6]_i_2_n_0\ : STD_LOGIC;
   signal rd_en_p1 : STD_LOGIC;
   signal rd_en_p2 : STD_LOGIC;
   signal rd_probe_out_width : STD_LOGIC;
+  signal \^s_den_o_inst_0\ : STD_LOGIC;
   signal wr_control_reg : STD_LOGIC;
   signal \wr_en[2]_i_1_n_0\ : STD_LOGIC;
+  signal \wr_en[2]_i_2_n_0\ : STD_LOGIC;
+  signal \wr_en[4]_i_1_n_0\ : STD_LOGIC;
   signal \wr_en[4]_i_2_n_0\ : STD_LOGIC;
   signal wr_probe_out_modified : STD_LOGIC;
   signal xsdb_addr_2_0_p1 : STD_LOGIC_VECTOR ( 2 to 2 );
@@ -86,16 +90,18 @@ architecture STRUCTURE of design_2_vio_0_0_vio_v3_0_19_decoder is
   signal xsdb_drdy_i_1_n_0 : STD_LOGIC;
   signal xsdb_rd : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \Bus_data_out[0]_i_3\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \Bus_data_out[1]_i_3\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \rd_en[6]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of rd_en_p1_i_1 : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \Bus_data_out[0]_i_3\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \Bus_data_out[1]_i_3\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \rd_en[6]_i_2\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of rd_en_p1_i_1 : label is "soft_lutpair12";
   attribute SOFT_HLUTNM of \wr_en[4]_i_2\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of xsdb_drdy_i_1 : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of xsdb_drdy_i_1 : label is "soft_lutpair12";
 begin
-  Read_int_i_5 <= \^read_int_i_5\;
+  Read_int_i_3_0 <= \^read_int_i_3_0\;
+  Read_int_i_4_0 <= \^read_int_i_4_0\;
   SR(0) <= \^sr\(0);
   in0 <= \^in0\;
+  s_den_o_INST_0 <= \^s_den_o_inst_0\;
   \xsdb_addr_2_0_p1_reg[1]_0\(1 downto 0) <= \^xsdb_addr_2_0_p1_reg[1]_0\(1 downto 0);
 \Bus_data_out[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -123,12 +129,12 @@ begin
     );
 \Bus_data_out[0]_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"EF"
+      INIT => X"CB"
     )
         port map (
       I0 => \^in0\,
-      I1 => xsdb_addr_2_0_p2(0),
-      I2 => xsdb_addr_2_0_p2(1),
+      I1 => xsdb_addr_2_0_p2(1),
+      I2 => xsdb_addr_2_0_p2(0),
       O => \Bus_data_out[0]_i_3_n_0\
     );
 \Bus_data_out[10]_i_1\: unisim.vcomponents.LUT5
@@ -229,12 +235,12 @@ begin
     );
 \Bus_data_out[1]_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"38"
+      INIT => X"20"
     )
         port map (
-      I0 => \^sr\(0),
-      I1 => xsdb_addr_2_0_p2(1),
-      I2 => xsdb_addr_2_0_p2(0),
+      I0 => xsdb_addr_2_0_p2(1),
+      I1 => xsdb_addr_2_0_p2(0),
+      I2 => \^sr\(0),
       O => \Bus_data_out[1]_i_3_n_0\
     );
 \Bus_data_out[2]_i_1\: unisim.vcomponents.LUT3
@@ -249,15 +255,15 @@ begin
     );
 \Bus_data_out[2]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"A0000FC0A00000C0"
+      INIT => X"A0A00F0F0F00C0C0"
     )
         port map (
       I0 => \Bus_data_out_reg[2]_0\(2),
       I1 => probe_out_modified(2),
       I2 => xsdb_addr_2_0_p2(2),
-      I3 => xsdb_addr_2_0_p2(1),
-      I4 => xsdb_addr_2_0_p2(0),
-      I5 => internal_cnt_rst,
+      I3 => internal_cnt_rst,
+      I4 => xsdb_addr_2_0_p2(1),
+      I5 => xsdb_addr_2_0_p2(0),
       O => \data_info_probe_in__58\(2)
     );
 \Bus_data_out[3]_i_1\: unisim.vcomponents.LUT6
@@ -481,6 +487,41 @@ Hold_probe_in_reg: unisim.vcomponents.FDRE
       Q => Hold_probe_in,
       R => s_rst_o
     );
+Read_int_i_3: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => s_daddr_o(9),
+      I1 => s_daddr_o(7),
+      I2 => s_daddr_o(6),
+      I3 => s_daddr_o(5),
+      O => \^read_int_i_3_0\
+    );
+Read_int_i_4: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => s_daddr_o(13),
+      I1 => s_daddr_o(12),
+      I2 => s_daddr_o(11),
+      I3 => s_daddr_o(10),
+      O => \^read_int_i_4_0\
+    );
+Read_int_i_5: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0000000000000010"
+    )
+        port map (
+      I0 => s_daddr_o(14),
+      I1 => s_daddr_o(15),
+      I2 => s_den_o,
+      I3 => s_daddr_o(16),
+      I4 => s_daddr_o(4),
+      I5 => s_daddr_o(3),
+      O => \^s_den_o_inst_0\
+    );
 \addr_count[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"0006"
@@ -654,14 +695,26 @@ int_cnt_rst_reg: unisim.vcomponents.FDRE
     );
 \rd_en[6]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0008"
+      INIT => X"8000"
     )
         port map (
-      I0 => s_daddr_o(2),
-      I1 => s_daddr_o(1),
-      I2 => s_dwe_o,
-      I3 => s_daddr_o(3),
+      I0 => \rd_en[6]_i_2_n_0\,
+      I1 => \^read_int_i_3_0\,
+      I2 => \^read_int_i_4_0\,
+      I3 => \^s_den_o_inst_0\,
       O => \rd_en[6]_i_1_n_0\
+    );
+\rd_en[6]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000040"
+    )
+        port map (
+      I0 => s_daddr_o(0),
+      I1 => s_daddr_o(1),
+      I2 => s_daddr_o(2),
+      I3 => s_dwe_o,
+      I4 => s_daddr_o(8),
+      O => \rd_en[6]_i_2_n_0\
     );
 rd_en_p1_i_1: unisim.vcomponents.LUT2
     generic map(
@@ -694,39 +747,52 @@ rd_en_p2_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => \rd_en[6]_i_1_n_0\,
       Q => rd_probe_out_width,
-      R => \^read_int_i_5\
+      R => '0'
     );
-\wr_en[2]_i_1\: unisim.vcomponents.LUT4
+\wr_en[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0400"
+      INIT => X"2000000000000000"
     )
         port map (
-      I0 => s_daddr_o(3),
-      I1 => s_daddr_o(1),
-      I2 => s_daddr_o(2),
-      I3 => s_dwe_o,
+      I0 => \wr_en[2]_i_2_n_0\,
+      I1 => s_daddr_o(2),
+      I2 => \^read_int_i_3_0\,
+      I3 => \^read_int_i_4_0\,
+      I4 => \^s_den_o_inst_0\,
+      I5 => s_dwe_o,
       O => \wr_en[2]_i_1_n_0\
     );
-\wr_en[4]_i_1\: unisim.vcomponents.LUT4
+\wr_en[2]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"BFFF"
+      INIT => X"04"
     )
         port map (
-      I0 => s_daddr_o(0),
-      I1 => \rd_en_reg[6]_1\,
-      I2 => \rd_en_reg[6]_2\,
-      I3 => \rd_en_reg[6]_3\,
-      O => \^read_int_i_5\
+      I0 => s_daddr_o(8),
+      I1 => s_daddr_o(1),
+      I2 => s_daddr_o(0),
+      O => \wr_en[2]_i_2_n_0\
+    );
+\wr_en[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"80000000"
+    )
+        port map (
+      I0 => \wr_en[4]_i_2_n_0\,
+      I1 => s_dwe_o,
+      I2 => \^s_den_o_inst_0\,
+      I3 => \^read_int_i_4_0\,
+      I4 => \^read_int_i_3_0\,
+      O => \wr_en[4]_i_1_n_0\
     );
 \wr_en[4]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0400"
+      INIT => X"0100"
     )
         port map (
       I0 => s_daddr_o(1),
-      I1 => s_daddr_o(2),
-      I2 => s_daddr_o(3),
-      I3 => s_dwe_o,
+      I1 => s_daddr_o(0),
+      I2 => s_daddr_o(8),
+      I3 => s_daddr_o(2),
       O => \wr_en[4]_i_2_n_0\
     );
 \wr_en_reg[2]\: unisim.vcomponents.FDRE
@@ -735,15 +801,15 @@ rd_en_p2_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => \wr_en[2]_i_1_n_0\,
       Q => wr_control_reg,
-      R => \^read_int_i_5\
+      R => '0'
     );
 \wr_en_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => \out\,
       CE => '1',
-      D => \wr_en[4]_i_2_n_0\,
+      D => \wr_en[4]_i_1_n_0\,
       Q => wr_probe_out_modified,
-      R => \^read_int_i_5\
+      R => '0'
     );
 \xsdb_addr_2_0_p1_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -797,7 +863,7 @@ xsdb_addr_8_p1_reg: unisim.vcomponents.FDRE
      port map (
       C => \out\,
       CE => '1',
-      D => s_daddr_o(3),
+      D => s_daddr_o(8),
       Q => xsdb_addr_8_p1,
       R => '0'
     );
@@ -1045,7 +1111,7 @@ entity design_2_vio_0_0_vio_v3_0_19_probe_out_one is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \data_int_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \out\ : in STD_LOGIC;
-    \Probe_out_reg[3]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \Probe_out_reg[3]_0\ : in STD_LOGIC;
     clk : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -1069,7 +1135,7 @@ begin
 \Probe_out_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Probe_out_reg[3]_0\(0),
+      CE => \Probe_out_reg[3]_0\,
       D => \^q\(0),
       Q => probe_out0(0),
       R => SR(0)
@@ -1077,7 +1143,7 @@ begin
 \Probe_out_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Probe_out_reg[3]_0\(0),
+      CE => \Probe_out_reg[3]_0\,
       D => \^q\(1),
       Q => probe_out0(1),
       R => SR(0)
@@ -1085,7 +1151,7 @@ begin
 \Probe_out_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Probe_out_reg[3]_0\(0),
+      CE => \Probe_out_reg[3]_0\,
       D => \^q\(2),
       Q => probe_out0(2),
       R => SR(0)
@@ -1093,7 +1159,7 @@ begin
 \Probe_out_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Probe_out_reg[3]_0\(0),
+      CE => \Probe_out_reg[3]_0\,
       D => \^q\(3),
       Q => probe_out0(3),
       R => SR(0)
@@ -1237,6 +1303,61 @@ begin
       C => \data_int_reg[0]_1\,
       CE => '1',
       D => \data_int[0]_i_1__0_n_0\,
+      Q => \^data_int_reg[0]_0\,
+      R => SR(0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity \design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_1\ is
+  port (
+    probe_out3 : out STD_LOGIC_VECTOR ( 0 to 0 );
+    \data_int_reg[0]_0\ : out STD_LOGIC;
+    SR : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \out\ : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    \data_int_reg[0]_1\ : in STD_LOGIC;
+    Q : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \G_PROBE_OUT[3].wr_probe_out_reg\ : in STD_LOGIC
+  );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of \design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_1\ : entity is "vio_v3_0_19_probe_out_one";
+end \design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_1\;
+
+architecture STRUCTURE of \design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_1\ is
+  signal \data_int[0]_i_1__1_n_0\ : STD_LOGIC;
+  signal \^data_int_reg[0]_0\ : STD_LOGIC;
+  attribute DONT_TOUCH : boolean;
+  attribute DONT_TOUCH of \Probe_out_reg[0]\ : label is std.standard.true;
+  attribute KEEP : string;
+  attribute KEEP of \Probe_out_reg[0]\ : label is "yes";
+begin
+  \data_int_reg[0]_0\ <= \^data_int_reg[0]_0\;
+\Probe_out_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => \out\,
+      D => \^data_int_reg[0]_0\,
+      Q => probe_out3(0),
+      R => SR(0)
+    );
+\data_int[0]_i_1__1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"B8"
+    )
+        port map (
+      I0 => Q(0),
+      I1 => \G_PROBE_OUT[3].wr_probe_out_reg\,
+      I2 => \^data_int_reg[0]_0\,
+      O => \data_int[0]_i_1__1_n_0\
+    );
+\data_int_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => \data_int_reg[0]_1\,
+      CE => '1',
+      D => \data_int[0]_i_1__1_n_0\,
       Q => \^data_int_reg[0]_0\,
       R => SR(0)
     );
@@ -4287,17 +4408,16 @@ entity design_2_vio_0_0_vio_v3_0_19_probe_out_all is
     probe_out0 : out STD_LOGIC_VECTOR ( 3 downto 0 );
     probe_out1 : out STD_LOGIC_VECTOR ( 0 to 0 );
     probe_out2 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    Read_int_i_3_0 : out STD_LOGIC;
-    Read_int_i_4_0 : out STD_LOGIC;
-    s_den_o_INST_0 : out STD_LOGIC;
+    probe_out3 : out STD_LOGIC_VECTOR ( 0 to 0 );
     \Probe_out_reg_int_reg[3]_0\ : out STD_LOGIC_VECTOR ( 3 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     in0 : in STD_LOGIC;
     clk : in STD_LOGIC;
-    \G_PROBE_OUT[2].wr_probe_out_reg[2]_0\ : in STD_LOGIC;
     \out\ : in STD_LOGIC;
-    s_daddr_o : in STD_LOGIC_VECTOR ( 16 downto 0 );
-    s_den_o : in STD_LOGIC;
+    s_daddr_o : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    \G_PROBE_OUT[0].wr_probe_out_reg[0]_0\ : in STD_LOGIC;
+    \G_PROBE_OUT[0].wr_probe_out_reg[0]_1\ : in STD_LOGIC;
+    \G_PROBE_OUT[0].wr_probe_out_reg[0]_2\ : in STD_LOGIC;
     s_dwe_o : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \Probe_out_reg_int_reg[0]_0\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
@@ -4317,21 +4437,20 @@ architecture STRUCTURE of design_2_vio_0_0_vio_v3_0_19_probe_out_all is
   signal \G_PROBE_OUT[0].PROBE_OUT0_INST_n_6\ : STD_LOGIC;
   signal \G_PROBE_OUT[0].PROBE_OUT0_INST_n_7\ : STD_LOGIC;
   signal \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\ : STD_LOGIC;
+  signal \G_PROBE_OUT[0].wr_probe_out[0]_i_2_n_0\ : STD_LOGIC;
   signal \G_PROBE_OUT[1].wr_probe_out[1]_i_1_n_0\ : STD_LOGIC;
-  signal \G_PROBE_OUT[1].wr_probe_out[1]_i_2_n_0\ : STD_LOGIC;
-  signal \G_PROBE_OUT[1].wr_probe_out[1]_i_3_n_0\ : STD_LOGIC;
   signal \G_PROBE_OUT[1].wr_probe_out_reg\ : STD_LOGIC;
   signal \G_PROBE_OUT[2].PROBE_OUT0_INST_n_1\ : STD_LOGIC;
   signal \G_PROBE_OUT[2].wr_probe_out[2]_i_1_n_0\ : STD_LOGIC;
   signal \G_PROBE_OUT[2].wr_probe_out_reg\ : STD_LOGIC;
+  signal \G_PROBE_OUT[3].PROBE_OUT0_INST_n_1\ : STD_LOGIC;
+  signal \G_PROBE_OUT[3].wr_probe_out[3]_i_1_n_0\ : STD_LOGIC;
+  signal \G_PROBE_OUT[3].wr_probe_out_reg\ : STD_LOGIC;
   signal \Probe_out_reg_int[0]_i_1_n_0\ : STD_LOGIC;
   signal \Probe_out_reg_int[1]_i_1_n_0\ : STD_LOGIC;
   signal \Probe_out_reg_int[2]_i_1_n_0\ : STD_LOGIC;
   signal \Probe_out_reg_int[3]_i_1_n_0\ : STD_LOGIC;
-  signal \^read_int_i_3_0\ : STD_LOGIC;
-  signal \^read_int_i_4_0\ : STD_LOGIC;
   signal data_int : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \^s_den_o_inst_0\ : STD_LOGIC;
   signal wr_probe_out : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute ASYNC_REG_boolean : boolean;
   attribute ASYNC_REG_boolean of Committ_1_reg : label is std.standard.true;
@@ -4340,14 +4459,13 @@ architecture STRUCTURE of design_2_vio_0_0_vio_v3_0_19_probe_out_all is
   attribute ASYNC_REG_boolean of Committ_2_reg : label is std.standard.true;
   attribute KEEP of Committ_2_reg : label is "yes";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \G_PROBE_OUT[0].wr_probe_out[0]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \G_PROBE_OUT[2].wr_probe_out[2]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \Probe_out_reg_int[1]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \Probe_out_reg_int[3]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \G_PROBE_OUT[0].wr_probe_out[0]_i_2\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \G_PROBE_OUT[1].wr_probe_out[1]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \G_PROBE_OUT[2].wr_probe_out[2]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \G_PROBE_OUT[3].wr_probe_out[3]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \Probe_out_reg_int[1]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \Probe_out_reg_int[3]_i_1\ : label is "soft_lutpair13";
 begin
-  Read_int_i_3_0 <= \^read_int_i_3_0\;
-  Read_int_i_4_0 <= \^read_int_i_4_0\;
-  s_den_o_INST_0 <= \^s_den_o_inst_0\;
 Committ_1_reg: unisim.vcomponents.FDRE
      port map (
       C => clk,
@@ -4367,7 +4485,7 @@ Committ_2_reg: unisim.vcomponents.FDRE
 \G_PROBE_OUT[0].PROBE_OUT0_INST\: entity work.design_2_vio_0_0_vio_v3_0_19_probe_out_one
      port map (
       E(0) => wr_probe_out(0),
-      \Probe_out_reg[3]_0\(0) => Committ_2,
+      \Probe_out_reg[3]_0\ => Committ_2,
       Q(3) => \G_PROBE_OUT[0].PROBE_OUT0_INST_n_4\,
       Q(2) => \G_PROBE_OUT[0].PROBE_OUT0_INST_n_5\,
       Q(1) => \G_PROBE_OUT[0].PROBE_OUT0_INST_n_6\,
@@ -4378,24 +4496,35 @@ Committ_2_reg: unisim.vcomponents.FDRE
       \out\ => \out\,
       probe_out0(3 downto 0) => probe_out0(3 downto 0)
     );
-\G_PROBE_OUT[0].wr_probe_out[0]_i_1\: unisim.vcomponents.LUT4
+\G_PROBE_OUT[0].wr_probe_out[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0400"
+      INIT => X"BFFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => s_daddr_o(1),
-      I1 => s_daddr_o(8),
-      I2 => s_daddr_o(2),
-      I3 => s_dwe_o,
+      I0 => s_daddr_o(2),
+      I1 => \G_PROBE_OUT[0].wr_probe_out_reg[0]_0\,
+      I2 => \G_PROBE_OUT[0].wr_probe_out_reg[0]_1\,
+      I3 => \G_PROBE_OUT[0].wr_probe_out_reg[0]_2\,
+      I4 => s_dwe_o,
+      I5 => s_daddr_o(3),
       O => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\
+    );
+\G_PROBE_OUT[0].wr_probe_out[0]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => s_daddr_o(0),
+      I1 => s_daddr_o(1),
+      O => \G_PROBE_OUT[0].wr_probe_out[0]_i_2_n_0\
     );
 \G_PROBE_OUT[0].wr_probe_out_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => \out\,
       CE => '1',
-      D => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\,
+      D => \G_PROBE_OUT[0].wr_probe_out[0]_i_2_n_0\,
       Q => wr_probe_out(0),
-      R => \G_PROBE_OUT[2].wr_probe_out_reg[2]_0\
+      R => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\
     );
 \G_PROBE_OUT[1].PROBE_OUT0_INST\: entity work.\design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0\
      port map (
@@ -4408,36 +4537,14 @@ Committ_2_reg: unisim.vcomponents.FDRE
       \out\ => Committ_2,
       probe_out1(0) => probe_out1(0)
     );
-\G_PROBE_OUT[1].wr_probe_out[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8000000000000000"
-    )
-        port map (
-      I0 => \G_PROBE_OUT[1].wr_probe_out[1]_i_2_n_0\,
-      I1 => \G_PROBE_OUT[1].wr_probe_out[1]_i_3_n_0\,
-      I2 => s_daddr_o(0),
-      I3 => \^read_int_i_3_0\,
-      I4 => \^read_int_i_4_0\,
-      I5 => \^s_den_o_inst_0\,
-      O => \G_PROBE_OUT[1].wr_probe_out[1]_i_1_n_0\
-    );
-\G_PROBE_OUT[1].wr_probe_out[1]_i_2\: unisim.vcomponents.LUT2
+\G_PROBE_OUT[1].wr_probe_out[1]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"2"
     )
         port map (
-      I0 => s_dwe_o,
-      I1 => s_daddr_o(2),
-      O => \G_PROBE_OUT[1].wr_probe_out[1]_i_2_n_0\
-    );
-\G_PROBE_OUT[1].wr_probe_out[1]_i_3\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => s_daddr_o(8),
+      I0 => s_daddr_o(0),
       I1 => s_daddr_o(1),
-      O => \G_PROBE_OUT[1].wr_probe_out[1]_i_3_n_0\
+      O => \G_PROBE_OUT[1].wr_probe_out[1]_i_1_n_0\
     );
 \G_PROBE_OUT[1].wr_probe_out_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -4445,7 +4552,7 @@ Committ_2_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => \G_PROBE_OUT[1].wr_probe_out[1]_i_1_n_0\,
       Q => \G_PROBE_OUT[1].wr_probe_out_reg\,
-      R => '0'
+      R => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\
     );
 \G_PROBE_OUT[2].PROBE_OUT0_INST\: entity work.\design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_0\
      port map (
@@ -4458,15 +4565,13 @@ Committ_2_reg: unisim.vcomponents.FDRE
       \out\ => Committ_2,
       probe_out2(0) => probe_out2(0)
     );
-\G_PROBE_OUT[2].wr_probe_out[2]_i_1\: unisim.vcomponents.LUT4
+\G_PROBE_OUT[2].wr_probe_out[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0800"
+      INIT => X"2"
     )
         port map (
-      I0 => s_daddr_o(8),
-      I1 => s_daddr_o(1),
-      I2 => s_daddr_o(2),
-      I3 => s_dwe_o,
+      I0 => s_daddr_o(1),
+      I1 => s_daddr_o(0),
       O => \G_PROBE_OUT[2].wr_probe_out[2]_i_1_n_0\
     );
 \G_PROBE_OUT[2].wr_probe_out_reg[2]\: unisim.vcomponents.FDRE
@@ -4475,18 +4580,47 @@ Committ_2_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => \G_PROBE_OUT[2].wr_probe_out[2]_i_1_n_0\,
       Q => \G_PROBE_OUT[2].wr_probe_out_reg\,
-      R => \G_PROBE_OUT[2].wr_probe_out_reg[2]_0\
+      R => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\
     );
-\Probe_out_reg_int[0]_i_1\: unisim.vcomponents.LUT5
+\G_PROBE_OUT[3].PROBE_OUT0_INST\: entity work.\design_2_vio_0_0_vio_v3_0_19_probe_out_one__parameterized0_1\
+     port map (
+      \G_PROBE_OUT[3].wr_probe_out_reg\ => \G_PROBE_OUT[3].wr_probe_out_reg\,
+      Q(0) => Q(0),
+      SR(0) => SR(0),
+      clk => clk,
+      \data_int_reg[0]_0\ => \G_PROBE_OUT[3].PROBE_OUT0_INST_n_1\,
+      \data_int_reg[0]_1\ => \out\,
+      \out\ => Committ_2,
+      probe_out3(0) => probe_out3(0)
+    );
+\G_PROBE_OUT[3].wr_probe_out[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0FAC00AC"
+      INIT => X"8"
+    )
+        port map (
+      I0 => s_daddr_o(0),
+      I1 => s_daddr_o(1),
+      O => \G_PROBE_OUT[3].wr_probe_out[3]_i_1_n_0\
+    );
+\G_PROBE_OUT[3].wr_probe_out_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => \out\,
+      CE => '1',
+      D => \G_PROBE_OUT[3].wr_probe_out[3]_i_1_n_0\,
+      Q => \G_PROBE_OUT[3].wr_probe_out_reg\,
+      R => \G_PROBE_OUT[0].wr_probe_out[0]_i_1_n_0\
+    );
+\Probe_out_reg_int[0]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"CCFFAAF0CC00AAF0"
     )
         port map (
       I0 => \G_PROBE_OUT[2].PROBE_OUT0_INST_n_1\,
-      I1 => \G_PROBE_OUT[0].PROBE_OUT0_INST_n_7\,
-      I2 => \Probe_out_reg_int_reg[0]_0\(1),
-      I3 => \Probe_out_reg_int_reg[0]_0\(0),
-      I4 => data_int(0),
+      I1 => \G_PROBE_OUT[3].PROBE_OUT0_INST_n_1\,
+      I2 => \G_PROBE_OUT[0].PROBE_OUT0_INST_n_7\,
+      I3 => \Probe_out_reg_int_reg[0]_0\(1),
+      I4 => \Probe_out_reg_int_reg[0]_0\(0),
+      I5 => data_int(0),
       O => \Probe_out_reg_int[0]_i_1_n_0\
     );
 \Probe_out_reg_int[1]_i_1\: unisim.vcomponents.LUT3
@@ -4550,41 +4684,6 @@ Committ_2_reg: unisim.vcomponents.FDRE
       D => \Probe_out_reg_int[3]_i_1_n_0\,
       Q => \Probe_out_reg_int_reg[3]_0\(3),
       R => '0'
-    );
-Read_int_i_3: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => s_daddr_o(9),
-      I1 => s_daddr_o(7),
-      I2 => s_daddr_o(6),
-      I3 => s_daddr_o(5),
-      O => \^read_int_i_3_0\
-    );
-Read_int_i_4: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"0001"
-    )
-        port map (
-      I0 => s_daddr_o(13),
-      I1 => s_daddr_o(12),
-      I2 => s_daddr_o(11),
-      I3 => s_daddr_o(10),
-      O => \^read_int_i_4_0\
-    );
-Read_int_i_5: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000010"
-    )
-        port map (
-      I0 => s_daddr_o(14),
-      I1 => s_daddr_o(15),
-      I2 => s_den_o,
-      I3 => s_daddr_o(16),
-      I4 => s_daddr_o(4),
-      I5 => s_daddr_o(3),
-      O => \^s_den_o_inst_0\
     );
 end STRUCTURE;
 library IEEE;
@@ -5146,7 +5245,7 @@ entity design_2_vio_0_0_vio_v3_0_19_vio is
   attribute C_NUM_PROBE_IN : integer;
   attribute C_NUM_PROBE_IN of design_2_vio_0_0_vio_v3_0_19_vio : entity is 1;
   attribute C_NUM_PROBE_OUT : integer;
-  attribute C_NUM_PROBE_OUT of design_2_vio_0_0_vio_v3_0_19_vio : entity is 3;
+  attribute C_NUM_PROBE_OUT of design_2_vio_0_0_vio_v3_0_19_vio : entity is 4;
   attribute C_PIPE_IFACE : integer;
   attribute C_PIPE_IFACE of design_2_vio_0_0_vio_v3_0_19_vio : entity is 0;
   attribute C_PROBE_IN0_WIDTH : integer;
@@ -7732,7 +7831,7 @@ entity design_2_vio_0_0_vio_v3_0_19_vio is
   attribute LC_TOTAL_PROBE_IN_WIDTH : integer;
   attribute LC_TOTAL_PROBE_IN_WIDTH of design_2_vio_0_0_vio_v3_0_19_vio : entity is 1;
   attribute LC_TOTAL_PROBE_OUT_WIDTH : integer;
-  attribute LC_TOTAL_PROBE_OUT_WIDTH of design_2_vio_0_0_vio_v3_0_19_vio : entity is 6;
+  attribute LC_TOTAL_PROBE_OUT_WIDTH of design_2_vio_0_0_vio_v3_0_19_vio : entity is 7;
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of design_2_vio_0_0_vio_v3_0_19_vio : entity is "vio_v3_0_19_vio";
   attribute dont_touch : string;
@@ -7746,10 +7845,9 @@ architecture STRUCTURE of design_2_vio_0_0_vio_v3_0_19_vio is
   signal DECODER_INST_n_5 : STD_LOGIC;
   signal DECODER_INST_n_6 : STD_LOGIC;
   signal DECODER_INST_n_7 : STD_LOGIC;
+  signal DECODER_INST_n_8 : STD_LOGIC;
+  signal DECODER_INST_n_9 : STD_LOGIC;
   signal PROBE_OUT_ALL_INST_n_10 : STD_LOGIC;
-  signal PROBE_OUT_ALL_INST_n_11 : STD_LOGIC;
-  signal PROBE_OUT_ALL_INST_n_12 : STD_LOGIC;
-  signal PROBE_OUT_ALL_INST_n_6 : STD_LOGIC;
   signal PROBE_OUT_ALL_INST_n_7 : STD_LOGIC;
   signal PROBE_OUT_ALL_INST_n_8 : STD_LOGIC;
   signal PROBE_OUT_ALL_INST_n_9 : STD_LOGIC;
@@ -7977,7 +8075,6 @@ begin
   probe_out27(0) <= \<const0>\;
   probe_out28(0) <= \<const0>\;
   probe_out29(0) <= \<const0>\;
-  probe_out3(0) <= \<const0>\;
   probe_out30(0) <= \<const0>\;
   probe_out31(0) <= \<const0>\;
   probe_out32(0) <= \<const0>\;
@@ -8058,11 +8155,11 @@ DECODER_INST: entity work.design_2_vio_0_0_vio_v3_0_19_decoder
      port map (
       \Bus_data_out_reg[15]_0\(15 downto 0) => bus_do(15 downto 0),
       \Bus_data_out_reg[2]_0\(2 downto 0) => Bus_Data_out(2 downto 0),
-      \Bus_data_out_reg[3]_0\(3) => PROBE_OUT_ALL_INST_n_9,
-      \Bus_data_out_reg[3]_0\(2) => PROBE_OUT_ALL_INST_n_10,
-      \Bus_data_out_reg[3]_0\(1) => PROBE_OUT_ALL_INST_n_11,
-      \Bus_data_out_reg[3]_0\(0) => PROBE_OUT_ALL_INST_n_12,
-      Hold_probe_in_reg_0 => DECODER_INST_n_7,
+      \Bus_data_out_reg[3]_0\(3) => PROBE_OUT_ALL_INST_n_7,
+      \Bus_data_out_reg[3]_0\(2) => PROBE_OUT_ALL_INST_n_8,
+      \Bus_data_out_reg[3]_0\(1) => PROBE_OUT_ALL_INST_n_9,
+      \Bus_data_out_reg[3]_0\(0) => PROBE_OUT_ALL_INST_n_10,
+      Hold_probe_in_reg_0 => DECODER_INST_n_9,
       Q(15) => \bus_data_int_reg_n_0_[15]\,
       Q(14) => \bus_data_int_reg_n_0_[14]\,
       Q(13) => \bus_data_int_reg_n_0_[13]\,
@@ -8079,19 +8176,17 @@ DECODER_INST: entity work.design_2_vio_0_0_vio_v3_0_19_decoder
       Q(2) => \bus_data_int_reg_n_0_[2]\,
       Q(1) => p_0_in,
       Q(0) => \^bus_di\,
-      Read_int_i_5 => DECODER_INST_n_5,
+      Read_int_i_3_0 => DECODER_INST_n_6,
+      Read_int_i_4_0 => DECODER_INST_n_7,
       SR(0) => clear,
       addr_count => addr_count,
       in0 => committ,
       \out\ => bus_clk,
       probe_width_int(0) => probe_width_int(1),
-      \rd_en_reg[6]_0\ => DECODER_INST_n_6,
-      \rd_en_reg[6]_1\ => PROBE_OUT_ALL_INST_n_6,
-      \rd_en_reg[6]_2\ => PROBE_OUT_ALL_INST_n_7,
-      \rd_en_reg[6]_3\ => PROBE_OUT_ALL_INST_n_8,
-      s_daddr_o(3) => bus_addr(8),
-      s_daddr_o(2 downto 0) => bus_addr(2 downto 0),
+      \rd_en_reg[6]_0\ => DECODER_INST_n_5,
+      s_daddr_o(16 downto 0) => bus_addr(16 downto 0),
       s_den_o => bus_den,
+      s_den_o_INST_0 => DECODER_INST_n_8,
       s_drdy_i => bus_drdy,
       s_dwe_o => bus_dwe,
       s_rst_o => bus_rst,
@@ -8104,13 +8199,13 @@ GND: unisim.vcomponents.GND
 PROBE_IN_INST: entity work.design_2_vio_0_0_vio_v3_0_19_probe_in_one
      port map (
       Q(2 downto 0) => Bus_Data_out(2 downto 0),
-      Read_int_reg_0 => PROBE_OUT_ALL_INST_n_6,
-      Read_int_reg_1 => PROBE_OUT_ALL_INST_n_7,
-      Read_int_reg_2 => PROBE_OUT_ALL_INST_n_8,
+      Read_int_reg_0 => DECODER_INST_n_6,
+      Read_int_reg_1 => DECODER_INST_n_7,
+      Read_int_reg_2 => DECODER_INST_n_8,
       clk => clk,
       \out\ => bus_clk,
       probe_in0(0) => probe_in0(0),
-      \probe_in_reg_reg[0]_0\ => DECODER_INST_n_7,
+      \probe_in_reg_reg[0]_0\ => DECODER_INST_n_9,
       s_daddr_o(3) => bus_addr(8),
       s_daddr_o(2 downto 0) => bus_addr(2 downto 0),
       s_dwe_o => bus_dwe,
@@ -8118,18 +8213,18 @@ PROBE_IN_INST: entity work.design_2_vio_0_0_vio_v3_0_19_probe_in_one
     );
 PROBE_OUT_ALL_INST: entity work.design_2_vio_0_0_vio_v3_0_19_probe_out_all
      port map (
-      \G_PROBE_OUT[2].wr_probe_out_reg[2]_0\ => DECODER_INST_n_5,
+      \G_PROBE_OUT[0].wr_probe_out_reg[0]_0\ => DECODER_INST_n_6,
+      \G_PROBE_OUT[0].wr_probe_out_reg[0]_1\ => DECODER_INST_n_7,
+      \G_PROBE_OUT[0].wr_probe_out_reg[0]_2\ => DECODER_INST_n_8,
       \Probe_out_reg_int_reg[0]_0\(1 downto 0) => xsdb_addr_2_0_p1(1 downto 0),
-      \Probe_out_reg_int_reg[3]_0\(3) => PROBE_OUT_ALL_INST_n_9,
-      \Probe_out_reg_int_reg[3]_0\(2) => PROBE_OUT_ALL_INST_n_10,
-      \Probe_out_reg_int_reg[3]_0\(1) => PROBE_OUT_ALL_INST_n_11,
-      \Probe_out_reg_int_reg[3]_0\(0) => PROBE_OUT_ALL_INST_n_12,
+      \Probe_out_reg_int_reg[3]_0\(3) => PROBE_OUT_ALL_INST_n_7,
+      \Probe_out_reg_int_reg[3]_0\(2) => PROBE_OUT_ALL_INST_n_8,
+      \Probe_out_reg_int_reg[3]_0\(1) => PROBE_OUT_ALL_INST_n_9,
+      \Probe_out_reg_int_reg[3]_0\(0) => PROBE_OUT_ALL_INST_n_10,
       Q(3) => \bus_data_int_reg_n_0_[3]\,
       Q(2) => \bus_data_int_reg_n_0_[2]\,
       Q(1) => p_0_in,
       Q(0) => \^bus_di\,
-      Read_int_i_3_0 => PROBE_OUT_ALL_INST_n_6,
-      Read_int_i_4_0 => PROBE_OUT_ALL_INST_n_7,
       SR(0) => clear,
       clk => clk,
       in0 => committ,
@@ -8137,15 +8232,15 @@ PROBE_OUT_ALL_INST: entity work.design_2_vio_0_0_vio_v3_0_19_probe_out_all
       probe_out0(3 downto 0) => probe_out0(3 downto 0),
       probe_out1(0) => probe_out1(0),
       probe_out2(0) => probe_out2(0),
-      s_daddr_o(16 downto 0) => bus_addr(16 downto 0),
-      s_den_o => bus_den,
-      s_den_o_INST_0 => PROBE_OUT_ALL_INST_n_8,
+      probe_out3(0) => probe_out3(0),
+      s_daddr_o(3) => bus_addr(8),
+      s_daddr_o(2 downto 0) => bus_addr(2 downto 0),
       s_dwe_o => bus_dwe
     );
 PROBE_OUT_WIDTH_INST: entity work.design_2_vio_0_0_vio_v3_0_19_probe_width
      port map (
       addr_count => addr_count,
-      \addr_count_reg[0]_0\ => DECODER_INST_n_6,
+      \addr_count_reg[0]_0\ => DECODER_INST_n_5,
       \out\ => bus_clk,
       probe_width_int(0) => probe_width_int(1)
     );
@@ -8301,7 +8396,8 @@ entity design_2_vio_0_0 is
     probe_in0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe_out0 : out STD_LOGIC_VECTOR ( 3 downto 0 );
     probe_out1 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    probe_out2 : out STD_LOGIC_VECTOR ( 0 to 0 )
+    probe_out2 : out STD_LOGIC_VECTOR ( 0 to 0 );
+    probe_out3 : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of design_2_vio_0_0 : entity is true;
@@ -8488,7 +8584,6 @@ architecture STRUCTURE of design_2_vio_0_0 is
   signal NLW_inst_probe_out27_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_probe_out28_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_probe_out29_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_inst_probe_out3_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_probe_out30_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_probe_out31_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_inst_probe_out32_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -8603,7 +8698,7 @@ architecture STRUCTURE of design_2_vio_0_0 is
   attribute C_NUM_PROBE_IN : integer;
   attribute C_NUM_PROBE_IN of inst : label is 1;
   attribute C_NUM_PROBE_OUT : integer;
-  attribute C_NUM_PROBE_OUT of inst : label is 3;
+  attribute C_NUM_PROBE_OUT of inst : label is 4;
   attribute C_PIPE_IFACE : integer;
   attribute C_PIPE_IFACE of inst : label is 0;
   attribute C_PROBE_IN0_WIDTH : integer;
@@ -11191,7 +11286,7 @@ architecture STRUCTURE of design_2_vio_0_0 is
   attribute LC_TOTAL_PROBE_IN_WIDTH : integer;
   attribute LC_TOTAL_PROBE_IN_WIDTH of inst : label is 1;
   attribute LC_TOTAL_PROBE_OUT_WIDTH : integer;
-  attribute LC_TOTAL_PROBE_OUT_WIDTH of inst : label is 6;
+  attribute LC_TOTAL_PROBE_OUT_WIDTH of inst : label is 7;
   attribute syn_noprune : string;
   attribute syn_noprune of inst : label is "1";
 begin
@@ -11633,7 +11728,7 @@ inst: entity work.design_2_vio_0_0_vio_v3_0_19_vio
       probe_out27(0) => NLW_inst_probe_out27_UNCONNECTED(0),
       probe_out28(0) => NLW_inst_probe_out28_UNCONNECTED(0),
       probe_out29(0) => NLW_inst_probe_out29_UNCONNECTED(0),
-      probe_out3(0) => NLW_inst_probe_out3_UNCONNECTED(0),
+      probe_out3(0) => probe_out3(0),
       probe_out30(0) => NLW_inst_probe_out30_UNCONNECTED(0),
       probe_out31(0) => NLW_inst_probe_out31_UNCONNECTED(0),
       probe_out32(0) => NLW_inst_probe_out32_UNCONNECTED(0),

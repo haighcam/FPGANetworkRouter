@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar  6 16:04:02 2022
--- Host        : BA3155WS04 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/haighcam/ECE532/bd/design_3/ip/design_3_axi4stream_vip_0_0/design_3_axi4stream_vip_0_0_sim_netlist.vhdl
+-- Date        : Mon Mar  7 14:13:08 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top design_3_axi4stream_vip_0_0 -prefix
+--               design_3_axi4stream_vip_0_0_ design_3_axi4stream_vip_0_0_sim_netlist.vhdl
 -- Design      : design_3_axi4stream_vip_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -56,8 +56,6 @@ entity design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top is
   attribute C_AXI4STREAM_USER_WIDTH of design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top : entity is 0;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top : entity is "axi4stream_vip_v1_1_4_top";
 end design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top;
 
 architecture STRUCTURE of design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top is

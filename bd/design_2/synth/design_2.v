@@ -1,8 +1,8 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Sun Mar  6 20:47:45 2022
-//Host        : BA3155WS04 running 64-bit major release  (build 9200)
+//Date        : Mon Mar  7 17:23:12 2022
+//Host        : BA3145WS20 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
 //Purpose     : IP block netlist
@@ -44,6 +44,7 @@ module design_2
   wire axi_ethernet_0_m_axis_rxd_TREADY;
   wire axi_ethernet_0_m_axis_rxd_TVALID;
   wire [31:0]axi_ethernet_0_m_axis_rxs_TDATA;
+  wire [3:0]axi_ethernet_0_m_axis_rxs_TKEEP;
   wire axi_ethernet_0_m_axis_rxs_TLAST;
   wire axi_ethernet_0_m_axis_rxs_TREADY;
   wire axi_ethernet_0_m_axis_rxs_TVALID;
@@ -73,22 +74,23 @@ module design_2
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_src_addr;
   wire [31:0]decoder_0_m_axis_packet_TDATA;
+  wire [3:0]decoder_0_m_axis_packet_TKEEP;
   wire decoder_0_m_axis_packet_TLAST;
   wire decoder_0_m_axis_packet_TREADY;
-  wire [3:0]decoder_0_m_axis_packet_TSTRB;
   wire decoder_0_m_axis_packet_TVALID;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_src_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_dest_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_src_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_valid;
   wire [31:0]encoder_0_m_axis_txc_TDATA;
+  wire [3:0]encoder_0_m_axis_txc_TKEEP;
   wire encoder_0_m_axis_txc_TLAST;
   wire encoder_0_m_axis_txc_TREADY;
   wire encoder_0_m_axis_txc_TVALID;
   wire [31:0]encoder_0_m_axis_txd_TDATA;
+  wire [3:0]encoder_0_m_axis_txd_TKEEP;
   wire encoder_0_m_axis_txd_TLAST;
   wire encoder_0_m_axis_txd_TREADY;
-  wire [3:0]encoder_0_m_axis_txd_TSTRB;
   wire encoder_0_m_axis_txd_TVALID;
   wire encoder_0_ready;
   wire ethernet_controller_0_control_ready;
@@ -115,7 +117,7 @@ module design_2
   wire [3:0]vio_0_probe_out0;
   wire [0:0]vio_0_probe_out1;
   wire [0:0]vio_0_probe_out2;
-  wire [0:0]xlconstant_0_dout;
+  wire [0:0]vio_0_probe_out3;
 
   assign axi_ethernet_0_mdio_MDIO_I = eth_mdio_mdc_mdio_i;
   assign axi_ethernet_0_rgmii_RD = eth_rgmii_rd[3:0];
@@ -143,6 +145,7 @@ module design_2
         .m_axis_rxd_tready(axi_ethernet_0_m_axis_rxd_TREADY),
         .m_axis_rxd_tvalid(axi_ethernet_0_m_axis_rxd_TVALID),
         .m_axis_rxs_tdata(axi_ethernet_0_m_axis_rxs_TDATA),
+        .m_axis_rxs_tkeep(axi_ethernet_0_m_axis_rxs_TKEEP),
         .m_axis_rxs_tlast(axi_ethernet_0_m_axis_rxs_TLAST),
         .m_axis_rxs_tready(axi_ethernet_0_m_axis_rxs_TREADY),
         .m_axis_rxs_tvalid(axi_ethernet_0_m_axis_rxs_TVALID),
@@ -178,12 +181,12 @@ module design_2
         .s_axi_wstrb(ethernet_controller_0_m_axi_WSTRB),
         .s_axi_wvalid(ethernet_controller_0_m_axi_WVALID),
         .s_axis_txc_tdata(encoder_0_m_axis_txc_TDATA),
-        .s_axis_txc_tkeep({1'b1,1'b1,1'b1,1'b1}),
+        .s_axis_txc_tkeep(encoder_0_m_axis_txc_TKEEP),
         .s_axis_txc_tlast(encoder_0_m_axis_txc_TLAST),
         .s_axis_txc_tready(encoder_0_m_axis_txc_TREADY),
         .s_axis_txc_tvalid(encoder_0_m_axis_txc_TVALID),
         .s_axis_txd_tdata(encoder_0_m_axis_txd_TDATA),
-        .s_axis_txd_tkeep({1'b1,1'b1,1'b1,1'b1}),
+        .s_axis_txd_tkeep(encoder_0_m_axis_txd_TKEEP),
         .s_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .s_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
         .s_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID));
@@ -208,20 +211,20 @@ module design_2
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_packet_tdata(decoder_0_m_axis_packet_TDATA),
+        .m_axis_packet_tkeep(decoder_0_m_axis_packet_TKEEP),
         .m_axis_packet_tlast(decoder_0_m_axis_packet_TLAST),
         .m_axis_packet_tready(decoder_0_m_axis_packet_TREADY),
-        .m_axis_packet_tstrb(decoder_0_m_axis_packet_TSTRB),
         .m_axis_packet_tvalid(decoder_0_m_axis_packet_TVALID),
         .ready(encoder_0_ready),
         .s_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
+        .s_axis_rxd_tkeep(axi_ethernet_0_m_axis_rxd_TKEEP),
         .s_axis_rxd_tlast(axi_ethernet_0_m_axis_rxd_TLAST),
         .s_axis_rxd_tready(axi_ethernet_0_m_axis_rxd_TREADY),
-        .s_axis_rxd_tstrb({1'b1,1'b1,1'b1,1'b1}),
         .s_axis_rxd_tvalid(axi_ethernet_0_m_axis_rxd_TVALID),
         .s_axis_rxs_tdata(axi_ethernet_0_m_axis_rxs_TDATA),
+        .s_axis_rxs_tkeep(axi_ethernet_0_m_axis_rxs_TKEEP),
         .s_axis_rxs_tlast(axi_ethernet_0_m_axis_rxs_TLAST),
         .s_axis_rxs_tready(axi_ethernet_0_m_axis_rxs_TREADY),
-        .s_axis_rxs_tstrb({1'b1,1'b1,1'b1,1'b1}),
         .s_axis_rxs_tvalid(axi_ethernet_0_m_axis_rxs_TVALID),
         .src_addr(decoder_0_src_addr),
         .udp_dest_port(decoder_0_udp_dest_port),
@@ -237,24 +240,25 @@ module design_2
         .alt_udp_src_port(decoder_0_alt_udp_dest_port),
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .dest_addr(decoder_0_dest_addr),
-        .drop(xlconstant_0_dout),
+        .drop(vio_0_probe_out3),
         .encapsulated(decoder_0_encapsualted),
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_txc_tdata(encoder_0_m_axis_txc_TDATA),
+        .m_axis_txc_tkeep(encoder_0_m_axis_txc_TKEEP),
         .m_axis_txc_tlast(encoder_0_m_axis_txc_TLAST),
         .m_axis_txc_tready(encoder_0_m_axis_txc_TREADY),
         .m_axis_txc_tvalid(encoder_0_m_axis_txc_TVALID),
         .m_axis_txd_tdata(encoder_0_m_axis_txd_TDATA),
+        .m_axis_txd_tkeep(encoder_0_m_axis_txd_TKEEP),
         .m_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .m_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
-        .m_axis_txd_tstrb(encoder_0_m_axis_txd_TSTRB),
         .m_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID),
         .ready(encoder_0_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
+        .s_axis_tkeep(decoder_0_m_axis_packet_TKEEP),
         .s_axis_tlast(decoder_0_m_axis_packet_TLAST),
         .s_axis_tready(decoder_0_m_axis_packet_TREADY),
-        .s_axis_tstrb(decoder_0_m_axis_packet_TSTRB),
         .s_axis_tvalid(decoder_0_m_axis_packet_TVALID),
         .src_addr(decoder_0_src_addr),
         .udp_dest_port(decoder_0_udp_dest_port),
@@ -315,11 +319,22 @@ module design_2
        (.clk(clk_wiz_1_clk_out1),
         .probe0(encoder_0_m_axis_txd_TREADY),
         .probe1(encoder_0_m_axis_txd_TDATA),
-        .probe2(encoder_0_m_axis_txd_TSTRB),
+        .probe2({1'b1,1'b1,1'b1,1'b1}),
         .probe3(encoder_0_m_axis_txd_TVALID),
         .probe4(encoder_0_m_axis_txd_TLAST),
         .probe5(1'b0),
-        .probe6({1'b1,1'b1,1'b1,1'b1}),
+        .probe6(encoder_0_m_axis_txd_TKEEP),
+        .probe7(1'b0),
+        .probe8(1'b0));
+  design_2_ila_2_0 ila_3
+       (.clk(clk_wiz_1_clk_out1),
+        .probe0(encoder_0_m_axis_txc_TREADY),
+        .probe1(encoder_0_m_axis_txc_TDATA),
+        .probe2({1'b1,1'b1,1'b1,1'b1}),
+        .probe3(encoder_0_m_axis_txc_TVALID),
+        .probe4(encoder_0_m_axis_txc_TLAST),
+        .probe5(1'b0),
+        .probe6(encoder_0_m_axis_txc_TKEEP),
         .probe7(1'b0),
         .probe8(1'b0));
   design_2_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_100M
@@ -334,7 +349,6 @@ module design_2
         .probe_in0(ethernet_controller_0_control_ready),
         .probe_out0(vio_0_probe_out0),
         .probe_out1(vio_0_probe_out1),
-        .probe_out2(vio_0_probe_out2));
-  design_2_xlconstant_0_0 xlconstant_0
-       (.dout(xlconstant_0_dout));
+        .probe_out2(vio_0_probe_out2),
+        .probe_out3(vio_0_probe_out3));
 endmodule

@@ -1,22 +1,24 @@
 {
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port drop -pg 1 -y 310 -defaultsOSRD
-preplace port aclk -pg 1 -y 60 -defaultsOSRD
-preplace port aresetn -pg 1 -y 80 -defaultsOSRD
-preplace inst decoder_0 -pg 1 -lvl 2 -y 110 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -y 180 -defaultsOSRD
-preplace inst encoder_0 -pg 1 -lvl 3 -y 180 -defaultsOSRD
-preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 70 -defaultsOSRD
+preplace port drop -pg 1 -y 260 -defaultsOSRD
+preplace port m_axis_txd_tready_0 -pg 1 -y 280 -defaultsOSRD
+preplace port aclk -pg 1 -y 20 -defaultsOSRD
+preplace port aresetn -pg 1 -y 90 -defaultsOSRD
+preplace inst decoder_0 -pg 1 -lvl 2 -y 120 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -y 190 -defaultsOSRD
+preplace inst encoder_0 -pg 1 -lvl 3 -y 150 -defaultsOSRD
+preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 80 -defaultsOSRD
 preplace netloc axi4stream_vip_0_M_AXIS 1 1 1 N
-preplace netloc drop_1 1 0 3 NJ 310 NJ 310 520J
-preplace netloc decoder_0_m_axis_packet 1 2 1 510
-preplace netloc xlconstant_0_dout 1 1 1 180
-preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 -30 250 200 220 510J
-preplace netloc decoder_0_packet_header 1 2 1 500
-preplace netloc aclk_1 1 0 3 -20 240 190 210 500J
-levelinfo -pg 1 -50 80 350 670 820 -top 0 -bot 560
+preplace netloc m_axis_txd_tready_0_1 1 0 4 NJ 280 NJ 280 NJ 280 880
+preplace netloc drop_1 1 0 3 NJ 260 NJ 260 550J
+preplace netloc decoder_0_m_axis_packet 1 2 1 N
+preplace netloc xlconstant_0_dout 1 1 1 220J
+preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 20 250 230 220 540J
+preplace netloc decoder_0_packet_header 1 2 1 N
+preplace netloc aclk_1 1 0 3 20 10 230 20 540J
+levelinfo -pg 1 0 120 390 720 900 -top 0 -bot 300
 "
 }
 {

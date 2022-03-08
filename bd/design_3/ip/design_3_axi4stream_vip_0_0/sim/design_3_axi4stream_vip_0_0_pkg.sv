@@ -12,15 +12,15 @@ import axi4stream_vip_pkg::*;
 // environment.
 ///////////////////////////////////////////////////////////////////////////
       parameter design_3_axi4stream_vip_0_0_VIP_INTERFACE_MODE     = 0;
-      parameter design_3_axi4stream_vip_0_0_VIP_SIGNAL_SET         = 8'b00010111;
+      parameter design_3_axi4stream_vip_0_0_VIP_SIGNAL_SET         = 8'b00011011;
       parameter design_3_axi4stream_vip_0_0_VIP_DATA_WIDTH         = 32;
       parameter design_3_axi4stream_vip_0_0_VIP_ID_WIDTH           = 0;
       parameter design_3_axi4stream_vip_0_0_VIP_DEST_WIDTH         = 0;
       parameter design_3_axi4stream_vip_0_0_VIP_USER_WIDTH         = 0;
       parameter design_3_axi4stream_vip_0_0_VIP_USER_BITS_PER_BYTE = 0;
       parameter design_3_axi4stream_vip_0_0_VIP_HAS_TREADY         = 1;
-      parameter design_3_axi4stream_vip_0_0_VIP_HAS_TSTRB          = 1;
-      parameter design_3_axi4stream_vip_0_0_VIP_HAS_TKEEP          = 0;
+      parameter design_3_axi4stream_vip_0_0_VIP_HAS_TSTRB          = 0;
+      parameter design_3_axi4stream_vip_0_0_VIP_HAS_TKEEP          = 1;
       parameter design_3_axi4stream_vip_0_0_VIP_HAS_TLAST          = 1;
       parameter design_3_axi4stream_vip_0_0_VIP_HAS_ACLKEN         = 0;
       parameter design_3_axi4stream_vip_0_0_VIP_HAS_ARESETN        = 1;

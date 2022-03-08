@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:encoder:1.1
-// IP Revision: 5
+// IP Revision: 11
 
 `timescale 1ns/1ps
 
@@ -57,17 +57,17 @@ module design_2_encoder_0_0 (
   aclk,
   aresetn,
   m_axis_txc_tdata,
-  m_axis_txc_tstrb,
+  m_axis_txc_tkeep,
   m_axis_txc_tlast,
   m_axis_txc_tvalid,
   m_axis_txc_tready,
   m_axis_txd_tdata,
-  m_axis_txd_tstrb,
+  m_axis_txd_tkeep,
   m_axis_txd_tlast,
   m_axis_txd_tvalid,
   m_axis_txd_tready,
   s_axis_tdata,
-  s_axis_tstrb,
+  s_axis_tkeep,
   s_axis_tlast,
   s_axis_tvalid,
   dest_addr,
@@ -89,7 +89,7 @@ module design_2_encoder_0_0 (
   s_axis_tready
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, ASSOCIATED_BUSIF m_axis_txd:m_axis_txc:s_axis, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aclk, ASSOCIATED_RESET aresetn, ASSOCIATED_BUSIF s_axis_packet:m_axis_txc:m_axis_txd, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 aclk CLK" *)
 input wire aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -97,33 +97,33 @@ input wire aclk;
 input wire aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TDATA" *)
 output wire [31 : 0] m_axis_txc_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TSTRB" *)
-output wire [3 : 0] m_axis_txc_tstrb;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TKEEP" *)
+output wire [3 : 0] m_axis_txc_tkeep;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TLAST" *)
 output wire m_axis_txc_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TVALID" *)
 output wire m_axis_txc_tvalid;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis_txc, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis_txc, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txc TREADY" *)
 input wire m_axis_txc_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TDATA" *)
 output wire [31 : 0] m_axis_txd_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TSTRB" *)
-output wire [3 : 0] m_axis_txd_tstrb;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TKEEP" *)
+output wire [3 : 0] m_axis_txd_tkeep;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TLAST" *)
 output wire m_axis_txd_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TVALID" *)
 output wire m_axis_txd_tvalid;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis_txd, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis_txd, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_txd TREADY" *)
 input wire m_axis_txd_tready;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TDATA" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TDATA" *)
 input wire [31 : 0] s_axis_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TSTRB" *)
-input wire [3 : 0] s_axis_tstrb;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TLAST" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TKEEP" *)
+input wire [3 : 0] s_axis_tkeep;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TLAST" *)
 input wire s_axis_tlast;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TVALID" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TVALID" *)
 input wire s_axis_tvalid;
 (* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header dest_addr" *)
 input wire [47 : 0] dest_addr;
@@ -156,27 +156,27 @@ input wire valid;
 (* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ready" *)
 output wire ready;
 input wire drop;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis TREADY" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_packet, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TREADY" *)
 output wire s_axis_tready;
 
-  encoder_v1_0 #(
-    .FIFO_SIZE(1024)
+  encoder #(
+    .FIFO_SIZE_WORDS(256)
   ) inst (
     .aclk(aclk),
     .aresetn(aresetn),
     .m_axis_txc_tdata(m_axis_txc_tdata),
-    .m_axis_txc_tstrb(m_axis_txc_tstrb),
+    .m_axis_txc_tkeep(m_axis_txc_tkeep),
     .m_axis_txc_tlast(m_axis_txc_tlast),
     .m_axis_txc_tvalid(m_axis_txc_tvalid),
     .m_axis_txc_tready(m_axis_txc_tready),
     .m_axis_txd_tdata(m_axis_txd_tdata),
-    .m_axis_txd_tstrb(m_axis_txd_tstrb),
+    .m_axis_txd_tkeep(m_axis_txd_tkeep),
     .m_axis_txd_tlast(m_axis_txd_tlast),
     .m_axis_txd_tvalid(m_axis_txd_tvalid),
     .m_axis_txd_tready(m_axis_txd_tready),
     .s_axis_tdata(s_axis_tdata),
-    .s_axis_tstrb(s_axis_tstrb),
+    .s_axis_tkeep(s_axis_tkeep),
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tvalid(s_axis_tvalid),
     .dest_addr(dest_addr),

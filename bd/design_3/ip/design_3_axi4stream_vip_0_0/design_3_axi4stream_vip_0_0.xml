@@ -132,7 +132,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HAS_TSTRB</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.HAS_TSTRB">1</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.HAS_TSTRB">0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -141,7 +141,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HAS_TKEEP</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.HAS_TKEEP">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.HAS_TKEEP">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -638,7 +638,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b16d1963</spirit:value>
+            <spirit:value>9:53945084</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -654,11 +654,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 01:50:43 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 04:52:27 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b16d1963</spirit:value>
+            <spirit:value>9:53945084</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -672,11 +672,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 21:04:02 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 22:23:27 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:8fbc8203</spirit:value>
+            <spirit:value>9:ab907290</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1081,7 +1081,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.m_axis_tstrb" xilinx:dependency="( (spirit:decode(id(&apos;PARAM_VALUE.INTERFACE_MODE&apos;))!= &quot;SLAVE&quot;) and (spirit decode(id(&apos;PARAM_VALUE.HAS_TSTRB&apos;)) == 1))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.m_axis_tstrb" xilinx:dependency="( (spirit:decode(id(&apos;PARAM_VALUE.INTERFACE_MODE&apos;))!= &quot;SLAVE&quot;) and (spirit decode(id(&apos;PARAM_VALUE.HAS_TSTRB&apos;)) == 1))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -1105,7 +1105,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.m_axis_tkeep" xilinx:dependency="( (spirit:decode(id(&apos;PARAM_VALUE.INTERFACE_MODE&apos;))!= &quot;SLAVE&quot;) and (spirit decode(id(&apos;PARAM_VALUE.HAS_TKEEP&apos;)) == 1) )">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.m_axis_tkeep" xilinx:dependency="( (spirit:decode(id(&apos;PARAM_VALUE.INTERFACE_MODE&apos;))!= &quot;SLAVE&quot;) and (spirit decode(id(&apos;PARAM_VALUE.HAS_TKEEP&apos;)) == 1) )">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -1210,7 +1210,7 @@
     <spirit:modelParameters>
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>C_AXI4STREAM_SIGNAL_SET</spirit:name>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_AXI4STREAM_SIGNAL_SET" spirit:bitStringLength="32">0b00000000000000000000000000010111</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_AXI4STREAM_SIGNAL_SET" spirit:bitStringLength="32">0b00000000000000000000000000011011</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_AXI4STREAM_INTERFACE_MODE</spirit:name>
@@ -1441,12 +1441,12 @@
     <spirit:parameter>
       <spirit:name>HAS_TSTRB</spirit:name>
       <spirit:displayName>ENABLE TSTRB</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.HAS_TSTRB" spirit:choiceRef="choice_pairs_2d96f706" spirit:order="10">1</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.HAS_TSTRB" spirit:choiceRef="choice_pairs_2d96f706" spirit:order="10">0</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>HAS_TKEEP</spirit:name>
       <spirit:displayName>ENABLE TKEEP</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.HAS_TKEEP" spirit:choiceRef="choice_pairs_2d96f706" spirit:order="11">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.HAS_TKEEP" spirit:choiceRef="choice_pairs_2d96f706" spirit:order="11">1</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>HAS_TLAST</spirit:name>

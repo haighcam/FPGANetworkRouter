@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar  6 20:16:35 2022
--- Host        : BA3155WS04 running 64-bit major release  (build 9200)
+-- Date        : Mon Mar  7 14:15:07 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top design_2_ila_1_0 -prefix
 --               design_2_ila_1_0_ design_2_ila_1_1_stub.vhdl
 -- Design      : design_2_ila_1_1

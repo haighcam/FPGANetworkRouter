@@ -39,7 +39,7 @@
 `timescale 1ps/1ps
 
 module gen_packet #(
-    parameter integer FIFO_SIZE = 1024
+    parameter integer FIFO_SIZE_WORDS = 256
 ) (
     input [47:0] in_dest_addr,
     input [47:0] in_src_addr,
@@ -85,7 +85,7 @@ begin
         bit_depth = bit_depth >> 1;
 end
 endfunction
-
+localparam  FIFO_SIZE = FIFO_SIZE_WORDS*4;
 localparam  FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
 localparam  IP_HEADER_LEN = 20,
             UDP_HEADER_LEN = 8,
@@ -95,12 +95,11 @@ localparam  WAIT_FOR_PACKET = 1'd0,
 
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
 reg [47:0] dest_addr, src_addr, alt_src_addr, alt_dest_addr;
-reg [31:0] ip_dest_addr, ip_src_addr, alt_ip_dest_addr, alt_ip_src_addr;
+reg [31:0] ip_dest_addr, ip_src_addr, alt_ip_dest_addr, alt_ip_src_addr, data;
 reg [15:0] udp_dest_port, udp_src_port, alt_udp_dest_port, alt_udp_src_port, txc_cnt, txc_cnt_int;
 reg encapsulated, m_axis_txd_tvalid_int, m_axis_txd_tlast_int, m_axis_txc_tvalid_int, m_axis_txc_tlast_int;
 reg flush_fifo_int, mst_exec_state, send_header, valid_int;
 
-wire [7:0] data_fifo [FIFO_SIZE-1:0];
 wire [15:0] ip_checksum_data [8:0];
 wire [15:0] udp_checksum_data [2:0];
 wire [FIFO_ADDR_SIZE-1:0] data_len;
@@ -109,7 +108,7 @@ wire packet_ready, pkt_last_word, txc_last_word, flush_fifo;
 
 assign flush_fifo = flush_fifo_int || in_flush;
 
-s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
+s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
 	.aresetn(axis_resetn),
     .s_axis_tdata(s_axis_tdata),
@@ -118,7 +117,8 @@ s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tready(s_axis_tready),
     .flush(flush_fifo),
-    .data_fifo(data_fifo),
+    .read_ptr(send_header ? 0 : send_ptr),
+    .data(data),
     .data_len(data_len),
     .ready(packet_ready)
 );
@@ -213,103 +213,108 @@ assign m_axis_txd_tvalid = m_axis_txd_tvalid_int;
 always @ (posedge axis_clk) begin
     if (!axis_resetn)
         m_axis_txd_tdata <= 0;
-    else if ((mst_exec_state == WAIT_FOR_PACKET) && packet_ready && valid_int) begin 
+    else if (mst_exec_state == WAIT_FOR_PACKET) begin 
 		send_ptr <= 0;
 		send_header <= 1;
-	end else if ((mst_exec_state == SEND_PACKET) && m_axis_txd_tready) begin
+	end else if ((mst_exec_state == SEND_PACKET)) begin
         if (send_header)
             case (send_ptr)
                 // eth header
                 0 : begin
                     m_axis_txd_tdata <= {dest_addr[23:16], dest_addr[31:24], dest_addr[39:32], dest_addr[47:40]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 1 : begin
                     m_axis_txd_tdata <= {src_addr[39:32], src_addr[47:40], dest_addr[7:0], dest_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 2 : begin
                     m_axis_txd_tdata <=  {src_addr[7:0], src_addr[15:8], src_addr[23:16], src_addr[31:24]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 // ip header
                 3 : begin
                     m_axis_txd_tdata <= {8'h00, 8'h45, cur_eth_pkt_size[7:0],  cur_eth_pkt_size[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 4 : begin
                     m_axis_txd_tdata <= {8'h00, 8'h00, cur_eth_pkt_size[7:0],  cur_eth_pkt_size[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 5 : begin
                     m_axis_txd_tdata <= {8'h11,  8'hFF, 8'h00, 8'h00}; // 8'h11 udp
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 6 : begin
                     m_axis_txd_tdata <= {ip_src_addr[23:16], ip_src_addr[31: 24], ip_header_checksum[7:0],  ip_header_checksum[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 7 : begin
                     m_axis_txd_tdata <= {ip_dest_addr[23:16], ip_dest_addr[31: 24], ip_src_addr[7:0],  ip_src_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 // udp header
                 8 : begin
                     m_axis_txd_tdata <= {udp_src_port[7:0],  udp_src_port[15:8], ip_dest_addr[7:0],  ip_dest_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 9 : begin
                     m_axis_txd_tdata <= {cur_udp_pkt_size[7:0],  cur_udp_pkt_size[15:8], udp_dest_port[7:0],  udp_dest_port[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 // encapsulated header ?
                 10 : begin
                     if (encapsulated) begin
                         m_axis_txd_tdata <= {8'h00,  8'h40, udp_header_checksum[7:0],  udp_header_checksum[15:8]};
-                        send_ptr <= send_ptr + 1;
+						if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                     end else begin
-                        m_axis_txd_tdata <= {data_fifo[1],  data_fifo[0], udp_header_checksum[7:0],  udp_header_checksum[15:8]};
-                        send_ptr <= 2;
-                        send_header <= 0;
+                        m_axis_txd_tdata <= {data[15:8],  data[7:0], udp_header_checksum[7:0],  udp_header_checksum[15:8]};
+						if (m_axis_txd_tready) begin
+							send_ptr <= 2;
+							send_header <= 0;
+						end
                     end
                 end
                 // skipped if no encapsulated header
                 11 : begin
                     m_axis_txd_tdata <= {alt_src_addr[39:32],  alt_src_addr[47:40], 8'h59,  8'h65};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 12 : begin
                     m_axis_txd_tdata <= {alt_src_addr[7:0],  alt_src_addr[15:8], alt_src_addr[23:16],  alt_src_addr[31:24]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 13 : begin
                     m_axis_txd_tdata <= {alt_dest_addr[23:16],  alt_dest_addr[31:24], alt_dest_addr[39:32],  alt_dest_addr[47:40]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 14 : begin
                     m_axis_txd_tdata <= {alt_ip_src_addr[23:16],  alt_ip_src_addr[31:24], alt_dest_addr[7:0],  alt_dest_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 15 : begin
                     m_axis_txd_tdata <= {alt_ip_dest_addr[23:16],  alt_ip_dest_addr[31:24], alt_ip_src_addr[7:0],  alt_ip_src_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 16 : begin
                     m_axis_txd_tdata <= {alt_udp_src_port[7:0],  alt_udp_src_port[15:8], alt_ip_dest_addr[7:0],  alt_ip_dest_addr[15:8]};
-                    send_ptr <= send_ptr + 1;
+                    if (m_axis_txd_tready) send_ptr <= send_ptr + 1;
                 end
                 17 : begin
-                    m_axis_txd_tdata <= {data_fifo[1],  data_fifo[0], alt_udp_dest_port[7:0],  alt_udp_dest_port[15:8]};
-                    send_ptr <= 2;
-                    send_header <= 0;
+                    m_axis_txd_tdata <= {data[15:8],  data[7:0], alt_udp_dest_port[7:0],  alt_udp_dest_port[15:8]};
+                    if (m_axis_txd_tready) begin
+						send_ptr <= 2;
+						send_header <= 0;
+					end
                 end
             endcase
         else begin
-            m_axis_txd_tdata <= {data_fifo[send_ptr+3],  data_fifo[send_ptr+2], data_fifo[send_ptr+1],  data_fifo[send_ptr]};
-            if (!pkt_last_word)
-				send_ptr <= send_ptr + 4;
-			else
-				send_ptr <= 0;
+            m_axis_txd_tdata <= data;
+            if (m_axis_txd_tready)
+				if (!pkt_last_word)
+					send_ptr <= send_ptr + 4;
+				else
+					send_ptr <= 0;
         end
     end
 end
@@ -348,13 +353,12 @@ end
 
 always @ (*) begin
     txc_cnt_int = txc_cnt;
-    if (mst_exec_state == SEND_PACKET) begin
+    if ((mst_exec_state == WAIT_FOR_PACKET) && packet_ready && valid_int)
         txc_cnt_int = 1;
-    end else if (m_axis_txc_tvalid_int && m_axis_txc_tready && m_axis_txc_tlast_int) begin
+    else if (m_axis_txc_tvalid_int && m_axis_txc_tready && m_axis_txc_tlast_int)
         txc_cnt_int = 0;
-    end else if (m_axis_txc_tvalid_int && m_axis_txc_tready) begin
+    else if (m_axis_txc_tvalid_int && m_axis_txc_tready)
         txc_cnt_int = txc_cnt + 1;
-    end
 end
 
 always @ (posedge axis_clk) begin
@@ -368,24 +372,18 @@ always @ (posedge axis_clk) begin
         m_axis_txc_tlast_int <= txc_last_word;
         m_axis_txc_tkeep <= 4'hF;
         case (txc_cnt_int)
-            1: begin
+            1:
                 m_axis_txc_tdata <= 32'h1a5aa5a5;
-            end
-            2: begin
+            2:
                 m_axis_txc_tdata <= 32'h25a55a5a;
-            end
-            3: begin
+            3:
                 m_axis_txc_tdata <= 32'h3a5aa5a5;
-            end
-            4: begin
+            4:
                 m_axis_txc_tdata <= 32'h45a55a5a;
-            end
-            5: begin
+            5:
                 m_axis_txc_tdata <= 32'h5a5aa5a5;
-            end
-            6: begin
+            6:
                 m_axis_txc_tdata <= 32'h65a55a5a;
-            end
             default m_axis_txc_tdata <= m_axis_txc_tdata;
         endcase
     end

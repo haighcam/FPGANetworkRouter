@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar  6 16:04:02 2022
--- Host        : BA3155WS04 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               C:/Users/haighcam/ECE532/bd/design_3/ip/design_3_axi4stream_vip_0_0/design_3_axi4stream_vip_0_0_stub.vhdl
+-- Date        : Mon Mar  7 14:13:08 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub -rename_top design_3_axi4stream_vip_0_0 -prefix
+--               design_3_axi4stream_vip_0_0_ design_3_axi4stream_vip_0_0_stub.vhdl
 -- Design      : design_3_axi4stream_vip_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a200tsbg484-1

@@ -39,7 +39,7 @@
 `timescale 1ps/1ps
 
 module parse_packet #(
-    parameter integer FIFO_SIZE = 1024
+    parameter integer FIFO_SIZE_WORDS = 256
 ) (
     output reg [47:0] dest_addr,
     output reg [47:0] src_addr,
@@ -78,22 +78,22 @@ begin
         bit_depth = bit_depth >> 1;
 end
 endfunction
-
+localparam FIFO_SIZE = FIFO_SIZE_WORDS * 4;
 localparam FIFO_ADDR_SIZE = clogb2(FIFO_SIZE-1);
 localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
                     SEND_PACKET = 2'd1,
                     WAIT = 2'd2;
 
 reg [1:0] mst_exec_state;
-reg flush_fifo;
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
-reg m_axis_tvalid_int, m_axis_tlast_int;
+reg [31:0] nvgre_data;
+reg m_axis_tvalid_int, m_axis_tlast_int, flush_fifo;
 
-wire [7:0] data_fifo [FIFO_SIZE-1:0];
 wire [FIFO_ADDR_SIZE-1:0] data_len;
+wire [31:0] data, wdata;
 wire packet_ready, pkt_last_word, nvgre;
 
-s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
+s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
 	.aresetn(axis_resetn),
     .s_axis_tdata(s_axis_tdata),
@@ -102,12 +102,67 @@ s_axis_fifo #(.FIFO_SIZE(FIFO_SIZE),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tready(s_axis_tready),
     .flush(flush_fifo),
-    .data_fifo(data_fifo),
+    .read_ptr(send_ptr),
+    .data(data),
+    .write_data(wdata),
     .data_len(data_len),
     .ready(packet_ready)
 );
 
-assign nvgre = {data_fifo[42], data_fifo[43], data_fifo[44], data_fifo[45]} == 32'h40006559;
+assign nvgre = nvgre_data == 32'h40006559;
+
+always @(posedge axis_clk) begin
+    if ((mst_exec_state <= WAIT_FOR_PACKET) && packet_ready)
+        if (nvgre) begin
+            dest_addr <= alt_dest_addr;
+            src_addr <= alt_src_addr;
+            ip_src_addr <= alt_ip_src_addr;
+            ip_dest_addr <= alt_ip_dest_addr;
+            udp_src_port <= alt_udp_src_port;
+            udp_dest_port <= alt_udp_dest_port;
+            alt_dest_addr <= dest_addr;
+            alt_src_addr <= src_addr;
+            alt_ip_src_addr <= ip_src_addr;
+            alt_ip_dest_addr <= ip_dest_addr;
+            alt_udp_src_port <= udp_src_port;
+            alt_udp_dest_port <= udp_dest_port;
+            encapsualted <= 1'b1;
+        end else
+            encapsualted <= 1'b0;
+    else if (mst_exec_state <= WAIT_FOR_PACKET)
+    case (data_len)
+		0: begin 
+			dest_addr <= 48'd0;
+			src_addr <= 48'd0;
+            ip_src_addr <= 32'd0;
+            ip_dest_addr <= 32'd0;
+            udp_src_port <= 16'd0;
+            udp_dest_port <= 16'd0;
+            alt_dest_addr <= 48'd0;
+            alt_src_addr <= 48'd0;
+            alt_ip_src_addr <= 32'd0;
+            alt_ip_dest_addr <= 32'd0;
+            alt_udp_src_port <= 16'd0;
+            alt_udp_dest_port <= 16'd0;
+            nvgre_data <= 32'd0;
+		end
+        4: dest_addr[47:16] <= wdata;
+        8: {dest_addr[15:0], src_addr[47:32]} <= wdata;
+        12: src_addr[31:0] <= wdata;
+        28: ip_src_addr[31:16] <= wdata[15:0];
+        32: {ip_src_addr[15:0], ip_dest_addr[31:16]} <= wdata;
+        36: {ip_dest_addr[15:0], udp_src_port[15:0]} <= wdata;
+        40: {udp_dest_port[15:0]} <= wdata[31:16];
+        44: nvgre_data[31:16] <= wdata[15:0];
+        48: {nvgre_data[15:0], alt_src_addr[47:32]} <= wdata;
+        52: alt_src_addr[31:0] <= wdata;
+        56: alt_dest_addr[47:16] <= wdata;
+        60: {alt_dest_addr[15:0], alt_ip_src_addr[31:16]} <= wdata;
+        64: {alt_ip_src_addr[15:0], alt_ip_dest_addr[31:16]} <= wdata;
+        68: {alt_ip_dest_addr[15:0], alt_udp_src_port[15:0]} <= wdata;
+        72: alt_udp_dest_port[15:0] <= wdata[31:16];
+    endcase
+end
 
 // Control state machine implementation
 always @ (posedge axis_clk) begin
@@ -121,93 +176,6 @@ always @ (posedge axis_clk) begin
             valid <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
         end else begin
-            if (nvgre) begin
-                src_addr[47:40] <= data_fifo[46];
-                src_addr[39:32] <= data_fifo[47];
-                src_addr[31:24] <= data_fifo[48];
-                src_addr[23:16] <= data_fifo[49];
-                src_addr[15:8] <= data_fifo[50];
-                src_addr[7:0] <= data_fifo[51];
-                dest_addr[47:40] <= data_fifo[52];
-                dest_addr[39:32] <= data_fifo[53];
-                dest_addr[31:24] <= data_fifo[54];
-                dest_addr[23:16] <= data_fifo[55];
-                dest_addr[15:8] <= data_fifo[56];
-                dest_addr[7:0] <= data_fifo[57];
-                ip_src_addr[31:24] <= data_fifo[58];
-                ip_src_addr[23:16] <= data_fifo[59];
-                ip_src_addr[15:8] <= data_fifo[60];
-                ip_src_addr[7:0] <= data_fifo[61];
-                ip_dest_addr[31:24] <= data_fifo[62];
-                ip_dest_addr[23:16] <= data_fifo[63];
-                ip_dest_addr[15:8] <= data_fifo[64];
-                ip_dest_addr[7:0] <= data_fifo[65];
-                udp_src_port[15:8] <= data_fifo[66];
-                udp_src_port[7:0] <= data_fifo[67];
-                udp_dest_port[15:8] <= data_fifo[68];
-                udp_dest_port[7:0] <= data_fifo[69];
-
-                alt_dest_addr[47:40] <= data_fifo[0];
-                alt_dest_addr[39:32] <= data_fifo[1];
-                alt_dest_addr[31:24] <= data_fifo[2];
-                alt_dest_addr[23:16] <= data_fifo[3];
-                alt_dest_addr[15:8] <= data_fifo[4];
-                alt_dest_addr[7:0] <= data_fifo[5];
-                alt_src_addr[47:40] <= data_fifo[6];
-                alt_src_addr[39:32] <= data_fifo[7];
-                alt_src_addr[31:24] <= data_fifo[8];
-                alt_src_addr[23:16] <= data_fifo[9];
-                alt_src_addr[15:8] <= data_fifo[10];
-                alt_src_addr[7:0] <= data_fifo[11];
-                alt_ip_src_addr[31:24] <= data_fifo[26];
-                alt_ip_src_addr[23:16] <= data_fifo[27];
-                alt_ip_src_addr[15:8] <= data_fifo[28];
-                alt_ip_src_addr[7:0] <= data_fifo[29];
-                alt_ip_dest_addr[31:24] <= data_fifo[30];
-                alt_ip_dest_addr[23:16] <= data_fifo[31];
-                alt_ip_dest_addr[15:8] <= data_fifo[32];
-                alt_ip_dest_addr[7:0] <= data_fifo[33];
-                alt_udp_src_port[15:8] <= data_fifo[34];
-                alt_udp_src_port[7:0] <= data_fifo[35];
-                alt_udp_dest_port[15:8] <= data_fifo[36];
-                alt_udp_dest_port[7:0] <= data_fifo[37];
-
-                encapsualted <= 1'b1;
-            end else begin
-                dest_addr[47:40] <= data_fifo[0];
-                dest_addr[39:32] <= data_fifo[1];
-                dest_addr[31:24] <= data_fifo[2];
-                dest_addr[23:16] <= data_fifo[3];
-                dest_addr[15:8] <= data_fifo[4];
-                dest_addr[7:0] <= data_fifo[5];
-                src_addr[47:40] <= data_fifo[6];
-                src_addr[39:32] <= data_fifo[7];
-                src_addr[31:24] <= data_fifo[8];
-                src_addr[23:16] <= data_fifo[9];
-                src_addr[15:8] <= data_fifo[10];
-                src_addr[7:0] <= data_fifo[11];
-                ip_src_addr[31:24] <= data_fifo[26];
-                ip_src_addr[23:16] <= data_fifo[27];
-                ip_src_addr[15:8] <= data_fifo[28];
-                ip_src_addr[7:0] <= data_fifo[29];
-                ip_dest_addr[31:24] <= data_fifo[30];
-                ip_dest_addr[23:16] <= data_fifo[31];
-                ip_dest_addr[15:8] <= data_fifo[32];
-                ip_dest_addr[7:0] <= data_fifo[33];
-                udp_src_port[15:8] <= data_fifo[34];
-                udp_src_port[7:0] <= data_fifo[35];
-                udp_dest_port[15:8] <= data_fifo[36];
-                udp_dest_port[7:0] <= data_fifo[37];
-
-                alt_dest_addr <= 48'd0;
-                alt_src_addr <= 48'd0;
-                alt_ip_src_addr <= 32'd0;
-                alt_ip_dest_addr <= 32'd0;
-                alt_udp_src_port <= 16'd0;
-                alt_udp_dest_port <= 16'd0;
-
-                encapsualted <= 1'b0;
-            end
             valid <= 1;
             mst_exec_state <= SEND_PACKET;
         end
@@ -239,7 +207,7 @@ always @ (posedge axis_clk) begin
 		else
 			send_ptr <= 42;
     else if ((mst_exec_state == SEND_PACKET) && m_axis_tready) begin
-        m_axis_tdata <= {data_fifo[send_ptr+3],  data_fifo[send_ptr+2], data_fifo[send_ptr+1],  data_fifo[send_ptr]};
+        m_axis_tdata <= data;
         if (!pkt_last_word)
 			send_ptr <= send_ptr + 4;
 		else

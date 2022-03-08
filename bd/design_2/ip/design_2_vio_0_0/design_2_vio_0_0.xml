@@ -98,7 +98,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:72e6ed56</spirit:value>
+            <spirit:value>9:d6b6f896</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -112,11 +112,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 20:54:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 14:22:29 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:72e6ed56</spirit:value>
+            <spirit:value>9:d6b6f896</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -132,11 +132,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 20:54:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 14:22:29 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:72e6ed56</spirit:value>
+            <spirit:value>9:d6b6f896</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -152,11 +152,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 20:54:13 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 14:22:29 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:854c7df3</spirit:value>
+            <spirit:value>9:d2403b72</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -170,11 +170,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 06 20:56:36 UTC 2022</spirit:value>
+            <spirit:value>Mon Mar 07 19:12:43 UTC 2022</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:72e6ed56</spirit:value>
+            <spirit:value>9:d6b6f896</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -6935,7 +6935,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_out3" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_OUT&apos;)>3)">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.probe_out3" xilinx:dependency="(id(&apos;PARAM_VALUE.C_NUM_PROBE_OUT&apos;)>3)">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -12840,7 +12840,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_NUM_PROBE_OUT</spirit:name>
         <spirit:displayName>Output Probe Count</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_OUT" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_NUM_PROBE_OUT" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_EN_SYNCHRONIZATION</spirit:name>
@@ -20680,7 +20680,7 @@
     <spirit:parameter>
       <spirit:name>C_NUM_PROBE_OUT</spirit:name>
       <spirit:displayName>Output Probe Count</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_OUT" spirit:order="1300" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">3</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_NUM_PROBE_OUT" spirit:order="1300" spirit:minimum="0" spirit:maximum="256" spirit:rangeType="long">4</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_EN_PROBE_IN_ACTIVITY</spirit:name>

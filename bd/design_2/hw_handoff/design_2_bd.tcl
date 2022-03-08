@@ -294,6 +294,13 @@ proc create_root_design { parentCell } {
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
  ] $ila_2
 
+  # Create instance: ila_3, and set properties
+  set ila_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_3 ]
+  set_property -dict [ list \
+   CONFIG.C_NUM_OF_PROBES {9} \
+   CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
+ ] $ila_3
+
   # Create instance: rst_clk_wiz_1_100M, and set properties
   set rst_clk_wiz_1_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_clk_wiz_1_100M ]
   set_property -dict [ list \
@@ -305,15 +312,9 @@ proc create_root_design { parentCell } {
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
    CONFIG.C_NUM_PROBE_IN {1} \
-   CONFIG.C_NUM_PROBE_OUT {3} \
+   CONFIG.C_NUM_PROBE_OUT {4} \
    CONFIG.C_PROBE_OUT0_WIDTH {4} \
  ] $vio_0
-
-  # Create instance: xlconstant_0, and set properties
-  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
-  set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
- ] $xlconstant_0
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi_ethernet_0_m_axis_rxd [get_bd_intf_pins axi_ethernet_0/m_axis_rxd] [get_bd_intf_pins decoder_0/s_axis_rxd]
@@ -321,15 +322,16 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets axi_ethernet_0_m_axis_rxd] [get_
   connect_bd_intf_net -intf_net axi_ethernet_0_m_axis_rxs [get_bd_intf_pins axi_ethernet_0/m_axis_rxs] [get_bd_intf_pins decoder_0/s_axis_rxs]
   connect_bd_intf_net -intf_net axi_ethernet_0_mdio [get_bd_intf_ports eth_mdio_mdc] [get_bd_intf_pins axi_ethernet_0/mdio]
   connect_bd_intf_net -intf_net axi_ethernet_0_rgmii [get_bd_intf_ports eth_rgmii] [get_bd_intf_pins axi_ethernet_0/rgmii]
-  connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis]
+  connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis_packet]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txc [get_bd_intf_pins axi_ethernet_0/s_axis_txc] [get_bd_intf_pins encoder_0/m_axis_txc]
+connect_bd_intf_net -intf_net [get_bd_intf_nets encoder_0_m_axis_txc] [get_bd_intf_pins encoder_0/m_axis_txc] [get_bd_intf_pins ila_3/SLOT_0_AXIS]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txd [get_bd_intf_pins axi_ethernet_0/s_axis_txd] [get_bd_intf_pins encoder_0/m_axis_txd]
 connect_bd_intf_net -intf_net [get_bd_intf_nets encoder_0_m_axis_txd] [get_bd_intf_pins encoder_0/m_axis_txd] [get_bd_intf_pins ila_2/SLOT_0_AXIS]
   connect_bd_intf_net -intf_net ethernet_controller_0_m_axi [get_bd_intf_pins axi_ethernet_0/s_axi] [get_bd_intf_pins ethernet_controller_0/m_axi]
 
   # Create port connections
   connect_bd_net -net axi_ethernet_0_phy_rst_n [get_bd_ports phy_reset_out] [get_bd_pins axi_ethernet_0/phy_rst_n]
-  connect_bd_net -net clk_wiz_1_clk_out1 [get_bd_pins axi_ethernet_0/axis_clk] [get_bd_pins axi_ethernet_0/s_axi_lite_clk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk] [get_bd_pins ethernet_controller_0/m_axi_aclk] [get_bd_pins ila_0/clk] [get_bd_pins ila_1/clk] [get_bd_pins ila_2/clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk] [get_bd_pins vio_0/clk]
+  connect_bd_net -net clk_wiz_1_clk_out1 [get_bd_pins axi_ethernet_0/axis_clk] [get_bd_pins axi_ethernet_0/s_axi_lite_clk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk] [get_bd_pins ethernet_controller_0/m_axi_aclk] [get_bd_pins ila_0/clk] [get_bd_pins ila_1/clk] [get_bd_pins ila_2/clk] [get_bd_pins ila_3/clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk] [get_bd_pins vio_0/clk]
   connect_bd_net -net clk_wiz_1_clk_out2 [get_bd_pins axi_ethernet_0/ref_clk] [get_bd_pins clk_wiz_1/clk_out2]
   connect_bd_net -net clk_wiz_1_clk_out3 [get_bd_pins axi_ethernet_0/gtx_clk] [get_bd_pins clk_wiz_1/clk_out3]
   connect_bd_net -net clk_wiz_1_locked [get_bd_pins clk_wiz_1/locked] [get_bd_pins rst_clk_wiz_1_100M/dcm_locked]
@@ -369,7 +371,7 @@ set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_valid]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins ethernet_controller_0/control_data] [get_bd_pins vio_0/probe_out0]
   connect_bd_net -net vio_0_probe_out1 [get_bd_pins ethernet_controller_0/control_valid] [get_bd_pins vio_0/probe_out1]
   connect_bd_net -net vio_0_probe_out2 [get_bd_pins ethernet_controller_0/start_config] [get_bd_pins vio_0/probe_out2]
-  connect_bd_net -net xlconstant_0_dout [get_bd_pins encoder_0/drop] [get_bd_pins xlconstant_0/dout]
+  connect_bd_net -net vio_0_probe_out3 [get_bd_pins encoder_0/drop] [get_bd_pins vio_0/probe_out3]
 
   # Create address segments
   create_bd_addr_seg -range 0x00040000 -offset 0x40C00000 [get_bd_addr_spaces ethernet_controller_0/m_axi] [get_bd_addr_segs axi_ethernet_0/s_axi/Reg0] SEG_axi_ethernet_0_Reg0
