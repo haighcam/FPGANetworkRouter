@@ -1,11 +1,11 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Mon Mar  7 14:15:08 2022
--- Host        : BA3145WS20 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top design_2_ila_2_0 -prefix
---               design_2_ila_2_0_ design_2_ila_1_1_sim_netlist.vhdl
--- Design      : design_2_ila_1_1
+-- Date        : Sun Mar 20 11:32:51 2022
+-- Host        : BA3145WS18 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_ila_2_0/design_2_ila_2_0_sim_netlist.vhdl
+-- Design      : design_2_ila_2_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7a200tsbg484-1
@@ -26,6 +26,8 @@ entity design_2_ila_2_0_blk_mem_gen_prim_wrapper is
     DIADI : in STD_LOGIC_VECTOR ( 15 downto 0 );
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end design_2_ila_2_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_prim_wrapper is
@@ -447,6 +449,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_all_typeA_slice is
     all_in : in STD_LOGIC_VECTOR ( 15 downto 0 );
     CI_I : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_all_typeA_slice : entity is "ltlib_v1_0_0_all_typeA_slice";
 end design_2_ila_2_0_ltlib_v1_0_0_all_typeA_slice;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_all_typeA_slice is
@@ -2923,6 +2927,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_async_edge_xfer is
     arm_ctrl : in STD_LOGIC;
     last_din : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_async_edge_xfer : entity is "ltlib_v1_0_0_async_edge_xfer";
 end design_2_ila_2_0_ltlib_v1_0_0_async_edge_xfer;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_async_edge_xfer is
@@ -3395,6 +3401,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_cfglut4 is
     A : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_dclk_o : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_cfglut4 : entity is "ltlib_v1_0_0_cfglut4";
 end design_2_ila_2_0_ltlib_v1_0_0_cfglut4;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut4 is
@@ -3469,6 +3477,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_cfglut5 is
     A : in STD_LOGIC_VECTOR ( 4 downto 0 );
     s_dclk_o : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_cfglut5 : entity is "ltlib_v1_0_0_cfglut5";
 end design_2_ila_2_0_ltlib_v1_0_0_cfglut5;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut5 is
@@ -3579,6 +3589,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_cfglut6 is
     s_dclk_o : in STD_LOGIC;
     u_wcnt_hcmp_q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_cfglut6 : entity is "ltlib_v1_0_0_cfglut6";
 end design_2_ila_2_0_ltlib_v1_0_0_cfglut6;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut6 is
@@ -3635,16 +3647,14 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61 is
   port (
-    \capture_qual_ctrl_reg[0]\ : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    \capture_qual_ctrl_reg[0]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     SRL_D_I : out STD_LOGIC;
     SR : out STD_LOGIC_VECTOR ( 0 to 0 );
     \iscnt_reg[9]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     cfg_data_1_0 : in STD_LOGIC;
-    A : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    A : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_dclk_o : in STD_LOGIC;
     u_scnt_cmp_q : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    basic_trigger : in STD_LOGIC;
-    u_scnt_cmp_q_0 : in STD_LOGIC;
     \iscnt_reg[9]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -3655,7 +3665,7 @@ architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61 is
   signal \I_YESLUT6.SRL_Q31\ : STD_LOGIC;
   signal \I_YESLUT6.SRL_Q_0\ : STD_LOGIC;
   signal \I_YESLUT6.SRL_Q_1\ : STD_LOGIC;
-  signal \^capture_qual_ctrl_reg[0]\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \^capture_qual_ctrl_reg[0]\ : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of \I_YESLUT6.U_SRL32_A\ : label is "PRIMITIVE";
   attribute srl_name : string;
@@ -3663,16 +3673,16 @@ architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61 is
   attribute BOX_TYPE of \I_YESLUT6.U_SRL32_B\ : label is "PRIMITIVE";
   attribute srl_name of \I_YESLUT6.U_SRL32_B\ : label is "inst/\ila_core_inst/u_ila_cap_ctrl/u_cap_addrgen/u_cap_sample_counter/U_SCRST/I_YESLUT6.U_SRL32_B ";
 begin
-  \capture_qual_ctrl_reg[0]\(1 downto 0) <= \^capture_qual_ctrl_reg[0]\(1 downto 0);
+  \capture_qual_ctrl_reg[0]\(0) <= \^capture_qual_ctrl_reg[0]\(0);
 \I_YESLUT6.U_SRL32_A\: unisim.vcomponents.SRLC32E
     generic map(
       INIT => X"00000000",
       IS_CLK_INVERTED => '0'
     )
         port map (
-      A(4) => A(2),
-      A(3 downto 2) => \^capture_qual_ctrl_reg[0]\(1 downto 0),
-      A(1 downto 0) => A(1 downto 0),
+      A(4) => A(3),
+      A(3) => \^capture_qual_ctrl_reg[0]\(0),
+      A(2 downto 0) => A(2 downto 0),
       CE => \iscnt_reg[9]\(0),
       CLK => s_dclk_o,
       D => \I_YESLUT6.SRL_Q31\,
@@ -3685,9 +3695,9 @@ begin
       IS_CLK_INVERTED => '0'
     )
         port map (
-      A(4) => A(2),
-      A(3 downto 2) => \^capture_qual_ctrl_reg[0]\(1 downto 0),
-      A(1 downto 0) => A(1 downto 0),
+      A(4) => A(3),
+      A(3) => \^capture_qual_ctrl_reg[0]\(0),
+      A(2 downto 0) => A(2 downto 0),
       CE => \iscnt_reg[9]\(0),
       CLK => s_dclk_o,
       D => cfg_data_1_0,
@@ -3701,15 +3711,6 @@ begin
         port map (
       I0 => u_scnt_cmp_q(0),
       I1 => u_scnt_cmp_q(1),
-      O => \^capture_qual_ctrl_reg[0]\(1)
-    );
-\I_YESLUT6.U_SRL32_D_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => basic_trigger,
-      I1 => u_scnt_cmp_q_0,
       O => \^capture_qual_ctrl_reg[0]\(0)
     );
 \iscnt[9]_i_1\: unisim.vcomponents.LUT3
@@ -3830,6 +3831,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_cfglut7 is
     wcnt_hcmp : in STD_LOGIC;
     \I_YESLUT6.I_YES_OREG.O_reg_reg_2\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_cfglut7 : entity is "ltlib_v1_0_0_cfglut7";
 end design_2_ila_2_0_ltlib_v1_0_0_cfglut7;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_cfglut7 is
@@ -4082,6 +4085,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_generic_memrd is
     \input_data_reg[46]_0\ : in STD_LOGIC_VECTOR ( 46 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_generic_memrd : entity is "ltlib_v1_0_0_generic_memrd";
 end design_2_ila_2_0_ltlib_v1_0_0_generic_memrd;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_generic_memrd is
@@ -4128,30 +4133,30 @@ architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_generic_memrd is
   signal read_en_i_7_n_0 : STD_LOGIC;
   signal read_en_temp : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \curr_read_block[1]_i_2\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \current_state[0]_i_2\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \current_state[0]_i_3\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \current_state[3]_i_1__10\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \current_state[4]_i_3\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \current_state[5]_i_2\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \current_state[6]_i_2\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \current_state[6]_i_3\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of data_out_en_i_1 : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \curr_read_block[1]_i_2\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \current_state[0]_i_2\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \current_state[0]_i_3\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \current_state[3]_i_1__10\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \current_state[4]_i_3\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \current_state[5]_i_2\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \current_state[6]_i_2\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \current_state[6]_i_3\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of data_out_en_i_1 : label is "soft_lutpair100";
   attribute srl_bus_name : string;
   attribute srl_bus_name of \multiple_enable_latency.enable_out_reg[2]_srl2\ : label is "inst/\ila_core_inst/xsdb_memory_read_inst/multiple_enable_latency.enable_out_reg ";
   attribute srl_name : string;
   attribute srl_name of \multiple_enable_latency.enable_out_reg[2]_srl2\ : label is "inst/\ila_core_inst/xsdb_memory_read_inst/multiple_enable_latency.enable_out_reg[2]_srl2 ";
   attribute srl_bus_name of \multiple_read_latency.read_enable_out_reg[2]_srl2\ : label is "inst/\ila_core_inst/xsdb_memory_read_inst/multiple_read_latency.read_enable_out_reg ";
   attribute srl_name of \multiple_read_latency.read_enable_out_reg[2]_srl2\ : label is "inst/\ila_core_inst/xsdb_memory_read_inst/multiple_read_latency.read_enable_out_reg[2]_srl2 ";
-  attribute SOFT_HLUTNM of \read_addr[0]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \read_addr[1]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \read_addr[4]_i_2\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \read_addr[5]_i_2\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \read_addr[7]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \read_addr[9]_i_3\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \read_addr[9]_i_4\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of read_en_i_1 : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of read_en_i_7 : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \read_addr[0]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \read_addr[1]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \read_addr[4]_i_2\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \read_addr[5]_i_2\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \read_addr[7]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \read_addr[9]_i_3\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \read_addr[9]_i_4\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of read_en_i_1 : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of read_en_i_7 : label is "soft_lutpair95";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
   \current_state_reg[0]_0\ <= \^current_state_reg[0]_0\;
@@ -5575,6 +5580,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_rising_edge_detection is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \dout_pulse_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_rising_edge_detection : entity is "ltlib_v1_0_0_rising_edge_detection";
 end design_2_ila_2_0_ltlib_v1_0_0_rising_edge_detection;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_rising_edge_detection is
@@ -5764,6 +5771,8 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl is
     s_di_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_dclk_o : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl : entity is "xsdbs_v1_0_2_reg_ctl";
 end design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl;
 
 architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl is
@@ -7618,10 +7627,10 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl_44 is
   port (
     D : out STD_LOGIC_VECTOR ( 0 to 0 );
+    \xsdb_reg_reg[4]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[2]\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\ : out STD_LOGIC;
-    \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]_1\ : out STD_LOGIC;
@@ -7643,10 +7652,9 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl_44 is
     \slaveRegDo_mux_0_reg[15]\ : in STD_LOGIC;
     \slaveRegDo_mux_0[0]_i_2_0\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \slaveRegDo_mux_0[0]_i_2_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \slaveRegDo_mux_0[4]_i_3\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \slaveRegDo_mux_0[0]_i_4_0\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[9]\ : in STD_LOGIC;
-    \slaveRegDo_mux_0_reg[4]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[7]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[8]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[9]_0\ : in STD_LOGIC;
@@ -7657,7 +7665,7 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl_44 is
     \slaveRegDo_mux_0_reg[14]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[15]_1\ : in STD_LOGIC;
     halt_ctrl : in STD_LOGIC;
-    \slaveRegDo_mux_0[2]_i_2\ : in STD_LOGIC;
+    trig_in_en : in STD_LOGIC;
     \slaveRegDo_mux_0[3]_i_2\ : in STD_LOGIC;
     s_di_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_dclk_o : in STD_LOGIC
@@ -7710,7 +7718,7 @@ begin
       I0 => \slaveRegDo_mux_0[0]_i_8_n_0\,
       I1 => \slaveRegDo_mux_0[0]_i_2_0\,
       I2 => Q(0),
-      I3 => \slaveRegDo_mux_0[0]_i_2_1\(0),
+      I3 => \slaveRegDo_mux_0[4]_i_3\(0),
       I4 => s_daddr_o(0),
       I5 => s_daddr_o(1),
       O => \slaveRegDo_mux_0[0]_i_4_n_0\
@@ -7811,7 +7819,7 @@ begin
     )
         port map (
       I0 => \xsdb_reg_reg_n_0_[2]\,
-      I1 => \slaveRegDo_mux_0[2]_i_2\,
+      I1 => trig_in_en,
       I2 => s_daddr_o(2),
       I3 => s_daddr_o(1),
       I4 => s_daddr_o(0),
@@ -7829,18 +7837,18 @@ begin
       I4 => s_daddr_o(2),
       O => \xsdb_reg_reg[3]_0\
     );
-\slaveRegDo_mux_0[4]_i_3\: unisim.vcomponents.LUT6
+\slaveRegDo_mux_0[4]_i_7\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000FFFF0800"
+      INIT => X"0000300008083030"
     )
         port map (
-      I0 => \slaveRegDo_mux_0_reg[9]\,
+      I0 => slaveRegDo_6(4),
       I1 => s_daddr_o(2),
       I2 => s_daddr_o(3),
-      I3 => slaveRegDo_6(4),
-      I4 => \slaveRegDo_mux_0_reg[4]\,
-      I5 => \slaveRegDo_mux_0_reg[15]\,
-      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]\
+      I3 => \slaveRegDo_mux_0[4]_i_3\(1),
+      I4 => s_daddr_o(1),
+      I5 => s_daddr_o(0),
+      O => \xsdb_reg_reg[4]_0\
     );
 \slaveRegDo_mux_0[7]_i_3\: unisim.vcomponents.LUT6
     generic map(
@@ -7853,7 +7861,7 @@ begin
       I3 => slaveRegDo_6(7),
       I4 => \slaveRegDo_mux_0_reg[7]\,
       I5 => \slaveRegDo_mux_0_reg[15]\,
-      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\
+      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]\
     );
 \slaveRegDo_mux_0[8]_i_3\: unisim.vcomponents.LUT6
     generic map(
@@ -7866,7 +7874,7 @@ begin
       I3 => slaveRegDo_6(8),
       I4 => \slaveRegDo_mux_0_reg[8]\,
       I5 => \slaveRegDo_mux_0_reg[15]\,
-      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\
+      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\
     );
 \slaveRegDo_mux_0[9]_i_3\: unisim.vcomponents.LUT6
     generic map(
@@ -7879,7 +7887,7 @@ begin
       I3 => slaveRegDo_6(9),
       I4 => \slaveRegDo_mux_0_reg[9]_0\,
       I5 => \slaveRegDo_mux_0_reg[15]\,
-      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\
+      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\
     );
 \xsdb_reg[15]_i_1__6\: unisim.vcomponents.LUT6
     generic map(
@@ -9732,9 +9740,9 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity \design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl__parameterized0\ is
   port (
+    \G_1PIPE_IFACE.s_daddr_r_reg[2]\ : out STD_LOGIC;
     \xsdb_reg_reg[6]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[3]\ : out STD_LOGIC;
-    \xsdb_reg_reg[4]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[7]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[8]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[9]_0\ : out STD_LOGIC;
@@ -9743,24 +9751,27 @@ entity \design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl__parameterized0\ is
     \xsdb_reg_reg[0]_0\ : out STD_LOGIC;
     wcnt_lcmp_temp : out STD_LOGIC;
     wcnt_hcmp_temp : out STD_LOGIC;
+    \xsdb_reg_reg[2]_0\ : out STD_LOGIC_VECTOR ( 0 to 0 );
+    trig_in_en : out STD_LOGIC;
     \xsdb_reg_reg[15]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[14]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[13]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[12]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[11]_0\ : out STD_LOGIC;
     \xsdb_reg_reg[3]_0\ : out STD_LOGIC;
-    \xsdb_reg_reg[2]_0\ : out STD_LOGIC;
     halt_ctrl : out STD_LOGIC;
     \xsdb_reg_reg[0]_1\ : in STD_LOGIC;
     s_daddr_o : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    \slaveRegDo_mux_0_reg[4]\ : in STD_LOGIC;
+    \slaveRegDo_mux_0_reg[4]_0\ : in STD_LOGIC;
+    \slaveRegDo_mux_0_reg[10]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[6]\ : in STD_LOGIC;
     \slaveRegDo_mux_0[10]_i_3_0\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \slaveRegDo_mux_0_reg[6]_0\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[6]_1\ : in STD_LOGIC;
-    \slaveRegDo_mux_0_reg[10]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[10]_0\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[10]_1\ : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 2 downto 0 );
     DOUT_O : in STD_LOGIC;
     u_wcnt_lcmp_q : in STD_LOGIC;
     u_wcnt_hcmp_q : in STD_LOGIC;
@@ -9773,6 +9784,7 @@ end \design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl__parameterized0\;
 
 architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl__parameterized0\ is
   signal \slaveRegDo_mux_0[10]_i_5_n_0\ : STD_LOGIC;
+  signal \^trig_in_en\ : STD_LOGIC;
   signal \xsdb_reg[15]_i_1__5_n_0\ : STD_LOGIC;
   signal \^xsdb_reg_reg[0]_0\ : STD_LOGIC;
   signal \xsdb_reg_reg_n_0_[10]\ : STD_LOGIC;
@@ -9783,10 +9795,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_ctl__parameterized0
   signal \xsdb_reg_reg_n_0_[8]\ : STD_LOGIC;
   signal \xsdb_reg_reg_n_0_[9]\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of u_scnt_cmp_q_i_2 : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of u_wcnt_lcmp_q_i_1 : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of u_scnt_cmp_q_i_2 : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of u_wcnt_lcmp_q_i_1 : label is "soft_lutpair60";
 begin
+  trig_in_en <= \^trig_in_en\;
   \xsdb_reg_reg[0]_0\ <= \^xsdb_reg_reg[0]_0\;
+\I_EN_TRIGIN.shifted_trig_in[6]_i_1\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \^trig_in_en\,
+      O => \xsdb_reg_reg[2]_0\(0)
+    );
 \slaveRegDo_mux_0[10]_i_3\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"00F0CC00AAAAAAAA"
@@ -9813,18 +9834,18 @@ begin
       I5 => s_daddr_o(3),
       O => \slaveRegDo_mux_0[10]_i_5_n_0\
     );
-\slaveRegDo_mux_0[4]_i_7\: unisim.vcomponents.LUT6
+\slaveRegDo_mux_0[4]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000A0000C000000"
+      INIT => X"00000000FFFF0400"
     )
         port map (
-      I0 => \xsdb_reg_reg_n_0_[4]\,
-      I1 => Q(0),
-      I2 => s_daddr_o(1),
-      I3 => s_daddr_o(0),
-      I4 => s_daddr_o(3),
-      I5 => s_daddr_o(2),
-      O => \xsdb_reg_reg[4]_0\
+      I0 => \slaveRegDo_mux_0_reg[4]\,
+      I1 => s_daddr_o(2),
+      I2 => s_daddr_o(3),
+      I3 => \xsdb_reg_reg_n_0_[4]\,
+      I4 => \slaveRegDo_mux_0_reg[4]_0\,
+      I5 => \slaveRegDo_mux_0_reg[10]\,
+      O => \G_1PIPE_IFACE.s_daddr_r_reg[2]\
     );
 \slaveRegDo_mux_0[5]_i_6\: unisim.vcomponents.LUT6
     generic map(
@@ -9858,7 +9879,7 @@ begin
     )
         port map (
       I0 => \xsdb_reg_reg_n_0_[7]\,
-      I1 => Q(1),
+      I1 => Q(0),
       I2 => s_daddr_o(1),
       I3 => s_daddr_o(0),
       I4 => s_daddr_o(3),
@@ -9871,7 +9892,7 @@ begin
     )
         port map (
       I0 => \xsdb_reg_reg_n_0_[8]\,
-      I1 => Q(2),
+      I1 => Q(1),
       I2 => s_daddr_o(1),
       I3 => s_daddr_o(0),
       I4 => s_daddr_o(3),
@@ -9884,7 +9905,7 @@ begin
     )
         port map (
       I0 => \xsdb_reg_reg_n_0_[9]\,
-      I1 => Q(3),
+      I1 => Q(2),
       I2 => s_daddr_o(1),
       I3 => s_daddr_o(0),
       I4 => s_daddr_o(3),
@@ -10021,13 +10042,13 @@ u_wcnt_lcmp_q_i_1: unisim.vcomponents.LUT2
     );
 \xsdb_reg_reg[2]\: unisim.vcomponents.FDRE
     generic map(
-      INIT => '0'
+      INIT => '1'
     )
         port map (
       C => s_dclk_o,
       CE => \xsdb_reg[15]_i_1__5_n_0\,
       D => s_di_o(2),
-      Q => \xsdb_reg_reg[2]_0\,
+      Q => \^trig_in_en\,
       R => '0'
     );
 \xsdb_reg_reg[3]\: unisim.vcomponents.FDRE
@@ -10808,6 +10829,8 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s is
     \shadow_reg[15]_0\ : in STD_LOGIC;
     mu_config_cs_serial_input : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s : entity is "xsdbs_v1_0_2_reg_p2s";
 end design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s;
 
 architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s is
@@ -10857,19 +10880,19 @@ architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s is
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__0_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__0\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__0\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__0\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__0\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__0\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__0\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__0\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__0\ : label is "soft_lutpair22";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__0\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \shift_en_i_1__0\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__0\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \shift_en_i_1__0\ : label is "soft_lutpair24";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -11746,19 +11769,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized0
   signal \slaveRegDo_mux_4[8]_i_2_n_0\ : STD_LOGIC;
   signal \slaveRegDo_mux_4[9]_i_2_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__1\ : label is "soft_lutpair27";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__0\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \shift_en_i_1__1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__0\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \shift_en_i_1__1\ : label is "soft_lutpair28";
 begin
   E(0) <= \^e\(0);
 \cnt[0]_i_1__1\: unisim.vcomponents.LUT1
@@ -12983,19 +13006,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized1
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__2_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__2\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__2\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__2\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__2\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__2\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__2\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__2\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__2\ : label is "soft_lutpair30";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__2\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \shift_en_i_1__2\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__2\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \shift_en_i_1__2\ : label is "soft_lutpair32";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -13821,19 +13844,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized2
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__3_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__3\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__3\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__3\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__3\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__3\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__3\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__3\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__3\ : label is "soft_lutpair34";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__3\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__2\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \shift_en_i_1__3\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__3\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__2\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \shift_en_i_1__3\ : label is "soft_lutpair36";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -14659,19 +14682,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized3
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__4_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__4\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__4\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__4\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__4\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__4\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__4\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__4\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__4\ : label is "soft_lutpair38";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__4\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__3\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \shift_en_i_1__4\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__4\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__3\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \shift_en_i_1__4\ : label is "soft_lutpair40";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -15530,17 +15553,17 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized4
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__5_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__5\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__5\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__5\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__5\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__5\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__5\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__5\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__5\ : label is "soft_lutpair42";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \shift_en_i_1__5\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \shift_en_i_1__5\ : label is "soft_lutpair43";
 begin
   E(0) <= \^e\(0);
 \cnt[0]_i_1__5\: unisim.vcomponents.LUT1
@@ -16573,19 +16596,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized5
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__6_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__6\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__6\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__6\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__6\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__6\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__6\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__6\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__6\ : label is "soft_lutpair45";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__6\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__5\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \shift_en_i_1__6\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__6\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__5\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \shift_en_i_1__6\ : label is "soft_lutpair47";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -17411,19 +17434,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized6
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__7_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__7\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__7\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__7\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__7\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__7\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__7\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__7\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__7\ : label is "soft_lutpair49";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__7\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__6\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \shift_en_i_1__7\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__7\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__6\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \shift_en_i_1__7\ : label is "soft_lutpair51";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -18253,19 +18276,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized7
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__8_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__8\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__8\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__8\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__8\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__8\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__8\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__8\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__8\ : label is "soft_lutpair53";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \data_out_sel_i_1__8\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \shadow[15]_i_1__7\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \shift_en_i_1__8\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \data_out_sel_i_1__8\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \shadow[15]_i_1__7\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \shift_en_i_1__8\ : label is "soft_lutpair55";
 begin
   E(0) <= \^e\(0);
   \G_1PIPE_IFACE.s_den_r_reg\ <= \^g_1pipe_iface.s_den_r_reg\;
@@ -19119,17 +19142,17 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized8
   signal \shadow_reg_n_0_[9]\ : STD_LOGIC;
   signal \shift_en_i_1__9_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1__9\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1__9\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2__9\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3__9\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1__9\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1__9\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2__9\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3__9\ : label is "soft_lutpair58";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \shift_en_i_1__9\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \next_state_inferred__2/i_\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \shift_en_i_1__9\ : label is "soft_lutpair57";
 begin
   E(0) <= \^e\(0);
   Q(15 downto 0) <= \^q\(15 downto 0);
@@ -20017,19 +20040,19 @@ architecture STRUCTURE of \design_2_ila_2_0_xsdbs_v1_0_2_reg_p2s__parameterized9
   signal \slaveRegDo_mux_3[0]_i_2_n_0\ : STD_LOGIC;
   signal \slaveRegDo_mux_3[8]_i_2_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \cnt[1]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \cnt[2]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \cnt[3]_i_2\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \current_state[3]_i_3\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \cnt[1]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \cnt[2]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \cnt[3]_i_2\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \current_state[3]_i_3\ : label is "soft_lutpair62";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \current_state_reg[0]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[1]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[2]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
   attribute FSM_ENCODED_STATES of \current_state_reg[3]\ : label is "REG:0010,P2S:0100,IDLE:0001,S2P:1000";
-  attribute SOFT_HLUTNM of data_out_sel_i_1 : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \next_state_inferred__3/i_\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \shadow[15]_i_2\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of shift_en_i_1 : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of data_out_sel_i_1 : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \next_state_inferred__3/i_\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \shadow[15]_i_2\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of shift_en_i_1 : label is "soft_lutpair63";
 begin
   E(0) <= \^e\(0);
   \G_1PIPE_IFACE.s_daddr_r_reg[4]\(0) <= \^g_1pipe_iface.s_daddr_r_reg[4]\(0);
@@ -21064,6 +21087,8 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_stat is
     \xsdb_reg_reg[15]_1\ : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_dclk_o : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_xsdbs_v1_0_2_reg_stat : entity is "xsdbs_v1_0_2_reg_stat";
 end design_2_ila_2_0_xsdbs_v1_0_2_reg_stat;
 
 architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_reg_stat is
@@ -21993,6 +22018,8 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_xsdbs is
   attribute C_XDEVICEFAMILY of design_2_ila_2_0_xsdbs_v1_0_2_xsdbs : entity is "artix7";
   attribute C_XSDB_SLAVE_TYPE : integer;
   attribute C_XSDB_SLAVE_TYPE of design_2_ila_2_0_xsdbs_v1_0_2_xsdbs : entity is 17;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_xsdbs_v1_0_2_xsdbs : entity is "xsdbs_v1_0_2_xsdbs";
   attribute dont_touch : string;
   attribute dont_touch of design_2_ila_2_0_xsdbs_v1_0_2_xsdbs : entity is "true";
 end design_2_ila_2_0_xsdbs_v1_0_2_xsdbs;
@@ -22082,30 +22109,30 @@ architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_xsdbs is
   attribute UUID : string;
   attribute UUID of uuid_stamp : signal is "1";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_den_r_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[0]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[10]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[11]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[12]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[13]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[14]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[15]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[1]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[2]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[3]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[4]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[5]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[6]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[7]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[8]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[9]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \reg_do[10]_i_5\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \reg_do[15]_i_6\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \reg_do[4]_i_6\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \reg_do[4]_i_8\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \reg_do[4]_i_9\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \reg_do[5]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of reg_drdy_i_1 : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_den_r_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[0]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[10]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[11]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[12]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[13]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[14]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[15]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[1]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[2]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[3]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[4]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[5]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[6]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[7]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[8]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \G_1PIPE_IFACE.s_do_r[9]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \reg_do[10]_i_5\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \reg_do[15]_i_6\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \reg_do[4]_i_6\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \reg_do[4]_i_8\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \reg_do[4]_i_9\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \reg_do[5]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of reg_drdy_i_1 : label is "soft_lutpair11";
   attribute DONT_TOUCH_boolean of \uuid_stamp_reg[0]\ : label is std.standard.true;
   attribute KEEP : string;
   attribute KEEP of \uuid_stamp_reg[0]\ : label is "yes";
@@ -25532,6 +25559,8 @@ entity design_2_ila_2_0_blk_mem_gen_prim_width is
     DIADI : in STD_LOGIC_VECTOR ( 15 downto 0 );
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end design_2_ila_2_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_prim_width is
@@ -25597,6 +25626,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_reset_ctrl is
     halt_ctrl : in STD_LOGIC;
     arm_ctrl : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_reset_ctrl : entity is "ila_v6_2_8_ila_reset_ctrl";
 end design_2_ila_2_0_ila_v6_2_8_ila_reset_ctrl;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_reset_ctrl is
@@ -25782,6 +25813,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_all_typeA is
     \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_all_typeA : entity is "ltlib_v1_0_0_all_typeA";
 end design_2_ila_2_0_ltlib_v1_0_0_all_typeA;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_all_typeA is
@@ -26786,11 +26819,11 @@ use UNISIM.VCOMPONENTS.ALL;
 entity \design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized27\ is
   port (
     D : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \G_1PIPE_IFACE.s_daddr_r_reg[2]\ : out STD_LOGIC;
+    \xsdb_reg_reg[4]\ : out STD_LOGIC;
     \xsdb_reg_reg[10]\ : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    \G_1PIPE_IFACE.s_daddr_r_reg[2]\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\ : out STD_LOGIC;
-    \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]_0\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[1]_1\ : out STD_LOGIC;
@@ -26811,10 +26844,9 @@ entity \design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized27\ is
     \slaveRegDo_mux_0_reg[15]\ : in STD_LOGIC;
     \slaveRegDo_mux_0[0]_i_2\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \slaveRegDo_mux_0[0]_i_2_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
+    \slaveRegDo_mux_0[4]_i_3\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \slaveRegDo_mux_0[0]_i_4\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[9]\ : in STD_LOGIC;
-    \slaveRegDo_mux_0_reg[4]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[7]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[8]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[9]_0\ : in STD_LOGIC;
@@ -26825,7 +26857,7 @@ entity \design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized27\ is
     \slaveRegDo_mux_0_reg[14]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[15]_1\ : in STD_LOGIC;
     halt_ctrl : in STD_LOGIC;
-    \slaveRegDo_mux_0[2]_i_2\ : in STD_LOGIC;
+    trig_in_en : in STD_LOGIC;
     \slaveRegDo_mux_0[3]_i_2\ : in STD_LOGIC;
     s_di_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_dclk_o : in STD_LOGIC
@@ -26847,7 +26879,6 @@ begin
       \G_1PIPE_IFACE.s_daddr_r_reg[2]\ => \G_1PIPE_IFACE.s_daddr_r_reg[2]\,
       \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\ => \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\,
       \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\ => \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\,
-      \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\ => \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\,
       Q(0) => Q(0),
       halt_ctrl => halt_ctrl,
       s_daddr_o(4 downto 0) => s_daddr_o(4 downto 0),
@@ -26855,10 +26886,9 @@ begin
       s_di_o(15 downto 0) => s_di_o(15 downto 0),
       \slaveRegDo_mux_01__6\ => \slaveRegDo_mux_01__6\,
       \slaveRegDo_mux_0[0]_i_2_0\ => \slaveRegDo_mux_0[0]_i_2\,
-      \slaveRegDo_mux_0[0]_i_2_1\(0) => \slaveRegDo_mux_0[0]_i_2_0\(0),
       \slaveRegDo_mux_0[0]_i_4_0\ => \slaveRegDo_mux_0[0]_i_4\,
-      \slaveRegDo_mux_0[2]_i_2\ => \slaveRegDo_mux_0[2]_i_2\,
       \slaveRegDo_mux_0[3]_i_2\ => \slaveRegDo_mux_0[3]_i_2\,
+      \slaveRegDo_mux_0[4]_i_3\(1 downto 0) => \slaveRegDo_mux_0[4]_i_3\(1 downto 0),
       \slaveRegDo_mux_0_reg[0]\ => \slaveRegDo_mux_0_reg[0]\,
       \slaveRegDo_mux_0_reg[0]_0\ => \slaveRegDo_mux_0_reg[0]_0\,
       \slaveRegDo_mux_0_reg[0]_1\ => \slaveRegDo_mux_0_reg[0]_1\,
@@ -26872,16 +26902,17 @@ begin
       \slaveRegDo_mux_0_reg[15]\ => \slaveRegDo_mux_0_reg[15]\,
       \slaveRegDo_mux_0_reg[15]_0\ => \slaveRegDo_mux_0_reg[15]_0\,
       \slaveRegDo_mux_0_reg[15]_1\ => \slaveRegDo_mux_0_reg[15]_1\,
-      \slaveRegDo_mux_0_reg[4]\ => \slaveRegDo_mux_0_reg[4]\,
       \slaveRegDo_mux_0_reg[7]\ => \slaveRegDo_mux_0_reg[7]\,
       \slaveRegDo_mux_0_reg[8]\ => \slaveRegDo_mux_0_reg[8]\,
       \slaveRegDo_mux_0_reg[9]\ => \slaveRegDo_mux_0_reg[9]\,
       \slaveRegDo_mux_0_reg[9]_0\ => \slaveRegDo_mux_0_reg[9]_0\,
+      trig_in_en => trig_in_en,
       \xsdb_reg_reg[0]_0\ => \xsdb_reg_reg[0]\,
       \xsdb_reg_reg[10]_0\(2 downto 0) => \xsdb_reg_reg[10]\(2 downto 0),
       \xsdb_reg_reg[1]_0\ => \xsdb_reg_reg[1]\,
       \xsdb_reg_reg[2]_0\ => \xsdb_reg_reg[2]\,
-      \xsdb_reg_reg[3]_0\ => \xsdb_reg_reg[3]\
+      \xsdb_reg_reg[3]_0\ => \xsdb_reg_reg[3]\,
+      \xsdb_reg_reg[4]_0\ => \xsdb_reg_reg[4]\
     );
 end STRUCTURE;
 library IEEE;
@@ -26890,9 +26921,9 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity \design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized28\ is
   port (
+    \G_1PIPE_IFACE.s_daddr_r_reg[2]\ : out STD_LOGIC;
     \xsdb_reg_reg[6]\ : out STD_LOGIC;
     \G_1PIPE_IFACE.s_daddr_r_reg[3]\ : out STD_LOGIC;
-    \xsdb_reg_reg[4]\ : out STD_LOGIC;
     \xsdb_reg_reg[7]\ : out STD_LOGIC;
     \xsdb_reg_reg[8]\ : out STD_LOGIC;
     \xsdb_reg_reg[9]\ : out STD_LOGIC;
@@ -26901,24 +26932,27 @@ entity \design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized28\ is
     \xsdb_reg_reg[0]\ : out STD_LOGIC;
     wcnt_lcmp_temp : out STD_LOGIC;
     wcnt_hcmp_temp : out STD_LOGIC;
+    \xsdb_reg_reg[2]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
+    trig_in_en : out STD_LOGIC;
     \xsdb_reg_reg[15]\ : out STD_LOGIC;
     \xsdb_reg_reg[14]\ : out STD_LOGIC;
     \xsdb_reg_reg[13]\ : out STD_LOGIC;
     \xsdb_reg_reg[12]\ : out STD_LOGIC;
     \xsdb_reg_reg[11]\ : out STD_LOGIC;
     \xsdb_reg_reg[3]\ : out STD_LOGIC;
-    \xsdb_reg_reg[2]\ : out STD_LOGIC;
     halt_ctrl : out STD_LOGIC;
     \xsdb_reg_reg[0]_0\ : in STD_LOGIC;
     s_daddr_o : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    \slaveRegDo_mux_0_reg[4]\ : in STD_LOGIC;
+    \slaveRegDo_mux_0_reg[4]_0\ : in STD_LOGIC;
+    \slaveRegDo_mux_0_reg[10]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[6]\ : in STD_LOGIC;
     \slaveRegDo_mux_0[10]_i_3\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \slaveRegDo_mux_0_reg[6]_0\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[6]_1\ : in STD_LOGIC;
-    \slaveRegDo_mux_0_reg[10]\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[10]_0\ : in STD_LOGIC;
     \slaveRegDo_mux_0_reg[10]_1\ : in STD_LOGIC;
-    Q : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    Q : in STD_LOGIC_VECTOR ( 2 downto 0 );
     DOUT_O : in STD_LOGIC;
     u_wcnt_lcmp_q : in STD_LOGIC;
     u_wcnt_hcmp_q : in STD_LOGIC;
@@ -26935,8 +26969,9 @@ begin
      port map (
       DOUT_O => DOUT_O,
       \G_1PIPE_IFACE.s_daddr_r_reg[0]\ => \G_1PIPE_IFACE.s_daddr_r_reg[0]\,
+      \G_1PIPE_IFACE.s_daddr_r_reg[2]\ => \G_1PIPE_IFACE.s_daddr_r_reg[2]\,
       \G_1PIPE_IFACE.s_daddr_r_reg[3]\ => \G_1PIPE_IFACE.s_daddr_r_reg[3]\,
-      Q(3 downto 0) => Q(3 downto 0),
+      Q(2 downto 0) => Q(2 downto 0),
       halt_ctrl => halt_ctrl,
       s_daddr_o(4 downto 0) => s_daddr_o(4 downto 0),
       s_dclk_o => s_dclk_o,
@@ -26946,9 +26981,12 @@ begin
       \slaveRegDo_mux_0_reg[10]\ => \slaveRegDo_mux_0_reg[10]\,
       \slaveRegDo_mux_0_reg[10]_0\ => \slaveRegDo_mux_0_reg[10]_0\,
       \slaveRegDo_mux_0_reg[10]_1\ => \slaveRegDo_mux_0_reg[10]_1\,
+      \slaveRegDo_mux_0_reg[4]\ => \slaveRegDo_mux_0_reg[4]\,
+      \slaveRegDo_mux_0_reg[4]_0\ => \slaveRegDo_mux_0_reg[4]_0\,
       \slaveRegDo_mux_0_reg[6]\ => \slaveRegDo_mux_0_reg[6]\,
       \slaveRegDo_mux_0_reg[6]_0\ => \slaveRegDo_mux_0_reg[6]_0\,
       \slaveRegDo_mux_0_reg[6]_1\ => \slaveRegDo_mux_0_reg[6]_1\,
+      trig_in_en => trig_in_en,
       u_wcnt_hcmp_q => u_wcnt_hcmp_q,
       u_wcnt_lcmp_q => u_wcnt_lcmp_q,
       wcnt_hcmp_temp => wcnt_hcmp_temp,
@@ -26960,9 +26998,8 @@ begin
       \xsdb_reg_reg[13]_0\ => \xsdb_reg_reg[13]\,
       \xsdb_reg_reg[14]_0\ => \xsdb_reg_reg[14]\,
       \xsdb_reg_reg[15]_0\ => \xsdb_reg_reg[15]\,
-      \xsdb_reg_reg[2]_0\ => \xsdb_reg_reg[2]\,
+      \xsdb_reg_reg[2]_0\(0) => \xsdb_reg_reg[2]\(0),
       \xsdb_reg_reg[3]_0\ => \xsdb_reg_reg[3]\,
-      \xsdb_reg_reg[4]_0\ => \xsdb_reg_reg[4]\,
       \xsdb_reg_reg[6]_0\ => \xsdb_reg_reg[6]\,
       \xsdb_reg_reg[7]_0\ => \xsdb_reg_reg[7]\,
       \xsdb_reg_reg[8]_0\ => \xsdb_reg_reg[8]\,
@@ -28062,6 +28099,8 @@ entity design_2_ila_2_0_xsdbs_v1_0_2_reg_stream is
     s_di_o : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_dclk_o : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_xsdbs_v1_0_2_reg_stream : entity is "xsdbs_v1_0_2_reg_stream";
 end design_2_ila_2_0_xsdbs_v1_0_2_reg_stream;
 
 architecture STRUCTURE of design_2_ila_2_0_xsdbs_v1_0_2_reg_stream is
@@ -28169,6 +28208,8 @@ entity design_2_ila_2_0_blk_mem_gen_generic_cstr is
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_2\ : in STD_LOGIC_VECTOR ( 28 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end design_2_ila_2_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_generic_cstr is
@@ -28224,6 +28265,7 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_register is
     scnt_cmp_temp : out STD_LOGIC;
     wcnt_lcmp_temp : out STD_LOGIC;
     wcnt_hcmp_temp : out STD_LOGIC;
+    \xsdb_reg_reg[2]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     mu_config_cs_serial_output : out STD_LOGIC_VECTOR ( 8 downto 0 );
     \out\ : in STD_LOGIC_VECTOR ( 36 downto 0 );
     D : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -28246,6 +28288,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_register is
     \xsdb_reg_reg[9]\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     \xsdb_reg_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_register : entity is "ila_v6_2_8_ila_register";
 end design_2_ila_2_0_ila_v6_2_8_ila_register;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
@@ -28617,13 +28661,12 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
   signal reg_6_n_9 : STD_LOGIC;
   signal reg_7_n_0 : STD_LOGIC;
   signal reg_7_n_1 : STD_LOGIC;
-  signal reg_7_n_11 : STD_LOGIC;
-  signal reg_7_n_12 : STD_LOGIC;
   signal reg_7_n_13 : STD_LOGIC;
   signal reg_7_n_14 : STD_LOGIC;
   signal reg_7_n_15 : STD_LOGIC;
   signal reg_7_n_16 : STD_LOGIC;
   signal reg_7_n_17 : STD_LOGIC;
+  signal reg_7_n_18 : STD_LOGIC;
   signal reg_7_n_2 : STD_LOGIC;
   signal reg_7_n_3 : STD_LOGIC;
   signal reg_7_n_4 : STD_LOGIC;
@@ -28850,6 +28893,7 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
   signal \slaveRegDo_mux_reg_n_0_[7]\ : STD_LOGIC;
   signal \slaveRegDo_mux_reg_n_0_[8]\ : STD_LOGIC;
   signal \slaveRegDo_mux_reg_n_0_[9]\ : STD_LOGIC;
+  signal trig_in_en : STD_LOGIC;
   signal xsdb_rden_ff7 : STD_LOGIC;
   signal xsdb_rden_ff8 : STD_LOGIC;
   signal NLW_reg_890_dout_o_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -28885,31 +28929,31 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
   attribute srl_name : string;
   attribute srl_name of adv_rb_drdy3_reg_srl4 : label is "inst/\ila_core_inst/u_ila_regs/adv_rb_drdy3_reg_srl4 ";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \clk_lost_cnt[1]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \clk_lost_cnt[2]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \clk_lost_cnt[3]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \clk_lost_cnt[4]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \clk_lost_cnt[7]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \clk_lost_cnt[8]_i_3\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \count0[0]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \count0[1]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \count0[2]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \count0[3]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \count0[4]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \count1[0]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \count1[1]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \count1[2]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \count1[3]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \count1[4]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \current_state[6]_i_4\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \current_state[6]_i_5\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \current_state[6]_i_6\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \drdyCount[1]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \drdyCount[2]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \drdyCount[3]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \drdyCount[4]_i_2\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of drdy_ff7_i_1 : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of drdy_ff8_i_1 : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[1]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[2]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[3]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[4]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[7]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \clk_lost_cnt[8]_i_3\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \count0[0]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \count0[1]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \count0[2]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \count0[3]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \count0[4]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \count1[0]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \count1[1]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \count1[2]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \count1[3]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \count1[4]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \current_state[6]_i_4\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \current_state[6]_i_5\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \current_state[6]_i_6\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \drdyCount[1]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \drdyCount[2]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \drdyCount[3]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \drdyCount[4]_i_2\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of drdy_ff7_i_1 : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of drdy_ff8_i_1 : label is "soft_lutpair65";
   attribute DONT_TOUCH of dummy_temp1_reg : label is std.standard.true;
   attribute KEEP : string;
   attribute KEEP of dummy_temp1_reg : label is "yes";
@@ -28920,7 +28964,7 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
   attribute KEEP of ila_clk_flag_sync1_reg : label is "yes";
   attribute ASYNC_REG_boolean of ila_clk_flag_sync2_reg : label is std.standard.true;
   attribute KEEP of ila_clk_flag_sync2_reg : label is "yes";
-  attribute SOFT_HLUTNM of regDrdy_i_4 : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of regDrdy_i_4 : label is "soft_lutpair81";
   attribute C_ADDR_W : integer;
   attribute C_ADDR_W of reg_890 : label is 13;
   attribute C_CTLRST_VAL : string;
@@ -28938,34 +28982,34 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_register is
   attribute KEEP of s_dclk_flag_sync1_reg : label is "yes";
   attribute ASYNC_REG_boolean of s_dclk_flag_sync2_reg : label is std.standard.true;
   attribute KEEP of s_dclk_flag_sync2_reg : label is "yes";
-  attribute SOFT_HLUTNM of \shift_reg0[8]_i_3\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \shift_reg1[8]_i_3\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \slaveRegDo_ff8[15]_i_2\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_11\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_12\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_13\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_14\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_3\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_9\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_10\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_11\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_5\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[6]_i_7\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[6]_i_8\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[9]_i_7\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[0]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[1]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[2]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[5]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[2]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[3]_i_3\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[5]_i_2\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[5]_i_5\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[10]_i_3\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[12]_i_2\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[12]_i_3\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[15]_i_4\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[15]_i_5\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \shift_reg0[8]_i_3\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \shift_reg1[8]_i_3\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \slaveRegDo_ff8[15]_i_2\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_11\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_12\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_13\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_14\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_3\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[15]_i_9\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_10\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_11\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[5]_i_5\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[6]_i_7\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[6]_i_8\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_0[9]_i_7\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[0]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[1]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[2]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_1[5]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[2]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[3]_i_3\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[5]_i_2\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_2[5]_i_5\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[10]_i_3\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[12]_i_2\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[12]_i_3\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[15]_i_4\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \slaveRegDo_mux_3[15]_i_5\ : label is "soft_lutpair76";
 begin
   SR(0) <= \^sr\(0);
   arm_ctrl <= \^arm_ctrl\;
@@ -30765,10 +30809,9 @@ reg_6: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized27\
       \G_1PIPE_IFACE.s_daddr_r_reg[1]_1\ => reg_6_n_10,
       \G_1PIPE_IFACE.s_daddr_r_reg[1]_2\ => reg_6_n_11,
       \G_1PIPE_IFACE.s_daddr_r_reg[1]_3\ => reg_6_n_12,
-      \G_1PIPE_IFACE.s_daddr_r_reg[2]\ => reg_6_n_1,
-      \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\ => reg_6_n_5,
-      \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\ => reg_6_n_6,
-      \G_1PIPE_IFACE.s_daddr_r_reg[2]_2\ => reg_6_n_7,
+      \G_1PIPE_IFACE.s_daddr_r_reg[2]\ => reg_6_n_5,
+      \G_1PIPE_IFACE.s_daddr_r_reg[2]_0\ => reg_6_n_6,
+      \G_1PIPE_IFACE.s_daddr_r_reg[2]_1\ => reg_6_n_7,
       Q(0) => reg_8_n_4,
       halt_ctrl => \^halt_ctrl\,
       s_daddr_o(4 downto 0) => s_daddr(4 downto 0),
@@ -30776,44 +30819,45 @@ reg_6: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized27\
       s_di_o(15 downto 0) => s_di(15 downto 0),
       \slaveRegDo_mux_01__6\ => \slaveRegDo_mux_01__6\,
       \slaveRegDo_mux_0[0]_i_2\ => \slaveRegDo_mux_2[5]_i_2_n_0\,
-      \slaveRegDo_mux_0[0]_i_2_0\(0) => reg_9_n_9,
       \slaveRegDo_mux_0[0]_i_4\ => \^arm_ctrl\,
-      \slaveRegDo_mux_0[2]_i_2\ => reg_7_n_17,
-      \slaveRegDo_mux_0[3]_i_2\ => reg_7_n_16,
+      \slaveRegDo_mux_0[3]_i_2\ => reg_7_n_18,
+      \slaveRegDo_mux_0[4]_i_3\(1) => reg_9_n_8,
+      \slaveRegDo_mux_0[4]_i_3\(0) => reg_9_n_9,
       \slaveRegDo_mux_0_reg[0]\ => \slaveRegDo_mux_0[15]_i_7_n_0\,
       \slaveRegDo_mux_0_reg[0]_0\ => \slaveRegDo_mux_0[15]_i_3_n_0\,
       \slaveRegDo_mux_0_reg[0]_1\ => reg_81_n_11,
       \slaveRegDo_mux_0_reg[0]_2\(0) => \slaveRegDo_mux_1[0]_i_1_n_0\,
       \slaveRegDo_mux_0_reg[0]_3\ => reg_18_n_1,
       \slaveRegDo_mux_0_reg[0]_4\ => reg_16_n_1,
-      \slaveRegDo_mux_0_reg[11]\ => reg_7_n_15,
-      \slaveRegDo_mux_0_reg[12]\ => reg_7_n_14,
-      \slaveRegDo_mux_0_reg[13]\ => reg_7_n_13,
-      \slaveRegDo_mux_0_reg[14]\ => reg_7_n_12,
+      \slaveRegDo_mux_0_reg[11]\ => reg_7_n_17,
+      \slaveRegDo_mux_0_reg[12]\ => reg_7_n_16,
+      \slaveRegDo_mux_0_reg[13]\ => reg_7_n_15,
+      \slaveRegDo_mux_0_reg[14]\ => reg_7_n_14,
       \slaveRegDo_mux_0_reg[15]\ => \slaveRegDo_mux_0[15]_i_12_n_0\,
       \slaveRegDo_mux_0_reg[15]_0\ => \slaveRegDo_mux_0[15]_i_11_n_0\,
-      \slaveRegDo_mux_0_reg[15]_1\ => reg_7_n_11,
-      \slaveRegDo_mux_0_reg[4]\ => reg_7_n_2,
+      \slaveRegDo_mux_0_reg[15]_1\ => reg_7_n_13,
       \slaveRegDo_mux_0_reg[7]\ => reg_7_n_3,
       \slaveRegDo_mux_0_reg[8]\ => reg_7_n_4,
       \slaveRegDo_mux_0_reg[9]\ => \slaveRegDo_mux_0[9]_i_7_n_0\,
       \slaveRegDo_mux_0_reg[9]_0\ => reg_7_n_5,
+      trig_in_en => trig_in_en,
       \xsdb_reg_reg[0]\ => reg_15_n_0,
       \xsdb_reg_reg[10]\(2) => slaveRegDo_6(10),
       \xsdb_reg_reg[10]\(1 downto 0) => slaveRegDo_6(6 downto 5),
       \xsdb_reg_reg[1]\ => reg_6_n_13,
       \xsdb_reg_reg[2]\ => reg_6_n_14,
-      \xsdb_reg_reg[3]\ => reg_6_n_15
+      \xsdb_reg_reg[3]\ => reg_6_n_15,
+      \xsdb_reg_reg[4]\ => reg_6_n_1
     );
 reg_7: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized28\
      port map (
       DOUT_O => DOUT_O,
       \G_1PIPE_IFACE.s_daddr_r_reg[0]\ => reg_7_n_6,
-      \G_1PIPE_IFACE.s_daddr_r_reg[3]\ => reg_7_n_1,
-      Q(3) => reg_9_n_5,
-      Q(2) => reg_9_n_6,
-      Q(1) => reg_9_n_7,
-      Q(0) => reg_9_n_8,
+      \G_1PIPE_IFACE.s_daddr_r_reg[2]\ => reg_7_n_0,
+      \G_1PIPE_IFACE.s_daddr_r_reg[3]\ => reg_7_n_2,
+      Q(2) => reg_9_n_5,
+      Q(1) => reg_9_n_6,
+      Q(0) => reg_9_n_7,
       halt_ctrl => \^halt_ctrl\,
       s_daddr_o(4 downto 0) => s_daddr(4 downto 0),
       s_dclk_o => \^s_dclk_o\,
@@ -30824,24 +30868,26 @@ reg_7: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized28\
       \slaveRegDo_mux_0_reg[10]\ => \slaveRegDo_mux_0[15]_i_12_n_0\,
       \slaveRegDo_mux_0_reg[10]_0\ => reg_18_n_0,
       \slaveRegDo_mux_0_reg[10]_1\ => reg_16_n_0,
+      \slaveRegDo_mux_0_reg[4]\ => \slaveRegDo_mux_0[5]_i_11_n_0\,
+      \slaveRegDo_mux_0_reg[4]_0\ => reg_6_n_1,
       \slaveRegDo_mux_0_reg[6]\ => \slaveRegDo_mux_0[6]_i_7_n_0\,
       \slaveRegDo_mux_0_reg[6]_0\ => \slaveRegDo_mux_0[6]_i_8_n_0\,
       \slaveRegDo_mux_0_reg[6]_1\ => reg_9_n_4,
+      trig_in_en => trig_in_en,
       u_wcnt_hcmp_q => u_wcnt_hcmp_q,
       u_wcnt_lcmp_q => u_wcnt_lcmp_q,
       wcnt_hcmp_temp => wcnt_hcmp_temp,
       wcnt_lcmp_temp => wcnt_lcmp_temp,
       \xsdb_reg_reg[0]\ => \^arm_ctrl\,
       \xsdb_reg_reg[0]_0\ => reg_15_n_0,
-      \xsdb_reg_reg[11]\ => reg_7_n_15,
-      \xsdb_reg_reg[12]\ => reg_7_n_14,
-      \xsdb_reg_reg[13]\ => reg_7_n_13,
-      \xsdb_reg_reg[14]\ => reg_7_n_12,
-      \xsdb_reg_reg[15]\ => reg_7_n_11,
-      \xsdb_reg_reg[2]\ => reg_7_n_17,
-      \xsdb_reg_reg[3]\ => reg_7_n_16,
-      \xsdb_reg_reg[4]\ => reg_7_n_2,
-      \xsdb_reg_reg[6]\ => reg_7_n_0,
+      \xsdb_reg_reg[11]\ => reg_7_n_17,
+      \xsdb_reg_reg[12]\ => reg_7_n_16,
+      \xsdb_reg_reg[13]\ => reg_7_n_15,
+      \xsdb_reg_reg[14]\ => reg_7_n_14,
+      \xsdb_reg_reg[15]\ => reg_7_n_13,
+      \xsdb_reg_reg[2]\(0) => \xsdb_reg_reg[2]\(0),
+      \xsdb_reg_reg[3]\ => reg_7_n_18,
+      \xsdb_reg_reg[6]\ => reg_7_n_1,
       \xsdb_reg_reg[7]\ => reg_7_n_3,
       \xsdb_reg_reg[8]\ => reg_7_n_4,
       \xsdb_reg_reg[9]\ => reg_7_n_5
@@ -30905,7 +30951,7 @@ reg_81: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized49\
       \slaveRegDo_mux_0[8]_i_2\ => reg_83_n_7,
       \slaveRegDo_mux_0[9]_i_2\ => reg_83_n_6,
       \slaveRegDo_mux_0_reg[0]\ => reg_85_n_15,
-      \slaveRegDo_mux_0_reg[10]\ => reg_7_n_1,
+      \slaveRegDo_mux_0_reg[10]\ => reg_7_n_2,
       \slaveRegDo_mux_0_reg[10]_0\ => reg_85_n_5,
       \slaveRegDo_mux_0_reg[11]\ => reg_6_n_8,
       \slaveRegDo_mux_0_reg[11]_0\ => reg_19_n_4,
@@ -30933,12 +30979,12 @@ reg_81: entity work.\design_2_ila_2_0_xsdbs_v1_0_2_reg__parameterized49\
       \slaveRegDo_mux_0_reg[1]\ => reg_85_n_14,
       \slaveRegDo_mux_0_reg[2]\ => reg_85_n_13,
       \slaveRegDo_mux_0_reg[3]\ => reg_85_n_12,
-      \slaveRegDo_mux_0_reg[4]\ => reg_6_n_1,
+      \slaveRegDo_mux_0_reg[4]\ => reg_7_n_0,
       \slaveRegDo_mux_0_reg[4]_0\ => reg_19_n_10,
       \slaveRegDo_mux_0_reg[4]_1\ => reg_17_n_3,
       \slaveRegDo_mux_0_reg[4]_2\ => reg_85_n_11,
       \slaveRegDo_mux_0_reg[5]\ => reg_85_n_10,
-      \slaveRegDo_mux_0_reg[6]\ => reg_7_n_0,
+      \slaveRegDo_mux_0_reg[6]\ => reg_7_n_1,
       \slaveRegDo_mux_0_reg[6]_0\ => reg_19_n_8,
       \slaveRegDo_mux_0_reg[6]_1\ => reg_17_n_5,
       \slaveRegDo_mux_0_reg[6]_2\ => reg_85_n_9,
@@ -33166,6 +33212,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_allx_typeA is
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_allx_typeA : entity is "ltlib_v1_0_0_allx_typeA";
 end design_2_ila_2_0_ltlib_v1_0_0_allx_typeA;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_allx_typeA is
@@ -34338,6 +34386,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_allx_typeA_nodelay is
     SRL_D_I : in STD_LOGIC;
     \probeDelay1_reg[0]_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_allx_typeA_nodelay : entity is "ltlib_v1_0_0_allx_typeA_nodelay";
 end design_2_ila_2_0_ltlib_v1_0_0_allx_typeA_nodelay;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_allx_typeA_nodelay is
@@ -34629,6 +34679,8 @@ entity design_2_ila_2_0_blk_mem_gen_top is
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_2\ : in STD_LOGIC_VECTOR ( 28 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end design_2_ila_2_0_blk_mem_gen_top;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_top is
@@ -34662,6 +34714,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_match is
     Q : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_match : entity is "ltlib_v1_0_0_match";
 end design_2_ila_2_0_ltlib_v1_0_0_match;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_match is
@@ -35184,6 +35238,8 @@ entity design_2_ila_2_0_ltlib_v1_0_0_match_nodelay is
     PROBES_I : in STD_LOGIC_VECTOR ( 19 downto 0 );
     SRL_D_I : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ltlib_v1_0_0_match_nodelay : entity is "ltlib_v1_0_0_match_nodelay";
 end design_2_ila_2_0_ltlib_v1_0_0_match_nodelay;
 
 architecture STRUCTURE of design_2_ila_2_0_ltlib_v1_0_0_match_nodelay is
@@ -35279,6 +35335,8 @@ entity design_2_ila_2_0_blk_mem_gen_v8_3_6_synth is
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_2\ : in STD_LOGIC_VECTOR ( 28 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_v8_3_6_synth : entity is "blk_mem_gen_v8_3_6_synth";
 end design_2_ila_2_0_blk_mem_gen_v8_3_6_synth;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_v8_3_6_synth is
@@ -35304,30 +35362,30 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter is
   port (
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
-    \capture_qual_ctrl_reg[0]\ : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    \capture_qual_ctrl_reg[0]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     u_scnt_cmp_q_0 : out STD_LOGIC_VECTOR ( 0 to 0 );
     D : out STD_LOGIC_VECTOR ( 9 downto 0 );
     DOUT_O : out STD_LOGIC;
     SRL_Q_O : out STD_LOGIC;
     u_scnt_cmp_q_1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     cfg_data_1 : in STD_LOGIC;
-    A : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    A : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_dclk_o : in STD_LOGIC;
     cmp_reset : in STD_LOGIC;
     scnt_cmp_temp : in STD_LOGIC;
     \probeDelay1_reg[9]\ : in STD_LOGIC;
     u_scnt_cmp_q_2 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    basic_trigger : in STD_LOGIC;
-    u_scnt_cmp_q_3 : in STD_LOGIC;
     \out\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter : entity is "ila_v6_2_8_ila_cap_sample_counter";
 end design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter is
   signal \^e\ : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal U_SCRST_n_3 : STD_LOGIC;
-  signal \^capture_qual_ctrl_reg[0]\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal U_SCRST_n_2 : STD_LOGIC;
+  signal \^capture_qual_ctrl_reg[0]\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal cfg_data_0 : STD_LOGIC;
   signal cfg_data_1_0 : STD_LOGIC;
   signal cfg_data_2 : STD_LOGIC;
@@ -35351,12 +35409,12 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter is
   attribute BOX_TYPE of u_scnt_cmp_q : label is "PRIMITIVE";
 begin
   E(0) <= \^e\(0);
-  \capture_qual_ctrl_reg[0]\(1 downto 0) <= \^capture_qual_ctrl_reg[0]\(1 downto 0);
+  \capture_qual_ctrl_reg[0]\(0) <= \^capture_qual_ctrl_reg[0]\(0);
   u_scnt_cmp_q_0(0) <= \^u_scnt_cmp_q_0\(0);
 U_SCE: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut4_59
      port map (
-      A(3 downto 2) => \^capture_qual_ctrl_reg[0]\(1 downto 0),
-      A(1 downto 0) => A(1 downto 0),
+      A(3) => \^capture_qual_ctrl_reg[0]\(0),
+      A(2 downto 0) => A(2 downto 0),
       E(0) => \^e\(0),
       cfg_data_0 => cfg_data_0,
       cfg_data_1 => cfg_data_1,
@@ -35366,8 +35424,8 @@ U_SCE: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut4_59
 U_SCMPCE: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut5_60
      port map (
       A(4) => \^u_scnt_cmp_q_0\(0),
-      A(3 downto 2) => \^capture_qual_ctrl_reg[0]\(1 downto 0),
-      A(1 downto 0) => A(1 downto 0),
+      A(3) => \^capture_qual_ctrl_reg[0]\(0),
+      A(2 downto 0) => A(2 downto 0),
       cfg_data_0 => cfg_data_0,
       cfg_data_1_0 => cfg_data_1_0,
       s_dclk_o => s_dclk_o,
@@ -35376,17 +35434,15 @@ U_SCMPCE: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut5_60
     );
 U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
      port map (
-      A(2 downto 0) => A(2 downto 0),
-      SR(0) => U_SCRST_n_3,
+      A(3 downto 0) => A(3 downto 0),
+      SR(0) => U_SCRST_n_2,
       SRL_D_I => cfg_data_2,
-      basic_trigger => basic_trigger,
-      \capture_qual_ctrl_reg[0]\(1 downto 0) => \^capture_qual_ctrl_reg[0]\(1 downto 0),
+      \capture_qual_ctrl_reg[0]\(0) => \^capture_qual_ctrl_reg[0]\(0),
       cfg_data_1_0 => cfg_data_1_0,
       \iscnt_reg[9]\(0) => u_scnt_cmp_q_1(0),
       \iscnt_reg[9]_0\(0) => \^u_scnt_cmp_q_0\(0),
       s_dclk_o => s_dclk_o,
-      u_scnt_cmp_q(1 downto 0) => u_scnt_cmp_q_2(1 downto 0),
-      u_scnt_cmp_q_0 => u_scnt_cmp_q_3
+      u_scnt_cmp_q(1 downto 0) => u_scnt_cmp_q_2(1 downto 0)
     );
 \i_intcap.icap_addr[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -35612,7 +35668,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(0),
       Q => scnt(0),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -35620,7 +35676,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(1),
       Q => scnt(1),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -35628,7 +35684,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(2),
       Q => scnt(2),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -35636,7 +35692,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(3),
       Q => scnt(3),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -35644,7 +35700,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(4),
       Q => scnt(4),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -35652,7 +35708,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(5),
       Q => scnt(5),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -35660,7 +35716,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(6),
       Q => scnt(6),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -35668,7 +35724,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(7),
       Q => scnt(7),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -35676,7 +35732,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(8),
       Q => scnt(8),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 \iscnt_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -35684,7 +35740,7 @@ U_SCRST: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6_61
       CE => \^e\(0),
       D => \p_0_in__13\(9),
       Q => scnt(9),
-      R => U_SCRST_n_3
+      R => U_SCRST_n_2
     );
 u_scnt_cmp: entity work.design_2_ila_2_0_ltlib_v1_0_0_match_nodelay_62
      port map (
@@ -35733,6 +35789,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_cap_window_counter is
     wcnt_hcmp_temp : in STD_LOGIC;
     \iwcnt_reg[9]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_cap_window_counter : entity is "ila_v6_2_8_ila_cap_window_counter";
 end design_2_ila_2_0_ila_v6_2_8_ila_cap_window_counter;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_window_counter is
@@ -36084,6 +36142,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_trig_match is
     probe2 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_trig_match : entity is "ila_v6_2_8_ila_trig_match";
 end design_2_ila_2_0_ila_v6_2_8_ila_trig_match;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_trig_match is
@@ -36214,6 +36274,8 @@ entity design_2_ila_2_0_blk_mem_gen_v8_3_6 is
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_2\ : in STD_LOGIC_VECTOR ( 28 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_blk_mem_gen_v8_3_6 : entity is "blk_mem_gen_v8_3_6";
 end design_2_ila_2_0_blk_mem_gen_v8_3_6;
 
 architecture STRUCTURE of design_2_ila_2_0_blk_mem_gen_v8_3_6 is
@@ -36238,7 +36300,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen is
   port (
-    A : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    A : out STD_LOGIC_VECTOR ( 1 downto 0 );
     u_scnt_cmp_q : out STD_LOGIC_VECTOR ( 0 to 0 );
     wcnt_hcmp : out STD_LOGIC;
     \out\ : out STD_LOGIC_VECTOR ( 9 downto 0 );
@@ -36249,7 +36311,7 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen is
     SRL_Q_O : out STD_LOGIC;
     \captured_samples_reg[9]_0\ : out STD_LOGIC_VECTOR ( 9 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
-    u_wcnt_lcmp_q : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    u_wcnt_lcmp_q : in STD_LOGIC_VECTOR ( 2 downto 0 );
     s_dclk_o : in STD_LOGIC;
     scnt_cmp_temp : in STD_LOGIC;
     \probeDelay1_reg[0]\ : in STD_LOGIC;
@@ -36258,14 +36320,14 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen is
     in0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     Q : in STD_LOGIC_VECTOR ( 0 to 0 );
     u_scnt_cmp_q_0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    basic_trigger : in STD_LOGIC;
-    u_scnt_cmp_q_1 : in STD_LOGIC;
     \captured_samples_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen : entity is "ila_v6_2_8_ila_cap_addrgen";
 end design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen is
-  signal \^a\ : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal \^a\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal cap_addr_next : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal cfg_data_0 : STD_LOGIC;
   signal cfg_data_1 : STD_LOGIC;
@@ -36500,7 +36562,7 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen is
   attribute DONT_TOUCH of icap_wr_en_reg : label is std.standard.true;
   attribute KEEP of icap_wr_en_reg : label is "yes";
 begin
-  A(2 downto 0) <= \^a\(2 downto 0);
+  A(1 downto 0) <= \^a\(1 downto 0);
   u_scnt_cmp_q(0) <= \^u_scnt_cmp_q\(0);
 CAP_WR_EN_O_reg: unisim.vcomponents.FDRE
      port map (
@@ -36512,8 +36574,8 @@ CAP_WR_EN_O_reg: unisim.vcomponents.FDRE
     );
 U_CMPRESET: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut6
      port map (
-      A(4 downto 2) => \^a\(2 downto 0),
-      A(1 downto 0) => u_wcnt_lcmp_q(1 downto 0),
+      A(4 downto 3) => \^a\(1 downto 0),
+      A(2 downto 0) => u_wcnt_lcmp_q(2 downto 0),
       E(0) => E(0),
       cfg_data_0 => cfg_data_0,
       cfg_data_1 => cfg_data_1,
@@ -37600,15 +37662,14 @@ icap_wr_en_reg: unisim.vcomponents.FDRE
     );
 u_cap_sample_counter: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_counter
      port map (
-      A(2) => \^a\(2),
-      A(1 downto 0) => u_wcnt_lcmp_q(1 downto 0),
+      A(3) => \^a\(1),
+      A(2 downto 0) => u_wcnt_lcmp_q(2 downto 0),
       D(9 downto 0) => cap_addr_next(9 downto 0),
       DOUT_O => DOUT_O,
       E(0) => scnt_ce,
       Q(9 downto 0) => wcnt(9 downto 0),
       SRL_Q_O => cfg_data_2,
-      basic_trigger => basic_trigger,
-      \capture_qual_ctrl_reg[0]\(1 downto 0) => \^a\(1 downto 0),
+      \capture_qual_ctrl_reg[0]\(0) => \^a\(0),
       cfg_data_1 => cfg_data_1,
       cmp_reset => cmp_reset,
       \out\(9 downto 0) => cfg_data_vec_sync2(10 downto 1),
@@ -37617,13 +37678,12 @@ u_cap_sample_counter: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_sample_cou
       scnt_cmp_temp => scnt_cmp_temp,
       u_scnt_cmp_q_0(0) => \^u_scnt_cmp_q\(0),
       u_scnt_cmp_q_1(0) => E(0),
-      u_scnt_cmp_q_2(1 downto 0) => u_scnt_cmp_q_0(1 downto 0),
-      u_scnt_cmp_q_3 => u_scnt_cmp_q_1
+      u_scnt_cmp_q_2(1 downto 0) => u_scnt_cmp_q_0(1 downto 0)
     );
 u_cap_window_counter: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_window_counter
      port map (
-      A(3 downto 2) => \^a\(1 downto 0),
-      A(1 downto 0) => u_wcnt_lcmp_q(1 downto 0),
+      A(3) => \^a\(0),
+      A(2 downto 0) => u_wcnt_lcmp_q(2 downto 0),
       E(0) => E(0),
       Q(9 downto 0) => wcnt(9 downto 0),
       SRL_Q_O => cfg_data_2,
@@ -37634,7 +37694,7 @@ u_cap_window_counter: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_window_cou
       shift_en_reg => shift_en_reg,
       shift_en_reg_0 => shift_en_reg_0,
       shift_en_reg_1 => SRL_Q_O,
-      u_wcnt_lcmp_q_0(0) => \^a\(2),
+      u_wcnt_lcmp_q_0(0) => \^a\(1),
       wcnt_hcmp => wcnt_hcmp,
       wcnt_hcmp_temp => wcnt_hcmp_temp,
       wcnt_lcmp_temp => wcnt_lcmp_temp
@@ -37667,6 +37727,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_trigger is
     probe2 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_trigger : entity is "ila_v6_2_8_ila_trigger";
 end design_2_ila_2_0_ila_v6_2_8_ila_trigger;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_trigger is
@@ -37736,11 +37798,14 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy is
     wcnt_lcmp_temp : in STD_LOGIC;
     wcnt_hcmp_temp : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    basic_trigger : in STD_LOGIC;
-    itrigger_out_reg_0 : in STD_LOGIC;
     u_scnt_cmp_q : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    \captured_samples_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
+    \captured_samples_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
+    itrigger_out_reg_0 : in STD_LOGIC;
+    basic_trigger : in STD_LOGIC;
+    itrigger_out_reg_1 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy : entity is "ila_v6_2_8_ila_cap_ctrl_legacy";
 end design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy is
@@ -37759,14 +37824,17 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy is
   signal n_0_0 : STD_LOGIC;
   attribute async_reg of n_0_0 : signal is "true";
   signal scnt_cmp : STD_LOGIC;
+  signal \trigger_i__0\ : STD_LOGIC;
   signal u_cap_addrgen_n_1 : STD_LOGIC;
-  signal u_cap_addrgen_n_2 : STD_LOGIC;
   signal wcnt_hcmp : STD_LOGIC;
   signal wcnt_lcmp : STD_LOGIC;
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of itrigger_in : label is "soft_lutpair9";
   attribute ASYNC_REG_boolean : boolean;
   attribute ASYNC_REG_boolean of itrigger_out_reg : label is std.standard.true;
   attribute KEEP : string;
   attribute KEEP of itrigger_out_reg : label is "yes";
+  attribute SOFT_HLUTNM of trigger_i : label is "soft_lutpair9";
 begin
   A(1 downto 0) <= \^a\(1 downto 0);
   CAP_DONE_O_reg_0(1 downto 0) <= \^cap_done_o_reg_0\(1 downto 0);
@@ -37793,7 +37861,7 @@ U_CDONE: entity work.\design_2_ila_2_0_ltlib_v1_0_0_cfglut6__parameterized0\
      port map (
       A(4) => wcnt_lcmp,
       A(3) => u_cap_addrgen_n_1,
-      A(2) => u_cap_addrgen_n_2,
+      A(2) => \trigger_i__0\,
       A(1 downto 0) => \^a\(1 downto 0),
       CAP_DONE_O_reg => U_CDONE_n_1,
       CAP_DONE_O_reg_0(0) => \^cap_done_o_reg_0\(1),
@@ -37809,7 +37877,7 @@ U_NS0: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut7
      port map (
       A(3) => scnt_cmp,
       A(2) => u_cap_addrgen_n_1,
-      A(1) => u_cap_addrgen_n_2,
+      A(1) => \trigger_i__0\,
       A(0) => \^a\(1),
       E(0) => E(0),
       \I_YESLUT6.I_YES_OREG.O_reg_reg_0\(0) => \^a\(0),
@@ -37825,7 +37893,7 @@ U_NS1: entity work.design_2_ila_2_0_ltlib_v1_0_0_cfglut7_52
      port map (
       A(2) => scnt_cmp,
       A(1) => u_cap_addrgen_n_1,
-      A(0) => u_cap_addrgen_n_2,
+      A(0) => \trigger_i__0\,
       E(0) => E(0),
       \I_YESLUT6.I_YES_OREG.O_reg_reg_0\(0) => \^a\(1),
       \I_YESLUT6.I_YES_OREG.O_reg_reg_1\(1) => wcnt_lcmp,
@@ -37845,15 +37913,16 @@ i_0: unisim.vcomponents.LUT1
       I0 => itrigger_out,
       O => n_0_0
     );
-itrigger_in: unisim.vcomponents.LUT4
+itrigger_in: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0020"
+      INIT => X"22220200"
     )
         port map (
       I0 => \^a\(1),
       I1 => \^a\(0),
-      I2 => basic_trigger,
-      I3 => itrigger_out_reg_0,
+      I2 => itrigger_out_reg_0,
+      I3 => basic_trigger,
+      I4 => itrigger_out_reg_1(0),
       O => \itrigger_in__0\
     );
 itrigger_out_reg: unisim.vcomponents.FDRE
@@ -37867,17 +37936,25 @@ itrigger_out_reg: unisim.vcomponents.FDRE
       Q => itrigger_out,
       R => Q(0)
     );
+trigger_i: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"F4"
+    )
+        port map (
+      I0 => itrigger_out_reg_0,
+      I1 => basic_trigger,
+      I2 => itrigger_out_reg_1(0),
+      O => \trigger_i__0\
+    );
 u_cap_addrgen: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen
      port map (
-      A(2) => wcnt_lcmp,
-      A(1) => u_cap_addrgen_n_1,
-      A(0) => u_cap_addrgen_n_2,
+      A(1) => wcnt_lcmp,
+      A(0) => u_cap_addrgen_n_1,
       CAP_WR_EN_O_reg_0 => CAP_WR_EN_O_reg,
       DOUT_O => DOUT_O,
       E(0) => E(0),
       Q(0) => Q(0),
       SRL_Q_O => cfg_data_2,
-      basic_trigger => basic_trigger,
       \captured_samples_reg[0]_0\(0) => \captured_samples_reg[0]\(0),
       \captured_samples_reg[9]_0\(9 downto 0) => \captured_samples_reg[9]\(9 downto 0),
       in0(0) => cfg_data_1,
@@ -37889,7 +37966,7 @@ u_cap_addrgen: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_addrgen
       shift_en_reg_0 => shift_en_reg_0,
       u_scnt_cmp_q(0) => scnt_cmp,
       u_scnt_cmp_q_0(1 downto 0) => u_scnt_cmp_q(1 downto 0),
-      u_scnt_cmp_q_1 => itrigger_out_reg_0,
+      u_wcnt_lcmp_q(2) => \trigger_i__0\,
       u_wcnt_lcmp_q(1 downto 0) => \^a\(1 downto 0),
       wcnt_hcmp => wcnt_hcmp,
       wcnt_hcmp_temp => wcnt_hcmp_temp,
@@ -37913,6 +37990,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_trace_memory is
     DIPADIP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_2\ : in STD_LOGIC_VECTOR ( 28 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_trace_memory : entity is "ila_v6_2_8_ila_trace_memory";
 end design_2_ila_2_0_ila_v6_2_8_ila_trace_memory;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_trace_memory is
@@ -37938,9 +38017,11 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0_ila_v6_2_8_ila_core is
   port (
     sl_oport_o : out STD_LOGIC_VECTOR ( 16 downto 0 );
+    trig_in_ack : out STD_LOGIC;
     \out\ : in STD_LOGIC_VECTOR ( 36 downto 0 );
     \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\ : in STD_LOGIC;
     dummy_temp1_reg : in STD_LOGIC;
+    D : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -37951,6 +38032,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila_core is
     probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila_core : entity is "ila_v6_2_8_ila_core";
 end design_2_ila_2_0_ila_v6_2_8_ila_core;
 
 architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_core is
@@ -38090,6 +38173,8 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_core is
   signal \shifted_data_in_reg_n_0_[8][7]\ : STD_LOGIC;
   signal \shifted_data_in_reg_n_0_[8][8]\ : STD_LOGIC;
   signal \shifted_data_in_reg_n_0_[8][9]\ : STD_LOGIC;
+  signal shifted_trig_in : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal shifted_trig_in_2 : STD_LOGIC_VECTOR ( 6 to 6 );
   signal tc_config_cs_serial_input : STD_LOGIC;
   signal tc_config_cs_serial_output : STD_LOGIC;
   signal tc_config_cs_shift_en : STD_LOGIC;
@@ -38105,6 +38190,7 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_core is
   signal \u_cap_addrgen/u_cap_window_counter/wcnt_lcmp_temp1\ : STD_LOGIC;
   signal u_ila_cap_ctrl_n_1 : STD_LOGIC;
   signal u_ila_regs_n_48 : STD_LOGIC;
+  signal u_ila_regs_n_71 : STD_LOGIC;
   signal u_ila_reset_ctrl_n_2 : STD_LOGIC;
   signal u_ila_reset_ctrl_n_6 : STD_LOGIC;
   signal use_probe_debug_circuit : STD_LOGIC;
@@ -38302,6 +38388,94 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila_core is
   attribute DONT_TOUCH of use_probe_debug_circuit_reg : label is std.standard.true;
   attribute KEEP of use_probe_debug_circuit_reg : label is "yes";
 begin
+\I_EN_TRIGIN.shifted_trig_in_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => D(0),
+      Q => shifted_trig_in(0),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(0),
+      Q => shifted_trig_in(1),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(1),
+      Q => shifted_trig_in(2),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(2),
+      Q => shifted_trig_in(3),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(3),
+      Q => shifted_trig_in(4),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(4),
+      Q => shifted_trig_in(5),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.shifted_trig_in_reg[6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => shifted_trig_in(5),
+      Q => shifted_trig_in_2(6),
+      R => u_ila_regs_n_71
+    );
+\I_EN_TRIGIN.trig_in_ack_reg\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
+      CE => '1',
+      D => D(0),
+      Q => trig_in_ack,
+      R => '0'
+    );
 basic_trigger_reg: unisim.vcomponents.FDRE
      port map (
       C => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
@@ -39737,6 +39911,7 @@ u_ila_cap_ctrl: entity work.design_2_ila_2_0_ila_v6_2_8_ila_cap_ctrl_legacy
       \captured_samples_reg[0]\(0) => u_ila_reset_ctrl_n_6,
       \captured_samples_reg[9]\(9 downto 0) => capture_cnt(9 downto 0),
       itrigger_out_reg_0 => en_adv_trigger,
+      itrigger_out_reg_1(0) => shifted_trig_in_2(6),
       \out\(9 downto 0) => cap_wr_addr(9 downto 0),
       \probeDelay1_reg[0]\ => \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\,
       s_dclk_o => s_dclk,
@@ -39790,6 +39965,7 @@ u_ila_regs: entity work.design_2_ila_2_0_ila_v6_2_8_ila_register
       \xsdb_reg_reg[15]\(15 downto 0) => data_word_out(15 downto 0),
       \xsdb_reg_reg[1]\(1) => O_reg,
       \xsdb_reg_reg[1]\(0) => u_ila_cap_ctrl_n_1,
+      \xsdb_reg_reg[2]\(0) => u_ila_regs_n_71,
       \xsdb_reg_reg[3]\(3) => cap_done,
       \xsdb_reg_reg[3]\(2) => cap_trigger_out,
       \xsdb_reg_reg[3]\(1) => halt_status,
@@ -47142,7 +47318,7 @@ entity design_2_ila_2_0_ila_v6_2_8_ila is
   attribute C_TIME_TAG_WIDTH : integer;
   attribute C_TIME_TAG_WIDTH of design_2_ila_2_0_ila_v6_2_8_ila : entity is 32;
   attribute C_TRIGIN_EN : integer;
-  attribute C_TRIGIN_EN of design_2_ila_2_0_ila_v6_2_8_ila : entity is 0;
+  attribute C_TRIGIN_EN of design_2_ila_2_0_ila_v6_2_8_ila : entity is 1;
   attribute C_TRIGOUT_EN : integer;
   attribute C_TRIGOUT_EN of design_2_ila_2_0_ila_v6_2_8_ila : entity is 0;
   attribute C_USE_TEST_REG : integer;
@@ -59487,6 +59663,8 @@ entity design_2_ila_2_0_ila_v6_2_8_ila is
   attribute LC_TIME_TAG_WIDTH of design_2_ila_2_0_ila_v6_2_8_ila : entity is 1;
   attribute LC_TRIG_WIDTH : integer;
   attribute LC_TRIG_WIDTH of design_2_ila_2_0_ila_v6_2_8_ila : entity is 46;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_2_ila_2_0_ila_v6_2_8_ila : entity is "ila_v6_2_8_ila";
   attribute dont_touch : string;
   attribute dont_touch of design_2_ila_2_0_ila_v6_2_8_ila : entity is "true";
 end design_2_ila_2_0_ila_v6_2_8_ila;
@@ -59529,7 +59707,6 @@ architecture STRUCTURE of design_2_ila_2_0_ila_v6_2_8_ila is
 begin
   clk1x <= clk;
   clkdiv_out <= \<const0>\;
-  trig_in_ack <= \<const0>\;
   trig_out <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
@@ -59567,6 +59744,7 @@ i_0: unisim.vcomponents.LUT1
     );
 ila_core_inst: entity work.design_2_ila_2_0_ila_v6_2_8_ila_core
      port map (
+      D(0) => trig_in_reg,
       \I_IS_TERMINATION_SLICE_W_OUTPUT_REG.DOUT_O_reg\ => clk1x,
       dummy_temp1_reg => dummy,
       \out\(36 downto 0) => sl_iport0(36 downto 0),
@@ -59579,7 +59757,8 @@ ila_core_inst: entity work.design_2_ila_2_0_ila_v6_2_8_ila_core
       probe6(3 downto 0) => probe6(3 downto 0),
       probe7(0) => probe7(0),
       probe8(0) => probe8(0),
-      sl_oport_o(16 downto 0) => sl_oport0(16 downto 0)
+      sl_oport_o(16 downto 0) => sl_oport0(16 downto 0),
+      trig_in_ack => trig_in_ack
     );
 \sync_reg1_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -59627,6 +59806,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_2_ila_2_0 is
   port (
     clk : in STD_LOGIC;
+    trig_in : in STD_LOGIC;
+    trig_in_ack : out STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -59640,7 +59821,7 @@ entity design_2_ila_2_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of design_2_ila_2_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of design_2_ila_2_0 : entity is "design_2_ila_1_1,ila,{}";
+  attribute CHECK_LICENSE_TYPE of design_2_ila_2_0 : entity is "design_2_ila_2_0,ila,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of design_2_ila_2_0 : entity is "yes";
   attribute X_CORE_INFO : string;
@@ -59649,7 +59830,6 @@ end design_2_ila_2_0;
 
 architecture STRUCTURE of design_2_ila_2_0 is
   signal NLW_inst_clkdiv_out_UNCONNECTED : STD_LOGIC;
-  signal NLW_inst_trig_in_ack_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_trig_out_UNCONNECTED : STD_LOGIC;
   signal NLW_inst_sl_oport0_UNCONNECTED : STD_LOGIC_VECTOR ( 16 downto 0 );
   attribute C_ADV_TRIGGER : integer;
@@ -65881,7 +66061,7 @@ architecture STRUCTURE of design_2_ila_2_0 is
   attribute C_TIME_TAG_WIDTH : integer;
   attribute C_TIME_TAG_WIDTH of inst : label is 32;
   attribute C_TRIGIN_EN : integer;
-  attribute C_TRIGIN_EN of inst : label is 0;
+  attribute C_TRIGIN_EN of inst : label is 1;
   attribute C_TRIGOUT_EN : integer;
   attribute C_TRIGOUT_EN of inst : label is 0;
   attribute C_USE_TEST_REG : integer;
@@ -79259,8 +79439,8 @@ inst: entity work.design_2_ila_2_0_ila_v6_2_8_ila
       probe999(0) => '0',
       sl_iport0(36 downto 0) => B"0000000000000000000000000000000000000",
       sl_oport0(16 downto 0) => NLW_inst_sl_oport0_UNCONNECTED(16 downto 0),
-      trig_in => '0',
-      trig_in_ack => NLW_inst_trig_in_ack_UNCONNECTED,
+      trig_in => trig_in,
+      trig_in_ack => trig_in_ack,
       trig_out => NLW_inst_trig_out_UNCONNECTED,
       trig_out_ack => '0'
     );

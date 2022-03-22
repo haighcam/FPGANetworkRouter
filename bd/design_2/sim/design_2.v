@@ -1,15 +1,15 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Mon Mar  7 17:23:12 2022
-//Host        : BA3145WS20 running 64-bit major release  (build 9200)
+//Date        : Sun Mar 20 14:45:27 2022
+//Host        : BA3145WS18 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=11,numReposBlks=11,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=6,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=17,numReposBlks=17,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=6,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
 module design_2
    (eth_mdio_mdc_mdc,
     eth_mdio_mdc_mdio_i,
@@ -63,6 +63,7 @@ module design_2
   wire clk_wiz_1_clk_out2;
   wire clk_wiz_1_clk_out3;
   wire clk_wiz_1_locked;
+  wire [0:0]config_ready;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_alt_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_alt_ip_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_alt_ip_src_addr;
@@ -71,6 +72,8 @@ module design_2
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_alt_udp_src_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_encapsualted;
+  wire [31:0]decoder_0_fifo_data_len;
+  wire [1:0]decoder_0_fifo_state;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_src_addr;
   wire [31:0]decoder_0_m_axis_packet_TDATA;
@@ -78,10 +81,15 @@ module design_2
   wire decoder_0_m_axis_packet_TLAST;
   wire decoder_0_m_axis_packet_TREADY;
   wire decoder_0_m_axis_packet_TVALID;
+  wire [1:0]decoder_0_mst_exec_state;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_src_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_dest_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_src_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_valid;
+  wire [47:0]dest_addr;
+  wire [31:0]dest_ip_addr;
+  wire [15:0]dest_udp_port;
+  wire [0:0]drop_packets;
   wire [31:0]encoder_0_m_axis_txc_TDATA;
   wire [3:0]encoder_0_m_axis_txc_TKEEP;
   wire encoder_0_m_axis_txc_TLAST;
@@ -92,32 +100,33 @@ module design_2
   wire encoder_0_m_axis_txd_TLAST;
   wire encoder_0_m_axis_txd_TREADY;
   wire encoder_0_m_axis_txd_TVALID;
+  wire encoder_0_mst_exec_state;
   wire encoder_0_ready;
-  wire ethernet_controller_0_control_ready;
-  wire [31:0]ethernet_controller_0_m_axi_ARADDR;
-  wire ethernet_controller_0_m_axi_ARREADY;
-  wire ethernet_controller_0_m_axi_ARVALID;
-  wire [31:0]ethernet_controller_0_m_axi_AWADDR;
-  wire ethernet_controller_0_m_axi_AWREADY;
-  wire ethernet_controller_0_m_axi_AWVALID;
-  wire ethernet_controller_0_m_axi_BREADY;
-  wire [1:0]ethernet_controller_0_m_axi_BRESP;
-  wire ethernet_controller_0_m_axi_BVALID;
-  wire [31:0]ethernet_controller_0_m_axi_RDATA;
-  wire ethernet_controller_0_m_axi_RREADY;
-  wire [1:0]ethernet_controller_0_m_axi_RRESP;
-  wire ethernet_controller_0_m_axi_RVALID;
-  wire [31:0]ethernet_controller_0_m_axi_WDATA;
-  wire ethernet_controller_0_m_axi_WREADY;
-  wire [3:0]ethernet_controller_0_m_axi_WSTRB;
-  wire ethernet_controller_0_m_axi_WVALID;
+  wire [31:0]eth_controller_0_M_AXI_AWADDR;
+  wire eth_controller_0_M_AXI_AWREADY;
+  wire eth_controller_0_M_AXI_AWVALID;
+  wire eth_controller_0_M_AXI_BREADY;
+  wire [1:0]eth_controller_0_M_AXI_BRESP;
+  wire eth_controller_0_M_AXI_BVALID;
+  wire [31:0]eth_controller_0_M_AXI_WDATA;
+  wire eth_controller_0_M_AXI_WREADY;
+  wire [3:0]eth_controller_0_M_AXI_WSTRB;
+  wire eth_controller_0_M_AXI_WVALID;
+  wire eth_controller_0_config_done;
+  wire ila_0_trig_out1;
+  wire ila_1_trig_in_ack;
+  wire [47:0]mux_0_out;
+  wire [31:0]mux_1_out;
+  wire [15:0]mux_2_out;
+  wire [47:0]mux_3_C;
+  wire [15:0]mux_4_C;
+  wire [31:0]mux_5_C;
   wire reset_1;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
+  wire [47:0]src_addr;
+  wire [31:0]src_ip_addr;
+  wire [15:0]src_udp_port;
   wire sys_clock_1;
-  wire [3:0]vio_0_probe_out0;
-  wire [0:0]vio_0_probe_out1;
-  wire [0:0]vio_0_probe_out2;
-  wire [0:0]vio_0_probe_out3;
 
   assign axi_ethernet_0_mdio_MDIO_I = eth_mdio_mdc_mdio_i;
   assign axi_ethernet_0_rgmii_RD = eth_rgmii_rd[3:0];
@@ -161,25 +170,21 @@ module design_2
         .rgmii_td(axi_ethernet_0_rgmii_TD),
         .rgmii_tx_ctl(axi_ethernet_0_rgmii_TX_CTL),
         .rgmii_txc(axi_ethernet_0_rgmii_TXC),
-        .s_axi_araddr(ethernet_controller_0_m_axi_ARADDR[17:0]),
-        .s_axi_arready(ethernet_controller_0_m_axi_ARREADY),
-        .s_axi_arvalid(ethernet_controller_0_m_axi_ARVALID),
-        .s_axi_awaddr(ethernet_controller_0_m_axi_AWADDR[17:0]),
-        .s_axi_awready(ethernet_controller_0_m_axi_AWREADY),
-        .s_axi_awvalid(ethernet_controller_0_m_axi_AWVALID),
-        .s_axi_bready(ethernet_controller_0_m_axi_BREADY),
-        .s_axi_bresp(ethernet_controller_0_m_axi_BRESP),
-        .s_axi_bvalid(ethernet_controller_0_m_axi_BVALID),
+        .s_axi_araddr({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_arvalid(1'b0),
+        .s_axi_awaddr(eth_controller_0_M_AXI_AWADDR[17:0]),
+        .s_axi_awready(eth_controller_0_M_AXI_AWREADY),
+        .s_axi_awvalid(eth_controller_0_M_AXI_AWVALID),
+        .s_axi_bready(eth_controller_0_M_AXI_BREADY),
+        .s_axi_bresp(eth_controller_0_M_AXI_BRESP),
+        .s_axi_bvalid(eth_controller_0_M_AXI_BVALID),
         .s_axi_lite_clk(clk_wiz_1_clk_out1),
         .s_axi_lite_resetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .s_axi_rdata(ethernet_controller_0_m_axi_RDATA),
-        .s_axi_rready(ethernet_controller_0_m_axi_RREADY),
-        .s_axi_rresp(ethernet_controller_0_m_axi_RRESP),
-        .s_axi_rvalid(ethernet_controller_0_m_axi_RVALID),
-        .s_axi_wdata(ethernet_controller_0_m_axi_WDATA),
-        .s_axi_wready(ethernet_controller_0_m_axi_WREADY),
-        .s_axi_wstrb(ethernet_controller_0_m_axi_WSTRB),
-        .s_axi_wvalid(ethernet_controller_0_m_axi_WVALID),
+        .s_axi_rready(1'b0),
+        .s_axi_wdata(eth_controller_0_M_AXI_WDATA),
+        .s_axi_wready(eth_controller_0_M_AXI_WREADY),
+        .s_axi_wstrb(eth_controller_0_M_AXI_WSTRB),
+        .s_axi_wvalid(eth_controller_0_M_AXI_WVALID),
         .s_axis_txc_tdata(encoder_0_m_axis_txc_TDATA),
         .s_axis_txc_tkeep(encoder_0_m_axis_txc_TKEEP),
         .s_axis_txc_tlast(encoder_0_m_axis_txc_TLAST),
@@ -208,6 +213,8 @@ module design_2
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .dest_addr(decoder_0_dest_addr),
         .encapsualted(decoder_0_encapsualted),
+        .fifo_data_len(decoder_0_fifo_data_len),
+        .fifo_state(decoder_0_fifo_state),
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_packet_tdata(decoder_0_m_axis_packet_TDATA),
@@ -215,6 +222,7 @@ module design_2
         .m_axis_packet_tlast(decoder_0_m_axis_packet_TLAST),
         .m_axis_packet_tready(decoder_0_m_axis_packet_TREADY),
         .m_axis_packet_tvalid(decoder_0_m_axis_packet_TVALID),
+        .mst_exec_state(decoder_0_mst_exec_state),
         .ready(encoder_0_ready),
         .s_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
         .s_axis_rxd_tkeep(axi_ethernet_0_m_axis_rxd_TKEEP),
@@ -232,15 +240,15 @@ module design_2
         .valid(decoder_0_valid));
   design_2_encoder_0_0 encoder_0
        (.aclk(clk_wiz_1_clk_out1),
-        .alt_dest_addr(decoder_0_alt_src_addr),
-        .alt_ip_dest_addr(decoder_0_alt_ip_src_addr),
-        .alt_ip_src_addr(decoder_0_alt_ip_dest_addr),
-        .alt_src_addr(decoder_0_alt_dest_addr),
-        .alt_udp_dest_port(decoder_0_alt_udp_src_port),
-        .alt_udp_src_port(decoder_0_alt_udp_dest_port),
+        .alt_dest_addr(mux_3_C),
+        .alt_ip_dest_addr(mux_5_C),
+        .alt_ip_src_addr(mux_1_out),
+        .alt_src_addr(mux_0_out),
+        .alt_udp_dest_port(mux_4_C),
+        .alt_udp_src_port(mux_2_out),
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .dest_addr(decoder_0_dest_addr),
-        .drop(vio_0_probe_out3),
+        .drop(drop_packets),
         .encapsulated(decoder_0_encapsualted),
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
@@ -254,6 +262,7 @@ module design_2
         .m_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .m_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
         .m_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID),
+        .mst_exec_state(encoder_0_mst_exec_state),
         .ready(encoder_0_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
         .s_axis_tkeep(decoder_0_m_axis_packet_TKEEP),
@@ -264,30 +273,22 @@ module design_2
         .udp_dest_port(decoder_0_udp_dest_port),
         .udp_src_port(decoder_0_udp_src_port),
         .valid(decoder_0_valid));
-  design_2_ethernet_controller_0_0 ethernet_controller_0
-       (.control_data(vio_0_probe_out0),
-        .control_ready(ethernet_controller_0_control_ready),
-        .control_valid(vio_0_probe_out1),
-        .m_axi_aclk(clk_wiz_1_clk_out1),
-        .m_axi_araddr(ethernet_controller_0_m_axi_ARADDR),
-        .m_axi_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
-        .m_axi_arready(ethernet_controller_0_m_axi_ARREADY),
-        .m_axi_arvalid(ethernet_controller_0_m_axi_ARVALID),
-        .m_axi_awaddr(ethernet_controller_0_m_axi_AWADDR),
-        .m_axi_awready(ethernet_controller_0_m_axi_AWREADY),
-        .m_axi_awvalid(ethernet_controller_0_m_axi_AWVALID),
-        .m_axi_bready(ethernet_controller_0_m_axi_BREADY),
-        .m_axi_bresp(ethernet_controller_0_m_axi_BRESP),
-        .m_axi_bvalid(ethernet_controller_0_m_axi_BVALID),
-        .m_axi_rdata(ethernet_controller_0_m_axi_RDATA),
-        .m_axi_rready(ethernet_controller_0_m_axi_RREADY),
-        .m_axi_rresp(ethernet_controller_0_m_axi_RRESP),
-        .m_axi_rvalid(ethernet_controller_0_m_axi_RVALID),
-        .m_axi_wdata(ethernet_controller_0_m_axi_WDATA),
-        .m_axi_wready(ethernet_controller_0_m_axi_WREADY),
-        .m_axi_wstrb(ethernet_controller_0_m_axi_WSTRB),
-        .m_axi_wvalid(ethernet_controller_0_m_axi_WVALID),
-        .start_config(vio_0_probe_out2));
+  design_2_eth_controller_0_0 eth_controller_0
+       (.M_AXI_AWADDR(eth_controller_0_M_AXI_AWADDR),
+        .M_AXI_AWREADY(eth_controller_0_M_AXI_AWREADY),
+        .M_AXI_AWVALID(eth_controller_0_M_AXI_AWVALID),
+        .M_AXI_BREADY(eth_controller_0_M_AXI_BREADY),
+        .M_AXI_BRESP(eth_controller_0_M_AXI_BRESP),
+        .M_AXI_BVALID(eth_controller_0_M_AXI_BVALID),
+        .M_AXI_WDATA(eth_controller_0_M_AXI_WDATA),
+        .M_AXI_WREADY(eth_controller_0_M_AXI_WREADY),
+        .M_AXI_WSTRB(eth_controller_0_M_AXI_WSTRB),
+        .M_AXI_WVALID(eth_controller_0_M_AXI_WVALID),
+        .aclk(clk_wiz_1_clk_out1),
+        .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .config_done(eth_controller_0_config_done),
+        .config_unicast_addr(src_addr),
+        .config_valid(config_ready));
   design_2_ila_0_0 ila_0
        (.clk(clk_wiz_1_clk_out1),
         .probe0(decoder_0_dest_addr),
@@ -296,6 +297,10 @@ module design_2
         .probe11(decoder_0_alt_udp_src_port),
         .probe12(decoder_0_encapsualted),
         .probe13(decoder_0_valid),
+        .probe14(decoder_0_mst_exec_state),
+        .probe15(encoder_0_mst_exec_state),
+        .probe16(decoder_0_fifo_state),
+        .probe17(decoder_0_fifo_data_len),
         .probe2(decoder_0_ip_dest_addr),
         .probe3(decoder_0_ip_src_addr),
         .probe4(decoder_0_udp_dest_port),
@@ -303,7 +308,9 @@ module design_2
         .probe6(decoder_0_alt_dest_addr),
         .probe7(decoder_0_alt_src_addr),
         .probe8(decoder_0_alt_ip_dest_addr),
-        .probe9(decoder_0_alt_ip_src_addr));
+        .probe9(decoder_0_alt_ip_src_addr),
+        .trig_out(ila_0_trig_out1),
+        .trig_out_ack(ila_1_trig_in_ack));
   design_2_ila_1_0 ila_1
        (.clk(clk_wiz_1_clk_out1),
         .probe0(axi_ethernet_0_m_axis_rxd_TREADY),
@@ -314,7 +321,9 @@ module design_2
         .probe5(1'b0),
         .probe6(axi_ethernet_0_m_axis_rxd_TKEEP),
         .probe7(1'b0),
-        .probe8(1'b0));
+        .probe8(1'b0),
+        .trig_in(ila_0_trig_out1),
+        .trig_in_ack(ila_1_trig_in_ack));
   design_2_ila_1_1 ila_2
        (.clk(clk_wiz_1_clk_out1),
         .probe0(encoder_0_m_axis_txd_TREADY),
@@ -325,18 +334,50 @@ module design_2
         .probe5(1'b0),
         .probe6(encoder_0_m_axis_txd_TKEEP),
         .probe7(1'b0),
-        .probe8(1'b0));
+        .probe8(1'b0),
+        .trig_in(ila_0_trig_out1));
   design_2_ila_2_0 ila_3
        (.clk(clk_wiz_1_clk_out1),
-        .probe0(encoder_0_m_axis_txc_TREADY),
-        .probe1(encoder_0_m_axis_txc_TDATA),
+        .probe0(decoder_0_m_axis_packet_TREADY),
+        .probe1(decoder_0_m_axis_packet_TDATA),
         .probe2({1'b1,1'b1,1'b1,1'b1}),
-        .probe3(encoder_0_m_axis_txc_TVALID),
-        .probe4(encoder_0_m_axis_txc_TLAST),
+        .probe3(decoder_0_m_axis_packet_TVALID),
+        .probe4(decoder_0_m_axis_packet_TLAST),
         .probe5(1'b0),
-        .probe6(encoder_0_m_axis_txc_TKEEP),
+        .probe6(decoder_0_m_axis_packet_TKEEP),
         .probe7(1'b0),
-        .probe8(1'b0));
+        .probe8(1'b0),
+        .trig_in(ila_0_trig_out1));
+  design_2_mux_0_0 mux_0
+       (.A(decoder_0_alt_dest_addr),
+        .B(src_addr),
+        .C(mux_0_out),
+        .sel(config_ready));
+  design_2_mux_0_1 mux_1
+       (.A(decoder_0_alt_ip_dest_addr),
+        .B(src_ip_addr),
+        .C(mux_1_out),
+        .sel(config_ready));
+  design_2_mux_1_0 mux_2
+       (.A(decoder_0_alt_udp_dest_port),
+        .B(src_udp_port),
+        .C(mux_2_out),
+        .sel(config_ready));
+  design_2_mux_0_2 mux_3
+       (.A(decoder_0_alt_src_addr),
+        .B(dest_addr),
+        .C(mux_3_C),
+        .sel(config_ready));
+  design_2_mux_2_0 mux_4
+       (.A(decoder_0_alt_udp_src_port),
+        .B(dest_udp_port),
+        .C(mux_4_C),
+        .sel(config_ready));
+  design_2_mux_1_2 mux_5
+       (.A(decoder_0_alt_ip_src_addr),
+        .B(dest_ip_addr),
+        .C(mux_5_C),
+        .sel(config_ready));
   design_2_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_100M
        (.aux_reset_in(1'b1),
         .dcm_locked(clk_wiz_1_locked),
@@ -346,9 +387,13 @@ module design_2
         .slowest_sync_clk(clk_wiz_1_clk_out1));
   design_2_vio_0_0 vio_0
        (.clk(clk_wiz_1_clk_out1),
-        .probe_in0(ethernet_controller_0_control_ready),
-        .probe_out0(vio_0_probe_out0),
-        .probe_out1(vio_0_probe_out1),
-        .probe_out2(vio_0_probe_out2),
-        .probe_out3(vio_0_probe_out3));
+        .probe_in0(eth_controller_0_config_done),
+        .probe_out0(src_addr),
+        .probe_out1(dest_addr),
+        .probe_out2(src_ip_addr),
+        .probe_out3(dest_ip_addr),
+        .probe_out4(src_udp_port),
+        .probe_out5(dest_udp_port),
+        .probe_out6(config_ready),
+        .probe_out7(drop_packets));
 endmodule

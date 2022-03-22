@@ -1,16 +1,336 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Mon Mar  7 14:15:03 2022
-// Host        : BA3145WS20 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/haighcam/test/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/bd_0/ip/ip_0/bd_d66b_eth_buf_0_sim_netlist.v
+// Date        : Fri Mar 18 13:57:40 2022
+// Host        : BA3145WS21 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim -rename_top bd_d66b_eth_buf_0 -prefix
+//               bd_d66b_eth_buf_0_ bd_d66b_eth_buf_0_sim_netlist.v
 // Design      : bd_d66b_eth_buf_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a200tsbg484-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
+
+module bd_d66b_eth_buf_0_address_decoder
+   (\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ,
+    BUS2IP_WrCE_reg_reg,
+    BUS2IP_RdCE_reg_reg,
+    s_axi_arready_embed,
+    s_axi_awready_embed,
+    S_AXI_ACLK,
+    BUS2IP_WrCE_reg,
+    bus2shim_r_nw,
+    Shim2IP_CS1,
+    data0,
+    start2,
+    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ,
+    ip2shim_rd_ack,
+    invalidRdReq,
+    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ,
+    ip2shim_wr_ack,
+    invalidWrReq,
+    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ,
+    Q);
+  output \MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ;
+  output BUS2IP_WrCE_reg_reg;
+  output BUS2IP_RdCE_reg_reg;
+  output s_axi_arready_embed;
+  output s_axi_awready_embed;
+  input S_AXI_ACLK;
+  input BUS2IP_WrCE_reg;
+  input bus2shim_r_nw;
+  input Shim2IP_CS1;
+  input [0:0]data0;
+  input start2;
+  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ;
+  input ip2shim_rd_ack;
+  input invalidRdReq;
+  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ;
+  input ip2shim_wr_ack;
+  input invalidWrReq;
+  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ;
+  input [6:0]Q;
+
+  wire BUS2IP_RdCE_reg_reg;
+  wire BUS2IP_WrCE_reg;
+  wire BUS2IP_WrCE_reg_reg;
+  wire Bus_RNW_reg;
+  wire Bus_RNW_reg_i_1_n_0;
+  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ;
+  wire \MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ;
+  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ;
+  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ;
+  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ;
+  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ;
+  wire [6:0]Q;
+  wire S_AXI_ACLK;
+  wire S_AXI_AWREADY_INST_0_i_9_n_0;
+  wire Shim2IP_CS1;
+  wire bus2shim_r_nw;
+  wire ce_out_i;
+  wire [0:0]data0;
+  wire eqOp__5;
+  wire invalidRdReq;
+  wire invalidWrReq;
+  wire ip2shim_rd_ack;
+  wire ip2shim_wr_ack;
+  wire s_axi_arready_embed;
+  wire s_axi_awready_embed;
+  wire start2;
+
+  LUT6 #(
+    .INIT(64'h00000000EA2A2A2A)) 
+    BUS2IP_RdCE_reg_i_1
+       (.I0(data0),
+        .I1(bus2shim_r_nw),
+        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg),
+        .I4(ce_out_i),
+        .I5(Shim2IP_CS1),
+        .O(BUS2IP_RdCE_reg_reg));
+  LUT6 #(
+    .INIT(64'h000000008ABA8A8A)) 
+    BUS2IP_WrCE_reg_i_1
+       (.I0(BUS2IP_WrCE_reg),
+        .I1(bus2shim_r_nw),
+        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
+        .I3(Bus_RNW_reg),
+        .I4(ce_out_i),
+        .I5(Shim2IP_CS1),
+        .O(BUS2IP_WrCE_reg_reg));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    Bus_RNW_reg_i_1
+       (.I0(bus2shim_r_nw),
+        .I1(start2),
+        .I2(Bus_RNW_reg),
+        .O(Bus_RNW_reg_i_1_n_0));
+  FDRE Bus_RNW_reg_reg
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(Bus_RNW_reg_i_1_n_0),
+        .Q(Bus_RNW_reg),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'h0000000E)) 
+    \GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1 
+       (.I0(ce_out_i),
+        .I1(start2),
+        .I2(s_axi_arready_embed),
+        .I3(s_axi_awready_embed),
+        .I4(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ),
+        .O(\GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ));
+  FDRE \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ),
+        .Q(ce_out_i),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'h0000000E)) 
+    \MEM_DECODE_GEN[0].cs_out_i[0]_i_1 
+       (.I0(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
+        .I1(start2),
+        .I2(s_axi_arready_embed),
+        .I3(s_axi_awready_embed),
+        .I4(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ),
+        .O(\MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ));
+  FDRE \MEM_DECODE_GEN[0].cs_out_i_reg[0] 
+       (.C(S_AXI_ACLK),
+        .CE(1'b1),
+        .D(\MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ),
+        .Q(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
+        .R(1'b0));
+  LUT4 #(
+    .INIT(16'hFEEE)) 
+    S_AXI_ARREADY_INST_0_i_2
+       (.I0(ip2shim_rd_ack),
+        .I1(invalidRdReq),
+        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ),
+        .I3(eqOp__5),
+        .O(s_axi_arready_embed));
+  LUT4 #(
+    .INIT(16'hFEEE)) 
+    S_AXI_AWREADY_INST_0_i_2
+       (.I0(ip2shim_wr_ack),
+        .I1(invalidWrReq),
+        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ),
+        .I3(eqOp__5),
+        .O(s_axi_awready_embed));
+  LUT4 #(
+    .INIT(16'h0001)) 
+    S_AXI_AWREADY_INST_0_i_8
+       (.I0(Q[6]),
+        .I1(Q[2]),
+        .I2(Q[4]),
+        .I3(S_AXI_AWREADY_INST_0_i_9_n_0),
+        .O(eqOp__5));
+  LUT4 #(
+    .INIT(16'hF7FF)) 
+    S_AXI_AWREADY_INST_0_i_9
+       (.I0(Q[3]),
+        .I1(Q[1]),
+        .I2(Q[0]),
+        .I3(Q[5]),
+        .O(S_AXI_AWREADY_INST_0_i_9_n_0));
+endmodule
+
+module bd_d66b_eth_buf_0_axi_lite_ipif
+   (BUS2IP_WrCE_reg_reg,
+    bus2shim_cs,
+    BUS2IP_RdCE_reg_reg,
+    S_AXI_AWADDR_17_sp_1,
+    S_AXI_ARADDR_17_sp_1,
+    S_AXI_BVALID,
+    S_AXI_WREADY,
+    S_AXI_AWREADY,
+    S_AXI_RVALID,
+    S_AXI_RDATA,
+    S_AXI_ARREADY,
+    \bus2ip_addr_i_reg[17] ,
+    BUS2IP_WrCE_reg,
+    Shim2IP_CS1,
+    data0,
+    S_AXI_AWADDR,
+    S_AXI_ARVALID,
+    S_AXI_ARADDR,
+    S_AXI_AWVALID,
+    embedded_awaddr_reg,
+    S_AXI_2TEMAC_BVALID,
+    S_AXI_2TEMAC_WREADY,
+    S_AXI_2TEMAC_AWREADY,
+    embedded_araddr_reg,
+    S_AXI_2TEMAC_RVALID,
+    S_AXI_2TEMAC_RDATA,
+    S_AXI_2TEMAC_ARREADY,
+    S_AXI_ACLK,
+    rst_reg,
+    Q,
+    ip2shim_rd_ack,
+    invalidRdReq,
+    S_AXI_BREADY,
+    S_AXI_RREADY,
+    ip2shim_wr_ack,
+    invalidWrReq,
+    S_AXI_WVALID);
+  output BUS2IP_WrCE_reg_reg;
+  output bus2shim_cs;
+  output BUS2IP_RdCE_reg_reg;
+  output S_AXI_AWADDR_17_sp_1;
+  output S_AXI_ARADDR_17_sp_1;
+  output S_AXI_BVALID;
+  output S_AXI_WREADY;
+  output S_AXI_AWREADY;
+  output S_AXI_RVALID;
+  output [31:0]S_AXI_RDATA;
+  output S_AXI_ARREADY;
+  output [15:0]\bus2ip_addr_i_reg[17] ;
+  input BUS2IP_WrCE_reg;
+  input Shim2IP_CS1;
+  input [0:0]data0;
+  input [17:0]S_AXI_AWADDR;
+  input S_AXI_ARVALID;
+  input [17:0]S_AXI_ARADDR;
+  input S_AXI_AWVALID;
+  input embedded_awaddr_reg;
+  input S_AXI_2TEMAC_BVALID;
+  input S_AXI_2TEMAC_WREADY;
+  input S_AXI_2TEMAC_AWREADY;
+  input embedded_araddr_reg;
+  input S_AXI_2TEMAC_RVALID;
+  input [31:0]S_AXI_2TEMAC_RDATA;
+  input S_AXI_2TEMAC_ARREADY;
+  input S_AXI_ACLK;
+  input rst_reg;
+  input [31:0]Q;
+  input ip2shim_rd_ack;
+  input invalidRdReq;
+  input S_AXI_BREADY;
+  input S_AXI_RREADY;
+  input ip2shim_wr_ack;
+  input invalidWrReq;
+  input S_AXI_WVALID;
+
+  wire BUS2IP_RdCE_reg_reg;
+  wire BUS2IP_WrCE_reg;
+  wire BUS2IP_WrCE_reg_reg;
+  wire [31:0]Q;
+  wire S_AXI_2TEMAC_ARREADY;
+  wire S_AXI_2TEMAC_AWREADY;
+  wire S_AXI_2TEMAC_BVALID;
+  wire [31:0]S_AXI_2TEMAC_RDATA;
+  wire S_AXI_2TEMAC_RVALID;
+  wire S_AXI_2TEMAC_WREADY;
+  wire S_AXI_ACLK;
+  wire [17:0]S_AXI_ARADDR;
+  wire S_AXI_ARADDR_17_sn_1;
+  wire S_AXI_ARREADY;
+  wire S_AXI_ARVALID;
+  wire [17:0]S_AXI_AWADDR;
+  wire S_AXI_AWADDR_17_sn_1;
+  wire S_AXI_AWREADY;
+  wire S_AXI_AWVALID;
+  wire S_AXI_BREADY;
+  wire S_AXI_BVALID;
+  wire [31:0]S_AXI_RDATA;
+  wire S_AXI_RREADY;
+  wire S_AXI_RVALID;
+  wire S_AXI_WREADY;
+  wire S_AXI_WVALID;
+  wire Shim2IP_CS1;
+  wire [15:0]\bus2ip_addr_i_reg[17] ;
+  wire bus2shim_cs;
+  wire [0:0]data0;
+  wire embedded_araddr_reg;
+  wire embedded_awaddr_reg;
+  wire invalidRdReq;
+  wire invalidWrReq;
+  wire ip2shim_rd_ack;
+  wire ip2shim_wr_ack;
+  wire rst_reg;
+
+  assign S_AXI_ARADDR_17_sp_1 = S_AXI_ARADDR_17_sn_1;
+  assign S_AXI_AWADDR_17_sp_1 = S_AXI_AWADDR_17_sn_1;
+  bd_d66b_eth_buf_0_slave_attachment I_SLAVE_ATTACHMENT
+       (.BUS2IP_RdCE_reg_reg(BUS2IP_RdCE_reg_reg),
+        .BUS2IP_WrCE_reg(BUS2IP_WrCE_reg),
+        .BUS2IP_WrCE_reg_reg(BUS2IP_WrCE_reg_reg),
+        .\MEM_DECODE_GEN[0].cs_out_i_reg[0] (bus2shim_cs),
+        .Q(Q),
+        .S_AXI_2TEMAC_ARREADY(S_AXI_2TEMAC_ARREADY),
+        .S_AXI_2TEMAC_AWREADY(S_AXI_2TEMAC_AWREADY),
+        .S_AXI_2TEMAC_BVALID(S_AXI_2TEMAC_BVALID),
+        .S_AXI_2TEMAC_RDATA(S_AXI_2TEMAC_RDATA),
+        .S_AXI_2TEMAC_RVALID(S_AXI_2TEMAC_RVALID),
+        .S_AXI_2TEMAC_WREADY(S_AXI_2TEMAC_WREADY),
+        .S_AXI_ACLK(S_AXI_ACLK),
+        .S_AXI_ARADDR(S_AXI_ARADDR),
+        .S_AXI_ARADDR_17_sp_1(S_AXI_ARADDR_17_sn_1),
+        .S_AXI_ARREADY(S_AXI_ARREADY),
+        .S_AXI_ARVALID(S_AXI_ARVALID),
+        .S_AXI_AWADDR(S_AXI_AWADDR),
+        .S_AXI_AWADDR_17_sp_1(S_AXI_AWADDR_17_sn_1),
+        .S_AXI_AWREADY(S_AXI_AWREADY),
+        .S_AXI_AWVALID(S_AXI_AWVALID),
+        .S_AXI_BREADY(S_AXI_BREADY),
+        .S_AXI_BVALID(S_AXI_BVALID),
+        .S_AXI_RDATA(S_AXI_RDATA),
+        .S_AXI_RREADY(S_AXI_RREADY),
+        .S_AXI_RVALID(S_AXI_RVALID),
+        .S_AXI_WREADY(S_AXI_WREADY),
+        .S_AXI_WVALID(S_AXI_WVALID),
+        .Shim2IP_CS1(Shim2IP_CS1),
+        .\bus2ip_addr_i_reg[17]_0 (\bus2ip_addr_i_reg[17] ),
+        .data0(data0),
+        .embedded_araddr_reg(embedded_araddr_reg),
+        .embedded_awaddr_reg(embedded_awaddr_reg),
+        .invalidRdReq(invalidRdReq),
+        .invalidWrReq(invalidWrReq),
+        .ip2shim_rd_ack(ip2shim_rd_ack),
+        .ip2shim_wr_ack(ip2shim_wr_ack),
+        .rst_reg_0(rst_reg));
+endmodule
 
 (* CHECK_LICENSE_TYPE = "bd_d66b_eth_buf_0,axi_ethernet_buffer_v2_0_19,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "axi_ethernet_buffer_v2_0_19,Vivado 2018.3.1" *) 
 (* NotValidForBitStream *)
@@ -454,329 +774,6 @@ module bd_d66b_eth_buf_0
         .tx_reset(tx_reset));
 endmodule
 
-(* ORIG_REF_NAME = "address_decoder" *) 
-module bd_d66b_eth_buf_0_address_decoder
-   (\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ,
-    BUS2IP_WrCE_reg_reg,
-    BUS2IP_RdCE_reg_reg,
-    s_axi_arready_embed,
-    s_axi_awready_embed,
-    S_AXI_ACLK,
-    BUS2IP_WrCE_reg,
-    bus2shim_r_nw,
-    Shim2IP_CS1,
-    data0,
-    start2,
-    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ,
-    ip2shim_rd_ack,
-    invalidRdReq,
-    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ,
-    ip2shim_wr_ack,
-    invalidWrReq,
-    \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ,
-    Q);
-  output \MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ;
-  output BUS2IP_WrCE_reg_reg;
-  output BUS2IP_RdCE_reg_reg;
-  output s_axi_arready_embed;
-  output s_axi_awready_embed;
-  input S_AXI_ACLK;
-  input BUS2IP_WrCE_reg;
-  input bus2shim_r_nw;
-  input Shim2IP_CS1;
-  input [0:0]data0;
-  input start2;
-  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ;
-  input ip2shim_rd_ack;
-  input invalidRdReq;
-  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ;
-  input ip2shim_wr_ack;
-  input invalidWrReq;
-  input \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ;
-  input [6:0]Q;
-
-  wire BUS2IP_RdCE_reg_reg;
-  wire BUS2IP_WrCE_reg;
-  wire BUS2IP_WrCE_reg_reg;
-  wire Bus_RNW_reg;
-  wire Bus_RNW_reg_i_1_n_0;
-  wire \GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ;
-  wire \MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ;
-  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ;
-  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ;
-  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ;
-  wire \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ;
-  wire [6:0]Q;
-  wire S_AXI_ACLK;
-  wire S_AXI_AWREADY_INST_0_i_9_n_0;
-  wire Shim2IP_CS1;
-  wire bus2shim_r_nw;
-  wire ce_out_i;
-  wire [0:0]data0;
-  wire eqOp__5;
-  wire invalidRdReq;
-  wire invalidWrReq;
-  wire ip2shim_rd_ack;
-  wire ip2shim_wr_ack;
-  wire s_axi_arready_embed;
-  wire s_axi_awready_embed;
-  wire start2;
-
-  LUT6 #(
-    .INIT(64'h00000000EA2A2A2A)) 
-    BUS2IP_RdCE_reg_i_1
-       (.I0(data0),
-        .I1(bus2shim_r_nw),
-        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
-        .I3(Bus_RNW_reg),
-        .I4(ce_out_i),
-        .I5(Shim2IP_CS1),
-        .O(BUS2IP_RdCE_reg_reg));
-  LUT6 #(
-    .INIT(64'h000000008ABA8A8A)) 
-    BUS2IP_WrCE_reg_i_1
-       (.I0(BUS2IP_WrCE_reg),
-        .I1(bus2shim_r_nw),
-        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
-        .I3(Bus_RNW_reg),
-        .I4(ce_out_i),
-        .I5(Shim2IP_CS1),
-        .O(BUS2IP_WrCE_reg_reg));
-  LUT3 #(
-    .INIT(8'hB8)) 
-    Bus_RNW_reg_i_1
-       (.I0(bus2shim_r_nw),
-        .I1(start2),
-        .I2(Bus_RNW_reg),
-        .O(Bus_RNW_reg_i_1_n_0));
-  FDRE Bus_RNW_reg_reg
-       (.C(S_AXI_ACLK),
-        .CE(1'b1),
-        .D(Bus_RNW_reg_i_1_n_0),
-        .Q(Bus_RNW_reg),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'h0000000E)) 
-    \GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1 
-       (.I0(ce_out_i),
-        .I1(start2),
-        .I2(s_axi_arready_embed),
-        .I3(s_axi_awready_embed),
-        .I4(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ),
-        .O(\GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ));
-  FDRE \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0] 
-       (.C(S_AXI_ACLK),
-        .CE(1'b1),
-        .D(\GEN_BKEND_CE_REGISTERS[0].ce_out_i[0]_i_1_n_0 ),
-        .Q(ce_out_i),
-        .R(1'b0));
-  LUT5 #(
-    .INIT(32'h0000000E)) 
-    \MEM_DECODE_GEN[0].cs_out_i[0]_i_1 
-       (.I0(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
-        .I1(start2),
-        .I2(s_axi_arready_embed),
-        .I3(s_axi_awready_embed),
-        .I4(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_1 ),
-        .O(\MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ));
-  FDRE \MEM_DECODE_GEN[0].cs_out_i_reg[0] 
-       (.C(S_AXI_ACLK),
-        .CE(1'b1),
-        .D(\MEM_DECODE_GEN[0].cs_out_i[0]_i_1_n_0 ),
-        .Q(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_0 ),
-        .R(1'b0));
-  LUT4 #(
-    .INIT(16'hFEEE)) 
-    S_AXI_ARREADY_INST_0_i_2
-       (.I0(ip2shim_rd_ack),
-        .I1(invalidRdReq),
-        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_2 ),
-        .I3(eqOp__5),
-        .O(s_axi_arready_embed));
-  LUT4 #(
-    .INIT(16'hFEEE)) 
-    S_AXI_AWREADY_INST_0_i_2
-       (.I0(ip2shim_wr_ack),
-        .I1(invalidWrReq),
-        .I2(\MEM_DECODE_GEN[0].cs_out_i_reg[0]_3 ),
-        .I3(eqOp__5),
-        .O(s_axi_awready_embed));
-  LUT4 #(
-    .INIT(16'h0001)) 
-    S_AXI_AWREADY_INST_0_i_8
-       (.I0(Q[6]),
-        .I1(Q[2]),
-        .I2(Q[4]),
-        .I3(S_AXI_AWREADY_INST_0_i_9_n_0),
-        .O(eqOp__5));
-  LUT4 #(
-    .INIT(16'hF7FF)) 
-    S_AXI_AWREADY_INST_0_i_9
-       (.I0(Q[3]),
-        .I1(Q[1]),
-        .I2(Q[0]),
-        .I3(Q[5]),
-        .O(S_AXI_AWREADY_INST_0_i_9_n_0));
-endmodule
-
-(* ORIG_REF_NAME = "axi_lite_ipif" *) 
-module bd_d66b_eth_buf_0_axi_lite_ipif
-   (BUS2IP_WrCE_reg_reg,
-    bus2shim_cs,
-    BUS2IP_RdCE_reg_reg,
-    S_AXI_AWADDR_17_sp_1,
-    S_AXI_ARADDR_17_sp_1,
-    S_AXI_BVALID,
-    S_AXI_WREADY,
-    S_AXI_AWREADY,
-    S_AXI_RVALID,
-    S_AXI_RDATA,
-    S_AXI_ARREADY,
-    \bus2ip_addr_i_reg[17] ,
-    BUS2IP_WrCE_reg,
-    Shim2IP_CS1,
-    data0,
-    S_AXI_AWADDR,
-    S_AXI_ARVALID,
-    S_AXI_ARADDR,
-    S_AXI_AWVALID,
-    embedded_awaddr_reg,
-    S_AXI_2TEMAC_BVALID,
-    S_AXI_2TEMAC_WREADY,
-    S_AXI_2TEMAC_AWREADY,
-    embedded_araddr_reg,
-    S_AXI_2TEMAC_RVALID,
-    S_AXI_2TEMAC_RDATA,
-    S_AXI_2TEMAC_ARREADY,
-    S_AXI_ACLK,
-    rst_reg,
-    Q,
-    ip2shim_rd_ack,
-    invalidRdReq,
-    S_AXI_BREADY,
-    S_AXI_RREADY,
-    ip2shim_wr_ack,
-    invalidWrReq,
-    S_AXI_WVALID);
-  output BUS2IP_WrCE_reg_reg;
-  output bus2shim_cs;
-  output BUS2IP_RdCE_reg_reg;
-  output S_AXI_AWADDR_17_sp_1;
-  output S_AXI_ARADDR_17_sp_1;
-  output S_AXI_BVALID;
-  output S_AXI_WREADY;
-  output S_AXI_AWREADY;
-  output S_AXI_RVALID;
-  output [31:0]S_AXI_RDATA;
-  output S_AXI_ARREADY;
-  output [15:0]\bus2ip_addr_i_reg[17] ;
-  input BUS2IP_WrCE_reg;
-  input Shim2IP_CS1;
-  input [0:0]data0;
-  input [17:0]S_AXI_AWADDR;
-  input S_AXI_ARVALID;
-  input [17:0]S_AXI_ARADDR;
-  input S_AXI_AWVALID;
-  input embedded_awaddr_reg;
-  input S_AXI_2TEMAC_BVALID;
-  input S_AXI_2TEMAC_WREADY;
-  input S_AXI_2TEMAC_AWREADY;
-  input embedded_araddr_reg;
-  input S_AXI_2TEMAC_RVALID;
-  input [31:0]S_AXI_2TEMAC_RDATA;
-  input S_AXI_2TEMAC_ARREADY;
-  input S_AXI_ACLK;
-  input rst_reg;
-  input [31:0]Q;
-  input ip2shim_rd_ack;
-  input invalidRdReq;
-  input S_AXI_BREADY;
-  input S_AXI_RREADY;
-  input ip2shim_wr_ack;
-  input invalidWrReq;
-  input S_AXI_WVALID;
-
-  wire BUS2IP_RdCE_reg_reg;
-  wire BUS2IP_WrCE_reg;
-  wire BUS2IP_WrCE_reg_reg;
-  wire [31:0]Q;
-  wire S_AXI_2TEMAC_ARREADY;
-  wire S_AXI_2TEMAC_AWREADY;
-  wire S_AXI_2TEMAC_BVALID;
-  wire [31:0]S_AXI_2TEMAC_RDATA;
-  wire S_AXI_2TEMAC_RVALID;
-  wire S_AXI_2TEMAC_WREADY;
-  wire S_AXI_ACLK;
-  wire [17:0]S_AXI_ARADDR;
-  wire S_AXI_ARADDR_17_sn_1;
-  wire S_AXI_ARREADY;
-  wire S_AXI_ARVALID;
-  wire [17:0]S_AXI_AWADDR;
-  wire S_AXI_AWADDR_17_sn_1;
-  wire S_AXI_AWREADY;
-  wire S_AXI_AWVALID;
-  wire S_AXI_BREADY;
-  wire S_AXI_BVALID;
-  wire [31:0]S_AXI_RDATA;
-  wire S_AXI_RREADY;
-  wire S_AXI_RVALID;
-  wire S_AXI_WREADY;
-  wire S_AXI_WVALID;
-  wire Shim2IP_CS1;
-  wire [15:0]\bus2ip_addr_i_reg[17] ;
-  wire bus2shim_cs;
-  wire [0:0]data0;
-  wire embedded_araddr_reg;
-  wire embedded_awaddr_reg;
-  wire invalidRdReq;
-  wire invalidWrReq;
-  wire ip2shim_rd_ack;
-  wire ip2shim_wr_ack;
-  wire rst_reg;
-
-  assign S_AXI_ARADDR_17_sp_1 = S_AXI_ARADDR_17_sn_1;
-  assign S_AXI_AWADDR_17_sp_1 = S_AXI_AWADDR_17_sn_1;
-  bd_d66b_eth_buf_0_slave_attachment I_SLAVE_ATTACHMENT
-       (.BUS2IP_RdCE_reg_reg(BUS2IP_RdCE_reg_reg),
-        .BUS2IP_WrCE_reg(BUS2IP_WrCE_reg),
-        .BUS2IP_WrCE_reg_reg(BUS2IP_WrCE_reg_reg),
-        .\MEM_DECODE_GEN[0].cs_out_i_reg[0] (bus2shim_cs),
-        .Q(Q),
-        .S_AXI_2TEMAC_ARREADY(S_AXI_2TEMAC_ARREADY),
-        .S_AXI_2TEMAC_AWREADY(S_AXI_2TEMAC_AWREADY),
-        .S_AXI_2TEMAC_BVALID(S_AXI_2TEMAC_BVALID),
-        .S_AXI_2TEMAC_RDATA(S_AXI_2TEMAC_RDATA),
-        .S_AXI_2TEMAC_RVALID(S_AXI_2TEMAC_RVALID),
-        .S_AXI_2TEMAC_WREADY(S_AXI_2TEMAC_WREADY),
-        .S_AXI_ACLK(S_AXI_ACLK),
-        .S_AXI_ARADDR(S_AXI_ARADDR),
-        .S_AXI_ARADDR_17_sp_1(S_AXI_ARADDR_17_sn_1),
-        .S_AXI_ARREADY(S_AXI_ARREADY),
-        .S_AXI_ARVALID(S_AXI_ARVALID),
-        .S_AXI_AWADDR(S_AXI_AWADDR),
-        .S_AXI_AWADDR_17_sp_1(S_AXI_AWADDR_17_sn_1),
-        .S_AXI_AWREADY(S_AXI_AWREADY),
-        .S_AXI_AWVALID(S_AXI_AWVALID),
-        .S_AXI_BREADY(S_AXI_BREADY),
-        .S_AXI_BVALID(S_AXI_BVALID),
-        .S_AXI_RDATA(S_AXI_RDATA),
-        .S_AXI_RREADY(S_AXI_RREADY),
-        .S_AXI_RVALID(S_AXI_RVALID),
-        .S_AXI_WREADY(S_AXI_WREADY),
-        .S_AXI_WVALID(S_AXI_WVALID),
-        .Shim2IP_CS1(Shim2IP_CS1),
-        .\bus2ip_addr_i_reg[17]_0 (\bus2ip_addr_i_reg[17] ),
-        .data0(data0),
-        .embedded_araddr_reg(embedded_araddr_reg),
-        .embedded_awaddr_reg(embedded_awaddr_reg),
-        .invalidRdReq(invalidRdReq),
-        .invalidWrReq(invalidWrReq),
-        .ip2shim_rd_ack(ip2shim_rd_ack),
-        .ip2shim_wr_ack(ip2shim_wr_ack),
-        .rst_reg_0(rst_reg));
-endmodule
-
-(* ORIG_REF_NAME = "blk_mem_gen_wrapper" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_wrapper
    (DIN,
     rx_mac_aclk,
@@ -992,7 +989,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_wrapper__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "slave_attachment" *) 
 module bd_d66b_eth_buf_0_slave_attachment
    (BUS2IP_WrCE_reg_reg,
     \MEM_DECODE_GEN[0].cs_out_i_reg[0] ,
@@ -2473,7 +2469,6 @@ module bd_d66b_eth_buf_0_slave_attachment
         .R(rst));
 endmodule
 
-(* ORIG_REF_NAME = "actv_hi_pulse_clk_cross" *) 
 module bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross
    (ClkBSignalOut,
     data_sync7_i,
@@ -2950,7 +2945,6 @@ module bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross_26
         .tx_mac_aclk(tx_mac_aclk));
 endmodule
 
-(* ORIG_REF_NAME = "actv_hi_reset_clk_cross" *) 
 module bd_d66b_eth_buf_0_actv_hi_reset_clk_cross
    (tx_init_in_prog_cross,
     AXI_STR_TXC_ACLK,
@@ -3766,7 +3760,6 @@ module bd_d66b_eth_buf_0_actv_hi_reset_clk_cross_72
         .sync_rst1_reg_0(sync_rst1_reg));
 endmodule
 
-(* ORIG_REF_NAME = "addr_response_shim" *) 
 module bd_d66b_eth_buf_0_addr_response_shim
    (Shim2IP_CS1,
     data0,
@@ -5180,7 +5173,7 @@ endmodule
 (* C_STATS = "1" *) (* C_S_AXI_ADDR_WIDTH = "32" *) (* C_S_AXI_DATA_WIDTH = "32" *) 
 (* C_TEMAC_ADDR_WIDTH = "12" *) (* C_TXCSUM = "0" *) (* C_TXMEM = "4096" *) 
 (* C_TXVLAN_STRP = "0" *) (* C_TXVLAN_TAG = "0" *) (* C_TXVLAN_TRAN = "0" *) 
-(* C_TYPE = "1" *) (* ORIG_REF_NAME = "axi_ethernet_buffer_v2_0_19" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* C_TYPE = "1" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19
    (S_AXI_ACLK,
     S_AXI_ARESETN,
@@ -6537,7 +6530,6 @@ module bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "basic_sfifo_fg" *) 
 module bd_d66b_eth_buf_0_basic_sfifo_fg
    (out,
     \gc0.count_d1_reg[4] ,
@@ -6632,7 +6624,6 @@ module bd_d66b_eth_buf_0_basic_sfifo_fg
         .\rxd_mem_last_read_out_ptr_reg_reg[0] (\rxd_mem_last_read_out_ptr_reg_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr
    (DIN,
     rx_mac_aclk,
@@ -6848,7 +6839,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_prim_width
    (DIN,
     rx_mac_aclk,
@@ -7064,7 +7054,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_prim_width__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper
    (DIN,
     rx_mac_aclk,
@@ -7823,7 +7812,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper__parameterized1
         .WEBWE({1'b0,1'b0,1'b0,1'b0,Axi_Str_TxD_2_Mem_We,Axi_Str_TxD_2_Mem_We,Axi_Str_TxD_2_Mem_We,Axi_Str_TxD_2_Mem_We}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init
    (\DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0 ,
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_1 ,
@@ -8121,7 +8109,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init
         .O(S));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_top
    (DIN,
     rx_mac_aclk,
@@ -8337,7 +8324,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_top__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_2" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2
    (DIN,
     rx_mac_aclk,
@@ -8553,7 +8539,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_2_synth" *) 
 module bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth
    (DIN,
     rx_mac_aclk,
@@ -8769,7 +8754,6 @@ module bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth__parameterized2
         .txd_rd_pntr1_carry(txd_rd_pntr1_carry));
 endmodule
 
-(* ORIG_REF_NAME = "bus_and_enable_clk_cross" *) 
 module bd_d66b_eth_buf_0_bus_and_enable_clk_cross
    (pause_val,
     pause_req,
@@ -9121,7 +9105,6 @@ module bd_d66b_eth_buf_0_bus_and_enable_clk_cross
         .tx_mac_aclk(tx_mac_aclk));
 endmodule
 
-(* ORIG_REF_NAME = "bus_clk_cross" *) 
 module bd_d66b_eth_buf_0_bus_clk_cross
    (E,
     D,
@@ -10605,7 +10588,6 @@ module bd_d66b_eth_buf_0_bus_clk_cross__parameterized6
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "dc_ss_fwft" *) 
 module bd_d66b_eth_buf_0_dc_ss_fwft
    (D,
     \count_reg[2] ,
@@ -10684,7 +10666,6 @@ module bd_d66b_eth_buf_0_dc_ss_fwft
         .\rxd_mem_last_read_out_ptr_reg_reg[0] (\rxd_mem_last_read_out_ptr_reg_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "dmem" *) 
 module bd_d66b_eth_buf_0_dmem
    (Q,
     reset2axi_str_rxd,
@@ -10993,7 +10974,6 @@ module bd_d66b_eth_buf_0_dmem
         .R(reset2axi_str_rxd));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module bd_d66b_eth_buf_0_fifo_generator_ramfifo
    (out,
     \gc0.count_d1_reg[4] ,
@@ -11126,7 +11106,6 @@ module bd_d66b_eth_buf_0_fifo_generator_ramfifo
         .reset2axi_str_rxd(reset2axi_str_rxd));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module bd_d66b_eth_buf_0_fifo_generator_top
    (out,
     \gc0.count_d1_reg[4] ,
@@ -11221,7 +11200,6 @@ module bd_d66b_eth_buf_0_fifo_generator_top
         .\rxd_mem_last_read_out_ptr_reg_reg[0] (\rxd_mem_last_read_out_ptr_reg_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_3" *) 
 module bd_d66b_eth_buf_0_fifo_generator_v13_2_3
    (out,
     \gc0.count_d1_reg[4] ,
@@ -11316,7 +11294,6 @@ module bd_d66b_eth_buf_0_fifo_generator_v13_2_3
         .\rxd_mem_last_read_out_ptr_reg_reg[0] (\rxd_mem_last_read_out_ptr_reg_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_3_synth" *) 
 module bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth
    (out,
     \gc0.count_d1_reg[4] ,
@@ -11411,7 +11388,6 @@ module bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth
         .\rxd_mem_last_read_out_ptr_reg_reg[0] (\rxd_mem_last_read_out_ptr_reg_reg[0] ));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module bd_d66b_eth_buf_0_memory
    (\goreg_dm.dout_i_reg[35]_0 ,
     reset2axi_str_rxd,
@@ -11730,7 +11706,6 @@ module bd_d66b_eth_buf_0_memory
         .R(reset2axi_str_rxd));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module bd_d66b_eth_buf_0_rd_bin_cntr
    (ram_empty_fb_i_reg,
     ram_full_fb_i_reg,
@@ -11964,7 +11939,6 @@ module bd_d66b_eth_buf_0_rd_bin_cntr
         .O(ram_full_fb_i_i_5_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "rd_fwft" *) 
 module bd_d66b_eth_buf_0_rd_fwft
    (out,
     \gpregsm1.user_valid_reg_0 ,
@@ -12235,7 +12209,6 @@ module bd_d66b_eth_buf_0_rd_fwft
         .O(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module bd_d66b_eth_buf_0_rd_logic
    (out,
     ram_full_fb_i_reg,
@@ -12392,7 +12365,6 @@ module bd_d66b_eth_buf_0_rd_logic
         .reset2axi_str_rxd(reset2axi_str_rxd));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module bd_d66b_eth_buf_0_rd_status_flags_ss
    (out,
     ram_empty_fb_i_reg_0,
@@ -12431,7 +12403,6 @@ module bd_d66b_eth_buf_0_rd_status_flags_ss
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "reg_16bl" *) 
 module bd_d66b_eth_buf_0_reg_16bl
    (\reg_data_reg[24]_0 ,
     \reg_data_reg[16]_0 ,
@@ -12680,7 +12651,6 @@ module bd_d66b_eth_buf_0_reg_16bl
         .R(\reg_data_reg[16]_1 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_32b" *) 
 module bd_d66b_eth_buf_0_reg_32b
    (\reg_data_reg[17]_0 ,
     \reg_data_reg[0]_0 ,
@@ -14392,7 +14362,6 @@ module bd_d66b_eth_buf_0_reg_32b_59
         .R(\reg_data_reg[31]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_cr" *) 
 module bd_d66b_eth_buf_0_reg_cr
    (\reg_data_reg[17]_0 ,
     \reg_data_reg[17]_1 ,
@@ -14491,7 +14460,6 @@ module bd_d66b_eth_buf_0_reg_cr
         .R(\reg_data_reg[17]_1 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_ie" *) 
 module bd_d66b_eth_buf_0_reg_ie
    (Q,
     \reg_data_reg[31]_0 ,
@@ -14566,7 +14534,6 @@ module bd_d66b_eth_buf_0_reg_ie
         .R(\reg_data_reg[31]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_ifgp" *) 
 module bd_d66b_eth_buf_0_reg_ifgp
    (D,
     \reg_data_reg[24]_0 ,
@@ -14878,7 +14845,6 @@ module bd_d66b_eth_buf_0_reg_ifgp
         .R(\reg_data_reg[31]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_ip" *) 
 module bd_d66b_eth_buf_0_reg_ip
    (INTERRUPT,
     Q,
@@ -14974,7 +14940,6 @@ module bd_d66b_eth_buf_0_reg_ip
         .R(\reg_data_reg[23]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "reg_is" *) 
 module bd_d66b_eth_buf_0_reg_is
    (\reg_data_reg[23]_0 ,
     \reg_data_reg[24]_0 ,
@@ -15152,7 +15117,6 @@ module bd_d66b_eth_buf_0_reg_is
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "reg_tp" *) 
 module bd_d66b_eth_buf_0_reg_tp
    (tx_pause_request,
     \reg_data_reg[16]_0 ,
@@ -15351,7 +15315,6 @@ module bd_d66b_eth_buf_0_reg_tp
         .R(wrCE_d_reg_0));
 endmodule
 
-(* ORIG_REF_NAME = "registers" *) 
 module bd_d66b_eth_buf_0_registers
    (tx_pause_request,
     reg_ip2bus_wr_ack,
@@ -16024,7 +15987,6 @@ module bd_d66b_eth_buf_0_registers
         .R(\reg_data_reg[16]_1 ));
 endmodule
 
-(* ORIG_REF_NAME = "reset_combiner" *) 
 module bd_d66b_eth_buf_0_reset_combiner
    (\S_AXI_WDATA[8] ,
     sync_rst1_reg,
@@ -16963,7 +16925,6 @@ module bd_d66b_eth_buf_0_reset_combiner
         .sync_rst1_reg(axiStrTxdResetAxiStrTxcDomain));
 endmodule
 
-(* ORIG_REF_NAME = "rx_axistream_if" *) 
 module bd_d66b_eth_buf_0_rx_axistream_if
    (out,
     Q,
@@ -24042,7 +24003,6 @@ module bd_d66b_eth_buf_0_rx_axistream_if
         .R(SR));
 endmodule
 
-(* ORIG_REF_NAME = "rx_emac_if" *) 
 module bd_d66b_eth_buf_0_rx_emac_if
    (D,
     RX_CLIENT_CLK_ENBL,
@@ -30662,7 +30622,6 @@ module bd_d66b_eth_buf_0_rx_emac_if
         .R(rx_reset));
 endmodule
 
-(* ORIG_REF_NAME = "rx_if" *) 
 module bd_d66b_eth_buf_0_rx_if
    (DIN,
     out,
@@ -31515,7 +31474,6 @@ module bd_d66b_eth_buf_0_rx_if
         .R(rx_reset));
 endmodule
 
-(* ORIG_REF_NAME = "rx_mem_if" *) 
 module bd_d66b_eth_buf_0_rx_mem_if
    (DIN,
     D,
@@ -32139,7 +32097,6 @@ module bd_d66b_eth_buf_0_rx_mem_if
         .R(rx_reset));
 endmodule
 
-(* ORIG_REF_NAME = "sync_block" *) 
 module bd_d66b_eth_buf_0_sync_block
    (data_out,
     data_sync7_i_0,
@@ -38805,7 +38762,6 @@ module bd_d66b_eth_buf_0_sync_block_9
         .R(data_sync7_i_0));
 endmodule
 
-(* ORIG_REF_NAME = "sync_reset" *) 
 module bd_d66b_eth_buf_0_sync_reset
    (out,
     AXI_STR_TXD_ACLK,
@@ -42270,7 +42226,6 @@ module bd_d66b_eth_buf_0_sync_reset_99
         .S(sync_rst1_i_1__1_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "tx_axistream_if" *) 
 module bd_d66b_eth_buf_0_tx_axistream_if
    (Axi_Str_TxC_2_Mem_We,
     AXI_STR_TXD_TREADY,
@@ -42389,7 +42344,6 @@ module bd_d66b_eth_buf_0_tx_axistream_if
         .\txd_rd_pntr_1_reg[8]_0 (\txd_rd_pntr_1_reg[8] ));
 endmodule
 
-(* ORIG_REF_NAME = "tx_basic_if" *) 
 module bd_d66b_eth_buf_0_tx_basic_if
    (\Axi_Str_TxC_2_Mem_We_int_reg[0]_0 ,
     AXI_STR_TXD_TREADY,
@@ -46683,7 +46637,6 @@ module bd_d66b_eth_buf_0_tx_basic_if
         .R(reset2axi_str_txd));
 endmodule
 
-(* ORIG_REF_NAME = "tx_emac_if" *) 
 module bd_d66b_eth_buf_0_tx_emac_if
    (Tx_Client_TxD_2_Mem_En,
     Tx_Client_TxC_2_Mem_En,
@@ -49373,7 +49326,6 @@ module bd_d66b_eth_buf_0_tx_emac_if
         .R(update_bram_cnt0));
 endmodule
 
-(* ORIG_REF_NAME = "tx_if" *) 
 module bd_d66b_eth_buf_0_tx_if
    (AXI_STR_TXD_TREADY,
     clr_txc_trdy,
@@ -49547,7 +49499,6 @@ module bd_d66b_eth_buf_0_tx_if
         .txd_rd_pntr1_carry(txd_rd_pntr_1));
 endmodule
 
-(* ORIG_REF_NAME = "tx_mem_if" *) 
 module bd_d66b_eth_buf_0_tx_mem_if
    (S,
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram ,
@@ -49665,7 +49616,6 @@ module bd_d66b_eth_buf_0_tx_mem_if
         .tx_reset(tx_reset));
 endmodule
 
-(* ORIG_REF_NAME = "updn_cntr" *) 
 module bd_d66b_eth_buf_0_updn_cntr
    (D,
     \count_reg[2]_0 ,
@@ -49962,7 +49912,6 @@ module bd_d66b_eth_buf_0_updn_cntr
         .O(\FSM_sequential_rxs_axistream_current_state_reg[3] ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module bd_d66b_eth_buf_0_wr_bin_cntr
    (\gcc0.gc0.count_d1_reg[3]_0 ,
     \gcc0.gc0.count_d1_reg[4]_0 ,
@@ -50145,7 +50094,6 @@ module bd_d66b_eth_buf_0_wr_bin_cntr
         .O(ram_empty_fb_i_i_6_n_0));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module bd_d66b_eth_buf_0_wr_logic
    (out,
     E,
@@ -50215,7 +50163,6 @@ module bd_d66b_eth_buf_0_wr_logic
         .reset2axi_str_rxd(reset2axi_str_rxd));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module bd_d66b_eth_buf_0_wr_status_flags_ss
    (out,
     E,

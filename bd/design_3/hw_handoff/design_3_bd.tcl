@@ -162,7 +162,9 @@ proc create_root_design { parentCell } {
  ] $aclk
   set aresetn [ create_bd_port -dir I -type rst aresetn ]
   set drop [ create_bd_port -dir I drop ]
+  set m_axis_txc_tlast_0 [ create_bd_port -dir O m_axis_txc_tlast_0 ]
   set m_axis_txd_tready_0 [ create_bd_port -dir I m_axis_txd_tready_0 ]
+  set m_axis_txd_tvalid_0 [ create_bd_port -dir O m_axis_txd_tvalid_0 ]
 
   # Create instance: axi4stream_vip_0, and set properties
   set axi4stream_vip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi4stream_vip:1.1 axi4stream_vip_0 ]
@@ -202,6 +204,8 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net aclk_1 [get_bd_ports aclk] [get_bd_pins axi4stream_vip_0/aclk] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk]
   connect_bd_net -net drop_1 [get_bd_ports drop] [get_bd_pins encoder_0/drop]
+  connect_bd_net -net encoder_0_m_axis_txc_tlast [get_bd_ports m_axis_txc_tlast_0] [get_bd_pins encoder_0/m_axis_txc_tlast]
+  connect_bd_net -net encoder_0_m_axis_txd_tvalid [get_bd_ports m_axis_txd_tvalid_0] [get_bd_pins encoder_0/m_axis_txd_tvalid]
   connect_bd_net -net m_axis_txd_tready_0_1 [get_bd_ports m_axis_txd_tready_0] [get_bd_pins encoder_0/m_axis_txd_tready]
   connect_bd_net -net rst_aclk_100M_peripheral_aresetn [get_bd_ports aresetn] [get_bd_pins axi4stream_vip_0/aresetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins decoder_0/s_axis_rxs_tvalid] [get_bd_pins xlconstant_0/dout]

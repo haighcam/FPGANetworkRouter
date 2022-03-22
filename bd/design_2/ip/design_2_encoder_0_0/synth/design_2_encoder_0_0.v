@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:encoder:1.1
-// IP Revision: 11
+// IP Revision: 15
 
 (* X_CORE_INFO = "encoder,Vivado 2018.3.1" *)
 (* CHECK_LICENSE_TYPE = "design_2_encoder_0_0,encoder,{}" *)
@@ -86,6 +86,7 @@ module design_2_encoder_0_0 (
   valid,
   ready,
   drop,
+  mst_exec_state,
   s_axis_tready
 );
 
@@ -156,6 +157,7 @@ input wire valid;
 (* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ready" *)
 output wire ready;
 input wire drop;
+output wire mst_exec_state;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_packet, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_1_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TREADY" *)
 output wire s_axis_tready;
@@ -195,6 +197,7 @@ output wire s_axis_tready;
     .valid(valid),
     .ready(ready),
     .drop(drop),
+    .mst_exec_state(mst_exec_state),
     .s_axis_tready(s_axis_tready)
   );
 endmodule

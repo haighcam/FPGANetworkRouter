@@ -1,0 +1,483 @@
+13:50:30 **** Build of project client_bsp ****
+make -k all 
+"Running Make include in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make libs in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling bram"
+mb-ar: creating ../../../lib/libxil.a
+"Running Make libs in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling cpu"
+"Running Make libs in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling emaclite"
+"Running Make libs in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling intc"
+"Running Make libs in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling lwip src and adapter files"
+contrib/ports/xilinx/netif/xadapter.c: In function 'eth_link_detect':
+contrib/ports/xilinx/netif/xadapter.c:364:8: warning: unused variable 'link_speed' [-Wunused-variable]
+  u32_t link_speed, phy_link_status;
+        ^~~~~~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c: In function 'configure_IEEE_phy_speed_emaclite':
+contrib/ports/xilinx/netif/xemacliteif.c:770:6: warning: unused variable 'phylinkspeed' [-Wunused-variable]
+  u16 phylinkspeed;
+      ^~~~~~~~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c:769:6: warning: unused variable 'status' [-Wunused-variable]
+  u16 status;
+      ^~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c: In function 'xemacliteif_init':
+contrib/ports/xilinx/netif/xemacliteif.c:843:16: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  netif->output = xemacliteif_output;
+                ^
+"Running Make libs in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling standalone";
+microblaze_sleep.c:77:9: note: #pragma message: For the sleep routines, assembly instructions are used
+ #pragma message ("For the sleep routines, assembly instructions are used")
+         ^~~~~~~
+"Running Make libs in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling tmrctr"
+"Running Make libs in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling uartlite"
+'Finished building libraries'
+13:51:04 **** Build of configuration Debug for project client ****
+make all 
+'Building file: ../src/echo.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/i2c_access.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+'Finished building: ../src/i2c_access.c'
+' '
+'Building file: ../src/iic_phyreset.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/iic_phyreset.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/iic_phyreset.d" -MT"src/iic_phyreset.o" -o "src/iic_phyreset.o" "../src/iic_phyreset.c"
+'Finished building: ../src/iic_phyreset.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building file: ../src/platform_mb.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_mb.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_mb.d" -MT"src/platform_mb.o" -o "src/platform_mb.o" "../src/platform_mb.c"
+'Finished building: ../src/platform_mb.c'
+' '
+'Building file: ../src/platform_ppc.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_ppc.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_ppc.d" -MT"src/platform_ppc.o" -o "src/platform_ppc.o" "../src/platform_ppc.c"
+'Finished building: ../src/platform_ppc.c'
+' '
+'Building file: ../src/platform_zynq.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynq.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynq.d" -MT"src/platform_zynq.o" -o "src/platform_zynq.o" "../src/platform_zynq.c"
+'Finished building: ../src/platform_zynq.c'
+' '
+'Building file: ../src/platform_zynqmp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynqmp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynqmp.d" -MT"src/platform_zynqmp.o" -o "src/platform_zynqmp.o" "../src/platform_zynqmp.c"
+'Finished building: ../src/platform_zynqmp.c'
+' '
+'Building file: ../src/sfp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sfp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/sfp.d" -MT"src/sfp.o" -o "src/sfp.o" "../src/sfp.c"
+'Finished building: ../src/sfp.c'
+' '
+'Building file: ../src/si5324.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/si5324.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/si5324.d" -MT"src/si5324.o" -o "src/si5324.o" "../src/si5324.c"
+'Finished building: ../src/si5324.c'
+' '
+'Building target: client.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../client_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "client.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: client.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size client.elf  |tee "client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 108668	   1432	3962324	4072424	 3e23e8	client.elf
+'Finished building: client.elf.size'
+' '
+13:51:18 **** Auto Build of project client_bsp ****
+make -k all 
+"Running Make include in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make libs in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling bram"
+"Running Make libs in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling cpu"
+"Running Make libs in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling emaclite"
+"Running Make libs in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling intc"
+"Running Make libs in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling lwip src and adapter files"
+"Running Make libs in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling standalone";
+microblaze_sleep.c:77:9: note: #pragma message: For the sleep routines, assembly instructions are used
+ #pragma message ("For the sleep routines, assembly instructions are used")
+         ^~~~~~~
+"Running Make libs in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling tmrctr"
+"Running Make libs in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling uartlite"
+'Finished building libraries'
+13:51:35 **** Auto Build of project client_bsp ****
+make -k all 
+'Finished building libraries'
+13:51:35 **** Auto Build of configuration Debug for project client ****
+make all 
+make: Nothing to be done for 'all'.
+13:51:54 **** Clean-only build of configuration Debug for project client ****
+make clean 
+rm -rf  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o  ./src/echo.d ./src/i2c_access.d ./src/iic_phyreset.d ./src/main.d ./src/platform.d ./src/platform_mb.d ./src/platform_ppc.d ./src/platform_zynq.d ./src/platform_zynqmp.d ./src/sfp.d ./src/si5324.d  client.elf.size  client.elf
+' '
+13:51:54 **** Auto Build of configuration Debug for project client ****
+make all 
+'Building file: ../src/i2c_access.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+../src/i2c_access.c:47:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:50: src/i2c_access.o] Error 1
+13:52:00 **** Auto Build of configuration Debug for project client ****
+make all 
+'Building file: ../src/i2c_access.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+../src/i2c_access.c:47:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:50: src/i2c_access.o] Error 1
+13:52:14 **** Auto Build of project client_bsp ****
+make -k all 
+"Running Make include in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make libs in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling bram"
+mb-ar: creating ../../../lib/libxil.a
+"Running Make libs in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling cpu"
+"Running Make libs in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling emaclite"
+"Running Make libs in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling intc"
+"Running Make libs in microblaze_0/libsrc/lwip202_v1_2/src"
+make -C microblaze_0/libsrc/lwip202_v1_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling lwip src and adapter files"
+contrib/ports/xilinx/netif/xadapter.c: In function 'eth_link_detect':
+contrib/ports/xilinx/netif/xadapter.c:364:8: warning: unused variable 'link_speed' [-Wunused-variable]
+  u32_t link_speed, phy_link_status;
+        ^~~~~~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c: In function 'configure_IEEE_phy_speed_emaclite':
+contrib/ports/xilinx/netif/xemacliteif.c:770:6: warning: unused variable 'phylinkspeed' [-Wunused-variable]
+  u16 phylinkspeed;
+      ^~~~~~~~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c:769:6: warning: unused variable 'status' [-Wunused-variable]
+  u16 status;
+      ^~~~~~
+contrib/ports/xilinx/netif/xemacliteif.c: In function 'xemacliteif_init':
+contrib/ports/xilinx/netif/xemacliteif.c:843:16: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+  netif->output = xemacliteif_output;
+                ^
+"Running Make libs in microblaze_0/libsrc/standalone_v6_8/src"
+make -C microblaze_0/libsrc/standalone_v6_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling standalone";
+microblaze_sleep.c:77:9: note: #pragma message: For the sleep routines, assembly instructions are used
+ #pragma message ("For the sleep routines, assembly instructions are used")
+         ^~~~~~~
+"Running Make libs in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling tmrctr"
+"Running Make libs in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling uartlite"
+'Finished building libraries'
+13:52:45 **** Auto Build of configuration Debug for project client ****
+make all 
+'Building file: ../src/i2c_access.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+'Finished building: ../src/i2c_access.c'
+' '
+'Building file: ../src/iic_phyreset.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/iic_phyreset.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/iic_phyreset.d" -MT"src/iic_phyreset.o" -o "src/iic_phyreset.o" "../src/iic_phyreset.c"
+'Finished building: ../src/iic_phyreset.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:152:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c: In function 'udp_client_recv':
+../src/main.c:428:23: warning: passing argument 2 of 'print_ip' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  print_ip(" and IP ", addr);
+                       ^~~~
+../src/main.c:358:6: note: expected 'ip_addr_t * {aka struct ip4_addr *}' but argument is of type 'const ip_addr_t * {aka const struct ip4_addr *}'
+ void print_ip(char *msg, ip_addr_t *ip)
+      ^~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building file: ../src/platform_mb.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_mb.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_mb.d" -MT"src/platform_mb.o" -o "src/platform_mb.o" "../src/platform_mb.c"
+'Finished building: ../src/platform_mb.c'
+' '
+'Building file: ../src/platform_ppc.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_ppc.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_ppc.d" -MT"src/platform_ppc.o" -o "src/platform_ppc.o" "../src/platform_ppc.c"
+'Finished building: ../src/platform_ppc.c'
+' '
+'Building file: ../src/platform_zynq.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynq.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynq.d" -MT"src/platform_zynq.o" -o "src/platform_zynq.o" "../src/platform_zynq.c"
+'Finished building: ../src/platform_zynq.c'
+' '
+'Building file: ../src/platform_zynqmp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynqmp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynqmp.d" -MT"src/platform_zynqmp.o" -o "src/platform_zynqmp.o" "../src/platform_zynqmp.c"
+'Finished building: ../src/platform_zynqmp.c'
+' '
+'Building file: ../src/sfp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sfp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/sfp.d" -MT"src/sfp.o" -o "src/sfp.o" "../src/sfp.c"
+'Finished building: ../src/sfp.c'
+' '
+'Building file: ../src/si5324.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/si5324.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/si5324.d" -MT"src/si5324.o" -o "src/si5324.o" "../src/si5324.c"
+'Finished building: ../src/si5324.c'
+' '
+'Building target: client.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../client_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "client.elf"  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: client.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size client.elf  |tee "client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 118296	   1428	3962636	4082360	 3e4ab8	client.elf
+'Finished building: client.elf.size'
+' '

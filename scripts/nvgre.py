@@ -117,17 +117,20 @@ class UDP:
     |                                                               |
     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
   """
-  def __init__(self, src, dst, payload):
+  def __init__(self, src, dst, payload, comp_checksum=False):
     self.src = get_port(src)
     self.dst = get_port(dst)
     self.payload = payload
     assert len(self.src) == 2
     assert len(self.dst) == 2
-    self.header = self.src + self.dst + (8 + len(self.payload)).to_bytes(2, "big")
-    self.header += self.checksum().to_bytes(2, "big")
+    self.len = 8 + len(self.payload)
+    self.header = self.src + self.dst + (self.len).to_bytes(2, "big")
+    self.header += self.checksum().to_bytes(2, "big") if comp_checksum else b"\x00\x00"
 
   def checksum(self):
-    checksum = sum([int.from_bytes(self.header[i:i+2], "big") for i in range(0, len(self.header), 2)])
+    # Checksum calculation may be incorrect, maybe leave it blank.    
+    virt_payload = self.payload + (b"\x00" if len(self.payload)%2 == 1 else b"")
+    checksum = self.len  + self.len + int.from_bytes(self.src, "big") + int.from_bytes(self.dst, "big") + sum([int.from_bytes(virt_payload[i:i+2], "big") for i in range(0, len(virt_payload), 2)])
     checksum = checksum & 0xFFFF | checksum >> 16
     checksum = checksum ^ 0xFFFF
     return checksum

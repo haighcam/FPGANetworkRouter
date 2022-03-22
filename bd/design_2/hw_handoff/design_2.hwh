@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar  7 17:23:13 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar 20 14:45:28 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_2" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
@@ -18,6 +18,26 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_mdio_mdc_mdc" SIGIS="clk" SIGNAME="axi_ethernet_0_mdio_mdc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="eth_mdio_mdc_mdio_i" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_o" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_t" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_t"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="3" NAME="eth_rgmii_rd" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_rgmii_rd">
@@ -48,26 +68,6 @@
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_rgmii_txc" SIGIS="clk" SIGNAME="axi_ethernet_0_rgmii_txc">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_ethernet_0" PORT="rgmii_txc"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_mdio_mdc_mdc" SIGIS="clk" SIGNAME="axi_ethernet_0_mdio_mdc">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdc"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="eth_mdio_mdc_mdio_i" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_o" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_t" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_t"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -5001,89 +5001,61 @@
         </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="O" NAME="gtx_clk90_out" SIGIS="clk"/>
         <PORT CLKFREQUENCY="125000000" DIR="O" NAME="gtx_clk_out" SIGIS="clk"/>
-        <PORT DIR="I" LEFT="17" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="I" LEFT="17" NAME="s_axi_araddr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="s_axi_arready" SIGIS="undef"/>
+        <PORT DIR="I" NAME="s_axi_arvalid" SIGIS="undef"/>
         <PORT DIR="I" LEFT="17" NAME="s_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_awaddr"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_AWADDR"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axi_awready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_awready"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_AWREADY"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axi_awvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_awvalid"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_AWVALID"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axi_bready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_bready"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_BREADY"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="s_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_bresp"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_BRESP"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axi_bvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_bvalid"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_BVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_rdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="s_axi_rready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_rresp" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="s_axi_rvalid" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="s_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_wdata"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_WDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axi_wready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_wready"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_WREADY"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="3" NAME="s_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_wstrb"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_WSTRB"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axi_wvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_wvalid"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="M_AXI_WVALID"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="s_axis_txc_tdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axis_txc_tdata">
@@ -5238,7 +5210,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="ethernet_controller_0_m_axi" DATAWIDTH="32" NAME="s_axi" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+        <BUSINTERFACE BUSNAME="eth_controller_0_M_AXI" DATAWIDTH="32" NAME="s_axi" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
@@ -5981,7 +5953,6 @@
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="clk_out1" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_aclk"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_lite_clk"/>
             <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axis_clk"/>
@@ -5990,6 +5961,7 @@
             <CONNECTION INSTANCE="ila_1" PORT="clk"/>
             <CONNECTION INSTANCE="ila_2" PORT="clk"/>
             <CONNECTION INSTANCE="ila_3" PORT="clk"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="aclk"/>
             <CONNECTION INSTANCE="decoder_0" PORT="aclk"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aclk"/>
           </CONNECTIONS>
@@ -6012,7 +5984,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="16" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
+    <MODULE COREREVISION="19" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="NUM_HEADERS" VALUE="1"/>
@@ -6071,13 +6043,13 @@
         <PORT DIR="O" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe6"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_src_addr"/>
+            <CONNECTION INSTANCE="mux_0" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe7"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_dest_addr"/>
+            <CONNECTION INSTANCE="mux_3" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr">
@@ -6095,13 +6067,13 @@
         <PORT DIR="O" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe8"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_src_addr"/>
+            <CONNECTION INSTANCE="mux_1" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe9"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_dest_addr"/>
+            <CONNECTION INSTANCE="mux_5" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port">
@@ -6119,13 +6091,13 @@
         <PORT DIR="O" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe10"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_src_port"/>
+            <CONNECTION INSTANCE="mux_2" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe11"/>
-            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_dest_port"/>
+            <CONNECTION INSTANCE="mux_4" PORT="A"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="encapsualted" SIGIS="undef" SIGNAME="decoder_0_encapsualted">
@@ -6143,6 +6115,21 @@
         <PORT DIR="I" NAME="ready" SIGIS="undef" SIGNAME="encoder_0_ready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="encoder_0" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mst_exec_state" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_mst_exec_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="fifo_state" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_fifo_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe16"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="fifo_data_len" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_fifo_data_len">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe17"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxs_tdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_m_axis_rxs_tdata">
@@ -6291,7 +6278,7 @@
         <PERIPHERAL INSTANCE="encoder_0"/>
       </PERIPHERALS>
     </MODULE>
-    <MODULE COREREVISION="11" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
+    <MODULE COREREVISION="15" FULLNAME="/encoder_0" HWVERSION="1.1" INSTANCE="encoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="encoder" VLNV="utoronto.ca:user:encoder:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="FIFO_SIZE_WORDS" VALUE="256"/>
@@ -6389,14 +6376,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="src_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
+        <PORT DIR="I" LEFT="47" NAME="alt_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="mux_3_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_src_addr"/>
+            <CONNECTION INSTANCE="mux_3" PORT="C"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
+        <PORT DIR="I" LEFT="47" NAME="alt_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="mux_0_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_dest_addr"/>
+            <CONNECTION INSTANCE="mux_0" PORT="C"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_ip_dest_addr">
@@ -6409,14 +6396,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="ip_src_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
+        <PORT DIR="I" LEFT="31" NAME="alt_ip_dest_addr" RIGHT="0" SIGIS="undef" SIGNAME="mux_5_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_src_addr"/>
+            <CONNECTION INSTANCE="mux_5" PORT="C"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
+        <PORT DIR="I" LEFT="31" NAME="alt_ip_src_addr" RIGHT="0" SIGIS="undef" SIGNAME="mux_1_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_dest_addr"/>
+            <CONNECTION INSTANCE="mux_1" PORT="C"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_udp_dest_port">
@@ -6429,14 +6416,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="udp_src_port"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
+        <PORT DIR="I" LEFT="15" NAME="alt_udp_dest_port" RIGHT="0" SIGIS="undef" SIGNAME="mux_4_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_src_port"/>
+            <CONNECTION INSTANCE="mux_4" PORT="C"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
+        <PORT DIR="I" LEFT="15" NAME="alt_udp_src_port" RIGHT="0" SIGIS="undef" SIGNAME="mux_2_C">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_dest_port"/>
+            <CONNECTION INSTANCE="mux_2" PORT="C"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="encapsulated" SIGIS="undef" SIGNAME="decoder_0_encapsualted">
@@ -6454,9 +6441,14 @@
             <CONNECTION INSTANCE="decoder_0" PORT="ready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="drop" SIGIS="undef" SIGNAME="vio_0_probe_out3">
+        <PORT DIR="I" NAME="drop" SIGIS="undef" SIGNAME="vio_0_probe_out7">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_out3"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out7"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mst_exec_state" SIGIS="undef" SIGNAME="encoder_0_mst_exec_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe15"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="s_axis_tready" SIGIS="undef" SIGNAME="decoder_0_m_axis_packet_tready">
@@ -6556,138 +6548,92 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/ethernet_controller_0" HWVERSION="1.0" INSTANCE="ethernet_controller_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ethernet_controller" VLNV="xilinx.com:module_ref:ethernet_controller:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/eth_controller_0" HWVERSION="1.0" INSTANCE="eth_controller_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="eth_controller" VLNV="xilinx.com:module_ref:eth_controller:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="C_m_axi_START_DATA_VALUE" VALUE="0xAA000000"/>
-        <PARAMETER NAME="C_m_axi_TARGET_SLAVE_BASE_ADDR" VALUE="0x40000000"/>
-        <PARAMETER NAME="C_m_axi_ADDR_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_m_axi_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_m_axi_TRANSACTIONS_NUM" VALUE="4"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_2_ethernet_controller_0_0"/>
+        <PARAMETER NAME="BASE_ADDR" VALUE="0x40C00000"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_eth_controller_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="3" NAME="control_data" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
+        <PORT DIR="I" LEFT="47" NAME="config_unicast_addr" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="vio_0" PORT="probe_out0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="control_valid" SIGIS="undef" SIGNAME="vio_0_probe_out1">
+        <PORT DIR="I" NAME="config_valid" SIGIS="undef" SIGNAME="vio_0_probe_out6">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_out1"/>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="control_ready" SIGIS="undef" SIGNAME="ethernet_controller_0_control_ready">
+        <PORT DIR="O" NAME="config_done" SIGIS="undef" SIGNAME="eth_controller_0_config_done">
           <CONNECTIONS>
             <CONNECTION INSTANCE="vio_0" PORT="probe_in0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="start_config" SIGIS="undef" SIGNAME="vio_0_probe_out2">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="vio_0" PORT="probe_out2"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="m_axi_aclk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="aclk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m_axi_aresetn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+        <PORT DIR="I" NAME="aresetn" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="m_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M_AXI_AWADDR" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="m_axi_awprot" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="m_axi_awvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awvalid">
+        <PORT DIR="O" NAME="M_AXI_AWVALID" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m_axi_awready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awready">
+        <PORT DIR="I" NAME="M_AXI_AWREADY" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="m_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M_AXI_WDATA" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="m_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M_AXI_WSTRB" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wstrb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axi_wvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wvalid">
+        <PORT DIR="O" NAME="M_AXI_WVALID" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m_axi_wready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wready">
+        <PORT DIR="I" NAME="M_AXI_WREADY" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="m_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M_AXI_BRESP" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m_axi_bvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bvalid">
+        <PORT DIR="I" NAME="M_AXI_BVALID" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axi_bready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bready">
+        <PORT DIR="O" NAME="M_AXI_BREADY" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="m_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="2" NAME="m_axi_arprot" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="m_axi_arvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="m_axi_arready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="m_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="m_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="m_axi_rvalid" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="m_axi_rready" SIGIS="undef" SIGNAME="axi_ethernet_0_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="ethernet_controller_0_m_axi" DATAWIDTH="32" NAME="m_axi" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+        <BUSINTERFACE BUSNAME="eth_controller_0_M_AXI" DATAWIDTH="32" NAME="M_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
           <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
@@ -6698,16 +6644,16 @@
           <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="WRITE_ONLY"/>
           <PARAMETER NAME="HAS_BURST" VALUE="0"/>
           <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
-          <PARAMETER NAME="HAS_PROT" VALUE="1"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
           <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
           <PARAMETER NAME="HAS_QOS" VALUE="0"/>
           <PARAMETER NAME="HAS_REGION" VALUE="0"/>
           <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
-          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="0"/>
           <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
           <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="1"/>
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
@@ -6720,30 +6666,21 @@
           <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
           <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="AWADDR" PHYSICAL="m_axi_awaddr"/>
-            <PORTMAP LOGICAL="AWPROT" PHYSICAL="m_axi_awprot"/>
-            <PORTMAP LOGICAL="AWVALID" PHYSICAL="m_axi_awvalid"/>
-            <PORTMAP LOGICAL="AWREADY" PHYSICAL="m_axi_awready"/>
-            <PORTMAP LOGICAL="WDATA" PHYSICAL="m_axi_wdata"/>
-            <PORTMAP LOGICAL="WSTRB" PHYSICAL="m_axi_wstrb"/>
-            <PORTMAP LOGICAL="WVALID" PHYSICAL="m_axi_wvalid"/>
-            <PORTMAP LOGICAL="WREADY" PHYSICAL="m_axi_wready"/>
-            <PORTMAP LOGICAL="BRESP" PHYSICAL="m_axi_bresp"/>
-            <PORTMAP LOGICAL="BVALID" PHYSICAL="m_axi_bvalid"/>
-            <PORTMAP LOGICAL="BREADY" PHYSICAL="m_axi_bready"/>
-            <PORTMAP LOGICAL="ARADDR" PHYSICAL="m_axi_araddr"/>
-            <PORTMAP LOGICAL="ARPROT" PHYSICAL="m_axi_arprot"/>
-            <PORTMAP LOGICAL="ARVALID" PHYSICAL="m_axi_arvalid"/>
-            <PORTMAP LOGICAL="ARREADY" PHYSICAL="m_axi_arready"/>
-            <PORTMAP LOGICAL="RDATA" PHYSICAL="m_axi_rdata"/>
-            <PORTMAP LOGICAL="RRESP" PHYSICAL="m_axi_rresp"/>
-            <PORTMAP LOGICAL="RVALID" PHYSICAL="m_axi_rvalid"/>
-            <PORTMAP LOGICAL="RREADY" PHYSICAL="m_axi_rready"/>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M_AXI_AWADDR"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M_AXI_AWVALID"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M_AXI_AWREADY"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M_AXI_WDATA"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M_AXI_WSTRB"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M_AXI_WVALID"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M_AXI_WREADY"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M_AXI_BRESP"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M_AXI_BVALID"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M_AXI_BREADY"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
       <MEMORYMAP>
-        <MEMRANGE ADDRESSBLOCK="Reg0" BASENAME="C_BASEADDR" BASEVALUE="0x40C00000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x40C3FFFF" INSTANCE="axi_ethernet_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="m_axi" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
+        <MEMRANGE ADDRESSBLOCK="Reg0" BASENAME="C_BASEADDR" BASEVALUE="0x40C00000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x40C3FFFF" INSTANCE="axi_ethernet_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="axi_ethernet_0"/>
@@ -6769,7 +6706,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4S"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="14"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="18"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2018"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="3"/>
@@ -6782,7 +6719,7 @@
         <PARAMETER NAME="C_USE_TEST_REG" VALUE="1"/>
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
-        <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
+        <PARAMETER NAME="C_TRIGOUT_EN" VALUE="1"/>
         <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="48"/>
@@ -6807,10 +6744,10 @@
         <PARAMETER NAME="C_PROBE11_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE12_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE13_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE14_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_PROBE15_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE16_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE17_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE16_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_PROBE17_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE18_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE19_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE20_WIDTH" VALUE="1"/>
@@ -9894,6 +9831,18 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="trig_out" SIGIS="undef" SIGNAME="ila_0_trig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_3" PORT="trig_in"/>
+            <CONNECTION INSTANCE="ila_2" PORT="trig_in"/>
+            <CONNECTION INSTANCE="ila_1" PORT="trig_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="trig_out_ack" SIGIS="undef" SIGNAME="ila_1_trig_in_ack">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_1" PORT="trig_in_ack"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="47" NAME="probe0" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_dest_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="decoder_0" PORT="dest_addr"/>
@@ -9964,8 +9913,35 @@
             <CONNECTION INSTANCE="decoder_0" PORT="valid"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="1" NAME="probe14" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_mst_exec_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="mst_exec_state"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe15" RIGHT="0" SIGIS="undef" SIGNAME="encoder_0_mst_exec_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="mst_exec_state"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="probe16" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_fifo_state">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="fifo_state"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="probe17" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_fifo_data_len">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="fifo_data_len"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
-      <BUSINTERFACES/>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="TRIG_OUT" TYPE="INITIATOR" VLNV="xilinx.com:interface:trigger:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ACK" PHYSICAL="trig_out_ack"/>
+            <PORTMAP LOGICAL="TRIG" PHYSICAL="trig_out"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="8" FULLNAME="/ila_1" HWVERSION="6.2" INSTANCE="ila_1" IPTYPE="MONITOR" IS_ENABLE="1" MODCLASS="MONITOR" MODTYPE="ila" VLNV="xilinx.com:ip:ila:6.2">
       <DOCUMENTS>
@@ -10001,7 +9977,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
-        <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
+        <PARAMETER NAME="C_TRIGIN_EN" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
@@ -13113,6 +13089,16 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="trig_in" SIGIS="undef" SIGNAME="ila_0_trig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="trig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="trig_in_ack" SIGIS="undef" SIGNAME="ila_1_trig_in_ack">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="trig_out_ack"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="probe1" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="3" NAME="probe2" RIGHT="0" SIGIS="undef"/>
@@ -13124,6 +13110,12 @@
         <PORT DIR="I" LEFT="0" NAME="probe8" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="TRIG_IN" TYPE="TARGET" VLNV="xilinx.com:interface:trigger:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ACK" PHYSICAL="trig_in_ack"/>
+            <PORTMAP LOGICAL="TRIG" PHYSICAL="trig_in"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="axi_ethernet_0_m_axis_rxd" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="1"/>
@@ -13186,7 +13178,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
-        <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
+        <PARAMETER NAME="C_TRIGIN_EN" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
@@ -16298,6 +16290,12 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="trig_in" SIGIS="undef" SIGNAME="ila_0_trig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="trig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="trig_in_ack" SIGIS="undef"/>
         <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="probe1" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="3" NAME="probe2" RIGHT="0" SIGIS="undef"/>
@@ -16309,6 +16307,12 @@
         <PORT DIR="I" LEFT="0" NAME="probe8" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="TRIG_IN" TYPE="TARGET" VLNV="xilinx.com:interface:trigger:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ACK" PHYSICAL="trig_in_ack"/>
+            <PORTMAP LOGICAL="TRIG" PHYSICAL="trig_in"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="encoder_0_m_axis_txd" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="1"/>
@@ -16371,7 +16375,7 @@
         <PARAMETER NAME="C_PIPE_IFACE" VALUE="1"/>
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
-        <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
+        <PARAMETER NAME="C_TRIGIN_EN" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
@@ -19483,6 +19487,12 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="trig_in" SIGIS="undef" SIGNAME="ila_0_trig_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="trig_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="trig_in_ack" SIGIS="undef"/>
         <PORT DIR="I" LEFT="0" NAME="probe0" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="probe1" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="3" NAME="probe2" RIGHT="0" SIGIS="undef"/>
@@ -19494,7 +19504,13 @@
         <PORT DIR="I" LEFT="0" NAME="probe8" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="encoder_0_m_axis_txc" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="TRIG_IN" TYPE="TARGET" VLNV="xilinx.com:interface:trigger:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="ACK" PHYSICAL="trig_in_ack"/>
+            <PORTMAP LOGICAL="TRIG" PHYSICAL="trig_in"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="decoder_0_m_axis_packet" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="1"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="1"/>
@@ -19521,6 +19537,192 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_0" HWVERSION="1.0" INSTANCE="mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="48"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="47" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_dest_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_dest_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="47" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_0_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_1" HWVERSION="1.0" INSTANCE="mux_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="32"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_dest_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_dest_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_1_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_2" HWVERSION="1.0" INSTANCE="mux_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_dest_port">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_dest_port"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_2_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_src_port"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_3" HWVERSION="1.0" INSTANCE="mux_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="48"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="47" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_src_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="47" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="47" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_3_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_dest_addr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_4" HWVERSION="1.0" INSTANCE="mux_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="16"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="15" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_udp_src_port">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_udp_src_port"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_4_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_udp_dest_port"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mux_5" HWVERSION="1.0" INSTANCE="mux_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mux" VLNV="xilinx.com:module_ref:mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="32"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_2_mux_1_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="A" RIGHT="0" SIGIS="undef" SIGNAME="decoder_0_alt_ip_src_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="decoder_0" PORT="alt_ip_src_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="B" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="sel" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="vio_0" PORT="probe_out6"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="C" RIGHT="0" SIGIS="undef" SIGNAME="mux_5_C">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="encoder_0" PORT="alt_ip_dest_addr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="13" FULLNAME="/rst_clk_wiz_1_100M" HWVERSION="5.0" INSTANCE="rst_clk_wiz_1_100M" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
       <DOCUMENTS>
@@ -19565,12 +19767,12 @@
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" RIGHT="0" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="m_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="s_axi_lite_resetn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_txd_arstn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_txc_arstn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxd_arstn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxs_arstn"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="decoder_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aresetn"/>
           </CONNECTIONS>
@@ -19603,7 +19805,7 @@
         <PARAMETER NAME="C_BUS_DATA_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_NUM_PROBE_IN" VALUE="1"/>
         <PARAMETER NAME="C_EN_PROBE_IN_ACTIVITY" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_PROBE_OUT" VALUE="8"/>
         <PARAMETER NAME="C_EN_SYNCHRONIZATION" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN0_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN1_WIDTH" VALUE="48"/>
@@ -19861,12 +20063,12 @@
         <PARAMETER NAME="C_PROBE_IN253_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN254_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_IN255_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT0_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_PROBE_OUT1_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT2_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT3_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT4_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE_OUT0_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_PROBE_OUT1_WIDTH" VALUE="48"/>
+        <PARAMETER NAME="C_PROBE_OUT2_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE_OUT3_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="C_PROBE_OUT4_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_PROBE_OUT5_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE_OUT6_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_OUT7_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_OUT8_WIDTH" VALUE="1"/>
@@ -20117,12 +20319,12 @@
         <PARAMETER NAME="C_PROBE_OUT253_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_OUT254_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE_OUT255_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE_OUT0_INIT_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="C_PROBE_OUT1_INIT_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="C_PROBE_OUT2_INIT_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="C_PROBE_OUT3_INIT_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="C_PROBE_OUT4_INIT_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="C_PROBE_OUT5_INIT_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="C_PROBE_OUT0_INIT_VAL" VALUE="0x000000000000"/>
+        <PARAMETER NAME="C_PROBE_OUT1_INIT_VAL" VALUE="0x000000000000"/>
+        <PARAMETER NAME="C_PROBE_OUT2_INIT_VAL" VALUE="0x00000000"/>
+        <PARAMETER NAME="C_PROBE_OUT3_INIT_VAL" VALUE="0x00000000"/>
+        <PARAMETER NAME="C_PROBE_OUT4_INIT_VAL" VALUE="0x0000"/>
+        <PARAMETER NAME="C_PROBE_OUT5_INIT_VAL" VALUE="0x0000"/>
         <PARAMETER NAME="C_PROBE_OUT6_INIT_VAL" VALUE="0x0"/>
         <PARAMETER NAME="C_PROBE_OUT7_INIT_VAL" VALUE="0x0"/>
         <PARAMETER NAME="C_PROBE_OUT8_INIT_VAL" VALUE="0x0"/>
@@ -20382,27 +20584,54 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe_in0" RIGHT="0" SIGIS="undef" SIGNAME="ethernet_controller_0_control_ready">
+        <PORT DIR="I" LEFT="0" NAME="probe_in0" RIGHT="0" SIGIS="undef" SIGNAME="eth_controller_0_config_done">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="control_ready"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="config_done"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="probe_out0" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
+        <PORT DIR="O" LEFT="47" NAME="probe_out0" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="control_data"/>
+            <CONNECTION INSTANCE="mux_0" PORT="B"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="config_unicast_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="probe_out1" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out1">
+        <PORT DIR="O" LEFT="47" NAME="probe_out1" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="control_valid"/>
+            <CONNECTION INSTANCE="mux_3" PORT="B"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="probe_out2" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out2">
+        <PORT DIR="O" LEFT="31" NAME="probe_out2" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ethernet_controller_0" PORT="start_config"/>
+            <CONNECTION INSTANCE="mux_1" PORT="B"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="probe_out3" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out3">
+        <PORT DIR="O" LEFT="31" NAME="probe_out3" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mux_5" PORT="B"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="probe_out4" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mux_2" PORT="B"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="probe_out5" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mux_4" PORT="B"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="probe_out6" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out6">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mux_3" PORT="sel"/>
+            <CONNECTION INSTANCE="mux_1" PORT="sel"/>
+            <CONNECTION INSTANCE="mux_5" PORT="sel"/>
+            <CONNECTION INSTANCE="mux_2" PORT="sel"/>
+            <CONNECTION INSTANCE="mux_4" PORT="sel"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="config_valid"/>
+            <CONNECTION INSTANCE="mux_0" PORT="sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="probe_out7" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out7">
           <CONNECTIONS>
             <CONNECTION INSTANCE="encoder_0" PORT="drop"/>
           </CONNECTIONS>

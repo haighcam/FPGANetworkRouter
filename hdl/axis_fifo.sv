@@ -18,10 +18,11 @@ module s_axis_fifo #(
 	output reg [31:0] data,
 	output reg [31:0] write_data,
     output reg [FIFO_ADDR_SIZE-1:0] data_len,
-    output wire ready
+    output wire ready,
+    output reg [1:0] mst_exec_state
 );
 
-localparam [2:0]    IDLE = 2'd0,
+localparam [1:0]    IDLE = 2'd0,
 	                WRITE_FIFO  = 2'd1,
 	                WAIT  = 2'd2;
 localparam FIFO_SIZE = FIFO_SIZE_WORDS * 4;
@@ -29,13 +30,11 @@ localparam REAL_ADDR_SIZE = FIFO_ADDR_SIZE - 2;
 
 (*ram_style="block"*) reg [31:0] data_fifo [FIFO_SIZE_WORDS-1:0];
 
-reg [2:0] mst_exec_state; 
 reg writes_done;
-reg flush_int = 0;
 
 wire [REAL_ADDR_SIZE-1: 0] real_data_len, rptr_0, rptr_1;
 wire [31:0] write_data_int;
-wire fifo_wren, flushed;
+wire fifo_wren;
 
 assign real_data_len = data_len >> 2;
 assign rptr_0 = read_ptr >> 2;
@@ -48,13 +47,12 @@ assign write_data_int = {
 	s_axis_tkeep[3] ? s_axis_tdata[31:24] : 8'd0
 };
 
-assign s_axis_tready = (mst_exec_state == IDLE) || ((mst_exec_state == WRITE_FIFO) && (data_len <= FIFO_SIZE-1));
+assign s_axis_tready = ((mst_exec_state == IDLE) && ~flush) || ((mst_exec_state == WRITE_FIFO) && (data_len <= FIFO_SIZE-1));
 assign fifo_wren = s_axis_tvalid && s_axis_tready;
 assign ready = mst_exec_state == WAIT;
-assign flushed = !flush_int && flush;
 
 always @(posedge aclk) begin
-        if (!aresetn || flushed)
+        if (!aresetn || flush)
             data_fifo <= '{default:8'd0};
         else if (fifo_wren) begin
             data_fifo[real_data_len] <= write_data_int;
@@ -72,9 +70,8 @@ always @(negedge aclk) begin
 end
 
 always @(posedge aclk) begin
-    if (!aresetn || flushed) begin
+    if (!aresetn || flush) begin
         data_len <= 0;
-        flush_int <= flushed;
         writes_done <= 1'b0;
     end else begin
         if (data_len <= FIFO_SIZE-1) begin
@@ -85,12 +82,11 @@ always @(posedge aclk) begin
             if ((data_len == FIFO_SIZE-1)|| s_axis_tvalid && (s_axis_tlast || s_axis_tkeep != 4'b1111))
                 writes_done <= 1'b1;
         end
-        flush_int <= flush;
     end
 end
 
 always @ (posedge aclk) begin
-	if (!aresetn || flushed)
+	if (!aresetn || flush)
 		mst_exec_state <= IDLE;
     else if (aresetn)
         case (mst_exec_state)

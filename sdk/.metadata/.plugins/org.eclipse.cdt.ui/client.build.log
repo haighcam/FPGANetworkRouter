@@ -1,0 +1,218 @@
+13:52:45 **** Auto Build of configuration Debug for project client ****
+make all 
+'Building file: ../src/i2c_access.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/i2c_access.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/i2c_access.d" -MT"src/i2c_access.o" -o "src/i2c_access.o" "../src/i2c_access.c"
+'Finished building: ../src/i2c_access.c'
+' '
+'Building file: ../src/iic_phyreset.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/iic_phyreset.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/iic_phyreset.d" -MT"src/iic_phyreset.o" -o "src/iic_phyreset.o" "../src/iic_phyreset.c"
+'Finished building: ../src/iic_phyreset.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:152:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:152:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:153:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:45: warning: passing argument 1 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:57: warning: passing argument 2 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:67: warning: passing argument 3 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                   ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[6]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:79: warning: passing argument 4 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                               ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:88: warning: passing argument 5 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                        ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[4]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:98: warning: passing argument 6 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                  ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:109: warning: passing argument 7 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                             ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[2]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:154:121: warning: passing argument 8 of 'create_encapsulated_packet' from incompatible pointer type [-Wincompatible-pointer-types]
+  send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+                                                                                                                         ^
+../src/main.c:94:5: note: expected 'char *' but argument is of type 'char (*)[64]'
+ int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c: In function 'udp_client_recv':
+../src/main.c:428:23: warning: passing argument 2 of 'print_ip' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  print_ip(" and IP ", addr);
+                       ^~~~
+../src/main.c:358:6: note: expected 'ip_addr_t * {aka struct ip4_addr *}' but argument is of type 'const ip_addr_t * {aka const struct ip4_addr *}'
+ void print_ip(char *msg, ip_addr_t *ip)
+      ^~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building file: ../src/platform_mb.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_mb.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_mb.d" -MT"src/platform_mb.o" -o "src/platform_mb.o" "../src/platform_mb.c"
+'Finished building: ../src/platform_mb.c'
+' '
+'Building file: ../src/platform_ppc.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_ppc.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_ppc.d" -MT"src/platform_ppc.o" -o "src/platform_ppc.o" "../src/platform_ppc.c"
+'Finished building: ../src/platform_ppc.c'
+' '
+'Building file: ../src/platform_zynq.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynq.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynq.d" -MT"src/platform_zynq.o" -o "src/platform_zynq.o" "../src/platform_zynq.c"
+'Finished building: ../src/platform_zynq.c'
+' '
+'Building file: ../src/platform_zynqmp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_zynqmp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_zynqmp.d" -MT"src/platform_zynqmp.o" -o "src/platform_zynqmp.o" "../src/platform_zynqmp.c"
+'Finished building: ../src/platform_zynqmp.c'
+' '
+'Building file: ../src/sfp.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sfp.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/sfp.d" -MT"src/sfp.o" -o "src/sfp.o" "../src/sfp.c"
+'Finished building: ../src/sfp.c'
+' '
+'Building file: ../src/si5324.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/si5324.o" -I../../client_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/si5324.d" -MT"src/si5324.o" -o "src/si5324.o" "../src/si5324.c"
+'Finished building: ../src/si5324.c'
+' '
+'Building target: client.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../client_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "client.elf"  ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: client.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size client.elf  |tee "client.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 118296	   1428	3962636	4082360	 3e4ab8	client.elf
+'Finished building: client.elf.size'
+' '
+
+13:52:49 Build Finished (took 4s.628ms)
+

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x361E61B5974F95DA",
+      "boundary_crc": "0xC72EC2B38016F829",
       "device": "xc7a200tsbg484-1",
       "name": "design_3",
       "synth_flow_mode": "Hierarchical",
@@ -32,6 +32,12 @@
       },
       "m_axis_txd_tready_0": {
         "direction": "I"
+      },
+      "m_axis_txc_tlast_0": {
+        "direction": "O"
+      },
+      "m_axis_txd_tvalid_0": {
+        "direction": "O"
       }
     },
     "components": {
@@ -95,12 +101,6 @@
       }
     },
     "interface_nets": {
-      "decoder_0_packet_header": {
-        "interface_ports": [
-          "decoder_0/packet_header",
-          "encoder_0/packet_header"
-        ]
-      },
       "decoder_0_m_axis_packet": {
         "interface_ports": [
           "decoder_0/m_axis_packet",
@@ -111,6 +111,12 @@
         "interface_ports": [
           "axi4stream_vip_0/M_AXIS",
           "decoder_0/s_axis_rxd"
+        ]
+      },
+      "decoder_0_packet_header": {
+        "interface_ports": [
+          "decoder_0/packet_header",
+          "encoder_0/packet_header"
         ]
       }
     },
@@ -147,6 +153,18 @@
         "ports": [
           "m_axis_txd_tready_0",
           "encoder_0/m_axis_txd_tready"
+        ]
+      },
+      "encoder_0_m_axis_txc_tlast": {
+        "ports": [
+          "encoder_0/m_axis_txc_tlast",
+          "m_axis_txc_tlast_0"
+        ]
+      },
+      "encoder_0_m_axis_txd_tvalid": {
+        "ports": [
+          "encoder_0/m_axis_txd_tvalid",
+          "m_axis_txd_tvalid_0"
         ]
       }
     }

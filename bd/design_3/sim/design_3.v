@@ -1,24 +1,28 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Mon Mar  7 15:27:13 2022
-//Host        : BA3145WS20 running 64-bit major release  (build 9200)
+//Date        : Sun Mar 20 13:25:05 2022
+//Host        : BA3145WS18 running 64-bit major release  (build 9200)
 //Command     : generate_target design_3.bd
 //Design      : design_3
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_3,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_3,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=4,numReposBlks=4,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=4,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_3.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_3,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_3,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=4,numReposBlks=4,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=5,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_3.hwdef" *) 
 module design_3
    (aclk,
     aresetn,
     drop,
-    m_axis_txd_tready_0);
+    m_axis_txc_tlast_0,
+    m_axis_txd_tready_0,
+    m_axis_txd_tvalid_0);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ACLK, ASSOCIATED_RESET aresetn, CLK_DOMAIN design_3_aclk, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) input aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.ARESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.ARESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input aresetn;
   input drop;
+  output m_axis_txc_tlast_0;
   input m_axis_txd_tready_0;
+  output m_axis_txd_tvalid_0;
 
   wire aclk_1;
   wire [31:0]axi4stream_vip_0_M_AXIS_TDATA;
@@ -47,13 +51,17 @@ module design_3
   wire [15:0]decoder_0_packet_header_udp_src_port;
   wire decoder_0_packet_header_valid;
   wire drop_1;
+  wire encoder_0_m_axis_txc_tlast;
+  wire encoder_0_m_axis_txd_tvalid;
   wire m_axis_txd_tready_0_1;
   wire rst_aclk_100M_peripheral_aresetn;
   wire [0:0]xlconstant_0_dout;
 
   assign aclk_1 = aclk;
   assign drop_1 = drop;
+  assign m_axis_txc_tlast_0 = encoder_0_m_axis_txc_tlast;
   assign m_axis_txd_tready_0_1 = m_axis_txd_tready_0;
+  assign m_axis_txd_tvalid_0 = encoder_0_m_axis_txd_tvalid;
   assign rst_aclk_100M_peripheral_aresetn = aresetn;
   design_3_axi4stream_vip_0_0 axi4stream_vip_0
        (.aclk(aclk_1),
@@ -109,8 +117,10 @@ module design_3
         .encapsulated(decoder_0_packet_header_encapsulated),
         .ip_dest_addr(decoder_0_packet_header_ip_dest_addr),
         .ip_src_addr(decoder_0_packet_header_ip_src_addr),
+        .m_axis_txc_tlast(encoder_0_m_axis_txc_tlast),
         .m_axis_txc_tready(1'b1),
         .m_axis_txd_tready(m_axis_txd_tready_0_1),
+        .m_axis_txd_tvalid(encoder_0_m_axis_txd_tvalid),
         .ready(decoder_0_packet_header_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
         .s_axis_tkeep(decoder_0_m_axis_packet_TKEEP),

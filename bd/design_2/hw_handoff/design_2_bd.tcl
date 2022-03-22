@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# ethernet_controller
+# eth_controller, mux, mux, mux, mux, mux, mux
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -180,6 +180,7 @@ proc create_root_design { parentCell } {
   set axi_ethernet_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernet:7.1 axi_ethernet_0 ]
   set_property -dict [ list \
    CONFIG.ETHERNET_BOARD_INTERFACE {eth_rgmii} \
+   CONFIG.Frame_Filter {true} \
    CONFIG.MDIO_BOARD_INTERFACE {eth_mdio_mdc} \
    CONFIG.PHYRST_BOARD_INTERFACE {phy_reset_out} \
    CONFIG.PHY_TYPE {RGMII} \
@@ -260,13 +261,13 @@ proc create_root_design { parentCell } {
   # Create instance: encoder_0, and set properties
   set encoder_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:encoder:1.1 encoder_0 ]
 
-  # Create instance: ethernet_controller_0, and set properties
-  set block_name ethernet_controller
-  set block_cell_name ethernet_controller_0
-  if { [catch {set ethernet_controller_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: eth_controller_0, and set properties
+  set block_name eth_controller
+  set block_cell_name eth_controller_0
+  if { [catch {set eth_controller_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $ethernet_controller_0 eq "" } {
+   } elseif { $eth_controller_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -274,10 +275,29 @@ proc create_root_design { parentCell } {
   # Create instance: ila_0, and set properties
   set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
   set_property -dict [ list \
+   CONFIG.ALL_PROBE_SAME_MU_CNT {1} \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {14} \
+   CONFIG.C_NUM_OF_PROBES {18} \
+   CONFIG.C_PROBE0_MU_CNT {1} \
+   CONFIG.C_PROBE10_MU_CNT {1} \
+   CONFIG.C_PROBE11_MU_CNT {1} \
+   CONFIG.C_PROBE12_MU_CNT {1} \
+   CONFIG.C_PROBE13_MU_CNT {1} \
+   CONFIG.C_PROBE14_WIDTH {2} \
+   CONFIG.C_PROBE16_WIDTH {2} \
+   CONFIG.C_PROBE17_WIDTH {32} \
+   CONFIG.C_PROBE1_MU_CNT {1} \
+   CONFIG.C_PROBE2_MU_CNT {1} \
+   CONFIG.C_PROBE3_MU_CNT {1} \
+   CONFIG.C_PROBE4_MU_CNT {1} \
+   CONFIG.C_PROBE5_MU_CNT {1} \
+   CONFIG.C_PROBE6_MU_CNT {1} \
+   CONFIG.C_PROBE7_MU_CNT {1} \
+   CONFIG.C_PROBE8_MU_CNT {1} \
+   CONFIG.C_PROBE9_MU_CNT {1} \
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
+   CONFIG.C_TRIGOUT_EN {true} \
  ] $ila_0
 
   # Create instance: ila_1, and set properties
@@ -285,6 +305,8 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_NUM_OF_PROBES {9} \
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
+   CONFIG.C_TRIGIN_EN {true} \
+   CONFIG.C_TRIGOUT_EN {false} \
  ] $ila_1
 
   # Create instance: ila_2, and set properties
@@ -292,6 +314,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_NUM_OF_PROBES {9} \
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
+   CONFIG.C_TRIGIN_EN {true} \
  ] $ila_2
 
   # Create instance: ila_3, and set properties
@@ -299,7 +322,92 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_NUM_OF_PROBES {9} \
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
+   CONFIG.C_TRIGIN_EN {true} \
  ] $ila_3
+
+  # Create instance: mux_0, and set properties
+  set block_name mux
+  set block_cell_name mux_0
+  if { [catch {set mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {48} \
+ ] $mux_0
+
+  # Create instance: mux_1, and set properties
+  set block_name mux
+  set block_cell_name mux_1
+  if { [catch {set mux_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {32} \
+ ] $mux_1
+
+  # Create instance: mux_2, and set properties
+  set block_name mux
+  set block_cell_name mux_2
+  if { [catch {set mux_2 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_2 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {16} \
+ ] $mux_2
+
+  # Create instance: mux_3, and set properties
+  set block_name mux
+  set block_cell_name mux_3
+  if { [catch {set mux_3 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_3 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {48} \
+ ] $mux_3
+
+  # Create instance: mux_4, and set properties
+  set block_name mux
+  set block_cell_name mux_4
+  if { [catch {set mux_4 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_4 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {16} \
+ ] $mux_4
+
+  # Create instance: mux_5, and set properties
+  set block_name mux
+  set block_cell_name mux_5
+  if { [catch {set mux_5 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mux_5 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.WIDTH {32} \
+ ] $mux_5
 
   # Create instance: rst_clk_wiz_1_100M, and set properties
   set rst_clk_wiz_1_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_clk_wiz_1_100M ]
@@ -311,9 +419,15 @@ proc create_root_design { parentCell } {
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
+   CONFIG.C_EN_PROBE_IN_ACTIVITY {1} \
    CONFIG.C_NUM_PROBE_IN {1} \
-   CONFIG.C_NUM_PROBE_OUT {4} \
-   CONFIG.C_PROBE_OUT0_WIDTH {4} \
+   CONFIG.C_NUM_PROBE_OUT {8} \
+   CONFIG.C_PROBE_OUT0_WIDTH {48} \
+   CONFIG.C_PROBE_OUT1_WIDTH {48} \
+   CONFIG.C_PROBE_OUT2_WIDTH {32} \
+   CONFIG.C_PROBE_OUT3_WIDTH {32} \
+   CONFIG.C_PROBE_OUT4_WIDTH {16} \
+   CONFIG.C_PROBE_OUT5_WIDTH {16} \
  ] $vio_0
 
   # Create interface connections
@@ -323,38 +437,42 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets axi_ethernet_0_m_axis_rxd] [get_
   connect_bd_intf_net -intf_net axi_ethernet_0_mdio [get_bd_intf_ports eth_mdio_mdc] [get_bd_intf_pins axi_ethernet_0/mdio]
   connect_bd_intf_net -intf_net axi_ethernet_0_rgmii [get_bd_intf_ports eth_rgmii] [get_bd_intf_pins axi_ethernet_0/rgmii]
   connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis_packet]
+connect_bd_intf_net -intf_net [get_bd_intf_nets decoder_0_m_axis_packet] [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins ila_3/SLOT_0_AXIS]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txc [get_bd_intf_pins axi_ethernet_0/s_axis_txc] [get_bd_intf_pins encoder_0/m_axis_txc]
-connect_bd_intf_net -intf_net [get_bd_intf_nets encoder_0_m_axis_txc] [get_bd_intf_pins encoder_0/m_axis_txc] [get_bd_intf_pins ila_3/SLOT_0_AXIS]
   connect_bd_intf_net -intf_net encoder_0_m_axis_txd [get_bd_intf_pins axi_ethernet_0/s_axis_txd] [get_bd_intf_pins encoder_0/m_axis_txd]
 connect_bd_intf_net -intf_net [get_bd_intf_nets encoder_0_m_axis_txd] [get_bd_intf_pins encoder_0/m_axis_txd] [get_bd_intf_pins ila_2/SLOT_0_AXIS]
-  connect_bd_intf_net -intf_net ethernet_controller_0_m_axi [get_bd_intf_pins axi_ethernet_0/s_axi] [get_bd_intf_pins ethernet_controller_0/m_axi]
+  connect_bd_intf_net -intf_net eth_controller_0_M_AXI [get_bd_intf_pins axi_ethernet_0/s_axi] [get_bd_intf_pins eth_controller_0/M_AXI]
 
   # Create port connections
   connect_bd_net -net axi_ethernet_0_phy_rst_n [get_bd_ports phy_reset_out] [get_bd_pins axi_ethernet_0/phy_rst_n]
-  connect_bd_net -net clk_wiz_1_clk_out1 [get_bd_pins axi_ethernet_0/axis_clk] [get_bd_pins axi_ethernet_0/s_axi_lite_clk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk] [get_bd_pins ethernet_controller_0/m_axi_aclk] [get_bd_pins ila_0/clk] [get_bd_pins ila_1/clk] [get_bd_pins ila_2/clk] [get_bd_pins ila_3/clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk] [get_bd_pins vio_0/clk]
+  connect_bd_net -net clk_wiz_1_clk_out1 [get_bd_pins axi_ethernet_0/axis_clk] [get_bd_pins axi_ethernet_0/s_axi_lite_clk] [get_bd_pins clk_wiz_1/clk_out1] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk] [get_bd_pins eth_controller_0/aclk] [get_bd_pins ila_0/clk] [get_bd_pins ila_1/clk] [get_bd_pins ila_2/clk] [get_bd_pins ila_3/clk] [get_bd_pins rst_clk_wiz_1_100M/slowest_sync_clk] [get_bd_pins vio_0/clk]
   connect_bd_net -net clk_wiz_1_clk_out2 [get_bd_pins axi_ethernet_0/ref_clk] [get_bd_pins clk_wiz_1/clk_out2]
   connect_bd_net -net clk_wiz_1_clk_out3 [get_bd_pins axi_ethernet_0/gtx_clk] [get_bd_pins clk_wiz_1/clk_out3]
   connect_bd_net -net clk_wiz_1_locked [get_bd_pins clk_wiz_1/locked] [get_bd_pins rst_clk_wiz_1_100M/dcm_locked]
-  connect_bd_net -net decoder_0_alt_dest_addr [get_bd_pins decoder_0/alt_dest_addr] [get_bd_pins encoder_0/alt_src_addr] [get_bd_pins ila_0/probe6]
+  connect_bd_net -net config_ready [get_bd_pins eth_controller_0/config_valid] [get_bd_pins mux_0/sel] [get_bd_pins mux_1/sel] [get_bd_pins mux_2/sel] [get_bd_pins mux_3/sel] [get_bd_pins mux_4/sel] [get_bd_pins mux_5/sel] [get_bd_pins vio_0/probe_out6]
+  connect_bd_net -net decoder_0_alt_dest_addr [get_bd_pins decoder_0/alt_dest_addr] [get_bd_pins ila_0/probe6] [get_bd_pins mux_0/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_dest_addr]
-  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins encoder_0/alt_ip_src_addr] [get_bd_pins ila_0/probe8]
+  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins ila_0/probe8] [get_bd_pins mux_1/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_ip_dest_addr]
-  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins encoder_0/alt_ip_dest_addr] [get_bd_pins ila_0/probe9]
+  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins ila_0/probe9] [get_bd_pins mux_5/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_ip_src_addr]
-  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins encoder_0/alt_dest_addr] [get_bd_pins ila_0/probe7]
+  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins ila_0/probe7] [get_bd_pins mux_3/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_src_addr]
-  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins encoder_0/alt_udp_src_port] [get_bd_pins ila_0/probe10]
+  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins ila_0/probe10] [get_bd_pins mux_2/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_udp_dest_port]
-  connect_bd_net -net decoder_0_alt_udp_src_port [get_bd_pins decoder_0/alt_udp_src_port] [get_bd_pins encoder_0/alt_udp_dest_port] [get_bd_pins ila_0/probe11]
+  connect_bd_net -net decoder_0_alt_udp_src_port [get_bd_pins decoder_0/alt_udp_src_port] [get_bd_pins ila_0/probe11] [get_bd_pins mux_4/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_udp_src_port]
   connect_bd_net -net decoder_0_dest_addr [get_bd_pins decoder_0/dest_addr] [get_bd_pins encoder_0/dest_addr] [get_bd_pins ila_0/probe0]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_dest_addr]
   connect_bd_net -net decoder_0_encapsualted [get_bd_pins decoder_0/encapsualted] [get_bd_pins encoder_0/encapsulated] [get_bd_pins ila_0/probe12]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_encapsualted]
+  connect_bd_net -net decoder_0_fifo_data_len [get_bd_pins decoder_0/fifo_data_len] [get_bd_pins ila_0/probe17]
+  connect_bd_net -net decoder_0_fifo_state [get_bd_pins decoder_0/fifo_state] [get_bd_pins ila_0/probe16]
   connect_bd_net -net decoder_0_ip_dest_addr [get_bd_pins decoder_0/ip_dest_addr] [get_bd_pins encoder_0/ip_dest_addr] [get_bd_pins ila_0/probe2]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_ip_dest_addr]
   connect_bd_net -net decoder_0_ip_src_addr [get_bd_pins decoder_0/ip_src_addr] [get_bd_pins encoder_0/ip_src_addr] [get_bd_pins ila_0/probe3]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_ip_src_addr]
+  connect_bd_net -net decoder_0_mst_exec_state [get_bd_pins decoder_0/mst_exec_state] [get_bd_pins ila_0/probe14]
   connect_bd_net -net decoder_0_src_addr [get_bd_pins decoder_0/src_addr] [get_bd_pins encoder_0/src_addr] [get_bd_pins ila_0/probe1]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_src_addr]
   connect_bd_net -net decoder_0_udp_dest_port [get_bd_pins decoder_0/udp_dest_port] [get_bd_pins encoder_0/udp_dest_port] [get_bd_pins ila_0/probe4]
@@ -363,18 +481,30 @@ set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_udp_dest_port]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_udp_src_port]
   connect_bd_net -net decoder_0_valid [get_bd_pins decoder_0/valid] [get_bd_pins encoder_0/valid] [get_bd_pins ila_0/probe13]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_valid]
+  connect_bd_net -net dest_addr [get_bd_pins mux_3/B] [get_bd_pins vio_0/probe_out1]
+  connect_bd_net -net dest_ip_addr [get_bd_pins mux_5/B] [get_bd_pins vio_0/probe_out3]
+  connect_bd_net -net dest_udp_port [get_bd_pins mux_4/B] [get_bd_pins vio_0/probe_out5]
+  connect_bd_net -net drop_packets [get_bd_pins encoder_0/drop] [get_bd_pins vio_0/probe_out7]
+  connect_bd_net -net encoder_0_mst_exec_state [get_bd_pins encoder_0/mst_exec_state] [get_bd_pins ila_0/probe15]
   connect_bd_net -net encoder_0_ready [get_bd_pins decoder_0/ready] [get_bd_pins encoder_0/ready]
-  connect_bd_net -net ethernet_controller_0_control_ready [get_bd_pins ethernet_controller_0/control_ready] [get_bd_pins vio_0/probe_in0]
+  connect_bd_net -net eth_controller_0_config_done [get_bd_pins eth_controller_0/config_done] [get_bd_pins vio_0/probe_in0]
+  connect_bd_net -net ila_0_trig_out1 [get_bd_pins ila_0/trig_out] [get_bd_pins ila_1/trig_in] [get_bd_pins ila_2/trig_in] [get_bd_pins ila_3/trig_in]
+  connect_bd_net -net ila_1_trig_in_ack [get_bd_pins ila_0/trig_out_ack] [get_bd_pins ila_1/trig_in_ack]
+  connect_bd_net -net mux_0_out [get_bd_pins encoder_0/alt_src_addr] [get_bd_pins mux_0/C]
+  connect_bd_net -net mux_1_out [get_bd_pins encoder_0/alt_ip_src_addr] [get_bd_pins mux_1/C]
+  connect_bd_net -net mux_2_out [get_bd_pins encoder_0/alt_udp_src_port] [get_bd_pins mux_2/C]
+  connect_bd_net -net mux_3_C [get_bd_pins encoder_0/alt_dest_addr] [get_bd_pins mux_3/C]
+  connect_bd_net -net mux_4_C [get_bd_pins encoder_0/alt_udp_dest_port] [get_bd_pins mux_4/C]
+  connect_bd_net -net mux_5_C [get_bd_pins encoder_0/alt_ip_dest_addr] [get_bd_pins mux_5/C]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_1/resetn] [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
-  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_ethernet_0/axi_rxd_arstn] [get_bd_pins axi_ethernet_0/axi_rxs_arstn] [get_bd_pins axi_ethernet_0/axi_txc_arstn] [get_bd_pins axi_ethernet_0/axi_txd_arstn] [get_bd_pins axi_ethernet_0/s_axi_lite_resetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn] [get_bd_pins ethernet_controller_0/m_axi_aresetn] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
+  connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_ethernet_0/axi_rxd_arstn] [get_bd_pins axi_ethernet_0/axi_rxs_arstn] [get_bd_pins axi_ethernet_0/axi_txc_arstn] [get_bd_pins axi_ethernet_0/axi_txd_arstn] [get_bd_pins axi_ethernet_0/s_axi_lite_resetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn] [get_bd_pins eth_controller_0/aresetn] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
+  connect_bd_net -net src_addr [get_bd_pins eth_controller_0/config_unicast_addr] [get_bd_pins mux_0/B] [get_bd_pins vio_0/probe_out0]
+  connect_bd_net -net src_ip_addr [get_bd_pins mux_1/B] [get_bd_pins vio_0/probe_out2]
+  connect_bd_net -net src_udp_port [get_bd_pins mux_2/B] [get_bd_pins vio_0/probe_out4]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_1/clk_in1]
-  connect_bd_net -net vio_0_probe_out0 [get_bd_pins ethernet_controller_0/control_data] [get_bd_pins vio_0/probe_out0]
-  connect_bd_net -net vio_0_probe_out1 [get_bd_pins ethernet_controller_0/control_valid] [get_bd_pins vio_0/probe_out1]
-  connect_bd_net -net vio_0_probe_out2 [get_bd_pins ethernet_controller_0/start_config] [get_bd_pins vio_0/probe_out2]
-  connect_bd_net -net vio_0_probe_out3 [get_bd_pins encoder_0/drop] [get_bd_pins vio_0/probe_out3]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00040000 -offset 0x40C00000 [get_bd_addr_spaces ethernet_controller_0/m_axi] [get_bd_addr_segs axi_ethernet_0/s_axi/Reg0] SEG_axi_ethernet_0_Reg0
+  create_bd_addr_seg -range 0x00040000 -offset 0x40C00000 [get_bd_addr_spaces eth_controller_0/M_AXI] [get_bd_addr_segs axi_ethernet_0/s_axi/Reg0] SEG_axi_ethernet_0_Reg0
 
 
   # Restore current instance

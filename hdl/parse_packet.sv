@@ -70,7 +70,10 @@ module parse_packet #(
     output s_axis_tready,
 
     input axis_resetn,
-    input axis_clk
+    input axis_clk,
+	output reg [1:0] mst_exec_state,
+	output [1:0] fifo_state,
+	output [31:0] fifo_data_len
 );
 function integer clogb2 (input integer bit_depth);
 begin
@@ -84,7 +87,6 @@ localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
                     SEND_PACKET = 2'd1,
                     WAIT = 2'd2;
 
-reg [1:0] mst_exec_state;
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
 reg [31:0] nvgre_data;
 reg m_axis_tvalid_int, m_axis_tlast_int, flush_fifo;
@@ -92,6 +94,8 @@ reg m_axis_tvalid_int, m_axis_tlast_int, flush_fifo;
 wire [FIFO_ADDR_SIZE-1:0] data_len;
 wire [31:0] data, wdata;
 wire packet_ready, pkt_last_word, nvgre;
+
+assign fifo_data_len = data_len;
 
 s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
@@ -106,7 +110,8 @@ s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE))
     .data(data),
     .write_data(wdata),
     .data_len(data_len),
-    .ready(packet_ready)
+    .ready(packet_ready),
+    .mst_exec_state(fifo_state)
 );
 
 assign nvgre = nvgre_data == 32'h40006559;
@@ -175,10 +180,12 @@ always @ (posedge axis_clk) begin
             flush_fifo <= 0;
             valid <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
-        end else begin
+        end else if ((nvgre && (data_len >= 72)) || (~nvgre && (data_len >= 40))) begin
             valid <= 1;
             mst_exec_state <= SEND_PACKET;
-        end
+        end else begin
+			flush_fifo <= 1;
+		end
     SEND_PACKET: begin
         if (pkt_last_word) begin
             flush_fifo <= 1;

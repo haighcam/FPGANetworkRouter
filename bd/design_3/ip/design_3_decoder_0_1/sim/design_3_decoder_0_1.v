@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:decoder:1.2
-// IP Revision: 16
+// IP Revision: 18
 
 `timescale 1ns/1ps
 
@@ -76,6 +76,7 @@ module design_3_decoder_0_1 (
   encapsualted,
   valid,
   ready,
+  mst_exec_state,
   s_axis_rxs_tdata,
   s_axis_rxs_tkeep,
   s_axis_rxs_tlast,
@@ -135,6 +136,7 @@ output wire encapsualted;
 output wire valid;
 (* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ready" *)
 input wire ready;
+output wire [1 : 0] mst_exec_state;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_rxs TDATA" *)
 input wire [31 : 0] s_axis_rxs_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_rxs TKEEP" *)
@@ -199,6 +201,7 @@ output wire s_axis_rxd_tready;
     .encapsualted_1(),
     .valid_1(),
     .ready_1(1'B1),
+    .mst_exec_state(mst_exec_state),
     .s_axis_rxs_tdata(s_axis_rxs_tdata),
     .s_axis_rxs_tkeep(s_axis_rxs_tkeep),
     .s_axis_rxs_tlast(s_axis_rxs_tlast),

@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Mon Mar  7 14:15:03 2022
--- Host        : BA3145WS20 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/haighcam/test/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/bd_0/ip/ip_0/bd_d66b_eth_buf_0_sim_netlist.vhdl
+-- Date        : Fri Mar 18 13:57:40 2022
+-- Host        : BA3145WS21 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top bd_d66b_eth_buf_0 -prefix
+--               bd_d66b_eth_buf_0_ bd_d66b_eth_buf_0_sim_netlist.vhdl
 -- Design      : bd_d66b_eth_buf_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -36,8 +36,6 @@ entity bd_d66b_eth_buf_0_address_decoder is
     \MEM_DECODE_GEN[0].cs_out_i_reg[0]_3\ : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_address_decoder : entity is "address_decoder";
 end bd_d66b_eth_buf_0_address_decoder;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_address_decoder is
@@ -230,8 +228,6 @@ entity bd_d66b_eth_buf_0_addr_response_shim is
     ip2shim_rd_ack : in STD_LOGIC;
     Bus2IP_Addr : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_addr_response_shim : entity is "addr_response_shim";
 end bd_d66b_eth_buf_0_addr_response_shim;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_addr_response_shim is
@@ -1938,8 +1934,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_1\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper is
@@ -2764,8 +2758,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init is
     txd_rd_pntr1_carry : in STD_LOGIC_VECTOR ( 2 downto 0 );
     txc_rd_addr2_pntr1_carry : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
 end bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_prim_wrapper_init is
@@ -3062,8 +3054,6 @@ entity bd_d66b_eth_buf_0_bus_clk_cross is
     D : in STD_LOGIC_VECTOR ( 31 downto 0 );
     rx_mac_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_bus_clk_cross : entity is "bus_clk_cross";
 end bd_d66b_eth_buf_0_bus_clk_cross;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_bus_clk_cross is
@@ -4917,8 +4907,6 @@ entity bd_d66b_eth_buf_0_dmem is
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 );
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_dmem : entity is "dmem";
 end bd_d66b_eth_buf_0_dmem;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_dmem is
@@ -5343,8 +5331,6 @@ entity bd_d66b_eth_buf_0_rd_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rd_bin_cntr : entity is "rd_bin_cntr";
 end bd_d66b_eth_buf_0_rd_bin_cntr;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rd_bin_cntr is
@@ -5624,8 +5610,6 @@ entity bd_d66b_eth_buf_0_rd_fwft is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     \FSM_onehot_rxd_axistream_current_state_reg[4]_1\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rd_fwft : entity is "rd_fwft";
 end bd_d66b_eth_buf_0_rd_fwft;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rd_fwft is
@@ -5927,8 +5911,6 @@ entity bd_d66b_eth_buf_0_rd_status_flags_ss is
     ram_empty_fb_i_reg_0 : in STD_LOGIC;
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end bd_d66b_eth_buf_0_rd_status_flags_ss;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rd_status_flags_ss is
@@ -5996,8 +5978,6 @@ entity bd_d66b_eth_buf_0_reg_16bl is
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_16bl : entity is "reg_16bl";
 end bd_d66b_eth_buf_0_reg_16bl;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_16bl is
@@ -6274,8 +6254,6 @@ entity bd_d66b_eth_buf_0_reg_32b is
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_32b : entity is "reg_32b";
 end bd_d66b_eth_buf_0_reg_32b;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_32b is
@@ -8367,8 +8345,6 @@ entity bd_d66b_eth_buf_0_reg_cr is
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 12 downto 0 );
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_cr : entity is "reg_cr";
 end bd_d66b_eth_buf_0_reg_cr;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_cr is
@@ -8490,8 +8466,6 @@ entity bd_d66b_eth_buf_0_reg_ie is
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 8 downto 0 );
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_ie : entity is "reg_ie";
 end bd_d66b_eth_buf_0_reg_ie;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_ie is
@@ -8613,8 +8587,6 @@ entity bd_d66b_eth_buf_0_reg_ifgp is
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_ifgp : entity is "reg_ifgp";
 end bd_d66b_eth_buf_0_reg_ifgp;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_ifgp is
@@ -8887,8 +8859,6 @@ entity bd_d66b_eth_buf_0_reg_ip is
     \reg_data_reg[23]_0\ : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_ip : entity is "reg_ip";
 end bd_d66b_eth_buf_0_reg_ip;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_ip is
@@ -9024,8 +8994,6 @@ entity bd_d66b_eth_buf_0_reg_is is
     \IP2Bus_Data_reg[23]\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \IP2Bus_Data_reg[23]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_is : entity is "reg_is";
 end bd_d66b_eth_buf_0_reg_is;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_is is
@@ -9219,8 +9187,6 @@ entity bd_d66b_eth_buf_0_reg_tp is
     ClkASignalInReg : in STD_LOGIC;
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reg_tp : entity is "reg_tp";
 end bd_d66b_eth_buf_0_reg_tp;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reg_tp is
@@ -9434,8 +9400,6 @@ entity bd_d66b_eth_buf_0_sync_block is
     EMAC_RESET_DONE_INT : in STD_LOGIC;
     S_AXI_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_sync_block : entity is "sync_block";
 end bd_d66b_eth_buf_0_sync_block;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_sync_block is
@@ -17408,8 +17372,6 @@ entity bd_d66b_eth_buf_0_sync_reset is
     ClkBRst1_in : in STD_LOGIC;
     AXI_STR_TXD_ARESETN : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_sync_reset : entity is "sync_reset";
 end bd_d66b_eth_buf_0_sync_reset;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_sync_reset is
@@ -22050,8 +22012,6 @@ entity bd_d66b_eth_buf_0_tx_basic_if is
     AXI_STR_TXD_TKEEP : in STD_LOGIC_VECTOR ( 3 downto 0 );
     AXI_STR_TXD_TDATA : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_tx_basic_if : entity is "tx_basic_if";
 end bd_d66b_eth_buf_0_tx_basic_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_tx_basic_if is
@@ -27679,8 +27639,6 @@ entity bd_d66b_eth_buf_0_tx_emac_if is
     Tx_Client_TxC_2_Mem_Dout : in STD_LOGIC_VECTOR ( 11 downto 0 );
     Tx_Client_TxD_2_Mem_Dout : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_tx_emac_if : entity is "tx_emac_if";
 end bd_d66b_eth_buf_0_tx_emac_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_tx_emac_if is
@@ -31202,8 +31160,6 @@ entity bd_d66b_eth_buf_0_updn_cntr is
     \count_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_updn_cntr : entity is "updn_cntr";
 end bd_d66b_eth_buf_0_updn_cntr;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_updn_cntr is
@@ -31543,8 +31499,6 @@ entity bd_d66b_eth_buf_0_wr_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_wr_bin_cntr : entity is "wr_bin_cntr";
 end bd_d66b_eth_buf_0_wr_bin_cntr;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_wr_bin_cntr is
@@ -31774,8 +31728,6 @@ entity bd_d66b_eth_buf_0_wr_status_flags_ss is
     \count_reg[0]\ : in STD_LOGIC;
     AXI_STR_RXD_READY : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end bd_d66b_eth_buf_0_wr_status_flags_ss;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_wr_status_flags_ss is
@@ -31901,8 +31853,6 @@ entity bd_d66b_eth_buf_0_slave_attachment is
     invalidWrReq : in STD_LOGIC;
     S_AXI_WVALID : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_slave_attachment : entity is "slave_attachment";
 end bd_d66b_eth_buf_0_slave_attachment;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_slave_attachment is
@@ -33735,8 +33685,6 @@ entity bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross is
     rxclclk_frame_received_intrpt : in STD_LOGIC;
     rx_mac_aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross : entity is "actv_hi_pulse_clk_cross";
 end bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_actv_hi_pulse_clk_cross is
@@ -34277,8 +34225,6 @@ entity bd_d66b_eth_buf_0_actv_hi_reset_clk_cross is
     tx_mac_aclk : in STD_LOGIC;
     ClkARst : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_actv_hi_reset_clk_cross : entity is "actv_hi_reset_clk_cross";
 end bd_d66b_eth_buf_0_actv_hi_reset_clk_cross;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_actv_hi_reset_clk_cross is
@@ -34927,8 +34873,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_prim_width is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end bd_d66b_eth_buf_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_prim_width is
@@ -35091,8 +35035,6 @@ entity bd_d66b_eth_buf_0_bus_and_enable_clk_cross is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     D : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_bus_and_enable_clk_cross : entity is "bus_and_enable_clk_cross";
 end bd_d66b_eth_buf_0_bus_and_enable_clk_cross;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_bus_and_enable_clk_cross is
@@ -35538,8 +35480,6 @@ entity bd_d66b_eth_buf_0_dc_ss_fwft is
     \count_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     AXI_STR_RXD_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_dc_ss_fwft : entity is "dc_ss_fwft";
 end bd_d66b_eth_buf_0_dc_ss_fwft;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_dc_ss_fwft is
@@ -35579,8 +35519,6 @@ entity bd_d66b_eth_buf_0_memory is
     AXI_STR_RXD_ACLK : in STD_LOGIC;
     \goreg_dm.dout_i_reg[35]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_memory : entity is "memory";
 end bd_d66b_eth_buf_0_memory;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_memory is
@@ -36056,8 +35994,6 @@ entity bd_d66b_eth_buf_0_registers is
     ClkASignalInReg : in STD_LOGIC;
     S_AXI_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_registers : entity is "registers";
 end bd_d66b_eth_buf_0_registers;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_registers is
@@ -36812,8 +36748,6 @@ entity bd_d66b_eth_buf_0_rx_emac_if is
     \rx_data_packed_word_reg[31]_0\ : in STD_LOGIC_VECTOR ( 7 downto 0 );
     \statistics_vector_reg[25]_0\ : in STD_LOGIC_VECTOR ( 25 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rx_emac_if : entity is "rx_emac_if";
 end bd_d66b_eth_buf_0_rx_emac_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rx_emac_if is
@@ -45442,8 +45376,6 @@ entity bd_d66b_eth_buf_0_tx_axistream_if is
     AXI_STR_TXD_TKEEP : in STD_LOGIC_VECTOR ( 3 downto 0 );
     AXI_STR_TXD_TDATA : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_tx_axistream_if : entity is "tx_axistream_if";
 end bd_d66b_eth_buf_0_tx_axistream_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_tx_axistream_if is
@@ -45502,8 +45434,6 @@ entity bd_d66b_eth_buf_0_wr_logic is
     AXI_STR_RXD_READY : in STD_LOGIC;
     reset2axi_str_rxd : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_wr_logic : entity is "wr_logic";
 end bd_d66b_eth_buf_0_wr_logic;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_wr_logic is
@@ -45578,8 +45508,6 @@ entity bd_d66b_eth_buf_0_axi_lite_ipif is
     invalidWrReq : in STD_LOGIC;
     S_AXI_WVALID : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end bd_d66b_eth_buf_0_axi_lite_ipif;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_axi_lite_ipif is
@@ -45644,8 +45572,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_generic_cstr is
@@ -45826,8 +45752,6 @@ entity bd_d66b_eth_buf_0_rd_logic is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     \count_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rd_logic : entity is "rd_logic";
 end bd_d66b_eth_buf_0_rd_logic;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rd_logic is
@@ -45983,8 +45907,6 @@ entity bd_d66b_eth_buf_0_reset_combiner is
     AXI_STR_RXD_ACLK : in STD_LOGIC;
     AXI_STR_RXS_ACLK : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_reset_combiner : entity is "reset_combiner";
 end bd_d66b_eth_buf_0_reset_combiner;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_reset_combiner is
@@ -46968,8 +46890,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_top is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end bd_d66b_eth_buf_0_blk_mem_gen_top;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_top is
@@ -47144,8 +47064,6 @@ entity bd_d66b_eth_buf_0_fifo_generator_ramfifo is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end bd_d66b_eth_buf_0_fifo_generator_ramfifo;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_fifo_generator_ramfifo is
@@ -47239,8 +47157,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth : entity is "blk_mem_gen_v8_4_2_synth";
 end bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2_synth is
@@ -47415,8 +47331,6 @@ entity bd_d66b_eth_buf_0_fifo_generator_top is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_fifo_generator_top : entity is "fifo_generator_top";
 end bd_d66b_eth_buf_0_fifo_generator_top;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_fifo_generator_top is
@@ -47462,8 +47376,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2 is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2 : entity is "blk_mem_gen_v8_4_2";
 end bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_v8_4_2 is
@@ -47638,8 +47550,6 @@ entity bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth : entity is "fifo_generator_v13_2_3_synth";
 end bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_fifo_generator_v13_2_3_synth is
@@ -47685,8 +47595,6 @@ entity bd_d66b_eth_buf_0_blk_mem_gen_wrapper is
     \DEVICE_7SERIES.NO_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.ram_0\ : in STD_LOGIC_VECTOR ( 35 downto 0 );
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_blk_mem_gen_wrapper : entity is "blk_mem_gen_wrapper";
 end bd_d66b_eth_buf_0_blk_mem_gen_wrapper;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_blk_mem_gen_wrapper is
@@ -47861,8 +47769,6 @@ entity bd_d66b_eth_buf_0_fifo_generator_v13_2_3 is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_fifo_generator_v13_2_3 : entity is "fifo_generator_v13_2_3";
 end bd_d66b_eth_buf_0_fifo_generator_v13_2_3;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_fifo_generator_v13_2_3 is
@@ -47922,8 +47828,6 @@ entity bd_d66b_eth_buf_0_basic_sfifo_fg is
     \FSM_onehot_rxd_axistream_current_state_reg[4]_0\ : in STD_LOGIC;
     p_0_out : in STD_LOGIC_VECTOR ( 35 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_basic_sfifo_fg : entity is "basic_sfifo_fg";
 end bd_d66b_eth_buf_0_basic_sfifo_fg;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_basic_sfifo_fg is
@@ -47978,8 +47882,6 @@ entity bd_d66b_eth_buf_0_rx_mem_if is
     \rx_client_rxs_dpmem_wr_data_d1_reg[31]_0\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \rx_client_rxs_dpmem_addr_d1_reg[8]_0\ : in STD_LOGIC_VECTOR ( 8 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rx_mem_if : entity is "rx_mem_if";
 end bd_d66b_eth_buf_0_rx_mem_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rx_mem_if is
@@ -48770,8 +48672,6 @@ entity bd_d66b_eth_buf_0_tx_mem_if is
     WEA : in STD_LOGIC_VECTOR ( 0 to 0 );
     Axi_Str_TxC_2_Mem_We : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_tx_mem_if : entity is "tx_mem_if";
 end bd_d66b_eth_buf_0_tx_mem_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_tx_mem_if is
@@ -48847,8 +48747,6 @@ entity bd_d66b_eth_buf_0_rx_axistream_if is
     D : in STD_LOGIC_VECTOR ( 35 downto 0 );
     \rxd_word_cnt_reg[0]_0\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rx_axistream_if : entity is "rx_axistream_if";
 end bd_d66b_eth_buf_0_rx_axistream_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rx_axistream_if is
@@ -58144,8 +58042,6 @@ entity bd_d66b_eth_buf_0_tx_if is
     AXI_STR_TXD_TKEEP : in STD_LOGIC_VECTOR ( 3 downto 0 );
     AXI_STR_TXD_TDATA : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_tx_if : entity is "tx_if";
 end bd_d66b_eth_buf_0_tx_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_tx_if is
@@ -58303,8 +58199,6 @@ entity bd_d66b_eth_buf_0_rx_if is
     rx_axis_mac_tdata : in STD_LOGIC_VECTOR ( 7 downto 0 );
     rx_statistics_vector : in STD_LOGIC_VECTOR ( 25 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_rx_if : entity is "rx_if";
 end bd_d66b_eth_buf_0_rx_if;
 
 architecture STRUCTURE of bd_d66b_eth_buf_0_rx_if is
@@ -59427,8 +59321,6 @@ entity bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19 is
   attribute C_TXVLAN_TRAN of bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19 : entity is 0;
   attribute C_TYPE : integer;
   attribute C_TYPE of bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19 : entity is "axi_ethernet_buffer_v2_0_19";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19 : entity is "yes";
 end bd_d66b_eth_buf_0_axi_ethernet_buffer_v2_0_19;
