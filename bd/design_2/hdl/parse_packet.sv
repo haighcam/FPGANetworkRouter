@@ -89,6 +89,7 @@ localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
 
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
 reg [31:0] nvgre_data;
+reg [7:0] ip_type;
 reg m_axis_tvalid_int, m_axis_tlast_int, flush_fifo;
 
 wire [FIFO_ADDR_SIZE-1:0] data_len;
@@ -150,10 +151,12 @@ always @(posedge axis_clk) begin
             alt_udp_src_port <= 16'd0;
             alt_udp_dest_port <= 16'd0;
             nvgre_data <= 32'd0;
+			ip_type <= 8'd0;
 		end
         4: dest_addr[47:16] <= wdata;
         8: {dest_addr[15:0], src_addr[47:32]} <= wdata;
         12: src_addr[31:0] <= wdata;
+		24: ip_type <= wdata[7:0];
         28: ip_src_addr[31:16] <= wdata[15:0];
         32: {ip_src_addr[15:0], ip_dest_addr[31:16]} <= wdata;
         36: {ip_dest_addr[15:0], udp_src_port[15:0]} <= wdata;
@@ -180,7 +183,7 @@ always @ (posedge axis_clk) begin
             flush_fifo <= 0;
             valid <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
-        end else if ((nvgre && (data_len >= 72)) || (~nvgre && (data_len >= 40))) begin
+        end else if ((nvgre && (data_len >= 72)) && (ip_type == 8'h11)) begin
             valid <= 1;
             mst_exec_state <= SEND_PACKET;
         end else begin

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar 20 14:45:28 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 24 16:14:10 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_2" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
@@ -18,26 +18,6 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="sys_clock" SIGIS="clk" SIGNAME="External_Ports_sys_clock">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_mdio_mdc_mdc" SIGIS="clk" SIGNAME="axi_ethernet_0_mdio_mdc">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdc"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="eth_mdio_mdc_mdio_i" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_o" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_t" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_t"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="3" NAME="eth_rgmii_rd" RIGHT="0" SIGIS="undef" SIGNAME="axi_ethernet_0_rgmii_rd">
@@ -68,6 +48,26 @@
     <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_rgmii_txc" SIGIS="clk" SIGNAME="axi_ethernet_0_rgmii_txc">
       <CONNECTIONS>
         <CONNECTION INSTANCE="axi_ethernet_0" PORT="rgmii_txc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="eth_mdio_mdc_mdc" SIGIS="clk" SIGNAME="axi_ethernet_0_mdio_mdc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="eth_mdio_mdc_mdio_i" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_i">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_i"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_o" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="eth_mdio_mdc_mdio_t" SIGIS="undef" SIGNAME="axi_ethernet_0_mdio_mdio_t">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_ethernet_0" PORT="mdio_mdio_t"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -5961,9 +5961,9 @@
             <CONNECTION INSTANCE="ila_1" PORT="clk"/>
             <CONNECTION INSTANCE="ila_2" PORT="clk"/>
             <CONNECTION INSTANCE="ila_3" PORT="clk"/>
-            <CONNECTION INSTANCE="eth_controller_0" PORT="aclk"/>
-            <CONNECTION INSTANCE="decoder_0" PORT="aclk"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="O" NAME="clk_out2" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out2">
@@ -19772,9 +19772,9 @@
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_txc_arstn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxd_arstn"/>
             <CONNECTION INSTANCE="axi_ethernet_0" PORT="axi_rxs_arstn"/>
-            <CONNECTION INSTANCE="eth_controller_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="decoder_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="encoder_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="decoder_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -20627,8 +20627,8 @@
             <CONNECTION INSTANCE="mux_5" PORT="sel"/>
             <CONNECTION INSTANCE="mux_2" PORT="sel"/>
             <CONNECTION INSTANCE="mux_4" PORT="sel"/>
-            <CONNECTION INSTANCE="eth_controller_0" PORT="config_valid"/>
             <CONNECTION INSTANCE="mux_0" PORT="sel"/>
+            <CONNECTION INSTANCE="eth_controller_0" PORT="config_valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="probe_out7" RIGHT="0" SIGIS="undef" SIGNAME="vio_0_probe_out7">

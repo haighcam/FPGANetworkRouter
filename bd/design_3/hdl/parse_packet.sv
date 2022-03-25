@@ -71,7 +71,9 @@ module parse_packet #(
 
     input axis_resetn,
     input axis_clk,
-	output reg [1:0] mst_exec_state
+	output reg [1:0] mst_exec_state,
+	output [1:0] fifo_state,
+	output [31:0] fifo_data_len
 );
 function integer clogb2 (input integer bit_depth);
 begin
@@ -87,11 +89,14 @@ localparam [1:0]    WAIT_FOR_PACKET = 2'd0,
 
 reg [FIFO_ADDR_SIZE-1:0] send_ptr;
 reg [31:0] nvgre_data;
+reg [7:0] ip_type;
 reg m_axis_tvalid_int, m_axis_tlast_int, flush_fifo;
 
 wire [FIFO_ADDR_SIZE-1:0] data_len;
 wire [31:0] data, wdata;
 wire packet_ready, pkt_last_word, nvgre;
+
+assign fifo_data_len = data_len;
 
 s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE)) s_axis_fifo_inst (
     .aclk(axis_clk),
@@ -106,7 +111,8 @@ s_axis_fifo #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS),.FIFO_ADDR_SIZE(FIFO_ADDR_SIZE))
     .data(data),
     .write_data(wdata),
     .data_len(data_len),
-    .ready(packet_ready)
+    .ready(packet_ready),
+    .mst_exec_state(fifo_state)
 );
 
 assign nvgre = nvgre_data == 32'h40006559;
@@ -145,10 +151,12 @@ always @(posedge axis_clk) begin
             alt_udp_src_port <= 16'd0;
             alt_udp_dest_port <= 16'd0;
             nvgre_data <= 32'd0;
+			ip_type <= 8'd0;
 		end
         4: dest_addr[47:16] <= wdata;
         8: {dest_addr[15:0], src_addr[47:32]} <= wdata;
         12: src_addr[31:0] <= wdata;
+		24: ip_type <= wdata[7:0];
         28: ip_src_addr[31:16] <= wdata[15:0];
         32: {ip_src_addr[15:0], ip_dest_addr[31:16]} <= wdata;
         36: {ip_dest_addr[15:0], udp_src_port[15:0]} <= wdata;
@@ -175,7 +183,7 @@ always @ (posedge axis_clk) begin
             flush_fifo <= 0;
             valid <= 0;
             mst_exec_state <= WAIT_FOR_PACKET;
-        end else if ((nvgre && (data_len >= 72)) || (~nvgre && (data_len >= 40))) begin
+        end else if (((nvgre && (data_len >= 72)) || (~nvgre && (data_len >= 40))) && (ip_type == 8'h11)) begin
             valid <= 1;
             mst_exec_state <= SEND_PACKET;
         end else begin

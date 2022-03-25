@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar 20 11:34:52 2022
--- Host        : BA3145WS18 running 64-bit major release  (build 9200)
+-- Date        : Thu Mar 24 16:17:11 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/Users/haighcam/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/bd_0/ip/ip_1/bd_d66b_mac_0_stub.vhdl
 -- Design      : bd_d66b_mac_0

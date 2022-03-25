@@ -1,8 +1,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Sun Mar 20 14:16:11 2022
-// Host        : BA3145WS18 running 64-bit major release  (build 9200)
+// Date        : Thu Mar 24 16:17:43 2022
+// Host        : BA3145WS20 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_ila_0_0/design_2_ila_0_0_sim_netlist.v
 // Design      : design_2_ila_0_0

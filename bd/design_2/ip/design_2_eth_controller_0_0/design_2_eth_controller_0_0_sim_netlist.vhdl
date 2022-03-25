@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Sun Mar 20 11:33:56 2022
--- Host        : BA3145WS18 running 64-bit major release  (build 9200)
+-- Date        : Thu Mar 24 16:21:02 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_eth_controller_0_0/design_2_eth_controller_0_0_sim_netlist.vhdl
 -- Design      : design_2_eth_controller_0_0
@@ -16,16 +16,17 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_2_eth_controller_0_0_eth_controller is
   port (
-    M_AXI_BREADY : out STD_LOGIC;
     M_AXI_AWADDR : out STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_WDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M_AXI_AWVALID : out STD_LOGIC;
     M_AXI_WVALID : out STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    M_AXI_BVALID : in STD_LOGIC;
+    M_AXI_AWVALID : out STD_LOGIC;
+    m_axi_bready_reg_0 : out STD_LOGIC;
+    config_done : out STD_LOGIC;
     aclk : in STD_LOGIC;
     config_valid : in STD_LOGIC;
     config_unicast_addr : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    aresetn : in STD_LOGIC;
+    M_AXI_BVALID : in STD_LOGIC;
     M_AXI_WREADY : in STD_LOGIC;
     M_AXI_AWREADY : in STD_LOGIC
   );
@@ -36,18 +37,17 @@ end design_2_eth_controller_0_0_eth_controller;
 architecture STRUCTURE of design_2_eth_controller_0_0_eth_controller is
   signal FSM_sequential_mst_exec_state_i_1_n_0 : STD_LOGIC;
   signal \^m_axi_awvalid\ : STD_LOGIC;
-  signal \^m_axi_bready\ : STD_LOGIC;
   signal \^m_axi_wvalid\ : STD_LOGIC;
+  signal \^config_done\ : STD_LOGIC;
+  signal config_done_i_1_n_0 : STD_LOGIC;
+  signal config_done_i_2_n_0 : STD_LOGIC;
   signal init_write_0 : STD_LOGIC;
   signal init_write_1 : STD_LOGIC;
-  signal issue_write : STD_LOGIC;
-  signal last_write : STD_LOGIC;
-  signal last_write_i_1_n_0 : STD_LOGIC;
   signal \^m_axi_awaddr\ : STD_LOGIC_VECTOR ( 30 to 30 );
   signal \m_axi_awaddr[2]_i_1_n_0\ : STD_LOGIC;
   signal m_axi_awvalid_i_1_n_0 : STD_LOGIC;
-  signal m_axi_awvalid_i_2_n_0 : STD_LOGIC;
   signal m_axi_bready_i_1_n_0 : STD_LOGIC;
+  signal \^m_axi_bready_reg_0\ : STD_LOGIC;
   signal \m_axi_wdata[16]_i_1_n_0\ : STD_LOGIC;
   signal \m_axi_wdata[17]_i_1_n_0\ : STD_LOGIC;
   signal \m_axi_wdata[18]_i_1_n_0\ : STD_LOGIC;
@@ -66,61 +66,53 @@ architecture STRUCTURE of design_2_eth_controller_0_0_eth_controller is
   signal \m_axi_wdata[31]_i_1_n_0\ : STD_LOGIC;
   signal m_axi_wvalid_i_1_n_0 : STD_LOGIC;
   signal mst_exec_state : STD_LOGIC;
-  signal \mst_exec_state1__0\ : STD_LOGIC;
   signal \n_writes[0]_i_1_n_0\ : STD_LOGIC;
   signal \n_writes[1]_i_1_n_0\ : STD_LOGIC;
-  signal \n_writes[1]_i_2_n_0\ : STD_LOGIC;
   signal \n_writes_reg_n_0_[0]\ : STD_LOGIC;
   signal \n_writes_reg_n_0_[1]\ : STD_LOGIC;
   signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal p_4_in : STD_LOGIC;
   signal start_single_write_i_1_n_0 : STD_LOGIC;
   signal start_single_write_reg_n_0 : STD_LOGIC;
   signal unicast_addr : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal write_issued_i_1_n_0 : STD_LOGIC;
   signal write_issued_reg_n_0 : STD_LOGIC;
-  signal writes_done : STD_LOGIC;
-  signal writes_done_i_1_n_0 : STD_LOGIC;
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of FSM_sequential_mst_exec_state_reg : label is "IDLE:0,INIT_WRITE:1";
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \m_axi_awaddr[2]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \m_axi_awaddr[30]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of m_axi_awvalid_i_2 : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of m_axi_bready_i_1 : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \m_axi_wdata[0]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \m_axi_wdata[15]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \m_axi_wdata[16]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \m_axi_wdata[17]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \m_axi_wdata[18]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \m_axi_wdata[19]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \m_axi_wdata[20]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \m_axi_wdata[21]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \m_axi_wdata[22]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \m_axi_wdata[23]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \m_axi_wdata[24]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \m_axi_wdata[25]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \m_axi_wdata[26]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \m_axi_wdata[27]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \m_axi_wdata[28]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \m_axi_wdata[29]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \m_axi_wdata[2]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \m_axi_wdata[30]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \m_axi_wdata[31]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of m_axi_wvalid_i_1 : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \n_writes[0]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of writes_done_i_1 : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \m_axi_wdata[16]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \m_axi_wdata[17]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \m_axi_wdata[18]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \m_axi_wdata[19]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \m_axi_wdata[1]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \m_axi_wdata[20]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \m_axi_wdata[21]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \m_axi_wdata[22]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \m_axi_wdata[23]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \m_axi_wdata[24]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \m_axi_wdata[25]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \m_axi_wdata[26]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \m_axi_wdata[27]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \m_axi_wdata[28]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \m_axi_wdata[29]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \m_axi_wdata[30]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \m_axi_wdata[31]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \m_axi_wdata[6]_i_1\ : label is "soft_lutpair1";
 begin
   M_AXI_AWVALID <= \^m_axi_awvalid\;
-  M_AXI_BREADY <= \^m_axi_bready\;
   M_AXI_WVALID <= \^m_axi_wvalid\;
+  config_done <= \^config_done\;
+  m_axi_bready_reg_0 <= \^m_axi_bready_reg_0\;
 FSM_sequential_mst_exec_state_i_1: unisim.vcomponents.LUT6
     generic map(
       INIT => X"DF00DFFFDF00DF00"
     )
         port map (
-      I0 => \n_writes_reg_n_0_[1]\,
+      I0 => p_4_in,
       I1 => \n_writes_reg_n_0_[0]\,
-      I2 => writes_done,
+      I2 => \n_writes_reg_n_0_[1]\,
       I3 => mst_exec_state,
       I4 => init_write_1,
       I5 => init_write_0,
@@ -132,7 +124,47 @@ FSM_sequential_mst_exec_state_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => FSM_sequential_mst_exec_state_i_1_n_0,
       Q => mst_exec_state,
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
+    );
+config_done_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => aresetn,
+      O => config_done_i_1_n_0
+    );
+config_done_i_2: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFF0800"
+    )
+        port map (
+      I0 => mst_exec_state,
+      I1 => \n_writes_reg_n_0_[1]\,
+      I2 => \n_writes_reg_n_0_[0]\,
+      I3 => p_4_in,
+      I4 => \^config_done\,
+      O => config_done_i_2_n_0
+    );
+config_done_i_3: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"00000001"
+    )
+        port map (
+      I0 => M_AXI_BVALID,
+      I1 => \^m_axi_wvalid\,
+      I2 => write_issued_reg_n_0,
+      I3 => start_single_write_reg_n_0,
+      I4 => \^m_axi_awvalid\,
+      O => p_4_in
+    );
+config_done_reg: unisim.vcomponents.FDRE
+     port map (
+      C => aclk,
+      CE => '1',
+      D => config_done_i_2_n_0,
+      Q => \^config_done\,
+      R => config_done_i_1_n_0
     );
 init_write_0_reg: unisim.vcomponents.FDRE
      port map (
@@ -140,7 +172,7 @@ init_write_0_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => config_valid,
       Q => init_write_0,
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 init_write_1_reg: unisim.vcomponents.FDRE
      port map (
@@ -148,24 +180,7 @@ init_write_1_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => init_write_0,
       Q => init_write_1,
-      R => \n_writes[1]_i_1_n_0\
-    );
-last_write_i_1: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => start_single_write_reg_n_0,
-      I1 => last_write,
-      O => last_write_i_1_n_0
-    );
-last_write_reg: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => '1',
-      D => last_write_i_1_n_0,
-      Q => last_write,
-      R => m_axi_awvalid_i_1_n_0
+      R => config_done_i_1_n_0
     );
 \m_axi_awaddr[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -201,41 +216,37 @@ last_write_reg: unisim.vcomponents.FDRE
       Q => M_AXI_AWADDR(1),
       R => '0'
     );
-m_axi_awvalid_i_1: unisim.vcomponents.LUT3
+m_axi_awvalid_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"4F"
+      INIT => X"F400F4000000F400"
     )
         port map (
-      I0 => init_write_1,
-      I1 => init_write_0,
-      I2 => aresetn,
-      O => m_axi_awvalid_i_1_n_0
-    );
-m_axi_awvalid_i_2: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"AE"
-    )
-        port map (
-      I0 => start_single_write_reg_n_0,
+      I0 => M_AXI_AWREADY,
       I1 => \^m_axi_awvalid\,
-      I2 => M_AXI_AWREADY,
-      O => m_axi_awvalid_i_2_n_0
+      I2 => start_single_write_reg_n_0,
+      I3 => aresetn,
+      I4 => init_write_0,
+      I5 => init_write_1,
+      O => m_axi_awvalid_i_1_n_0
     );
 m_axi_awvalid_reg: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => m_axi_awvalid_i_2_n_0,
+      D => m_axi_awvalid_i_1_n_0,
       Q => \^m_axi_awvalid\,
-      R => m_axi_awvalid_i_1_n_0
+      R => '0'
     );
-m_axi_bready_i_1: unisim.vcomponents.LUT2
+m_axi_bready_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"2"
+      INIT => X"40400040"
     )
         port map (
-      I0 => M_AXI_BVALID,
-      I1 => \^m_axi_bready\,
+      I0 => \^m_axi_bready_reg_0\,
+      I1 => M_AXI_BVALID,
+      I2 => aresetn,
+      I3 => init_write_0,
+      I4 => init_write_1,
       O => m_axi_bready_i_1_n_0
     );
 m_axi_bready_reg: unisim.vcomponents.FDRE
@@ -243,8 +254,8 @@ m_axi_bready_reg: unisim.vcomponents.FDRE
       C => aclk,
       CE => '1',
       D => m_axi_bready_i_1_n_0,
-      Q => \^m_axi_bready\,
-      R => m_axi_awvalid_i_1_n_0
+      Q => \^m_axi_bready_reg_0\,
+      R => '0'
     );
 \m_axi_wdata[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -822,14 +833,17 @@ m_axi_bready_reg: unisim.vcomponents.FDRE
       Q => M_AXI_WDATA(9),
       R => '0'
     );
-m_axi_wvalid_i_1: unisim.vcomponents.LUT3
+m_axi_wvalid_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AE"
+      INIT => X"F400F4000000F400"
     )
         port map (
-      I0 => start_single_write_reg_n_0,
+      I0 => M_AXI_WREADY,
       I1 => \^m_axi_wvalid\,
-      I2 => M_AXI_WREADY,
+      I2 => start_single_write_reg_n_0,
+      I3 => aresetn,
+      I4 => init_write_0,
+      I5 => init_write_1,
       O => m_axi_wvalid_i_1_n_0
     );
 m_axi_wvalid_reg: unisim.vcomponents.FDRE
@@ -838,64 +852,33 @@ m_axi_wvalid_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => m_axi_wvalid_i_1_n_0,
       Q => \^m_axi_wvalid\,
-      R => m_axi_awvalid_i_1_n_0
+      R => '0'
     );
 \n_writes[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"DFDFD0DF20202020"
+      INIT => X"1CCC1CCC1C001CCC"
     )
         port map (
-      I0 => issue_write,
-      I1 => \mst_exec_state1__0\,
-      I2 => mst_exec_state,
-      I3 => init_write_0,
-      I4 => init_write_1,
-      I5 => \n_writes_reg_n_0_[0]\,
+      I0 => \n_writes_reg_n_0_[1]\,
+      I1 => \n_writes_reg_n_0_[0]\,
+      I2 => p_4_in,
+      I3 => mst_exec_state,
+      I4 => init_write_0,
+      I5 => init_write_1,
       O => \n_writes[0]_i_1_n_0\
     );
-\n_writes[0]_i_2\: unisim.vcomponents.LUT3
+\n_writes[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"20"
+      INIT => X"6AAA6AAA6A006AAA"
     )
         port map (
-      I0 => writes_done,
+      I0 => \n_writes_reg_n_0_[1]\,
       I1 => \n_writes_reg_n_0_[0]\,
-      I2 => \n_writes_reg_n_0_[1]\,
-      O => \mst_exec_state1__0\
-    );
-\n_writes[1]_i_1\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => aresetn,
+      I2 => p_4_in,
+      I3 => mst_exec_state,
+      I4 => init_write_0,
+      I5 => init_write_1,
       O => \n_writes[1]_i_1_n_0\
-    );
-\n_writes[1]_i_2\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0FF0FF00DD00DD00"
-    )
-        port map (
-      I0 => init_write_0,
-      I1 => init_write_1,
-      I2 => issue_write,
-      I3 => \n_writes_reg_n_0_[1]\,
-      I4 => \n_writes_reg_n_0_[0]\,
-      I5 => mst_exec_state,
-      O => \n_writes[1]_i_2_n_0\
-    );
-\n_writes[1]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0000000000000001"
-    )
-        port map (
-      I0 => write_issued_reg_n_0,
-      I1 => \^m_axi_awvalid\,
-      I2 => M_AXI_BVALID,
-      I3 => \^m_axi_wvalid\,
-      I4 => start_single_write_reg_n_0,
-      I5 => last_write,
-      O => issue_write
     );
 \n_writes_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -903,26 +886,27 @@ m_axi_wvalid_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => \n_writes[0]_i_1_n_0\,
       Q => \n_writes_reg_n_0_[0]\,
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \n_writes_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \n_writes[1]_i_2_n_0\,
+      D => \n_writes[1]_i_1_n_0\,
       Q => \n_writes_reg_n_0_[1]\,
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
-start_single_write_i_1: unisim.vcomponents.LUT5
+start_single_write_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFD2020"
+      INIT => X"FFFFDDDD80888088"
     )
         port map (
       I0 => mst_exec_state,
-      I1 => \mst_exec_state1__0\,
-      I2 => issue_write,
-      I3 => \^m_axi_bready\,
-      I4 => start_single_write_reg_n_0,
+      I1 => p_4_in,
+      I2 => \n_writes_reg_n_0_[0]\,
+      I3 => \n_writes_reg_n_0_[1]\,
+      I4 => \^m_axi_bready_reg_0\,
+      I5 => start_single_write_reg_n_0,
       O => start_single_write_i_1_n_0
     );
 start_single_write_reg: unisim.vcomponents.FDRE
@@ -931,7 +915,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => start_single_write_i_1_n_0,
       Q => start_single_write_reg_n_0,
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -939,7 +923,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(0),
       Q => unicast_addr(0),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -947,7 +931,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(10),
       Q => unicast_addr(10),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -955,7 +939,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(11),
       Q => unicast_addr(11),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -963,7 +947,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(12),
       Q => unicast_addr(12),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -971,7 +955,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(13),
       Q => unicast_addr(13),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -979,7 +963,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(14),
       Q => unicast_addr(14),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -987,7 +971,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(15),
       Q => unicast_addr(15),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -995,7 +979,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(16),
       Q => unicast_addr(16),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -1003,7 +987,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(17),
       Q => unicast_addr(17),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -1011,7 +995,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(18),
       Q => unicast_addr(18),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -1019,7 +1003,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(19),
       Q => unicast_addr(19),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -1027,7 +1011,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(1),
       Q => unicast_addr(1),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -1035,7 +1019,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(20),
       Q => unicast_addr(20),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -1043,7 +1027,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(21),
       Q => unicast_addr(21),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -1051,7 +1035,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(22),
       Q => unicast_addr(22),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -1059,7 +1043,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(23),
       Q => unicast_addr(23),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -1067,7 +1051,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(24),
       Q => unicast_addr(24),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -1075,7 +1059,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(25),
       Q => unicast_addr(25),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -1083,7 +1067,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(26),
       Q => unicast_addr(26),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -1091,7 +1075,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(27),
       Q => unicast_addr(27),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -1099,7 +1083,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(28),
       Q => unicast_addr(28),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -1107,7 +1091,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(29),
       Q => unicast_addr(29),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -1115,7 +1099,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(2),
       Q => unicast_addr(2),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -1123,7 +1107,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(30),
       Q => unicast_addr(30),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -1131,7 +1115,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(31),
       Q => unicast_addr(31),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[32]\: unisim.vcomponents.FDRE
      port map (
@@ -1139,7 +1123,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(32),
       Q => unicast_addr(32),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[33]\: unisim.vcomponents.FDRE
      port map (
@@ -1147,7 +1131,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(33),
       Q => unicast_addr(33),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[34]\: unisim.vcomponents.FDRE
      port map (
@@ -1155,7 +1139,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(34),
       Q => unicast_addr(34),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[35]\: unisim.vcomponents.FDRE
      port map (
@@ -1163,7 +1147,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(35),
       Q => unicast_addr(35),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[36]\: unisim.vcomponents.FDRE
      port map (
@@ -1171,7 +1155,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(36),
       Q => unicast_addr(36),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[37]\: unisim.vcomponents.FDRE
      port map (
@@ -1179,7 +1163,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(37),
       Q => unicast_addr(37),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[38]\: unisim.vcomponents.FDRE
      port map (
@@ -1187,7 +1171,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(38),
       Q => unicast_addr(38),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[39]\: unisim.vcomponents.FDRE
      port map (
@@ -1195,7 +1179,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(39),
       Q => unicast_addr(39),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -1203,7 +1187,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(3),
       Q => unicast_addr(3),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[40]\: unisim.vcomponents.FDRE
      port map (
@@ -1211,7 +1195,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(40),
       Q => unicast_addr(40),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[41]\: unisim.vcomponents.FDRE
      port map (
@@ -1219,7 +1203,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(41),
       Q => unicast_addr(41),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[42]\: unisim.vcomponents.FDRE
      port map (
@@ -1227,7 +1211,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(42),
       Q => unicast_addr(42),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[43]\: unisim.vcomponents.FDRE
      port map (
@@ -1235,7 +1219,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(43),
       Q => unicast_addr(43),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[44]\: unisim.vcomponents.FDRE
      port map (
@@ -1243,7 +1227,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(44),
       Q => unicast_addr(44),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[45]\: unisim.vcomponents.FDRE
      port map (
@@ -1251,7 +1235,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(45),
       Q => unicast_addr(45),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[46]\: unisim.vcomponents.FDRE
      port map (
@@ -1259,7 +1243,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(46),
       Q => unicast_addr(46),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[47]\: unisim.vcomponents.FDRE
      port map (
@@ -1267,7 +1251,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(47),
       Q => unicast_addr(47),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -1275,7 +1259,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(4),
       Q => unicast_addr(4),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -1283,7 +1267,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(5),
       Q => unicast_addr(5),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -1291,7 +1275,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(6),
       Q => unicast_addr(6),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -1299,7 +1283,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(7),
       Q => unicast_addr(7),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -1307,7 +1291,7 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(8),
       Q => unicast_addr(8),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
 \unicast_addr_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -1315,18 +1299,19 @@ start_single_write_reg: unisim.vcomponents.FDRE
       CE => config_valid,
       D => config_unicast_addr(9),
       Q => unicast_addr(9),
-      R => \n_writes[1]_i_1_n_0\
+      R => config_done_i_1_n_0
     );
-write_issued_i_1: unisim.vcomponents.LUT5
+write_issued_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FDFF2020"
+      INIT => X"DDDDFFFF80888088"
     )
         port map (
       I0 => mst_exec_state,
-      I1 => \mst_exec_state1__0\,
-      I2 => issue_write,
-      I3 => \^m_axi_bready\,
-      I4 => write_issued_reg_n_0,
+      I1 => p_4_in,
+      I2 => \n_writes_reg_n_0_[0]\,
+      I3 => \n_writes_reg_n_0_[1]\,
+      I4 => \^m_axi_bready_reg_0\,
+      I5 => write_issued_reg_n_0,
       O => write_issued_i_1_n_0
     );
 write_issued_reg: unisim.vcomponents.FDRE
@@ -1335,26 +1320,7 @@ write_issued_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => write_issued_i_1_n_0,
       Q => write_issued_reg_n_0,
-      R => \n_writes[1]_i_1_n_0\
-    );
-writes_done_i_1: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FF80"
-    )
-        port map (
-      I0 => \^m_axi_bready\,
-      I1 => M_AXI_BVALID,
-      I2 => last_write,
-      I3 => writes_done,
-      O => writes_done_i_1_n_0
-    );
-writes_done_reg: unisim.vcomponents.FDRE
-     port map (
-      C => aclk,
-      CE => '1',
-      D => writes_done_i_1_n_0,
-      Q => writes_done,
-      R => m_axi_awvalid_i_1_n_0
+      R => config_done_i_1_n_0
     );
 end STRUCTURE;
 library IEEE;
@@ -1449,7 +1415,6 @@ begin
   M_AXI_WSTRB(2) <= \<const1>\;
   M_AXI_WSTRB(1) <= \<const1>\;
   M_AXI_WSTRB(0) <= \<const1>\;
-  config_done <= \<const0>\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -1464,14 +1429,15 @@ inst: entity work.design_2_eth_controller_0_0_eth_controller
       M_AXI_AWADDR(0) => \^m_axi_awaddr\(2),
       M_AXI_AWREADY => M_AXI_AWREADY,
       M_AXI_AWVALID => M_AXI_AWVALID,
-      M_AXI_BREADY => M_AXI_BREADY,
       M_AXI_BVALID => M_AXI_BVALID,
       M_AXI_WDATA(31 downto 0) => M_AXI_WDATA(31 downto 0),
       M_AXI_WREADY => M_AXI_WREADY,
       M_AXI_WVALID => M_AXI_WVALID,
       aclk => aclk,
       aresetn => aresetn,
+      config_done => config_done,
       config_unicast_addr(47 downto 0) => config_unicast_addr(47 downto 0),
-      config_valid => config_valid
+      config_valid => config_valid,
+      m_axi_bready_reg_0 => M_AXI_BREADY
     );
 end STRUCTURE;

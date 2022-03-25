@@ -1,8 +1,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Sun Mar 20 11:33:56 2022
-// Host        : BA3145WS18 running 64-bit major release  (build 9200)
+// Date        : Thu Mar 24 16:21:02 2022
+// Host        : BA3145WS20 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_eth_controller_0_0/design_2_eth_controller_0_0_sim_netlist.v
 // Design      : design_2_eth_controller_0_0
@@ -59,6 +59,7 @@ module design_2_eth_controller_0_0
   wire M_AXI_WVALID;
   wire aclk;
   wire aresetn;
+  wire config_done;
   wire [47:0]config_unicast_addr;
   wire config_valid;
 
@@ -98,7 +99,6 @@ module design_2_eth_controller_0_0
   assign M_AXI_WSTRB[2] = \<const1> ;
   assign M_AXI_WSTRB[1] = \<const1> ;
   assign M_AXI_WSTRB[0] = \<const1> ;
-  assign config_done = \<const0> ;
   GND GND
        (.G(\<const0> ));
   VCC VCC
@@ -107,41 +107,44 @@ module design_2_eth_controller_0_0
        (.M_AXI_AWADDR({\^M_AXI_AWADDR [23],\^M_AXI_AWADDR [2]}),
         .M_AXI_AWREADY(M_AXI_AWREADY),
         .M_AXI_AWVALID(M_AXI_AWVALID),
-        .M_AXI_BREADY(M_AXI_BREADY),
         .M_AXI_BVALID(M_AXI_BVALID),
         .M_AXI_WDATA(M_AXI_WDATA),
         .M_AXI_WREADY(M_AXI_WREADY),
         .M_AXI_WVALID(M_AXI_WVALID),
         .aclk(aclk),
         .aresetn(aresetn),
+        .config_done(config_done),
         .config_unicast_addr(config_unicast_addr),
-        .config_valid(config_valid));
+        .config_valid(config_valid),
+        .m_axi_bready_reg_0(M_AXI_BREADY));
 endmodule
 
 (* ORIG_REF_NAME = "eth_controller" *) 
 module design_2_eth_controller_0_0_eth_controller
-   (M_AXI_BREADY,
-    M_AXI_AWADDR,
+   (M_AXI_AWADDR,
     M_AXI_WDATA,
-    M_AXI_AWVALID,
     M_AXI_WVALID,
-    aresetn,
-    M_AXI_BVALID,
+    M_AXI_AWVALID,
+    m_axi_bready_reg_0,
+    config_done,
     aclk,
     config_valid,
     config_unicast_addr,
+    aresetn,
+    M_AXI_BVALID,
     M_AXI_WREADY,
     M_AXI_AWREADY);
-  output M_AXI_BREADY;
   output [1:0]M_AXI_AWADDR;
   output [31:0]M_AXI_WDATA;
-  output M_AXI_AWVALID;
   output M_AXI_WVALID;
-  input aresetn;
-  input M_AXI_BVALID;
+  output M_AXI_AWVALID;
+  output m_axi_bready_reg_0;
+  output config_done;
   input aclk;
   input config_valid;
   input [47:0]config_unicast_addr;
+  input aresetn;
+  input M_AXI_BVALID;
   input M_AXI_WREADY;
   input M_AXI_AWREADY;
 
@@ -149,25 +152,24 @@ module design_2_eth_controller_0_0_eth_controller
   wire [1:0]M_AXI_AWADDR;
   wire M_AXI_AWREADY;
   wire M_AXI_AWVALID;
-  wire M_AXI_BREADY;
   wire M_AXI_BVALID;
   wire [31:0]M_AXI_WDATA;
   wire M_AXI_WREADY;
   wire M_AXI_WVALID;
   wire aclk;
   wire aresetn;
+  wire config_done;
+  wire config_done_i_1_n_0;
+  wire config_done_i_2_n_0;
   wire [47:0]config_unicast_addr;
   wire config_valid;
   wire init_write_0;
   wire init_write_1;
-  wire issue_write;
-  wire last_write;
-  wire last_write_i_1_n_0;
   wire [30:30]m_axi_awaddr;
   wire \m_axi_awaddr[2]_i_1_n_0 ;
   wire m_axi_awvalid_i_1_n_0;
-  wire m_axi_awvalid_i_2_n_0;
   wire m_axi_bready_i_1_n_0;
+  wire m_axi_bready_reg_0;
   wire \m_axi_wdata[16]_i_1_n_0 ;
   wire \m_axi_wdata[17]_i_1_n_0 ;
   wire \m_axi_wdata[18]_i_1_n_0 ;
@@ -186,27 +188,24 @@ module design_2_eth_controller_0_0_eth_controller
   wire \m_axi_wdata[31]_i_1_n_0 ;
   wire m_axi_wvalid_i_1_n_0;
   wire mst_exec_state;
-  wire mst_exec_state1__0;
   wire \n_writes[0]_i_1_n_0 ;
   wire \n_writes[1]_i_1_n_0 ;
-  wire \n_writes[1]_i_2_n_0 ;
   wire \n_writes_reg_n_0_[0] ;
   wire \n_writes_reg_n_0_[1] ;
   wire [15:0]p_0_in;
+  wire p_4_in;
   wire start_single_write_i_1_n_0;
   wire start_single_write_reg_n_0;
   wire [47:0]unicast_addr;
   wire write_issued_i_1_n_0;
   wire write_issued_reg_n_0;
-  wire writes_done;
-  wire writes_done_i_1_n_0;
 
   LUT6 #(
     .INIT(64'hDF00DFFFDF00DF00)) 
     FSM_sequential_mst_exec_state_i_1
-       (.I0(\n_writes_reg_n_0_[1] ),
+       (.I0(p_4_in),
         .I1(\n_writes_reg_n_0_[0] ),
-        .I2(writes_done),
+        .I2(\n_writes_reg_n_0_[1] ),
         .I3(mst_exec_state),
         .I4(init_write_1),
         .I5(init_write_0),
@@ -217,31 +216,48 @@ module design_2_eth_controller_0_0_eth_controller
         .CE(1'b1),
         .D(FSM_sequential_mst_exec_state_i_1_n_0),
         .Q(mst_exec_state),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    config_done_i_1
+       (.I0(aresetn),
+        .O(config_done_i_1_n_0));
+  LUT5 #(
+    .INIT(32'hFFFF0800)) 
+    config_done_i_2
+       (.I0(mst_exec_state),
+        .I1(\n_writes_reg_n_0_[1] ),
+        .I2(\n_writes_reg_n_0_[0] ),
+        .I3(p_4_in),
+        .I4(config_done),
+        .O(config_done_i_2_n_0));
+  LUT5 #(
+    .INIT(32'h00000001)) 
+    config_done_i_3
+       (.I0(M_AXI_BVALID),
+        .I1(M_AXI_WVALID),
+        .I2(write_issued_reg_n_0),
+        .I3(start_single_write_reg_n_0),
+        .I4(M_AXI_AWVALID),
+        .O(p_4_in));
+  FDRE config_done_reg
+       (.C(aclk),
+        .CE(1'b1),
+        .D(config_done_i_2_n_0),
+        .Q(config_done),
+        .R(config_done_i_1_n_0));
   FDRE init_write_0_reg
        (.C(aclk),
         .CE(1'b1),
         .D(config_valid),
         .Q(init_write_0),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE init_write_1_reg
        (.C(aclk),
         .CE(1'b1),
         .D(init_write_0),
         .Q(init_write_1),
-        .R(\n_writes[1]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hE)) 
-    last_write_i_1
-       (.I0(start_single_write_reg_n_0),
-        .I1(last_write),
-        .O(last_write_i_1_n_0));
-  FDRE last_write_reg
-       (.C(aclk),
-        .CE(1'b1),
-        .D(last_write_i_1_n_0),
-        .Q(last_write),
-        .R(m_axi_awvalid_i_1_n_0));
+        .R(config_done_i_1_n_0));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT2 #(
     .INIT(4'h4)) 
@@ -268,41 +284,37 @@ module design_2_eth_controller_0_0_eth_controller
         .D(m_axi_awaddr),
         .Q(M_AXI_AWADDR[1]),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h4F)) 
+  LUT6 #(
+    .INIT(64'hF400F4000000F400)) 
     m_axi_awvalid_i_1
-       (.I0(init_write_1),
-        .I1(init_write_0),
-        .I2(aresetn),
-        .O(m_axi_awvalid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT3 #(
-    .INIT(8'hAE)) 
-    m_axi_awvalid_i_2
-       (.I0(start_single_write_reg_n_0),
+       (.I0(M_AXI_AWREADY),
         .I1(M_AXI_AWVALID),
-        .I2(M_AXI_AWREADY),
-        .O(m_axi_awvalid_i_2_n_0));
+        .I2(start_single_write_reg_n_0),
+        .I3(aresetn),
+        .I4(init_write_0),
+        .I5(init_write_1),
+        .O(m_axi_awvalid_i_1_n_0));
   FDRE m_axi_awvalid_reg
        (.C(aclk),
         .CE(1'b1),
-        .D(m_axi_awvalid_i_2_n_0),
+        .D(m_axi_awvalid_i_1_n_0),
         .Q(M_AXI_AWVALID),
-        .R(m_axi_awvalid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'h40400040)) 
     m_axi_bready_i_1
-       (.I0(M_AXI_BVALID),
-        .I1(M_AXI_BREADY),
+       (.I0(m_axi_bready_reg_0),
+        .I1(M_AXI_BVALID),
+        .I2(aresetn),
+        .I3(init_write_0),
+        .I4(init_write_1),
         .O(m_axi_bready_i_1_n_0));
   FDRE m_axi_bready_reg
        (.C(aclk),
         .CE(1'b1),
         .D(m_axi_bready_i_1_n_0),
-        .Q(M_AXI_BREADY),
-        .R(m_axi_awvalid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+        .Q(m_axi_bready_reg_0),
+        .R(1'b0));
   LUT4 #(
     .INIT(16'h3808)) 
     \m_axi_wdata[0]_i_1 
@@ -351,7 +363,6 @@ module design_2_eth_controller_0_0_eth_controller
         .I2(\n_writes_reg_n_0_[1] ),
         .I3(unicast_addr[46]),
         .O(p_0_in[14]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h3808)) 
     \m_axi_wdata[15]_i_1 
@@ -360,34 +371,35 @@ module design_2_eth_controller_0_0_eth_controller
         .I2(\n_writes_reg_n_0_[1] ),
         .I3(unicast_addr[47]),
         .O(p_0_in[15]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[16]_i_1 
        (.I0(unicast_addr[16]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[16]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[17]_i_1 
        (.I0(unicast_addr[17]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[17]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[18]_i_1 
        (.I0(unicast_addr[18]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[18]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[19]_i_1 
        (.I0(unicast_addr[19]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[19]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h3808)) 
     \m_axi_wdata[1]_i_1 
@@ -396,77 +408,76 @@ module design_2_eth_controller_0_0_eth_controller
         .I2(\n_writes_reg_n_0_[1] ),
         .I3(unicast_addr[33]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[20]_i_1 
        (.I0(unicast_addr[20]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[20]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[21]_i_1 
        (.I0(unicast_addr[21]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[21]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[22]_i_1 
        (.I0(unicast_addr[22]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[22]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[23]_i_1 
        (.I0(unicast_addr[23]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[23]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[24]_i_1 
        (.I0(unicast_addr[24]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[24]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[25]_i_1 
        (.I0(unicast_addr[25]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[25]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[26]_i_1 
        (.I0(unicast_addr[26]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[26]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[27]_i_1 
        (.I0(unicast_addr[27]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[27]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[28]_i_1 
        (.I0(unicast_addr[28]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[28]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[29]_i_1 
        (.I0(unicast_addr[29]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[29]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h3808)) 
     \m_axi_wdata[2]_i_1 
@@ -475,14 +486,14 @@ module design_2_eth_controller_0_0_eth_controller
         .I2(\n_writes_reg_n_0_[1] ),
         .I3(unicast_addr[34]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[30]_i_1 
        (.I0(unicast_addr[30]),
         .I1(\n_writes_reg_n_0_[0] ),
         .O(\m_axi_wdata[30]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_wdata[31]_i_1 
@@ -513,6 +524,7 @@ module design_2_eth_controller_0_0_eth_controller
         .I2(\n_writes_reg_n_0_[1] ),
         .I3(unicast_addr[37]),
         .O(p_0_in[5]));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h3808)) 
     \m_axi_wdata[6]_i_1 
@@ -737,408 +749,374 @@ module design_2_eth_controller_0_0_eth_controller
         .D(p_0_in[9]),
         .Q(M_AXI_WDATA[9]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT3 #(
-    .INIT(8'hAE)) 
+  LUT6 #(
+    .INIT(64'hF400F4000000F400)) 
     m_axi_wvalid_i_1
-       (.I0(start_single_write_reg_n_0),
+       (.I0(M_AXI_WREADY),
         .I1(M_AXI_WVALID),
-        .I2(M_AXI_WREADY),
+        .I2(start_single_write_reg_n_0),
+        .I3(aresetn),
+        .I4(init_write_0),
+        .I5(init_write_1),
         .O(m_axi_wvalid_i_1_n_0));
   FDRE m_axi_wvalid_reg
        (.C(aclk),
         .CE(1'b1),
         .D(m_axi_wvalid_i_1_n_0),
         .Q(M_AXI_WVALID),
-        .R(m_axi_awvalid_i_1_n_0));
+        .R(1'b0));
   LUT6 #(
-    .INIT(64'hDFDFD0DF20202020)) 
+    .INIT(64'h1CCC1CCC1C001CCC)) 
     \n_writes[0]_i_1 
-       (.I0(issue_write),
-        .I1(mst_exec_state1__0),
-        .I2(mst_exec_state),
-        .I3(init_write_0),
-        .I4(init_write_1),
-        .I5(\n_writes_reg_n_0_[0] ),
-        .O(\n_writes[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT3 #(
-    .INIT(8'h20)) 
-    \n_writes[0]_i_2 
-       (.I0(writes_done),
+       (.I0(\n_writes_reg_n_0_[1] ),
         .I1(\n_writes_reg_n_0_[0] ),
-        .I2(\n_writes_reg_n_0_[1] ),
-        .O(mst_exec_state1__0));
-  LUT1 #(
-    .INIT(2'h1)) 
+        .I2(p_4_in),
+        .I3(mst_exec_state),
+        .I4(init_write_0),
+        .I5(init_write_1),
+        .O(\n_writes[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h6AAA6AAA6A006AAA)) 
     \n_writes[1]_i_1 
-       (.I0(aresetn),
+       (.I0(\n_writes_reg_n_0_[1] ),
+        .I1(\n_writes_reg_n_0_[0] ),
+        .I2(p_4_in),
+        .I3(mst_exec_state),
+        .I4(init_write_0),
+        .I5(init_write_1),
         .O(\n_writes[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0FF0FF00DD00DD00)) 
-    \n_writes[1]_i_2 
-       (.I0(init_write_0),
-        .I1(init_write_1),
-        .I2(issue_write),
-        .I3(\n_writes_reg_n_0_[1] ),
-        .I4(\n_writes_reg_n_0_[0] ),
-        .I5(mst_exec_state),
-        .O(\n_writes[1]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \n_writes[1]_i_3 
-       (.I0(write_issued_reg_n_0),
-        .I1(M_AXI_AWVALID),
-        .I2(M_AXI_BVALID),
-        .I3(M_AXI_WVALID),
-        .I4(start_single_write_reg_n_0),
-        .I5(last_write),
-        .O(issue_write));
   FDRE \n_writes_reg[0] 
        (.C(aclk),
         .CE(1'b1),
         .D(\n_writes[0]_i_1_n_0 ),
         .Q(\n_writes_reg_n_0_[0] ),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \n_writes_reg[1] 
        (.C(aclk),
         .CE(1'b1),
-        .D(\n_writes[1]_i_2_n_0 ),
+        .D(\n_writes[1]_i_1_n_0 ),
         .Q(\n_writes_reg_n_0_[1] ),
-        .R(\n_writes[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFD2020)) 
+        .R(config_done_i_1_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFDDDD80888088)) 
     start_single_write_i_1
        (.I0(mst_exec_state),
-        .I1(mst_exec_state1__0),
-        .I2(issue_write),
-        .I3(M_AXI_BREADY),
-        .I4(start_single_write_reg_n_0),
+        .I1(p_4_in),
+        .I2(\n_writes_reg_n_0_[0] ),
+        .I3(\n_writes_reg_n_0_[1] ),
+        .I4(m_axi_bready_reg_0),
+        .I5(start_single_write_reg_n_0),
         .O(start_single_write_i_1_n_0));
   FDRE start_single_write_reg
        (.C(aclk),
         .CE(1'b1),
         .D(start_single_write_i_1_n_0),
         .Q(start_single_write_reg_n_0),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[0] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[0]),
         .Q(unicast_addr[0]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[10] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[10]),
         .Q(unicast_addr[10]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[11] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[11]),
         .Q(unicast_addr[11]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[12] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[12]),
         .Q(unicast_addr[12]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[13] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[13]),
         .Q(unicast_addr[13]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[14] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[14]),
         .Q(unicast_addr[14]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[15] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[15]),
         .Q(unicast_addr[15]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[16] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[16]),
         .Q(unicast_addr[16]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[17] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[17]),
         .Q(unicast_addr[17]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[18] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[18]),
         .Q(unicast_addr[18]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[19] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[19]),
         .Q(unicast_addr[19]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[1] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[1]),
         .Q(unicast_addr[1]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[20] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[20]),
         .Q(unicast_addr[20]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[21] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[21]),
         .Q(unicast_addr[21]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[22] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[22]),
         .Q(unicast_addr[22]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[23] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[23]),
         .Q(unicast_addr[23]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[24] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[24]),
         .Q(unicast_addr[24]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[25] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[25]),
         .Q(unicast_addr[25]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[26] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[26]),
         .Q(unicast_addr[26]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[27] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[27]),
         .Q(unicast_addr[27]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[28] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[28]),
         .Q(unicast_addr[28]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[29] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[29]),
         .Q(unicast_addr[29]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[2] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[2]),
         .Q(unicast_addr[2]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[30] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[30]),
         .Q(unicast_addr[30]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[31] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[31]),
         .Q(unicast_addr[31]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[32] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[32]),
         .Q(unicast_addr[32]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[33] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[33]),
         .Q(unicast_addr[33]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[34] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[34]),
         .Q(unicast_addr[34]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[35] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[35]),
         .Q(unicast_addr[35]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[36] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[36]),
         .Q(unicast_addr[36]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[37] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[37]),
         .Q(unicast_addr[37]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[38] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[38]),
         .Q(unicast_addr[38]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[39] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[39]),
         .Q(unicast_addr[39]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[3] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[3]),
         .Q(unicast_addr[3]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[40] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[40]),
         .Q(unicast_addr[40]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[41] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[41]),
         .Q(unicast_addr[41]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[42] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[42]),
         .Q(unicast_addr[42]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[43] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[43]),
         .Q(unicast_addr[43]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[44] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[44]),
         .Q(unicast_addr[44]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[45] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[45]),
         .Q(unicast_addr[45]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[46] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[46]),
         .Q(unicast_addr[46]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[47] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[47]),
         .Q(unicast_addr[47]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[4] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[4]),
         .Q(unicast_addr[4]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[5] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[5]),
         .Q(unicast_addr[5]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[6] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[6]),
         .Q(unicast_addr[6]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[7] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[7]),
         .Q(unicast_addr[7]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[8] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[8]),
         .Q(unicast_addr[8]),
-        .R(\n_writes[1]_i_1_n_0 ));
+        .R(config_done_i_1_n_0));
   FDRE \unicast_addr_reg[9] 
        (.C(aclk),
         .CE(config_valid),
         .D(config_unicast_addr[9]),
         .Q(unicast_addr[9]),
-        .R(\n_writes[1]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFDFF2020)) 
+        .R(config_done_i_1_n_0));
+  LUT6 #(
+    .INIT(64'hDDDDFFFF80888088)) 
     write_issued_i_1
        (.I0(mst_exec_state),
-        .I1(mst_exec_state1__0),
-        .I2(issue_write),
-        .I3(M_AXI_BREADY),
-        .I4(write_issued_reg_n_0),
+        .I1(p_4_in),
+        .I2(\n_writes_reg_n_0_[0] ),
+        .I3(\n_writes_reg_n_0_[1] ),
+        .I4(m_axi_bready_reg_0),
+        .I5(write_issued_reg_n_0),
         .O(write_issued_i_1_n_0));
   FDRE write_issued_reg
        (.C(aclk),
         .CE(1'b1),
         .D(write_issued_i_1_n_0),
         .Q(write_issued_reg_n_0),
-        .R(\n_writes[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT4 #(
-    .INIT(16'hFF80)) 
-    writes_done_i_1
-       (.I0(M_AXI_BREADY),
-        .I1(M_AXI_BVALID),
-        .I2(last_write),
-        .I3(writes_done),
-        .O(writes_done_i_1_n_0));
-  FDRE writes_done_reg
-       (.C(aclk),
-        .CE(1'b1),
-        .D(writes_done_i_1_n_0),
-        .Q(writes_done),
-        .R(m_axi_awvalid_i_1_n_0));
+        .R(config_done_i_1_n_0));
 endmodule
 `ifndef GLBL
 `define GLBL

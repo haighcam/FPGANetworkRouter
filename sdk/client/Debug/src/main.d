@@ -34,13 +34,9 @@ src/main.o src/main.o: ../src/main.c \
  ../../client_bsp/microblaze_0/include/xil_cache.h \
  ../../client_bsp/microblaze_0/include/mb_interface.h \
  ../../client_bsp/microblaze_0/include/xparameters.h \
- ../../client_bsp/microblaze_0/include/lwip/tcp.h \
- ../../client_bsp/microblaze_0/include/lwip/icmp.h \
- ../../client_bsp/microblaze_0/include/lwip/prot/icmp.h \
  ../../client_bsp/microblaze_0/include/lwip/udp.h \
  ../../client_bsp/microblaze_0/include/lwip/prot/udp.h \
  ../../client_bsp/microblaze_0/include/lwip/inet.h \
- ../../client_bsp/microblaze_0/include/lwip/dhcp.h \
  ../../client_bsp/microblaze_0/include/xuartlite_l.h \
  ../../client_bsp/microblaze_0/include/xil_io.h \
  ../../client_bsp/microblaze_0/include/xil_printf.h \
@@ -118,19 +114,11 @@ src/main.o src/main.o: ../src/main.c \
 
 ../../client_bsp/microblaze_0/include/xparameters.h:
 
-../../client_bsp/microblaze_0/include/lwip/tcp.h:
-
-../../client_bsp/microblaze_0/include/lwip/icmp.h:
-
-../../client_bsp/microblaze_0/include/lwip/prot/icmp.h:
-
 ../../client_bsp/microblaze_0/include/lwip/udp.h:
 
 ../../client_bsp/microblaze_0/include/lwip/prot/udp.h:
 
 ../../client_bsp/microblaze_0/include/lwip/inet.h:
-
-../../client_bsp/microblaze_0/include/lwip/dhcp.h:
 
 ../../client_bsp/microblaze_0/include/xuartlite_l.h:
 

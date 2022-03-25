@@ -83,6 +83,9 @@ def get_port(port):
     return port.to_bytes(2, "big")
   return bytes(port)
 
+def str_port(port):
+  return str(int.from_bytes(port, "big"))
+
 def get_ip(ip):
   if isinstance(ip, bytes):
     return ip
@@ -91,6 +94,9 @@ def get_ip(ip):
   if isinstance(ip, int):
     return ip.to_bytes(4, "big")
   return bytes(ip)
+
+def str_ip(ip):
+  return ".".join(str(i) for i in ip)
   
 def get_mac(mac):
   if isinstance(mac, bytes):
@@ -100,6 +106,9 @@ def get_mac(mac):
   if isinstance(mac, int):
     return mac.to_bytes(6, "big")
   return bytes(mac)
+
+def str_mac(mac):
+  return ':'.join("{:02X}".format(i) for i in mac)
 
 class UDP:
   """
@@ -275,7 +284,7 @@ class NVGRE_MOD:
   (As described in https://datatracker.ietf.org/doc/html/rfc7637)
 
     GRE Header:
-    Protocol Type 0x400006559 + src eth + dst eth + src ip + dst ip + src port + dst port
+    Protocol Type 0x40006559 + src eth + dst eth + src ip + dst ip + src port + dst port
     
   """
   def __init__(self, src_eth, dst_eth, src_ip, dst_ip, src_udp, dst_udp, payload):
@@ -304,7 +313,7 @@ class NVGRE_MOD:
     dst_ip = int.from_bytes(packet[20:24], "big")
     src_udp = int.from_bytes(packet[24:26], "big")
     dst_udp = int.from_bytes(packet[26:28], "big")
-    return NVGRE(src_eth, dst_eth, src_ip, dst_ip, src_udp, dst_udp, packet[28:])
+    return NVGRE_MOD(src_eth, dst_eth, src_ip, dst_ip, src_udp, dst_udp, packet[28:])
   
   
   

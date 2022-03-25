@@ -17,15 +17,15 @@
       "ila_1": "",
       "ila_2": "",
       "ila_3": "",
-      "eth_controller_0": "",
       "mux_0": "",
       "mux_1": "",
       "mux_2": "",
       "mux_3": "",
       "mux_5": "",
       "mux_4": "",
+      "encoder_0": "",
       "decoder_0": "",
-      "encoder_0": ""
+      "eth_controller_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
@@ -412,6 +412,218 @@
           }
         }
       },
+      "mux_0": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_0_0",
+        "parameters": {
+          "WIDTH": {
+            "value": "48"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "47",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "47",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "47",
+            "right": "0"
+          }
+        }
+      },
+      "mux_1": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_0_1",
+        "parameters": {
+          "WIDTH": {
+            "value": "32"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "mux_2": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_1_0",
+        "parameters": {
+          "WIDTH": {
+            "value": "16"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "mux_3": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_0_2",
+        "parameters": {
+          "WIDTH": {
+            "value": "48"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "47",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "47",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "47",
+            "right": "0"
+          }
+        }
+      },
+      "mux_5": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_1_2",
+        "parameters": {
+          "WIDTH": {
+            "value": "32"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "mux_4": {
+        "vlnv": "xilinx.com:module_ref:mux:1.0",
+        "xci_name": "design_2_mux_2_0",
+        "parameters": {
+          "WIDTH": {
+            "value": "16"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "A": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "B": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "sel": {
+            "direction": "I"
+          },
+          "C": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
+      },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_2_encoder_0_0"
+      },
+      "decoder_0": {
+        "vlnv": "utoronto.ca:user:decoder:1.2",
+        "xci_name": "design_2_decoder_0_0"
+      },
       "eth_controller_0": {
         "vlnv": "xilinx.com:module_ref:eth_controller:1.0",
         "xci_name": "design_2_eth_controller_0_0",
@@ -640,238 +852,32 @@
             }
           }
         }
-      },
-      "mux_0": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_0_0",
-        "parameters": {
-          "WIDTH": {
-            "value": "48"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "47",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "47",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "47",
-            "right": "0"
-          }
-        }
-      },
-      "mux_1": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_0_1",
-        "parameters": {
-          "WIDTH": {
-            "value": "32"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
-      "mux_2": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_1_0",
-        "parameters": {
-          "WIDTH": {
-            "value": "16"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          }
-        }
-      },
-      "mux_3": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_0_2",
-        "parameters": {
-          "WIDTH": {
-            "value": "48"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "47",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "47",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "47",
-            "right": "0"
-          }
-        }
-      },
-      "mux_5": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_1_2",
-        "parameters": {
-          "WIDTH": {
-            "value": "32"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
-      "mux_4": {
-        "vlnv": "xilinx.com:module_ref:mux:1.0",
-        "xci_name": "design_2_mux_2_0",
-        "parameters": {
-          "WIDTH": {
-            "value": "16"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "A": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "B": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "sel": {
-            "direction": "I"
-          },
-          "C": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          }
-        }
-      },
-      "decoder_0": {
-        "vlnv": "utoronto.ca:user:decoder:1.2",
-        "xci_name": "design_2_decoder_0_0"
-      },
-      "encoder_0": {
-        "vlnv": "utoronto.ca:user:encoder:1.1",
-        "xci_name": "design_2_encoder_0_0"
       }
     },
     "interface_nets": {
-      "decoder_0_m_axis_packet": {
+      "axi_ethernet_0_rgmii": {
         "interface_ports": [
-          "decoder_0/m_axis_packet",
-          "encoder_0/s_axis_packet",
-          "ila_3/SLOT_0_AXIS"
+          "eth_rgmii",
+          "axi_ethernet_0/rgmii"
         ]
       },
-      "eth_controller_0_M_AXI": {
+      "axi_ethernet_0_m_axis_rxd": {
         "interface_ports": [
-          "eth_controller_0/M_AXI",
-          "axi_ethernet_0/s_axi"
+          "decoder_0/s_axis_rxd",
+          "axi_ethernet_0/m_axis_rxd",
+          "ila_1/SLOT_0_AXIS"
         ]
       },
       "axi_ethernet_0_m_axis_rxs": {
         "interface_ports": [
           "decoder_0/s_axis_rxs",
           "axi_ethernet_0/m_axis_rxs"
+        ]
+      },
+      "eth_controller_0_M_AXI": {
+        "interface_ports": [
+          "eth_controller_0/M_AXI",
+          "axi_ethernet_0/s_axi"
         ]
       },
       "encoder_0_m_axis_txc": {
@@ -886,24 +892,18 @@
           "axi_ethernet_0/mdio"
         ]
       },
-      "axi_ethernet_0_rgmii": {
-        "interface_ports": [
-          "eth_rgmii",
-          "axi_ethernet_0/rgmii"
-        ]
-      },
-      "axi_ethernet_0_m_axis_rxd": {
-        "interface_ports": [
-          "decoder_0/s_axis_rxd",
-          "axi_ethernet_0/m_axis_rxd",
-          "ila_1/SLOT_0_AXIS"
-        ]
-      },
       "encoder_0_m_axis_txd": {
         "interface_ports": [
           "encoder_0/m_axis_txd",
           "axi_ethernet_0/s_axis_txd",
           "ila_2/SLOT_0_AXIS"
+        ]
+      },
+      "decoder_0_m_axis_packet": {
+        "interface_ports": [
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis_packet",
+          "ila_3/SLOT_0_AXIS"
         ]
       }
     },
@@ -919,9 +919,9 @@
           "ila_1/clk",
           "ila_2/clk",
           "ila_3/clk",
-          "eth_controller_0/aclk",
+          "encoder_0/aclk",
           "decoder_0/aclk",
-          "encoder_0/aclk"
+          "eth_controller_0/aclk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -932,9 +932,9 @@
           "axi_ethernet_0/axi_txc_arstn",
           "axi_ethernet_0/axi_rxd_arstn",
           "axi_ethernet_0/axi_rxs_arstn",
-          "eth_controller_0/aresetn",
+          "encoder_0/aresetn",
           "decoder_0/aresetn",
-          "encoder_0/aresetn"
+          "eth_controller_0/aresetn"
         ]
       },
       "clk_wiz_1_locked": {
@@ -1273,8 +1273,8 @@
           "mux_5/sel",
           "mux_2/sel",
           "mux_4/sel",
-          "eth_controller_0/config_valid",
-          "mux_0/sel"
+          "mux_0/sel",
+          "eth_controller_0/config_valid"
         ]
       },
       "drop_packets": {

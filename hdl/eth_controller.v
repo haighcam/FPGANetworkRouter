@@ -45,8 +45,8 @@ module eth_controller #(
   output        M_AXI_BREADY
 );
 
-    localparam [31:0]  UWA0_ADDR = BASE_ADDR + 31'h00000700,
-                       UWA1_ADDR = BASE_ADDR + 31'h00000704;
+    localparam [31:0]  UWA0_ADDR = BASE_ADDR + 32'h700,
+                       UWA1_ADDR = BASE_ADDR + 32'h704;
     localparam N_WRITES = 2;
 	// master state
 	localparam IDLE = 1'b0,
@@ -64,7 +64,7 @@ module eth_controller #(
 	wire init_write, issue_write;
 	
 	assign init_write = init_write_0 & ~init_write_1;
-	assign issue_write = ~m_axi_awvalid && ~m_axi_wvalid && ~M_AXI_BVALID && ~last_write && ~start_single_write && ~write_issued;
+	assign issue_write = ~m_axi_awvalid && ~m_axi_wvalid && ~M_AXI_BVALID && ~start_single_write && ~write_issued;
 
 	// master assign signals
 	assign M_AXI_AWADDR	= m_axi_awaddr;
@@ -85,11 +85,11 @@ module eth_controller #(
     end	
     
     always @ (posedge aclk) begin
-        if (aresetn == 1'b0) begin                                                                         
-			unicast_addr <= 48'd0;                                                   
-		end else if (config_valid) begin 
+        if (aresetn == 1'b0) begin
+			unicast_addr <= 48'd0;
+		end else if (config_valid) begin
 		    unicast_addr <= config_unicast_addr;
-		end   
+		end
     end
     
     always @ (posedge aclk) begin
@@ -111,94 +111,94 @@ module eth_controller #(
     end
 	
 	// master state
-	always @ ( posedge aclk) begin                                                                             
-	    if (aresetn == 1'b0) begin                                                                         
-	      // reset condition                                                            
-	      // All the signals are assigned default values under reset condition          
-			mst_exec_state  <= IDLE;                                            
-			start_single_write <= 1'b0;                                                 
-			write_issued  <= 1'b0;   
-			n_writes <= 2'd0;  
+	always @ ( posedge aclk) begin
+	    if (aresetn == 1'b0) begin
+	      // reset condition
+	      // All the signals are assigned default values under reset condition
+			mst_exec_state  <= IDLE;
+			start_single_write <= 1'b0;
+			write_issued  <= 1'b0;
+			n_writes <= 2'd0;
 			config_done <= 1'b0;
-		end else begin                                                                         
-	        case (mst_exec_state)                                                       
-			  IDLE:                                                             
+		end else begin
+	        case (mst_exec_state)
+			  IDLE:
 	            if (init_write) begin
-	                 mst_exec_state  <= INIT_WRITE;   
-                     n_writes <= 2'd0;  
+	                 mst_exec_state  <= INIT_WRITE;
+                     n_writes <= 2'd0;
 	            end
-	          INIT_WRITE:                                                               
-	            if (writes_done && (n_writes==N_WRITES)) begin                                                
-	                mst_exec_state <= IDLE;    
-	                config_done <= 1'b0;                                  
-	            end else begin                                                                 
-					mst_exec_state <= INIT_WRITE;                                      
-	                if (issue_write) begin                                                           
+	          INIT_WRITE:
+	            if (issue_write && (n_writes==N_WRITES)) begin
+	                mst_exec_state <= IDLE;
+	                config_done <= 1'b1;
+	            end else begin
+					mst_exec_state <= INIT_WRITE;
+	                if (issue_write) begin
 						start_single_write <= 1'b1;                                   
 						write_issued  <= 1'b1;
-						n_writes <= n_writes + 1;                                        
-	                end else if (m_axi_bready)                                              
-	                    write_issued  <= 1'b0;                                        
-	                else                                                              
-	                    start_single_write <= 1'b0; //Negate to generate a pulse      
-	              end                                                                   
-	           default:                                                                
-	               mst_exec_state  <= IDLE;                                     
-	        endcase                                                                     
-	    end                                                                             
-	end     
+						n_writes <= n_writes + 1;
+	                end else if (m_axi_bready)
+	                    write_issued  <= 1'b0;
+	                else
+	                    start_single_write <= 1'b0; //Negate to generate a pulse
+	              end
+	           default:
+	               mst_exec_state  <= IDLE;
+	        endcase
+	    end
+	end
 	  
 	// master genererate m_axi_awvalid
-	always @(posedge aclk) begin                                                                        
-		if (aresetn == 0 || init_write == 1'b1)                                                   
-			m_axi_awvalid <= 1'b0;                                                   
-		else begin                                                                    
-			if (start_single_write)                                                
-				m_axi_awvalid <= 1'b1;                                               
-			else if (M_AXI_AWREADY && m_axi_awvalid)                                 
-				m_axi_awvalid <= 1'b0;                                               
-		end                                                                  
-	end                                                                      
-	                                                                               
+	always @(posedge aclk) begin
+		if (aresetn == 0 || init_write == 1'b1)
+			m_axi_awvalid <= 1'b0;
+		else begin
+			if (start_single_write)
+				m_axi_awvalid <= 1'b1;
+			else if (M_AXI_AWREADY && m_axi_awvalid)
+				m_axi_awvalid <= 1'b0;
+		end
+	end
+
 	// master do single write
-	always @(posedge aclk) begin                                                                        
-	    if (aresetn == 0 || init_write == 1'b1)                                                   
-			last_write <= 1'b0;                                                      
-	    else if (start_single_write)                                               
-	        last_write <= 1'b1;     
-		else 
+	always @(posedge aclk) begin
+	    if (aresetn == 0 || init_write == 1'b1)
+			last_write <= 1'b0;
+	    else if (start_single_write)
+	        last_write <= 1'b1;
+		else
 			last_write <= last_write;
-	end       
+	end
 	
 	// master generate m_axi_wvalid
-	always @(posedge aclk) begin                                                                         
-		if (aresetn == 0 || init_write == 1'b1)                                                    
-			m_axi_wvalid <= 1'b0;                                                     
-		else if (start_single_write)                                                
-			m_axi_wvalid <= 1'b1;                                                     
-		else if (M_AXI_WREADY && m_axi_wvalid)                                        
-			m_axi_wvalid <= 1'b0;                                                      
+	always @(posedge aclk) begin
+		if (aresetn == 0 || init_write == 1'b1)
+			m_axi_wvalid <= 1'b0;
+		else if (start_single_write)
+			m_axi_wvalid <= 1'b1;
+		else if (M_AXI_WREADY && m_axi_wvalid)
+			m_axi_wvalid <= 1'b0;
 	end
-	   
+
 	// master generate m_axi_bready
-	always @(posedge aclk) begin                                                                
-		if (aresetn == 0 || init_write == 1'b1)                                           
-			m_axi_bready <= 1'b0;                                            
-		else if (M_AXI_BVALID && ~m_axi_bready)                              
-			m_axi_bready <= 1'b1;                                            
-		else if (m_axi_bready)                                               
-			m_axi_bready <= 1'b0;                                            
-		else                                                               
-			m_axi_bready <= m_axi_bready;                                        
-	end                                                                                                                                                                                                                                                                             
-                                                                     
-	// master check for write completion                                                                                
-	always @(posedge aclk) begin                                                                             
-		if (aresetn == 0 || init_write == 1'b1)                                                         
-			writes_done <= 1'b0;                                                          														
-		else if (last_write && M_AXI_BVALID && m_axi_bready)                              
-			writes_done <= 1'b1;                                                          
-		else                                                                            
-			writes_done <= writes_done;                                                   
-	end  	
+	always @(posedge aclk) begin
+		if (aresetn == 0 || init_write == 1'b1)
+			m_axi_bready <= 1'b0;
+		else if (M_AXI_BVALID && ~m_axi_bready)
+			m_axi_bready <= 1'b1;
+		else if (m_axi_bready)
+			m_axi_bready <= 1'b0;
+		else
+			m_axi_bready <= m_axi_bready;
+	end
+
+	// master check for write completion
+	always @(posedge aclk) begin
+		if (aresetn == 0 || init_write == 1'b1)
+			writes_done <= 1'b0;
+		else if (last_write && M_AXI_BVALID && m_axi_bready)
+			writes_done <= 1'b1;
+		else
+			writes_done <= writes_done;
+	end
 endmodule

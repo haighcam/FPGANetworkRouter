@@ -14,4 +14,5 @@ while items != []:
 
 with zipfile.ZipFile(os.path.split(os.path.abspath('.'))[-1] + '.zip', 'w') as f:
     for file in files:
+        #print(file)
         f.write(file)

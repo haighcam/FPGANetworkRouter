@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Sun Mar 20 11:30:37 2022
-// Host        : BA3145WS18 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top design_3_axi4stream_vip_0_0 -prefix
-//               design_3_axi4stream_vip_0_0_ design_3_axi4stream_vip_0_0_sim_netlist.v
+// Date        : Thu Mar 24 16:15:09 2022
+// Host        : BA3145WS20 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim
+//               C:/Users/haighcam/ECE532/bd/design_3/ip/design_3_axi4stream_vip_0_0/design_3_axi4stream_vip_0_0_sim_netlist.v
 // Design      : design_3_axi4stream_vip_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,9 +12,74 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+(* CHECK_LICENSE_TYPE = "design_3_axi4stream_vip_0_0,axi4stream_vip_v1_1_4_top,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi4stream_vip_v1_1_4_top,Vivado 2018.3.1" *) 
+(* NotValidForBitStream *)
+module design_3_axi4stream_vip_0_0
+   (aclk,
+    aresetn,
+    m_axis_tvalid,
+    m_axis_tready,
+    m_axis_tdata,
+    m_axis_tstrb,
+    m_axis_tlast);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLOCK, ASSOCIATED_BUSIF S_AXIS:M_AXIS, ASSOCIATED_RESET ARESETN, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, INSERT_VIP 0" *) input aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0, TYPE INTERCONNECT" *) input aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TVALID" *) output [0:0]m_axis_tvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TREADY" *) input [0:0]m_axis_tready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TDATA" *) output [31:0]m_axis_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TSTRB" *) output [3:0]m_axis_tstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TLAST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [0:0]m_axis_tlast;
+
+  wire aclk;
+  wire aresetn;
+  wire [31:0]m_axis_tdata;
+  wire [0:0]m_axis_tlast;
+  wire [0:0]m_axis_tready;
+  wire [3:0]m_axis_tstrb;
+  wire [0:0]m_axis_tvalid;
+  wire NLW_inst_s_axis_tready_UNCONNECTED;
+  wire [0:0]NLW_inst_m_axis_tdest_UNCONNECTED;
+  wire [0:0]NLW_inst_m_axis_tid_UNCONNECTED;
+  wire [3:0]NLW_inst_m_axis_tkeep_UNCONNECTED;
+  wire [0:0]NLW_inst_m_axis_tuser_UNCONNECTED;
+
+  (* C_AXI4STREAM_DATA_WIDTH = "32" *) 
+  (* C_AXI4STREAM_DEST_WIDTH = "0" *) 
+  (* C_AXI4STREAM_HAS_ARESETN = "1" *) 
+  (* C_AXI4STREAM_ID_WIDTH = "0" *) 
+  (* C_AXI4STREAM_INTERFACE_MODE = "0" *) 
+  (* C_AXI4STREAM_SIGNAL_SET = "32'b00000000000000000000000000010111" *) 
+  (* C_AXI4STREAM_USER_BITS_PER_BYTE = "0" *) 
+  (* C_AXI4STREAM_USER_WIDTH = "0" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top inst
+       (.aclk(aclk),
+        .aclken(1'b1),
+        .aresetn(aresetn),
+        .m_axis_tdata(m_axis_tdata),
+        .m_axis_tdest(NLW_inst_m_axis_tdest_UNCONNECTED[0]),
+        .m_axis_tid(NLW_inst_m_axis_tid_UNCONNECTED[0]),
+        .m_axis_tkeep(NLW_inst_m_axis_tkeep_UNCONNECTED[3:0]),
+        .m_axis_tlast(m_axis_tlast),
+        .m_axis_tready(m_axis_tready),
+        .m_axis_tstrb(m_axis_tstrb),
+        .m_axis_tuser(NLW_inst_m_axis_tuser_UNCONNECTED[0]),
+        .m_axis_tvalid(m_axis_tvalid),
+        .s_axis_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tdest(1'b0),
+        .s_axis_tid(1'b0),
+        .s_axis_tkeep({1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tlast(1'b0),
+        .s_axis_tready(NLW_inst_s_axis_tready_UNCONNECTED),
+        .s_axis_tstrb({1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_tuser(1'b0),
+        .s_axis_tvalid(1'b0));
+endmodule
+
 (* C_AXI4STREAM_DATA_WIDTH = "32" *) (* C_AXI4STREAM_DEST_WIDTH = "0" *) (* C_AXI4STREAM_HAS_ARESETN = "1" *) 
 (* C_AXI4STREAM_ID_WIDTH = "0" *) (* C_AXI4STREAM_INTERFACE_MODE = "0" *) (* C_AXI4STREAM_SIGNAL_SET = "32'b00000000000000000000000000010111" *) 
 (* C_AXI4STREAM_USER_BITS_PER_BYTE = "0" *) (* C_AXI4STREAM_USER_WIDTH = "0" *) (* DowngradeIPIdentifiedWarnings = "yes" *) 
+(* ORIG_REF_NAME = "axi4stream_vip_v1_1_4_top" *) 
 module design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top
    (aclk,
     aresetn,
@@ -109,70 +174,6 @@ module design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top
   assign s_axis_tready = \<const0> ;
   GND GND
        (.G(\<const0> ));
-endmodule
-
-(* CHECK_LICENSE_TYPE = "design_3_axi4stream_vip_0_0,axi4stream_vip_v1_1_4_top,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi4stream_vip_v1_1_4_top,Vivado 2018.3.1" *) 
-(* NotValidForBitStream *)
-module design_3_axi4stream_vip_0_0
-   (aclk,
-    aresetn,
-    m_axis_tvalid,
-    m_axis_tready,
-    m_axis_tdata,
-    m_axis_tstrb,
-    m_axis_tlast);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLOCK, ASSOCIATED_BUSIF S_AXIS:M_AXIS, ASSOCIATED_RESET ARESETN, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, INSERT_VIP 0" *) input aclk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0, TYPE INTERCONNECT" *) input aresetn;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TVALID" *) output [0:0]m_axis_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TREADY" *) input [0:0]m_axis_tready;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TDATA" *) output [31:0]m_axis_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TSTRB" *) output [3:0]m_axis_tstrb;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TLAST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *) output [0:0]m_axis_tlast;
-
-  wire aclk;
-  wire aresetn;
-  wire [31:0]m_axis_tdata;
-  wire [0:0]m_axis_tlast;
-  wire [0:0]m_axis_tready;
-  wire [3:0]m_axis_tstrb;
-  wire [0:0]m_axis_tvalid;
-  wire NLW_inst_s_axis_tready_UNCONNECTED;
-  wire [0:0]NLW_inst_m_axis_tdest_UNCONNECTED;
-  wire [0:0]NLW_inst_m_axis_tid_UNCONNECTED;
-  wire [3:0]NLW_inst_m_axis_tkeep_UNCONNECTED;
-  wire [0:0]NLW_inst_m_axis_tuser_UNCONNECTED;
-
-  (* C_AXI4STREAM_DATA_WIDTH = "32" *) 
-  (* C_AXI4STREAM_DEST_WIDTH = "0" *) 
-  (* C_AXI4STREAM_HAS_ARESETN = "1" *) 
-  (* C_AXI4STREAM_ID_WIDTH = "0" *) 
-  (* C_AXI4STREAM_INTERFACE_MODE = "0" *) 
-  (* C_AXI4STREAM_SIGNAL_SET = "32'b00000000000000000000000000010111" *) 
-  (* C_AXI4STREAM_USER_BITS_PER_BYTE = "0" *) 
-  (* C_AXI4STREAM_USER_WIDTH = "0" *) 
-  (* DowngradeIPIdentifiedWarnings = "yes" *) 
-  design_3_axi4stream_vip_0_0_axi4stream_vip_v1_1_4_top inst
-       (.aclk(aclk),
-        .aclken(1'b1),
-        .aresetn(aresetn),
-        .m_axis_tdata(m_axis_tdata),
-        .m_axis_tdest(NLW_inst_m_axis_tdest_UNCONNECTED[0]),
-        .m_axis_tid(NLW_inst_m_axis_tid_UNCONNECTED[0]),
-        .m_axis_tkeep(NLW_inst_m_axis_tkeep_UNCONNECTED[3:0]),
-        .m_axis_tlast(m_axis_tlast),
-        .m_axis_tready(m_axis_tready),
-        .m_axis_tstrb(m_axis_tstrb),
-        .m_axis_tuser(NLW_inst_m_axis_tuser_UNCONNECTED[0]),
-        .m_axis_tvalid(m_axis_tvalid),
-        .s_axis_tdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .s_axis_tdest(1'b0),
-        .s_axis_tid(1'b0),
-        .s_axis_tkeep({1'b0,1'b0,1'b0,1'b0}),
-        .s_axis_tlast(1'b0),
-        .s_axis_tready(NLW_inst_s_axis_tready_UNCONNECTED),
-        .s_axis_tstrb({1'b0,1'b0,1'b0,1'b0}),
-        .s_axis_tuser(1'b0),
-        .s_axis_tvalid(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

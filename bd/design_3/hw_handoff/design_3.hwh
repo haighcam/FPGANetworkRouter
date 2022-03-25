@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar 20 13:25:05 2022" VIVADOVERSION="2018.3.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 23 11:31:33 2022" VIVADOVERSION="2018.3.1">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:nexys_video:part0:1.1" DEVICE="7a200t" NAME="design_3" PACKAGE="sbg484" SPEEDGRADE="-1"/>
 
@@ -134,7 +134,7 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="18" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
+    <MODULE COREREVISION="19" FULLNAME="/decoder_0" HWVERSION="1.2" INSTANCE="decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="utoronto.ca:user:decoder:1.2">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="NUM_HEADERS" VALUE="1"/>
@@ -254,6 +254,8 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="mst_exec_state" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="fifo_state" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="fifo_data_len" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="s_axis_rxs_tdata" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="3" NAME="s_axis_rxs_tkeep" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" NAME="s_axis_rxs_tlast" SIGIS="undef"/>

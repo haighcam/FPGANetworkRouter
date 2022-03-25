@@ -1,7 +1,7 @@
 import socket
 import nvgre
 
-DESL_NUM = 7
+DESL_NUM = 5
 
 address = (
     "1.1."+str(DESL_NUM)+".2",

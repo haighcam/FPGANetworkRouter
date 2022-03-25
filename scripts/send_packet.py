@@ -1,10 +1,11 @@
 import socket
 import nvgre
 
-DESL_NUM = 22
+DESL_NUM = 5
 
 address = (
-    "1.1.22.2",
+    "1.1."+str(DESL_NUM)+".2",
+#    "1.1.255.255",
     7
 )
 
@@ -19,7 +20,7 @@ src_ip = "1.1.1.1"
 dest_ip = "2.2.2.2"
 src_port = 100
 dest_port = 200
-payload = b"Test Packet"
+payload = b"Test Packet!!"
 
 packet = nvgre.NVGRE_MOD(
     src_mac,

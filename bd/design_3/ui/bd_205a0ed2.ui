@@ -13,16 +13,16 @@ preplace inst xlconstant_0 -pg 1 -lvl 1 -y 150 -defaultsOSRD
 preplace inst encoder_0 -pg 1 -lvl 3 -y 180 -defaultsOSRD
 preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 350 -defaultsOSRD
 preplace netloc axi4stream_vip_0_M_AXIS 1 1 1 240
-preplace netloc m_axis_txd_tready_0_1 1 0 4 NJ 250 230J 290 NJ 290 930
-preplace netloc encoder_0_m_axis_txd_tvalid 1 3 1 930J
-preplace netloc drop_1 1 0 3 NJ 280 NJ 280 600J
-preplace netloc decoder_0_m_axis_packet 1 2 1 600
+preplace netloc m_axis_txd_tready_0_1 1 0 4 NJ 250 230J 290 NJ 290 950
+preplace netloc encoder_0_m_axis_txd_tvalid 1 3 1 950J
+preplace netloc drop_1 1 0 3 NJ 280 NJ 280 610J
+preplace netloc decoder_0_m_axis_packet 1 2 1 610
 preplace netloc xlconstant_0_dout 1 1 1 NJ
-preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 30 90 260 50 590J
-preplace netloc decoder_0_packet_header 1 2 1 580
-preplace netloc encoder_0_m_axis_txc_tlast 1 3 1 940J
-preplace netloc aclk_1 1 0 3 20 80 250 40 610J
-levelinfo -pg 1 0 130 420 770 960 -top 0 -bot 420
+preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 30 90 260 50 600J
+preplace netloc decoder_0_packet_header 1 2 1 590
+preplace netloc encoder_0_m_axis_txc_tlast 1 3 1 960J
+preplace netloc aclk_1 1 0 3 20 80 250 40 620J
+levelinfo -pg 1 0 130 430 790 980 -top 0 -bot 420
 "
 }
 {

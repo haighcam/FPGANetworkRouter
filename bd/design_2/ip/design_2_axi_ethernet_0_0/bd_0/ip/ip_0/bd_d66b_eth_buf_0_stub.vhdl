@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Fri Mar 18 13:57:40 2022
--- Host        : BA3145WS21 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top bd_d66b_eth_buf_0 -prefix
---               bd_d66b_eth_buf_0_ bd_d66b_eth_buf_0_stub.vhdl
+-- Date        : Thu Mar 24 16:24:14 2022
+-- Host        : BA3145WS20 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/Users/haighcam/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/bd_0/ip/ip_0/bd_d66b_eth_buf_0_stub.vhdl
 -- Design      : bd_d66b_eth_buf_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a200tsbg484-1

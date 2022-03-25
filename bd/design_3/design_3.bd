@@ -10,8 +10,8 @@
     "design_tree": {
       "axi4stream_vip_0": "",
       "xlconstant_0": "",
-      "decoder_0": "",
-      "encoder_0": ""
+      "encoder_0": "",
+      "decoder_0": ""
     },
     "ports": {
       "aclk": {
@@ -86,6 +86,10 @@
           }
         }
       },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_3_encoder_0_1"
+      },
       "decoder_0": {
         "vlnv": "utoronto.ca:user:decoder:1.2",
         "xci_name": "design_3_decoder_0_1",
@@ -94,23 +98,19 @@
             "value": "1"
           }
         }
-      },
-      "encoder_0": {
-        "vlnv": "utoronto.ca:user:encoder:1.1",
-        "xci_name": "design_3_encoder_0_1"
       }
     },
     "interface_nets": {
-      "decoder_0_m_axis_packet": {
-        "interface_ports": [
-          "decoder_0/m_axis_packet",
-          "encoder_0/s_axis_packet"
-        ]
-      },
       "axi4stream_vip_0_M_AXIS": {
         "interface_ports": [
           "axi4stream_vip_0/M_AXIS",
           "decoder_0/s_axis_rxd"
+        ]
+      },
+      "decoder_0_m_axis_packet": {
+        "interface_ports": [
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis_packet"
         ]
       },
       "decoder_0_packet_header": {
@@ -125,16 +125,16 @@
         "ports": [
           "aclk",
           "axi4stream_vip_0/aclk",
-          "decoder_0/aclk",
-          "encoder_0/aclk"
+          "encoder_0/aclk",
+          "decoder_0/aclk"
         ]
       },
       "rst_aclk_100M_peripheral_aresetn": {
         "ports": [
           "aresetn",
           "axi4stream_vip_0/aresetn",
-          "decoder_0/aresetn",
-          "encoder_0/aresetn"
+          "encoder_0/aresetn",
+          "decoder_0/aresetn"
         ]
       },
       "drop_1": {

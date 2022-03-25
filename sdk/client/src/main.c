@@ -26,11 +26,9 @@
  *
  */
 
-#define DESLNUM(s) s##7
+#define DESLNUM(s) s##5
 #define SRC_PORT 7
-#define DEST_DESLNUM(s) s##7
 #define DEST_PORT 22
-#define PC_OR_BOARD 1 // type of dest (1 PC, 2 Board)
 
 //Standard library includes
 #include <stdio.h>
@@ -49,19 +47,9 @@
 
 //LWIP include files
 #include "lwip/ip_addr.h"
-#include "lwip/tcp.h"
 #include "lwip/err.h"
-#include "lwip/tcp.h"
 #include "lwip/udp.h"
 #include "lwip/inet.h"
-#if LWIP_IPV6==1
-#include "lwip/ip.h"
-#else
-//#define LWIP_DHCP 0
-#if LWIP_DHCP==1
-#include "lwip/dhcp.h"
-#endif
-#endif
 
 #include "xuartlite_l.h"
 
@@ -74,43 +62,21 @@ struct netif *echo_netif;
 #define DEST_MAC_ADDR2 {0x22, 0x22, 0x22, 0x22, 0x22, 0x22}
 #define DEST_MAC_ADDR3 {0x33, 0x33, 0x33, 0x33, 0x33, 0x33}
 
-
-#define DEST_IP6_ADDR "fe80::6600:6aff:fe71:fde6"
-
 #define UDP_SEND_BUFSIZE 64
 
 #define UART_BASE_ADDR 0x40600000
 
-//Function prototypes
-#if LWIP_IPV6==1
-void print_ip6(char *msg, ip_addr_t *ip);
-#else
 void print_ip(char *msg, ip_addr_t *ip);
 void print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw);
-#endif
-int setup_client_conn();
-void tcp_fasttmr(void);
-void tcp_slowtmr(void);
-int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len);
 
 //Function prototypes for callbacks
 static void udp_client_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
 
-//DHCP global variables
-#if LWIP_IPV6==0
-#if LWIP_DHCP==1
-extern volatile int dhcp_timoutcntr;
-err_t dhcp_start(struct netif *netif);
-#endif
-#endif
-
 //Networking global variables
-extern volatile int TcpFastTmrFlag;
-extern volatile int TcpSlowTmrFlag;
 static struct netif server_netif;
 struct netif *app_netif;
 static struct udp_pcb *u_pcb;
-char is_connected;
+static struct pbuf *s_p;
 
 
 // User Entered Payload
@@ -140,7 +106,7 @@ int main()
 		send_buf[send_buf_len] = '\n';
 		send_buf_len++;
 	}
-	xil_printf("\nPayload entered: %s", send_buf);
+	xil_printf("\nPayload entered: %d, %s", send_buf_len, send_buf);
 	char src_mac[] = SRC_MAC_ADDR;
 	char dest_mac1[] = DEST_MAC_ADDR1;
 	char dest_mac2[] = DEST_MAC_ADDR2;
@@ -149,28 +115,63 @@ int main()
 	char dest_ip[] = {1,1,1,1};
 	char src_port[] = {0,SRC_PORT};
 	char dest_port[] = {0,DEST_PORT};
-	send_buf1_len = create_encapsulated_packet(&send_buf1, &src_mac, &dest_mac1, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
-	send_buf2_len = create_encapsulated_packet(&send_buf2, &src_mac, &dest_mac2, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
-	send_buf3_len = create_encapsulated_packet(&send_buf3, &src_mac, &dest_mac3, &src_ip, &dest_ip, &src_port, &dest_port, &send_buf, send_buf_len);
+	int i;
+	send_buf1[0] = 0x40;
+	send_buf1[1] = 0x00;
+	send_buf1[2] = 0x65;
+	send_buf1[3] = 0x59;
+	send_buf2[0] = 0x40;
+	send_buf2[1] = 0x00;
+	send_buf2[2] = 0x65;
+	send_buf2[3] = 0x59;
+	send_buf3[0] = 0x40;
+	send_buf3[1] = 0x00;
+	send_buf3[2] = 0x65;
+	send_buf3[3] = 0x59;
+	for (i=0; i<6; i++) {
+		send_buf1[4+i] = src_mac[i];
+		send_buf1[10+i] = dest_mac1[i];
+		send_buf2[4+i] = src_mac[i];
+		send_buf2[10+i] = dest_mac2[i];
+		send_buf3[4+i] = src_mac[i];
+		send_buf3[10+i] = dest_mac3[i];
+	}
+	for (i=0; i<4; i++) {
+		send_buf1[16+i] = src_ip[i];
+		send_buf1[20+i] = dest_ip[i];
+		send_buf2[16+i] = src_ip[i];
+		send_buf2[20+i] = dest_ip[i];
+		send_buf3[16+i] = src_ip[i];
+		send_buf3[20+i] = dest_ip[i];
+	}
+	for (i=0; i<2; i++) {
+		send_buf1[24+i] = src_port[i];
+		send_buf1[26+i] = dest_port[i];
+		send_buf2[24+i] = src_port[i];
+		send_buf2[26+i] = dest_port[i];
+		send_buf3[24+i] = src_port[i];
+		send_buf3[26+i] = dest_port[i];
+	}
+	for (i=0; i<send_buf_len; i++) {
+		send_buf1[28+i] = send_buf[i];
+		send_buf2[28+i] = send_buf[i];
+		send_buf3[28+i] = send_buf[i];
+	}
+	send_buf1_len =  28+send_buf_len;
+	send_buf2_len =  28+send_buf_len;
+	send_buf3_len =  28+send_buf_len;
+//	xil_printf("\nPayloads: \n\t%d, %s\n\t%d, %s\n\t%d, %s", send_buf1_len, send_buf1, send_buf2_len, send_buf2, send_buf3_len, send_buf3);
+
 
 	//Varibales for IP parameters
-#if LWIP_IPV6==0
 	ip_addr_t ipaddr, netmask, gw;
-#endif
 
 	//The mac address of the board. this should be unique per board
 	unsigned char mac_ethernet_address[] = SRC_MAC_ADDR;
 
 	xil_printf("Starting\n");
 
-#if LWIP_IPV6==1
-	xil_printf("Using IPV6\n");
-#else
 	xil_printf("Using IPV4\n");
-#endif
-#if LWIP_DHCP==1
-	xil_printf("Using DHCP\n");
-#endif
 	//Network interface
 	app_netif = &server_netif;
 
@@ -178,45 +179,22 @@ int main()
 	init_platform();
 	xil_printf("Platform Initialized\n");
 
-
-	//Defualt IP parameter values
-#if LWIP_IPV6==0
-#if LWIP_DHCP==1
-    ipaddr.addr = 0;
-	gw.addr = 0;
-	netmask.addr = 0;
-#else
 	IP4_ADDR(&ipaddr,  1, 1, DESLNUM(), 2);
 	IP4_ADDR(&netmask, 255, 255, 0,  0);
 	IP4_ADDR(&gw,      192, 168,   1,  1);
-#endif
-#endif
 
 	//LWIP initialization
 	lwip_init();
 	xil_printf("LWIP Initialized\n");
 
 
-	//Setup Network interface and add to netif_list
-#if (LWIP_IPV6 == 0)
 	if (!xemac_add(app_netif, &ipaddr, &netmask,
 						&gw, mac_ethernet_address,
 						PLATFORM_EMAC_BASEADDR)) {
 		xil_printf("Error adding N/W interface\n");
 		return -1;
 	}
-#else
-	if (!xemac_add(app_netif, NULL, NULL, NULL, mac_ethernet_address,
-						PLATFORM_EMAC_BASEADDR)) {
-		xil_printf("Error adding N/W interface\n");
-		return -1;
-	}
-	app_netif->ip6_autoconfig_enabled = 1;
 
-	netif_create_ip6_linklocal_address(app_netif, 1);
-	netif_ip6_addr_set_state(app_netif, 0, IP6_ADDR_VALID);
-
-#endif
 	xil_printf("Network Interface Starting\n");
 	netif_set_default(app_netif);
 	xil_printf("Network Interface Initialized\n");
@@ -228,84 +206,37 @@ int main()
 	//Specify that the network is up
 	netif_set_up(app_netif);
 
-#if (LWIP_IPV6 == 0)
-#if (LWIP_DHCP==1)
-	/* Create a new DHCP client for this interface.
-	 * Note: you must call dhcp_fine_tmr() and dhcp_coarse_tmr() at
-	 * the predefined regular intervals after starting the client.
-	 */
-	dhcp_start(app_netif);
-	dhcp_timoutcntr = 24;
-
-	while(((app_netif->ip_addr.addr) == 0) && (dhcp_timoutcntr > 0))
-		xemacif_input(app_netif);
-
-	if (dhcp_timoutcntr <= 0) {
-		if ((app_netif->ip_addr.addr) == 0) {
-			xil_printf("DHCP Timeout\n");
-			IP4_ADDR(&app_netif->ip_addr,  1, 1, DESLNUM(), 2);
-			IP4_ADDR(&app_netif->netmask, 255, 255, 0,  0);
-			IP4_ADDR(&app_netif->gw,      192, 168,   1,  1);
-			print_ip("Configuring default IP of ", &app_netif->ip_addr);
-		}
-	}
-
-	ipaddr.addr = app_netif->ip_addr.addr;
-	gw.addr = app_netif->gw.addr;
-	netmask.addr = app_netif->netmask.addr;
-#endif
-#endif
-	xil_printf("DHCP Initialized\n");
-
-
-	//Print connection settings
-#if (LWIP_IPV6 == 0)
 	print_ip_settings(&ipaddr, &netmask, &gw);
-#else
-	print_ip6("Board IPv6 address ", &app_netif->ip6_addr[0].u_addr.ip6);
-#endif
 
 	//Setup connection
-	setup_client_conn();
-	xil_printf("Client Initialized\n");
+	ip_addr_t remote_addr;
+	ip_addr_t src_addr;
+	err_t err;
 
-    struct pbuf *p;
-    p = pbuf_alloc(PBUF_TRANSPORT,5, PBUF_POOL);
-    if (p != NULL) {
-		pbuf_take(p, &send_buf, send_buf_len);
-		udp_send(u_pcb, p);
-		pbuf_free(p);
-		xil_printf("Packet Sent\n");
-	}
+	IP4_ADDR(&remote_addr,  1, 1, 255, 255);
+	IP4_ADDR(&src_addr,  1, 1, DESLNUM(), 2);
+	print_ip("Remote Addr: ", &remote_addr);
 
-	struct pbuf *p1 = pbuf_alloc(PBUF_TRANSPORT,5, PBUF_POOL);
-	struct pbuf *p2 = pbuf_alloc(PBUF_TRANSPORT,5, PBUF_POOL);
-	struct pbuf *p3 = pbuf_alloc(PBUF_TRANSPORT,5, PBUF_POOL);
-	if ((p1 == NULL) || (p2 == NULL) || (p3 == NULL)) {
-		xil_printf("Error allocating packet data\n");
+	u_pcb = udp_new_ip_type(IPADDR_TYPE_ANY);
+	if (!u_pcb) {
+		xil_printf("Error creating PCB. Out of Memory\n");
 		return -1;
 	}
-	pbuf_take(p1, &send_buf1, send_buf1_len);
-	pbuf_take(p2, &send_buf2, send_buf2_len);
-	pbuf_take(p3, &send_buf3, send_buf3_len);
+
+	err = udp_bind(u_pcb,IP4_ADDR_ANY,SRC_PORT);
+	if (err != ERR_OK){
+		return -1;
+	}
+	u_pcb->local_port = SRC_PORT;
+
+	udp_recv(u_pcb,udp_client_recv,NULL);
+
+	xil_printf("Client Initialized\n");
 
 	//Event loop
 	while (1) {
-		//Call tcp_tmr functions
-		//Must be called regularly
-		if (TcpFastTmrFlag) {
-			tcp_fasttmr();
-			TcpFastTmrFlag = 0;
-		}
-		if (TcpSlowTmrFlag) {
-			tcp_slowtmr();
-			TcpSlowTmrFlag = 0;
-		}
-
 		//Process data queued after interupt
 		xemacif_input(app_netif);
-
-
 
 		//ADD CODE HERE to be repeated constantly
 		// Note - should be non-blocking
@@ -313,27 +244,37 @@ int main()
 		if(!XUartLite_IsReceiveEmpty(UART_BASE_ADDR)) {
 			data = XUartLite_ReadReg(UART_BASE_ADDR, XUL_RX_FIFO_OFFSET);
 			if (data == 49) {
-				udp_send(u_pcb, p1);
+				udp_connect(u_pcb,&remote_addr, DEST_PORT);
+				s_p = pbuf_alloc(PBUF_TRANSPORT, send_buf1_len, PBUF_POOL);
+				pbuf_take(s_p, &send_buf1, send_buf1_len);
+				udp_send(u_pcb, s_p);
+				pbuf_free(s_p);
+				udp_disconnect(u_pcb);
 				xil_printf("Packet Sent to Virtual Client 1\n");
 			} else if (data == 50) {
-				udp_send(u_pcb, p2);
+				udp_connect(u_pcb,&remote_addr, DEST_PORT);
+				s_p = pbuf_alloc(PBUF_TRANSPORT, send_buf2_len, PBUF_POOL);
+				pbuf_take(s_p, &send_buf2, send_buf2_len);
+				udp_send(u_pcb, s_p);
+				pbuf_free(s_p);
+				udp_disconnect(u_pcb);
 				xil_printf("Packet Sent to Virtual Client 2\n");
 			} else if (data == 51) {
-				udp_send(u_pcb, p3);
+				udp_connect(u_pcb,&remote_addr, DEST_PORT);
+				s_p = pbuf_alloc(PBUF_TRANSPORT, send_buf3_len, PBUF_POOL);
+				pbuf_take(s_p, &send_buf3, send_buf3_len);
+				udp_send(u_pcb, s_p);
+				pbuf_free(s_p);
+				udp_disconnect(u_pcb);
 				xil_printf("Packet Sent to Virtual Client 3\n");
 			}
 		}
 
 		//END OF ADDED CODE
-
-
 	}
 
 	//Never reached
 	cleanup_platform();
-	pbuf_free(p1);
-	pbuf_free(p2);
-	pbuf_free(p3);
 
 	return 0;
 }
@@ -371,92 +312,48 @@ void print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
 }
 #endif
 
-
-int setup_client_conn()
-{
-	err_t err;
-	ip_addr_t remote_addr;
-
-    xil_printf("Setting up client\n");
-
-#if LWIP_IPV6==1
-	remote_addr.type = IPADDR_TYPE_V6;
-	err = inet6_aton(DEST_IP6_ADDR, &remote_addr);
-#else
-	IP4_ADDR(&remote_addr,  1, 1, DEST_DESLNUM(), PC_OR_BOARD);
-//	IP4_ADDR(&remote_addr,  1, 1, 255, 255);
-	print_ip("Remote Addr: ", &remote_addr);
-	err=1;
-
-#endif
-
-	if (!err) {
-		xil_printf("Invalid Server IP address: %d\n", err);
-		return -1;
-	}
-
-	u_pcb = udp_new_ip_type(IPADDR_TYPE_ANY);
-	if (!u_pcb) {
-			xil_printf("Error creating PCB. Out of Memory\n");
-			return -1;
-		}
-
-	err = udp_bind(u_pcb,IP4_ADDR_ANY,SRC_PORT);
-	if (err != ERR_OK){
-		return err;
-	}
-    u_pcb->local_port = SRC_PORT;
-    // Connect to the other port
-    err = udp_connect(u_pcb,&remote_addr, DEST_PORT);
-    if (err != ERR_OK){
-        return err;
-    }
-    // Set the receive function
-    udp_recv(u_pcb,udp_client_recv,NULL);
-    return 0;
-}
-
 static void udp_client_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
+	char src_mac[6];
+	char dest_mac[6];
+	unsigned char src_ip[4];
+	unsigned char dest_ip[4];
+	unsigned char src_port[2];
+	unsigned char dest_port[2];
+
 	//If no data, connection closed
 	if (!p) {
-		xil_printf("No data received\n");
+		//xil_printf("No data received\n");
 		return;
 	}
 
-	xil_printf("Packet received, %d bytes, from port %d", p->tot_len, port);
-	print_ip(" and IP ", addr);
+	xil_printf("Packet received, %d bytes, from port %d of IP %d.%d.%d.%d\n", p->tot_len, port, ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr));
 	//Print packet contents to terminal
 	char* packet_data = (char*) malloc(p->tot_len);
 	pbuf_copy_partial(p, packet_data, p->tot_len, 0); //Note - inefficient way to access packet data
 	u32_t i;
 
-	for(i = 0; i < p->tot_len; i = i + 1)
-		putchar(packet_data[i]);
-}
+	if ((packet_data[0] == 0x40) && (packet_data[1] == 0x00) && (packet_data[2] == 0x65) && (packet_data[3] == 0x59)) {
+		for (i=0; i<6; i++) {
+			src_mac[i] = packet_data[4+i];
+			dest_mac[i] = packet_data[10+i];
+		}
+		for (i=0; i<4; i++) {
+			src_ip[i] = packet_data[16+i];
+			dest_ip[i] = packet_data[20+i];
+		}
+		for (i=0; i<2; i++) {
+			src_port[i] = packet_data[24+i];
+			dest_port[i] = packet_data[26+i];
+		}
+		xil_printf("Packet coming in\n");
+		xil_printf("\tFrom %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", src_mac[0], src_mac[1], src_mac[2], src_mac[3], src_mac[4], src_mac[5], src_ip[3], src_ip[2], src_ip[1], src_ip[0], (src_port[0] << 8) + src_port[1]);
+		xil_printf("\tTo   %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", dest_mac[0], dest_mac[1], dest_mac[2], dest_mac[3], dest_mac[4], dest_mac[5], dest_ip[3], dest_ip[2], dest_ip[1], dest_ip[0], (dest_port[0] << 8) + dest_port[1]);
+		xil_printf("\tData: ");
+		for(i=28; i < p->tot_len; i++)
+			xil_printf("%c", packet_data[i]);
+		xil_printf("\n");
+	}
 
-int create_encapsulated_packet(char* packet, char *src_addr, char *dest_addr, char *src_ip, char *dest_ip, char *src_port, char *dest_port, char *payload, int payload_len)
-{
-	int i;
-	packet[0] = 0x40;
-	packet[1] = 0x00;
-	packet[2] = 0x65;
-	packet[3] = 0x59;
-	for (i=0; i<6; i++) {
-		packet[4+i] = src_addr[i];
-		packet[10+i] = dest_addr[i];
-	}
-	for (i=0; i<4; i++) {
-		packet[16+i] = src_ip[i];
-		packet[20+i] = dest_ip[i];
-	}
-	for (i=0; i<2; i++) {
-		packet[24+i] = src_port[i];
-		packet[26+i] = dest_port[i];
-	}
-	for (i=0; i<payload_len; i++) {
-		packet[28+i] = payload[i];
-	}
-	return 28+payload_len;
+	free(packet_data);
 }
-
