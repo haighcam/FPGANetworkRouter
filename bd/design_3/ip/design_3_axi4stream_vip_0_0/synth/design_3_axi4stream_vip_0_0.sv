@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "axi4stream_vip_v1_1_4_top,Vivado 2018.3.1" *)
 (* CHECK_LICENSE_TYPE = "design_3_axi4stream_vip_0_0,axi4stream_vip_v1_1_4_top,{}" *)
-(* CORE_GENERATION_INFO = "design_3_axi4stream_vip_0_0,axi4stream_vip_v1_1_4_top,{x_ipProduct=Vivado 2018.3.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi4stream_vip,x_ipVersion=1.1,x_ipCoreRevision=4,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI4STREAM_SIGNAL_SET=0b00000000000000000000000000010111,C_AXI4STREAM_INTERFACE_MODE=0,C_AXI4STREAM_DATA_WIDTH=32,C_AXI4STREAM_USER_BITS_PER_BYTE=0,C_AXI4STREAM_ID_WIDTH=0,C_AXI4STREAM_DEST_WIDTH=0,C_AXI4STREAM_USER_WIDTH=0,C_AXI4STREAM_HAS_ARESETN=1}" *)
+(* CORE_GENERATION_INFO = "design_3_axi4stream_vip_0_0,axi4stream_vip_v1_1_4_top,{x_ipProduct=Vivado 2018.3.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi4stream_vip,x_ipVersion=1.1,x_ipCoreRevision=4,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_AXI4STREAM_SIGNAL_SET=0b00000000000000000000000000011011,C_AXI4STREAM_INTERFACE_MODE=0,C_AXI4STREAM_DATA_WIDTH=32,C_AXI4STREAM_USER_BITS_PER_BYTE=0,C_AXI4STREAM_ID_WIDTH=0,C_AXI4STREAM_DEST_WIDTH=0,C_AXI4STREAM_USER_WIDTH=0,C_AXI4STREAM_HAS_ARESETN=1}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_3_axi4stream_vip_0_0 (
   aclk,
@@ -60,7 +60,7 @@ module design_3_axi4stream_vip_0_0 (
   m_axis_tvalid,
   m_axis_tready,
   m_axis_tdata,
-  m_axis_tstrb,
+  m_axis_tkeep,
   m_axis_tlast
 );
 
@@ -76,14 +76,14 @@ output wire [0 : 0] m_axis_tvalid;
 input wire [0 : 0] m_axis_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TDATA" *)
 output wire [31 : 0] m_axis_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TSTRB" *)
-output wire [3 : 0] m_axis_tstrb;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TKEEP" *)
+output wire [3 : 0] m_axis_tkeep;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXIS, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M_AXIS TLAST" *)
 output wire [0 : 0] m_axis_tlast;
 
   axi4stream_vip_v1_1_4_top #(
-    .C_AXI4STREAM_SIGNAL_SET('B00000000000000000000000000010111),
+    .C_AXI4STREAM_SIGNAL_SET('B00000000000000000000000000011011),
     .C_AXI4STREAM_INTERFACE_MODE(0),
     .C_AXI4STREAM_DATA_WIDTH(32),
     .C_AXI4STREAM_USER_BITS_PER_BYTE(0),
@@ -107,8 +107,8 @@ output wire [0 : 0] m_axis_tlast;
     .m_axis_tvalid(m_axis_tvalid),
     .m_axis_tready(m_axis_tready),
     .m_axis_tdata(m_axis_tdata),
-    .m_axis_tstrb(m_axis_tstrb),
-    .m_axis_tkeep(),
+    .m_axis_tstrb(),
+    .m_axis_tkeep(m_axis_tkeep),
     .m_axis_tlast(m_axis_tlast),
     .m_axis_tid(),
     .m_axis_tdest(),

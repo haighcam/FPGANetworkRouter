@@ -166,6 +166,9 @@ proc create_root_design { parentCell } {
   set m_axis_txd_tready_0 [ create_bd_port -dir I m_axis_txd_tready_0 ]
   set m_axis_txd_tvalid_0 [ create_bd_port -dir O m_axis_txd_tvalid_0 ]
 
+  # Create instance: address_buffer_0, and set properties
+  set address_buffer_0 [ create_bd_cell -type ip -vlnv utoronto.ca:user:address_buffer:1.0 address_buffer_0 ]
+
   # Create instance: axi4stream_vip_0, and set properties
   set axi4stream_vip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi4stream_vip:1.1 axi4stream_vip_0 ]
   set_property -dict [ list \
@@ -199,13 +202,33 @@ proc create_root_design { parentCell } {
   # Create interface connections
   connect_bd_intf_net -intf_net axi4stream_vip_0_M_AXIS [get_bd_intf_pins axi4stream_vip_0/M_AXIS] [get_bd_intf_pins decoder_0/s_axis_rxd]
   connect_bd_intf_net -intf_net decoder_0_m_axis_packet [get_bd_intf_pins decoder_0/m_axis_packet] [get_bd_intf_pins encoder_0/s_axis_packet]
-  connect_bd_intf_net -intf_net decoder_0_packet_header [get_bd_intf_pins decoder_0/packet_header] [get_bd_intf_pins encoder_0/packet_header]
 
   # Create port connections
-  connect_bd_net -net aclk_1 [get_bd_ports aclk] [get_bd_pins axi4stream_vip_0/aclk] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk]
+  connect_bd_net -net aclk_1 [get_bd_ports aclk] [get_bd_pins address_buffer_0/clk] [get_bd_pins axi4stream_vip_0/aclk] [get_bd_pins decoder_0/aclk] [get_bd_pins encoder_0/aclk]
+  connect_bd_net -net address_buffer_0_out_dest_addr [get_bd_pins address_buffer_0/out_dest_addr] [get_bd_pins encoder_0/dest_addr]
+  connect_bd_net -net address_buffer_0_out_ip_dest_addr [get_bd_pins address_buffer_0/out_ip_dest_addr] [get_bd_pins encoder_0/ip_dest_addr]
+  connect_bd_net -net address_buffer_0_out_ip_src_addr [get_bd_pins address_buffer_0/out_ip_src_addr] [get_bd_pins encoder_0/ip_src_addr]
+  connect_bd_net -net address_buffer_0_out_src_addr [get_bd_pins address_buffer_0/out_src_addr] [get_bd_pins encoder_0/src_addr]
+  connect_bd_net -net address_buffer_0_out_udp_dest_port [get_bd_pins address_buffer_0/out_udp_dest_port] [get_bd_pins encoder_0/udp_dest_port]
+  connect_bd_net -net address_buffer_0_out_udp_src_port [get_bd_pins address_buffer_0/out_udp_src_port] [get_bd_pins encoder_0/udp_src_port]
+  connect_bd_net -net decoder_0_alt_dest_addr [get_bd_pins decoder_0/alt_dest_addr] [get_bd_pins encoder_0/alt_dest_addr]
+  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins encoder_0/alt_ip_dest_addr]
+  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins encoder_0/alt_ip_src_addr]
+  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins encoder_0/alt_src_addr]
+  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins encoder_0/alt_udp_dest_port]
+  connect_bd_net -net decoder_0_alt_udp_src_port [get_bd_pins decoder_0/alt_udp_src_port] [get_bd_pins encoder_0/alt_udp_src_port]
+  connect_bd_net -net decoder_0_dest_addr [get_bd_pins address_buffer_0/in_dest_addr] [get_bd_pins decoder_0/dest_addr]
+  connect_bd_net -net decoder_0_encapsualted [get_bd_pins decoder_0/encapsualted] [get_bd_pins encoder_0/encapsulated]
+  connect_bd_net -net decoder_0_ip_dest_addr [get_bd_pins address_buffer_0/in_ip_dest_addr] [get_bd_pins decoder_0/ip_dest_addr]
+  connect_bd_net -net decoder_0_ip_src_addr [get_bd_pins address_buffer_0/in_ip_src_addr] [get_bd_pins decoder_0/ip_src_addr]
+  connect_bd_net -net decoder_0_src_addr [get_bd_pins address_buffer_0/in_src_addr] [get_bd_pins decoder_0/src_addr]
+  connect_bd_net -net decoder_0_udp_dest_port [get_bd_pins address_buffer_0/in_udp_dest_port] [get_bd_pins decoder_0/udp_dest_port]
+  connect_bd_net -net decoder_0_udp_src_port [get_bd_pins address_buffer_0/in_udp_src_port] [get_bd_pins decoder_0/udp_src_port]
+  connect_bd_net -net decoder_0_valid [get_bd_pins address_buffer_0/valid] [get_bd_pins decoder_0/valid] [get_bd_pins encoder_0/valid]
   connect_bd_net -net drop_1 [get_bd_ports drop] [get_bd_pins encoder_0/drop]
   connect_bd_net -net encoder_0_m_axis_txc_tlast [get_bd_ports m_axis_txc_tlast_0] [get_bd_pins encoder_0/m_axis_txc_tlast]
   connect_bd_net -net encoder_0_m_axis_txd_tvalid [get_bd_ports m_axis_txd_tvalid_0] [get_bd_pins encoder_0/m_axis_txd_tvalid]
+  connect_bd_net -net encoder_0_ready [get_bd_pins address_buffer_0/ready] [get_bd_pins decoder_0/ready] [get_bd_pins encoder_0/ready]
   connect_bd_net -net m_axis_txd_tready_0_1 [get_bd_ports m_axis_txd_tready_0] [get_bd_pins encoder_0/m_axis_txd_tready]
   connect_bd_net -net rst_aclk_100M_peripheral_aresetn [get_bd_ports aresetn] [get_bd_pins axi4stream_vip_0/aresetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins decoder_0/s_axis_rxs_tvalid] [get_bd_pins xlconstant_0/dout]

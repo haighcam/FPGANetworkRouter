@@ -74,10 +74,6 @@ set_false_path -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/spee
 set_false_path -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/speed*speed_is*100_reg}] -to [get_cells -filter {IS_SEQUENTIAL} {tri_mode_ethernet_mac_i/rgmii_interface/*}]
 set_false_path -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/speed*speed_is*100_reg}] -to [get_cells -filter {IS_SEQUENTIAL} {tri_mode_ethernet_mac_i/enable_gen/*}]
 
-# set a false path for the clock path from the address filter dist rams
-# the paths we care about timing are either the write interface OR the read interface
-# this path is from the write to the read which should be ignored
-set_false_path -from [get_cells -hierarchical -filter {NAME =~ *tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/address_filter_inst/*/DP}] -to  [get_cells -hierarchical -filter {NAME =~ *tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/address_filter_inst/*addr*/bit_match*reg[*]}]
 
 # false path due to synced control path
 set_max_delay -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/*statistics_counters/rd_data_ref_reg[*]}] -to [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/*statistics_counters/ip2bus_data_reg[*]}] 6 -datapath_only
@@ -93,7 +89,6 @@ set_false_path -to [get_pins -filter {REF_PIN_NAME =~ CLR} -of [get_cells -hier 
 set_false_path -to [get_pins -filter {REF_PIN_NAME =~ PRE} -of [get_cells -hier -regexp {.*\/reset_sync.*}]]
 set_false_path -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/sync_*tx_clk/sync_rst1_reg}] -to [get_cells {tri_mode_ethernet_mac_i/*/data_sync_reg0}]
 set_max_delay -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/addr_regs.promiscuous_mode_reg_reg}] -to [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/address_filter_inst/resync_promiscuous_mode/data_sync_reg0}] 6 -datapath_only
-set_max_delay -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/addr_regs.filter_enable_reg_reg[*]}] -to [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/address_filter_inst/address_filters[*].sync_enable/data_sync_reg0}] 6 -datapath_only
 set_max_delay -from [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/*managen/conf/update_pause_ad_int_reg}] -to [get_cells {tri_mode_ethernet_mac_i/bd_d66b_mac_0_core/addr_filter_top/address_filter_inst/sync_update/data_sync_reg0}] 6 -datapath_only
 
 

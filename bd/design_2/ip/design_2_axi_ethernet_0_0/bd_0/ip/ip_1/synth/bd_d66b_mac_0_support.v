@@ -91,7 +91,6 @@ module bd_d66b_mac_0_support
       output               rx_axis_mac_tlast,
       output               rx_axis_mac_tuser,
 
-      output      [4:0]    rx_axis_filter_tuser,
 
       // Transmitter Interface
       //-----------------------------
@@ -235,7 +234,6 @@ module bd_d66b_mac_0_support
       .rx_axis_mac_tvalid          (rx_axis_mac_tvalid),
       .rx_axis_mac_tlast           (rx_axis_mac_tlast),
       .rx_axis_mac_tuser           (rx_axis_mac_tuser),
-      .rx_axis_filter_tuser        (rx_axis_filter_tuser),
       // Transmitter Interface
       //-----------------------------
       .tx_enable                   (tx_enable),

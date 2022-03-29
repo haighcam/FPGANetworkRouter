@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:encoder:1.1
-// IP Revision: 15
+// IP Revision: 18
 
 `timescale 1ns/1ps
 
@@ -71,22 +71,21 @@ module design_3_encoder_0_1 (
   s_axis_tlast,
   s_axis_tvalid,
   dest_addr,
-  src_addr,
-  alt_dest_addr,
-  alt_src_addr,
   ip_dest_addr,
-  ip_src_addr,
-  alt_ip_dest_addr,
-  alt_ip_src_addr,
   udp_dest_port,
+  src_addr,
+  ip_src_addr,
   udp_src_port,
+  alt_dest_addr,
+  alt_ip_dest_addr,
   alt_udp_dest_port,
+  alt_src_addr,
+  alt_ip_src_addr,
   alt_udp_src_port,
   encapsulated,
   valid,
   ready,
   drop,
-  mst_exec_state,
   s_axis_tready
 );
 
@@ -126,38 +125,22 @@ input wire [3 : 0] s_axis_tkeep;
 input wire s_axis_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TVALID" *)
 input wire s_axis_tvalid;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header dest_addr" *)
 input wire [47 : 0] dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header src_addr" *)
-input wire [47 : 0] src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_dest_addr" *)
-input wire [47 : 0] alt_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_src_addr" *)
-input wire [47 : 0] alt_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ip_dest_addr" *)
 input wire [31 : 0] ip_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ip_src_addr" *)
-input wire [31 : 0] ip_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_dest_addr" *)
-input wire [31 : 0] alt_ip_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_src_addr" *)
-input wire [31 : 0] alt_ip_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header udp_dest_port" *)
 input wire [15 : 0] udp_dest_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header udp_src_port" *)
+input wire [47 : 0] src_addr;
+input wire [31 : 0] ip_src_addr;
 input wire [15 : 0] udp_src_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_dest_port" *)
+input wire [47 : 0] alt_dest_addr;
+input wire [31 : 0] alt_ip_dest_addr;
 input wire [15 : 0] alt_udp_dest_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_src_port" *)
+input wire [47 : 0] alt_src_addr;
+input wire [31 : 0] alt_ip_src_addr;
 input wire [15 : 0] alt_udp_src_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header encapsulated" *)
 input wire encapsulated;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header valid" *)
 input wire valid;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ready" *)
 output wire ready;
 input wire drop;
-output wire mst_exec_state;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axis_packet, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_packet TREADY" *)
 output wire s_axis_tready;
@@ -182,22 +165,21 @@ output wire s_axis_tready;
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tvalid(s_axis_tvalid),
     .dest_addr(dest_addr),
-    .src_addr(src_addr),
-    .alt_dest_addr(alt_dest_addr),
-    .alt_src_addr(alt_src_addr),
     .ip_dest_addr(ip_dest_addr),
-    .ip_src_addr(ip_src_addr),
-    .alt_ip_dest_addr(alt_ip_dest_addr),
-    .alt_ip_src_addr(alt_ip_src_addr),
     .udp_dest_port(udp_dest_port),
+    .src_addr(src_addr),
+    .ip_src_addr(ip_src_addr),
     .udp_src_port(udp_src_port),
+    .alt_dest_addr(alt_dest_addr),
+    .alt_ip_dest_addr(alt_ip_dest_addr),
     .alt_udp_dest_port(alt_udp_dest_port),
+    .alt_src_addr(alt_src_addr),
+    .alt_ip_src_addr(alt_ip_src_addr),
     .alt_udp_src_port(alt_udp_src_port),
     .encapsulated(encapsulated),
     .valid(valid),
     .ready(ready),
     .drop(drop),
-    .mst_exec_state(mst_exec_state),
     .s_axis_tready(s_axis_tready)
   );
 endmodule

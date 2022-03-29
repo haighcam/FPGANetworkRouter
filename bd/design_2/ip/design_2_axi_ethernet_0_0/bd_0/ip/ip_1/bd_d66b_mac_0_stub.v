@@ -1,8 +1,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Thu Mar 24 16:17:11 2022
-// Host        : BA3145WS20 running 64-bit major release  (build 9200)
+// Date        : Mon Mar 28 18:14:38 2022
+// Host        : BA3145WS18 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/haighcam/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/bd_0/ip/ip_1/bd_d66b_mac_0_stub.v
 // Design      : bd_d66b_mac_0
@@ -17,15 +17,15 @@
 module bd_d66b_mac_0(gtx_clk, gtx_clk_out, gtx_clk90_out, refclk, 
   glbl_rstn, rx_axi_rstn, tx_axi_rstn, rx_enable, rx_statistics_vector, rx_statistics_valid, 
   rx_mac_aclk, rx_reset, rx_axis_mac_tdata, rx_axis_mac_tvalid, rx_axis_mac_tlast, 
-  rx_axis_mac_tuser, rx_axis_filter_tuser, tx_enable, tx_ifg_delay, tx_statistics_vector, 
-  tx_statistics_valid, tx_mac_aclk, tx_reset, tx_axis_mac_tdata, tx_axis_mac_tvalid, 
-  tx_axis_mac_tlast, tx_axis_mac_tuser, tx_axis_mac_tready, pause_req, pause_val, speedis100, 
-  speedis10100, rgmii_txd, rgmii_tx_ctl, rgmii_txc, rgmii_rxd, rgmii_rx_ctl, rgmii_rxc, 
-  inband_link_status, inband_clock_speed, inband_duplex_status, mdio_i, mdio_o, mdio_t, mdc, 
-  s_axi_aclk, s_axi_resetn, s_axi_awaddr, s_axi_awvalid, s_axi_awready, s_axi_wdata, 
-  s_axi_wvalid, s_axi_wready, s_axi_bresp, s_axi_bvalid, s_axi_bready, s_axi_araddr, 
-  s_axi_arvalid, s_axi_arready, s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready, mac_irq)
-/* synthesis syn_black_box black_box_pad_pin="gtx_clk,gtx_clk_out,gtx_clk90_out,refclk,glbl_rstn,rx_axi_rstn,tx_axi_rstn,rx_enable,rx_statistics_vector[27:0],rx_statistics_valid,rx_mac_aclk,rx_reset,rx_axis_mac_tdata[7:0],rx_axis_mac_tvalid,rx_axis_mac_tlast,rx_axis_mac_tuser,rx_axis_filter_tuser[4:0],tx_enable,tx_ifg_delay[7:0],tx_statistics_vector[31:0],tx_statistics_valid,tx_mac_aclk,tx_reset,tx_axis_mac_tdata[7:0],tx_axis_mac_tvalid,tx_axis_mac_tlast,tx_axis_mac_tuser,tx_axis_mac_tready,pause_req,pause_val[15:0],speedis100,speedis10100,rgmii_txd[3:0],rgmii_tx_ctl,rgmii_txc,rgmii_rxd[3:0],rgmii_rx_ctl,rgmii_rxc,inband_link_status,inband_clock_speed[1:0],inband_duplex_status,mdio_i,mdio_o,mdio_t,mdc,s_axi_aclk,s_axi_resetn,s_axi_awaddr[11:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[11:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,mac_irq" */;
+  rx_axis_mac_tuser, tx_enable, tx_ifg_delay, tx_statistics_vector, tx_statistics_valid, 
+  tx_mac_aclk, tx_reset, tx_axis_mac_tdata, tx_axis_mac_tvalid, tx_axis_mac_tlast, 
+  tx_axis_mac_tuser, tx_axis_mac_tready, pause_req, pause_val, speedis100, speedis10100, 
+  rgmii_txd, rgmii_tx_ctl, rgmii_txc, rgmii_rxd, rgmii_rx_ctl, rgmii_rxc, inband_link_status, 
+  inband_clock_speed, inband_duplex_status, mdio_i, mdio_o, mdio_t, mdc, s_axi_aclk, 
+  s_axi_resetn, s_axi_awaddr, s_axi_awvalid, s_axi_awready, s_axi_wdata, s_axi_wvalid, 
+  s_axi_wready, s_axi_bresp, s_axi_bvalid, s_axi_bready, s_axi_araddr, s_axi_arvalid, 
+  s_axi_arready, s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready, mac_irq)
+/* synthesis syn_black_box black_box_pad_pin="gtx_clk,gtx_clk_out,gtx_clk90_out,refclk,glbl_rstn,rx_axi_rstn,tx_axi_rstn,rx_enable,rx_statistics_vector[27:0],rx_statistics_valid,rx_mac_aclk,rx_reset,rx_axis_mac_tdata[7:0],rx_axis_mac_tvalid,rx_axis_mac_tlast,rx_axis_mac_tuser,tx_enable,tx_ifg_delay[7:0],tx_statistics_vector[31:0],tx_statistics_valid,tx_mac_aclk,tx_reset,tx_axis_mac_tdata[7:0],tx_axis_mac_tvalid,tx_axis_mac_tlast,tx_axis_mac_tuser,tx_axis_mac_tready,pause_req,pause_val[15:0],speedis100,speedis10100,rgmii_txd[3:0],rgmii_tx_ctl,rgmii_txc,rgmii_rxd[3:0],rgmii_rx_ctl,rgmii_rxc,inband_link_status,inband_clock_speed[1:0],inband_duplex_status,mdio_i,mdio_o,mdio_t,mdc,s_axi_aclk,s_axi_resetn,s_axi_awaddr[11:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[11:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,mac_irq" */;
   input gtx_clk;
   output gtx_clk_out;
   output gtx_clk90_out;
@@ -42,7 +42,6 @@ module bd_d66b_mac_0(gtx_clk, gtx_clk_out, gtx_clk90_out, refclk,
   output rx_axis_mac_tvalid;
   output rx_axis_mac_tlast;
   output rx_axis_mac_tuser;
-  output [4:0]rx_axis_filter_tuser;
   output tx_enable;
   input [7:0]tx_ifg_delay;
   output [31:0]tx_statistics_vector;

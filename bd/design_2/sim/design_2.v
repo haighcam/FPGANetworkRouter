@@ -1,8 +1,8 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Thu Mar 24 16:14:08 2022
-//Host        : BA3145WS20 running 64-bit major release  (build 9200)
+//Date        : Mon Mar 28 23:54:21 2022
+//Host        : BA3145WS18 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
 //Purpose     : IP block netlist
@@ -72,8 +72,6 @@ module design_2
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_alt_udp_src_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire decoder_0_encapsualted;
-  wire [31:0]decoder_0_fifo_data_len;
-  wire [1:0]decoder_0_fifo_state;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_dest_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [31:0]decoder_0_ip_src_addr;
   wire [31:0]decoder_0_m_axis_packet_TDATA;
@@ -81,7 +79,6 @@ module design_2
   wire decoder_0_m_axis_packet_TLAST;
   wire decoder_0_m_axis_packet_TREADY;
   wire decoder_0_m_axis_packet_TVALID;
-  wire [1:0]decoder_0_mst_exec_state;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_src_addr;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_dest_port;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [15:0]decoder_0_udp_src_port;
@@ -100,7 +97,6 @@ module design_2
   wire encoder_0_m_axis_txd_TLAST;
   wire encoder_0_m_axis_txd_TREADY;
   wire encoder_0_m_axis_txd_TVALID;
-  wire encoder_0_mst_exec_state;
   wire encoder_0_ready;
   wire [31:0]eth_controller_0_M_AXI_AWADDR;
   wire eth_controller_0_M_AXI_AWREADY;
@@ -213,8 +209,6 @@ module design_2
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .dest_addr(decoder_0_dest_addr),
         .encapsualted(decoder_0_encapsualted),
-        .fifo_data_len(decoder_0_fifo_data_len),
-        .fifo_state(decoder_0_fifo_state),
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
         .m_axis_packet_tdata(decoder_0_m_axis_packet_TDATA),
@@ -222,7 +216,6 @@ module design_2
         .m_axis_packet_tlast(decoder_0_m_axis_packet_TLAST),
         .m_axis_packet_tready(decoder_0_m_axis_packet_TREADY),
         .m_axis_packet_tvalid(decoder_0_m_axis_packet_TVALID),
-        .mst_exec_state(decoder_0_mst_exec_state),
         .ready(encoder_0_ready),
         .s_axis_rxd_tdata(axi_ethernet_0_m_axis_rxd_TDATA),
         .s_axis_rxd_tkeep(axi_ethernet_0_m_axis_rxd_TKEEP),
@@ -262,7 +255,6 @@ module design_2
         .m_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .m_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
         .m_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID),
-        .mst_exec_state(encoder_0_mst_exec_state),
         .ready(encoder_0_ready),
         .s_axis_tdata(decoder_0_m_axis_packet_TDATA),
         .s_axis_tkeep(decoder_0_m_axis_packet_TKEEP),
@@ -292,23 +284,19 @@ module design_2
   design_2_ila_0_0 ila_0
        (.clk(clk_wiz_1_clk_out1),
         .probe0(decoder_0_dest_addr),
-        .probe1(decoder_0_src_addr),
-        .probe10(decoder_0_alt_udp_dest_port),
+        .probe1(decoder_0_ip_dest_addr),
+        .probe10(decoder_0_alt_ip_src_addr),
         .probe11(decoder_0_alt_udp_src_port),
         .probe12(decoder_0_encapsualted),
         .probe13(decoder_0_valid),
-        .probe14(decoder_0_mst_exec_state),
-        .probe15(encoder_0_mst_exec_state),
-        .probe16(decoder_0_fifo_state),
-        .probe17(decoder_0_fifo_data_len),
-        .probe2(decoder_0_ip_dest_addr),
-        .probe3(decoder_0_ip_src_addr),
-        .probe4(decoder_0_udp_dest_port),
+        .probe2(decoder_0_udp_dest_port),
+        .probe3(decoder_0_src_addr),
+        .probe4(decoder_0_ip_src_addr),
         .probe5(decoder_0_udp_src_port),
         .probe6(decoder_0_alt_dest_addr),
-        .probe7(decoder_0_alt_src_addr),
-        .probe8(decoder_0_alt_ip_dest_addr),
-        .probe9(decoder_0_alt_ip_src_addr),
+        .probe7(decoder_0_alt_ip_dest_addr),
+        .probe8(decoder_0_alt_udp_dest_port),
+        .probe9(decoder_0_alt_src_addr),
         .trig_out(ila_0_trig_out1),
         .trig_out_ack(ila_1_trig_in_ack));
   design_2_ila_1_0 ila_1
@@ -389,10 +377,10 @@ module design_2
        (.clk(clk_wiz_1_clk_out1),
         .probe_in0(eth_controller_0_config_done),
         .probe_out0(src_addr),
-        .probe_out1(dest_addr),
-        .probe_out2(src_ip_addr),
-        .probe_out3(dest_ip_addr),
-        .probe_out4(src_udp_port),
+        .probe_out1(src_ip_addr),
+        .probe_out2(src_udp_port),
+        .probe_out3(dest_addr),
+        .probe_out4(dest_ip_addr),
         .probe_out5(dest_udp_port),
         .probe_out6(config_ready),
         .probe_out7(drop_packets));

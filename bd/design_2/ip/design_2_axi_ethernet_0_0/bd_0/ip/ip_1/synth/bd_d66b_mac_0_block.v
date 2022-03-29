@@ -139,7 +139,6 @@ module bd_d66b_mac_0_block (
       output               rx_axis_mac_tlast,
       output               rx_axis_mac_tuser,
 
-      output      [4:0]    rx_axis_filter_tuser,
 
       // Transmitter Interface
       //-----------------------------
@@ -466,8 +465,8 @@ module bd_d66b_mac_0_block (
       .C_INTERNAL_MODE_TYPE      ("BASEX"),
       .C_HALF_DUPLEX             (0),
       .C_HAS_HOST                (1),
-      .C_ADD_FILTER              (1),
-      .C_AT_ENTRIES              (4),
+      .C_ADD_FILTER              (0),
+      .C_AT_ENTRIES              (0),
       .C_FAMILY                  ("artix7"),
       .C_HAS_2G5                 (0),
       .C_MAC_SPEED               ("TRI_SPEED"),
@@ -508,7 +507,7 @@ module bd_d66b_mac_0_block (
       .rx_statistics_vector      (rx_statistics_vector_int),
       .rx_statistics_valid       (rx_statistics_valid_int),
       .rx_enable                 (rx_enable_int),
-      .rx_axis_filter_tuser      (rx_axis_filter_tuser),
+      .rx_axis_filter_tuser      (),
 
       // 1588 Rx timestamping (unused)
       .rx_ts_axis_tvalid         (),

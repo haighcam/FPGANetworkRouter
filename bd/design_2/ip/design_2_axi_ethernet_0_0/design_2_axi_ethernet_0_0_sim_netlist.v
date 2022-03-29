@@ -1,8 +1,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-// Date        : Thu Mar 24 16:24:47 2022
-// Host        : BA3145WS20 running 64-bit major release  (build 9200)
+// Date        : Mon Mar 28 18:17:23 2022
+// Host        : BA3145WS18 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/design_2_axi_ethernet_0_0_sim_netlist.v
 // Design      : design_2_axi_ethernet_0_0
@@ -504,7 +504,6 @@ module design_2_axi_ethernet_0_0_bd_d66b
   wire NLW_mac_tx_enable_UNCONNECTED;
   wire NLW_mac_tx_statistics_valid_UNCONNECTED;
   wire [1:0]NLW_mac_inband_clock_speed_UNCONNECTED;
-  wire [4:0]NLW_mac_rx_axis_filter_tuser_UNCONNECTED;
   wire [31:0]NLW_mac_tx_statistics_vector_UNCONNECTED;
 
   (* X_CORE_INFO = "c_counter_binary_v12_0_12,Vivado 2018.3.1" *) 
@@ -648,7 +647,6 @@ module design_2_axi_ethernet_0_0_bd_d66b
         .rgmii_txc(rgmii_txc),
         .rgmii_txd(rgmii_td),
         .rx_axi_rstn(eth_buf_RESET2TEMACn),
-        .rx_axis_filter_tuser(NLW_mac_rx_axis_filter_tuser_UNCONNECTED[4:0]),
         .rx_axis_mac_tdata(mac_m_axis_rx_TDATA),
         .rx_axis_mac_tlast(mac_m_axis_rx_TLAST),
         .rx_axis_mac_tuser(mac_m_axis_rx_TUSER),
@@ -959,7 +957,6 @@ module design_2_axi_ethernet_0_0_bd_d66b_mac_0
     rx_axis_mac_tvalid,
     rx_axis_mac_tlast,
     rx_axis_mac_tuser,
-    rx_axis_filter_tuser,
     tx_enable,
     tx_ifg_delay,
     tx_statistics_vector,
@@ -1023,7 +1020,6 @@ module design_2_axi_ethernet_0_0_bd_d66b_mac_0
   output rx_axis_mac_tvalid;
   output rx_axis_mac_tlast;
   output rx_axis_mac_tuser;
-  output [4:0]rx_axis_filter_tuser;
   output tx_enable;
   input [7:0]tx_ifg_delay;
   output [31:0]tx_statistics_vector;

@@ -739,7 +739,7 @@
             "value": "false"
           },
           "Frame_Filter": {
-            "value": "true"
+            "value": "false"
           },
           "Half_Duplex": {
             "value": "false"
@@ -752,9 +752,6 @@
           },
           "MDIO_BOARD_INTERFACE": {
             "value": "eth_mdio_mdc"
-          },
-          "Number_of_Table_Entries": {
-            "value": "4"
           },
           "Statistics_Counters": {
             "value": "true"
@@ -842,10 +839,10 @@
       }
     },
     "interface_nets": {
-      "s_axis_txd_1": {
+      "eth_buf_AXI_STR_RXS": {
         "interface_ports": [
-          "s_axis_txd",
-          "eth_buf/AXI_STR_TXD"
+          "m_axis_rxs",
+          "eth_buf/AXI_STR_RXS"
         ]
       },
       "mac_rgmii": {
@@ -854,34 +851,16 @@
           "mac/rgmii"
         ]
       },
-      "eth_buf_S_AXI_2TEMAC": {
-        "interface_ports": [
-          "eth_buf/S_AXI_2TEMAC",
-          "mac/s_axi"
-        ]
-      },
-      "s_axis_txc_1": {
-        "interface_ports": [
-          "s_axis_txc",
-          "eth_buf/AXI_STR_TXC"
-        ]
-      },
-      "eth_buf_AXI_STR_RXS": {
-        "interface_ports": [
-          "m_axis_rxs",
-          "eth_buf/AXI_STR_RXS"
-        ]
-      },
       "eth_buf_AXI_STR_RXD": {
         "interface_ports": [
           "m_axis_rxd",
           "eth_buf/AXI_STR_RXD"
         ]
       },
-      "s_axi_1": {
+      "s_axis_txc_1": {
         "interface_ports": [
-          "s_axi",
-          "eth_buf/S_AXI"
+          "s_axis_txc",
+          "eth_buf/AXI_STR_TXC"
         ]
       },
       "mac_m_axis_rx": {
@@ -896,10 +875,28 @@
           "mac/s_axis_tx"
         ]
       },
+      "s_axi_1": {
+        "interface_ports": [
+          "s_axi",
+          "eth_buf/S_AXI"
+        ]
+      },
+      "eth_buf_S_AXI_2TEMAC": {
+        "interface_ports": [
+          "eth_buf/S_AXI_2TEMAC",
+          "mac/s_axi"
+        ]
+      },
       "mac_mdio_internal": {
         "interface_ports": [
           "mdio",
           "mac/mdio_internal"
+        ]
+      },
+      "s_axis_txd_1": {
+        "interface_ports": [
+          "s_axis_txd",
+          "eth_buf/AXI_STR_TXD"
         ]
       }
     },

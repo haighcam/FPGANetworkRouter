@@ -48,7 +48,7 @@
 
 
 // IP VLNV: utoronto.ca:user:decoder:1.2
-// IP Revision: 19
+// IP Revision: 22
 
 `timescale 1ns/1ps
 
@@ -62,23 +62,20 @@ module design_3_decoder_0_1 (
   m_axis_packet_tvalid,
   m_axis_packet_tready,
   dest_addr,
-  src_addr,
-  alt_dest_addr,
-  alt_src_addr,
   ip_dest_addr,
-  ip_src_addr,
-  alt_ip_dest_addr,
-  alt_ip_src_addr,
   udp_dest_port,
+  src_addr,
+  ip_src_addr,
   udp_src_port,
+  alt_dest_addr,
+  alt_ip_dest_addr,
   alt_udp_dest_port,
+  alt_src_addr,
+  alt_ip_src_addr,
   alt_udp_src_port,
   encapsualted,
   valid,
   ready,
-  mst_exec_state,
-  fifo_state,
-  fifo_data_len,
   s_axis_rxs_tdata,
   s_axis_rxs_tkeep,
   s_axis_rxs_tlast,
@@ -108,39 +105,21 @@ output wire m_axis_packet_tvalid;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME m_axis_packet, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 1, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_3_aclk, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 m_axis_packet TREADY" *)
 input wire m_axis_packet_tready;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header dest_addr" *)
 output wire [47 : 0] dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header src_addr" *)
-output wire [47 : 0] src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_dest_addr" *)
-output wire [47 : 0] alt_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_src_addr" *)
-output wire [47 : 0] alt_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ip_dest_addr" *)
 output wire [31 : 0] ip_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ip_src_addr" *)
-output wire [31 : 0] ip_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_dest_addr" *)
-output wire [31 : 0] alt_ip_dest_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_ip_src_addr" *)
-output wire [31 : 0] alt_ip_src_addr;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header udp_dest_port" *)
 output wire [15 : 0] udp_dest_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header udp_src_port" *)
+output wire [47 : 0] src_addr;
+output wire [31 : 0] ip_src_addr;
 output wire [15 : 0] udp_src_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_dest_port" *)
+output wire [47 : 0] alt_dest_addr;
+output wire [31 : 0] alt_ip_dest_addr;
 output wire [15 : 0] alt_udp_dest_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header alt_udp_src_port" *)
+output wire [47 : 0] alt_src_addr;
+output wire [31 : 0] alt_ip_src_addr;
 output wire [15 : 0] alt_udp_src_port;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header encapsulated" *)
 output wire encapsualted;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header valid" *)
 output wire valid;
-(* X_INTERFACE_INFO = "utoronto.ca:user:packet_header:1.1 packet_header ready" *)
 input wire ready;
-output wire [1 : 0] mst_exec_state;
-output wire [1 : 0] fifo_state;
-output wire [31 : 0] fifo_data_len;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_rxs TDATA" *)
 input wire [31 : 0] s_axis_rxs_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 s_axis_rxs TKEEP" *)
@@ -176,38 +155,20 @@ output wire s_axis_rxd_tready;
     .m_axis_packet_tvalid(m_axis_packet_tvalid),
     .m_axis_packet_tready(m_axis_packet_tready),
     .dest_addr(dest_addr),
-    .src_addr(src_addr),
-    .alt_dest_addr(alt_dest_addr),
-    .alt_src_addr(alt_src_addr),
     .ip_dest_addr(ip_dest_addr),
-    .ip_src_addr(ip_src_addr),
-    .alt_ip_dest_addr(alt_ip_dest_addr),
-    .alt_ip_src_addr(alt_ip_src_addr),
     .udp_dest_port(udp_dest_port),
+    .src_addr(src_addr),
+    .ip_src_addr(ip_src_addr),
     .udp_src_port(udp_src_port),
+    .alt_dest_addr(alt_dest_addr),
+    .alt_ip_dest_addr(alt_ip_dest_addr),
     .alt_udp_dest_port(alt_udp_dest_port),
+    .alt_src_addr(alt_src_addr),
+    .alt_ip_src_addr(alt_ip_src_addr),
     .alt_udp_src_port(alt_udp_src_port),
     .encapsualted(encapsualted),
     .valid(valid),
     .ready(ready),
-    .dest_addr_1(),
-    .src_addr_1(),
-    .alt_dest_addr_1(),
-    .alt_src_addr_1(),
-    .ip_dest_addr_1(),
-    .ip_src_addr_1(),
-    .alt_ip_dest_addr_1(),
-    .alt_ip_src_addr_1(),
-    .udp_dest_port_1(),
-    .udp_src_port_1(),
-    .alt_udp_dest_port_1(),
-    .alt_udp_src_port_1(),
-    .encapsualted_1(),
-    .valid_1(),
-    .ready_1(1'B1),
-    .mst_exec_state(mst_exec_state),
-    .fifo_state(fifo_state),
-    .fifo_data_len(fifo_data_len),
     .s_axis_rxs_tdata(s_axis_rxs_tdata),
     .s_axis_rxs_tkeep(s_axis_rxs_tkeep),
     .s_axis_rxs_tlast(s_axis_rxs_tlast),

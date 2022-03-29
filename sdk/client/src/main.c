@@ -26,9 +26,9 @@
  *
  */
 
-#define DESLNUM(s) s##5
-#define SRC_PORT 7
-#define DEST_PORT 22
+#define DESLNUM(s) s##4
+#define SRC_PORT 22
+#define DEST_PORT 7
 
 //Standard library includes
 #include <stdio.h>
@@ -58,9 +58,6 @@ struct netif *echo_netif;
 
 //TCP Network Params
 #define SRC_MAC_ADDR {0x00, 0x0a, 0x35, 0x00, 0x00, DESLNUM(0x)}
-#define DEST_MAC_ADDR1 {0x11, 0x11, 0x11, 0x11, 0x11, 0x11}
-#define DEST_MAC_ADDR2 {0x22, 0x22, 0x22, 0x22, 0x22, 0x22}
-#define DEST_MAC_ADDR3 {0x33, 0x33, 0x33, 0x33, 0x33, 0x33}
 
 #define UDP_SEND_BUFSIZE 64
 
@@ -108,11 +105,13 @@ int main()
 	}
 	xil_printf("\nPayload entered: %d, %s", send_buf_len, send_buf);
 	char src_mac[] = SRC_MAC_ADDR;
-	char dest_mac1[] = DEST_MAC_ADDR1;
-	char dest_mac2[] = DEST_MAC_ADDR2;
-	char dest_mac3[] = DEST_MAC_ADDR3;
-	char src_ip[] = {1,1,DESLNUM(),1};
-	char dest_ip[] = {1,1,1,1};
+	char dest_mac1[] = {0x11, 0x11, 0x11, 0x11, 0x11, 0x11};
+	char dest_mac2[] = {0x22, 0x22, 0x22, 0x22, 0x22, 0x22};
+	char dest_mac3[] = {0x33, 0x33, 0x33, 0x33, 0x33, 0x33};
+	char src_ip[] = {0xFC, 0x00, 0x0E, 0xCE};
+	char dest_ip1[] = {0xDE, 0xAD, 0xDE, 0xAD};
+	char dest_ip2[] = {0x69, 0x69, 0x69, 0x69};
+	char dest_ip3[] = {0x42, 0x04, 0x20, 0x69};
 	char src_port[] = {0,SRC_PORT};
 	char dest_port[] = {0,DEST_PORT};
 	int i;
@@ -138,11 +137,11 @@ int main()
 	}
 	for (i=0; i<4; i++) {
 		send_buf1[16+i] = src_ip[i];
-		send_buf1[20+i] = dest_ip[i];
+		send_buf1[20+i] = dest_ip1[i];
 		send_buf2[16+i] = src_ip[i];
-		send_buf2[20+i] = dest_ip[i];
+		send_buf2[20+i] = dest_ip2[i];
 		send_buf3[16+i] = src_ip[i];
-		send_buf3[20+i] = dest_ip[i];
+		send_buf3[20+i] = dest_ip3[i];
 	}
 	for (i=0; i<2; i++) {
 		send_buf1[24+i] = src_port[i];
@@ -223,7 +222,7 @@ int main()
 		return -1;
 	}
 
-	err = udp_bind(u_pcb,IP4_ADDR_ANY,SRC_PORT);
+	err = udp_bind(u_pcb,&src_addr,SRC_PORT);
 	if (err != ERR_OK){
 		return -1;
 	}
@@ -347,8 +346,8 @@ static void udp_client_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, con
 			dest_port[i] = packet_data[26+i];
 		}
 		xil_printf("Packet coming in\n");
-		xil_printf("\tFrom %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", src_mac[0], src_mac[1], src_mac[2], src_mac[3], src_mac[4], src_mac[5], src_ip[3], src_ip[2], src_ip[1], src_ip[0], (src_port[0] << 8) + src_port[1]);
-		xil_printf("\tTo   %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", dest_mac[0], dest_mac[1], dest_mac[2], dest_mac[3], dest_mac[4], dest_mac[5], dest_ip[3], dest_ip[2], dest_ip[1], dest_ip[0], (dest_port[0] << 8) + dest_port[1]);
+		xil_printf("\tFrom %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", src_mac[0], src_mac[1], src_mac[2], src_mac[3], src_mac[4], src_mac[5], src_ip[0], src_ip[1], src_ip[2], src_ip[3], (src_port[0] << 8) + src_port[1]);
+		xil_printf("\tTo   %02X:%02X:%02X:%02X:%02X:%02X, %u.%u.%u.%u, %u\n", dest_mac[0], dest_mac[1], dest_mac[2], dest_mac[3], dest_mac[4], dest_mac[5], dest_ip[0], dest_ip[1], dest_ip[2], dest_ip[3], (dest_port[0] << 8) + dest_port[1]);
 		xil_printf("\tData: ");
 		for(i=28; i < p->tot_len; i++)
 			xil_printf("%c", packet_data[i]);

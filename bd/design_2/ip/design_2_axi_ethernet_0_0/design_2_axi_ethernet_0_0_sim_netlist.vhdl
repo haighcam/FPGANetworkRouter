@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Thu Mar 24 16:24:47 2022
--- Host        : BA3145WS20 running 64-bit major release  (build 9200)
+-- Date        : Mon Mar 28 18:17:23 2022
+-- Host        : BA3145WS18 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_axi_ethernet_0_0/design_2_axi_ethernet_0_0_sim_netlist.vhdl
 -- Design      : design_2_axi_ethernet_0_0
@@ -253,7 +253,6 @@ architecture STRUCTURE of design_2_axi_ethernet_0_0_bd_d66b is
     rx_axis_mac_tvalid : out STD_LOGIC;
     rx_axis_mac_tlast : out STD_LOGIC;
     rx_axis_mac_tuser : out STD_LOGIC;
-    rx_axis_filter_tuser : out STD_LOGIC_VECTOR ( 4 downto 0 );
     tx_enable : out STD_LOGIC;
     tx_ifg_delay : in STD_LOGIC_VECTOR ( 7 downto 0 );
     tx_statistics_vector : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -362,7 +361,6 @@ architecture STRUCTURE of design_2_axi_ethernet_0_0_bd_d66b is
   signal NLW_mac_tx_enable_UNCONNECTED : STD_LOGIC;
   signal NLW_mac_tx_statistics_valid_UNCONNECTED : STD_LOGIC;
   signal NLW_mac_inband_clock_speed_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_mac_rx_axis_filter_tuser_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal NLW_mac_tx_statistics_vector_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute X_CORE_INFO : string;
   attribute X_CORE_INFO of c_counter_binary_0 : label is "c_counter_binary_v12_0_12,Vivado 2018.3.1";
@@ -618,7 +616,6 @@ mac: component design_2_axi_ethernet_0_0_bd_d66b_mac_0
       rgmii_txc => rgmii_txc,
       rgmii_txd(3 downto 0) => rgmii_td(3 downto 0),
       rx_axi_rstn => eth_buf_RESET2TEMACn,
-      rx_axis_filter_tuser(4 downto 0) => NLW_mac_rx_axis_filter_tuser_UNCONNECTED(4 downto 0),
       rx_axis_mac_tdata(7 downto 0) => mac_m_axis_rx_TDATA(7 downto 0),
       rx_axis_mac_tlast => mac_m_axis_rx_TLAST,
       rx_axis_mac_tuser => mac_m_axis_rx_TUSER,

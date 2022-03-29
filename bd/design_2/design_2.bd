@@ -23,9 +23,9 @@
       "mux_3": "",
       "mux_5": "",
       "mux_4": "",
+      "eth_controller_0": "",
       "encoder_0": "",
-      "decoder_0": "",
-      "eth_controller_0": ""
+      "decoder_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
@@ -103,7 +103,7 @@
             "value": "eth_rgmii"
           },
           "Frame_Filter": {
-            "value": "true"
+            "value": "false"
           },
           "MDIO_BOARD_INTERFACE": {
             "value": "eth_mdio_mdc"
@@ -273,16 +273,16 @@
             "value": "48"
           },
           "C_PROBE_OUT1_WIDTH": {
-            "value": "48"
+            "value": "32"
           },
           "C_PROBE_OUT2_WIDTH": {
-            "value": "32"
+            "value": "16"
           },
           "C_PROBE_OUT3_WIDTH": {
-            "value": "32"
+            "value": "48"
           },
           "C_PROBE_OUT4_WIDTH": {
-            "value": "16"
+            "value": "32"
           },
           "C_PROBE_OUT5_WIDTH": {
             "value": "16"
@@ -303,7 +303,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "18"
+            "value": "14"
           },
           "C_PROBE0_MU_CNT": {
             "value": "1"
@@ -311,35 +311,65 @@
           "C_PROBE10_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE10_WIDTH": {
+            "value": "32"
+          },
           "C_PROBE11_MU_CNT": {
             "value": "1"
           },
           "C_PROBE12_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE12_WIDTH": {
+            "value": "1"
+          },
           "C_PROBE13_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE13_WIDTH": {
+            "value": "1"
+          },
           "C_PROBE14_WIDTH": {
-            "value": "2"
+            "value": "1"
+          },
+          "C_PROBE15_WIDTH": {
+            "value": "1"
           },
           "C_PROBE16_WIDTH": {
-            "value": "2"
+            "value": "1"
           },
           "C_PROBE17_WIDTH": {
-            "value": "32"
+            "value": "1"
+          },
+          "C_PROBE18_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE19_WIDTH": {
+            "value": "1"
           },
           "C_PROBE1_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE1_WIDTH": {
+            "value": "32"
+          },
           "C_PROBE2_MU_CNT": {
             "value": "1"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "16"
           },
           "C_PROBE3_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE3_WIDTH": {
+            "value": "48"
+          },
           "C_PROBE4_MU_CNT": {
             "value": "1"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "32"
           },
           "C_PROBE5_MU_CNT": {
             "value": "1"
@@ -350,11 +380,20 @@
           "C_PROBE7_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE7_WIDTH": {
+            "value": "32"
+          },
           "C_PROBE8_MU_CNT": {
             "value": "1"
           },
+          "C_PROBE8_WIDTH": {
+            "value": "16"
+          },
           "C_PROBE9_MU_CNT": {
             "value": "1"
+          },
+          "C_PROBE9_WIDTH": {
+            "value": "48"
           },
           "C_SLOT_0_AXI_PROTOCOL": {
             "value": "AXI4S"
@@ -616,14 +655,6 @@
           }
         }
       },
-      "encoder_0": {
-        "vlnv": "utoronto.ca:user:encoder:1.1",
-        "xci_name": "design_2_encoder_0_0"
-      },
-      "decoder_0": {
-        "vlnv": "utoronto.ca:user:decoder:1.2",
-        "xci_name": "design_2_decoder_0_0"
-      },
       "eth_controller_0": {
         "vlnv": "xilinx.com:module_ref:eth_controller:1.0",
         "xci_name": "design_2_eth_controller_0_0",
@@ -852,6 +883,14 @@
             }
           }
         }
+      },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_2_encoder_0_0"
+      },
+      "decoder_0": {
+        "vlnv": "utoronto.ca:user:decoder:1.2",
+        "xci_name": "design_2_decoder_0_0"
       }
     },
     "interface_nets": {
@@ -861,11 +900,11 @@
           "axi_ethernet_0/rgmii"
         ]
       },
-      "axi_ethernet_0_m_axis_rxd": {
+      "decoder_0_m_axis_packet": {
         "interface_ports": [
-          "decoder_0/s_axis_rxd",
-          "axi_ethernet_0/m_axis_rxd",
-          "ila_1/SLOT_0_AXIS"
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis_packet",
+          "ila_3/SLOT_0_AXIS"
         ]
       },
       "axi_ethernet_0_m_axis_rxs": {
@@ -874,22 +913,17 @@
           "axi_ethernet_0/m_axis_rxs"
         ]
       },
-      "eth_controller_0_M_AXI": {
+      "axi_ethernet_0_m_axis_rxd": {
         "interface_ports": [
-          "eth_controller_0/M_AXI",
-          "axi_ethernet_0/s_axi"
+          "decoder_0/s_axis_rxd",
+          "axi_ethernet_0/m_axis_rxd",
+          "ila_1/SLOT_0_AXIS"
         ]
       },
       "encoder_0_m_axis_txc": {
         "interface_ports": [
           "encoder_0/m_axis_txc",
           "axi_ethernet_0/s_axis_txc"
-        ]
-      },
-      "axi_ethernet_0_mdio": {
-        "interface_ports": [
-          "eth_mdio_mdc",
-          "axi_ethernet_0/mdio"
         ]
       },
       "encoder_0_m_axis_txd": {
@@ -899,11 +933,16 @@
           "ila_2/SLOT_0_AXIS"
         ]
       },
-      "decoder_0_m_axis_packet": {
+      "axi_ethernet_0_mdio": {
         "interface_ports": [
-          "decoder_0/m_axis_packet",
-          "encoder_0/s_axis_packet",
-          "ila_3/SLOT_0_AXIS"
+          "eth_mdio_mdc",
+          "axi_ethernet_0/mdio"
+        ]
+      },
+      "eth_controller_0_M_AXI": {
+        "interface_ports": [
+          "eth_controller_0/M_AXI",
+          "axi_ethernet_0/s_axi"
         ]
       }
     },
@@ -919,9 +958,9 @@
           "ila_1/clk",
           "ila_2/clk",
           "ila_3/clk",
+          "eth_controller_0/aclk",
           "encoder_0/aclk",
-          "decoder_0/aclk",
-          "eth_controller_0/aclk"
+          "decoder_0/aclk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -932,9 +971,9 @@
           "axi_ethernet_0/axi_txc_arstn",
           "axi_ethernet_0/axi_rxd_arstn",
           "axi_ethernet_0/axi_rxs_arstn",
+          "eth_controller_0/aresetn",
           "encoder_0/aresetn",
-          "decoder_0/aresetn",
-          "eth_controller_0/aresetn"
+          "decoder_0/aresetn"
         ]
       },
       "clk_wiz_1_locked": {
@@ -977,8 +1016,8 @@
       "decoder_0_alt_dest_addr": {
         "ports": [
           "decoder_0/alt_dest_addr",
-          "ila_0/probe6",
-          "mux_0/A"
+          "mux_0/A",
+          "ila_0/probe6"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -992,8 +1031,8 @@
       "decoder_0_alt_src_addr": {
         "ports": [
           "decoder_0/alt_src_addr",
-          "ila_0/probe7",
-          "mux_3/A"
+          "mux_3/A",
+          "ila_0/probe9"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1007,8 +1046,8 @@
       "decoder_0_alt_udp_dest_port": {
         "ports": [
           "decoder_0/alt_udp_dest_port",
-          "ila_0/probe10",
-          "mux_2/A"
+          "mux_2/A",
+          "ila_0/probe8"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1022,8 +1061,8 @@
       "decoder_0_alt_udp_src_port": {
         "ports": [
           "decoder_0/alt_udp_src_port",
-          "ila_0/probe11",
-          "mux_4/A"
+          "mux_4/A",
+          "ila_0/probe11"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1037,8 +1076,8 @@
       "decoder_0_alt_ip_dest_addr": {
         "ports": [
           "decoder_0/alt_ip_dest_addr",
-          "ila_0/probe8",
-          "mux_1/A"
+          "mux_1/A",
+          "ila_0/probe7"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1052,8 +1091,8 @@
       "decoder_0_alt_ip_src_addr": {
         "ports": [
           "decoder_0/alt_ip_src_addr",
-          "ila_0/probe9",
-          "mux_5/A"
+          "mux_5/A",
+          "ila_0/probe10"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1082,7 +1121,7 @@
       "decoder_0_src_addr": {
         "ports": [
           "decoder_0/src_addr",
-          "ila_0/probe1",
+          "ila_0/probe3",
           "encoder_0/src_addr"
         ],
         "hdl_attributes": {
@@ -1112,7 +1151,7 @@
       "decoder_0_ip_dest_addr": {
         "ports": [
           "decoder_0/ip_dest_addr",
-          "ila_0/probe2",
+          "ila_0/probe1",
           "encoder_0/ip_dest_addr"
         ],
         "hdl_attributes": {
@@ -1127,7 +1166,7 @@
       "decoder_0_udp_dest_port": {
         "ports": [
           "decoder_0/udp_dest_port",
-          "ila_0/probe4",
+          "ila_0/probe2",
           "encoder_0/udp_dest_port"
         ],
         "hdl_attributes": {
@@ -1165,21 +1204,6 @@
           "decoder_0/dest_addr",
           "ila_0/probe0",
           "encoder_0/dest_addr"
-        ],
-        "hdl_attributes": {
-          "DEBUG": {
-            "value": "true"
-          },
-          "MARK_DEBUG": {
-            "value": "true"
-          }
-        }
-      },
-      "decoder_0_ip_src_addr": {
-        "ports": [
-          "decoder_0/ip_src_addr",
-          "ila_0/probe3",
-          "encoder_0/ip_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1235,36 +1259,6 @@
           "eth_controller_0/config_unicast_addr"
         ]
       },
-      "dest_addr": {
-        "ports": [
-          "vio_0/probe_out1",
-          "mux_3/B"
-        ]
-      },
-      "src_ip_addr": {
-        "ports": [
-          "vio_0/probe_out2",
-          "mux_1/B"
-        ]
-      },
-      "dest_ip_addr": {
-        "ports": [
-          "vio_0/probe_out3",
-          "mux_5/B"
-        ]
-      },
-      "src_udp_port": {
-        "ports": [
-          "vio_0/probe_out4",
-          "mux_2/B"
-        ]
-      },
-      "dest_udp_port": {
-        "ports": [
-          "vio_0/probe_out5",
-          "mux_4/B"
-        ]
-      },
       "config_ready": {
         "ports": [
           "vio_0/probe_out6",
@@ -1301,28 +1295,49 @@
           "encoder_0/alt_udp_dest_port"
         ]
       },
-      "decoder_0_mst_exec_state": {
+      "decoder_0_ip_src_addr": {
         "ports": [
-          "decoder_0/mst_exec_state",
-          "ila_0/probe14"
+          "decoder_0/ip_src_addr",
+          "ila_0/probe4",
+          "encoder_0/ip_src_addr"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
+      },
+      "dest_udp_port": {
+        "ports": [
+          "vio_0/probe_out5",
+          "mux_4/B"
         ]
       },
-      "encoder_0_mst_exec_state": {
+      "src_ip_addr": {
         "ports": [
-          "encoder_0/mst_exec_state",
-          "ila_0/probe15"
+          "vio_0/probe_out1",
+          "mux_1/B"
         ]
       },
-      "decoder_0_fifo_state": {
+      "src_udp_port": {
         "ports": [
-          "decoder_0/fifo_state",
-          "ila_0/probe16"
+          "vio_0/probe_out2",
+          "mux_2/B"
         ]
       },
-      "decoder_0_fifo_data_len": {
+      "dest_addr": {
         "ports": [
-          "decoder_0/fifo_data_len",
-          "ila_0/probe17"
+          "vio_0/probe_out3",
+          "mux_3/B"
+        ]
+      },
+      "dest_ip_addr": {
+        "ports": [
+          "vio_0/probe_out4",
+          "mux_5/B"
         ]
       }
     },

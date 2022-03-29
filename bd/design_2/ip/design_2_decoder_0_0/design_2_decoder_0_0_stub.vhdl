@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
--- Date        : Thu Mar 24 16:21:31 2022
--- Host        : BA3145WS20 running 64-bit major release  (build 9200)
+-- Date        : Mon Mar 28 22:32:24 2022
+-- Host        : BA3145WS18 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               C:/Users/haighcam/ECE532/bd/design_2/ip/design_2_decoder_0_0/design_2_decoder_0_0_stub.vhdl
 -- Design      : design_2_decoder_0_0
@@ -22,23 +22,20 @@ entity design_2_decoder_0_0 is
     m_axis_packet_tvalid : out STD_LOGIC;
     m_axis_packet_tready : in STD_LOGIC;
     dest_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    alt_dest_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    alt_src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
     ip_dest_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    alt_ip_dest_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    alt_ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     udp_dest_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     udp_src_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    alt_dest_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    alt_ip_dest_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     alt_udp_dest_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    alt_src_addr : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    alt_ip_src_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     alt_udp_src_port : out STD_LOGIC_VECTOR ( 15 downto 0 );
     encapsualted : out STD_LOGIC;
     valid : out STD_LOGIC;
     ready : in STD_LOGIC;
-    mst_exec_state : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    fifo_state : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    fifo_data_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axis_rxs_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axis_rxs_tkeep : in STD_LOGIC_VECTOR ( 3 downto 0 );
     s_axis_rxs_tlast : in STD_LOGIC;
@@ -57,7 +54,7 @@ architecture stub of design_2_decoder_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,m_axis_packet_tdata[31:0],m_axis_packet_tkeep[3:0],m_axis_packet_tlast,m_axis_packet_tvalid,m_axis_packet_tready,dest_addr[47:0],src_addr[47:0],alt_dest_addr[47:0],alt_src_addr[47:0],ip_dest_addr[31:0],ip_src_addr[31:0],alt_ip_dest_addr[31:0],alt_ip_src_addr[31:0],udp_dest_port[15:0],udp_src_port[15:0],alt_udp_dest_port[15:0],alt_udp_src_port[15:0],encapsualted,valid,ready,mst_exec_state[1:0],fifo_state[1:0],fifo_data_len[31:0],s_axis_rxs_tdata[31:0],s_axis_rxs_tkeep[3:0],s_axis_rxs_tlast,s_axis_rxs_tvalid,s_axis_rxs_tready,s_axis_rxd_tdata[31:0],s_axis_rxd_tkeep[3:0],s_axis_rxd_tlast,s_axis_rxd_tvalid,s_axis_rxd_tready";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,m_axis_packet_tdata[31:0],m_axis_packet_tkeep[3:0],m_axis_packet_tlast,m_axis_packet_tvalid,m_axis_packet_tready,dest_addr[47:0],ip_dest_addr[31:0],udp_dest_port[15:0],src_addr[47:0],ip_src_addr[31:0],udp_src_port[15:0],alt_dest_addr[47:0],alt_ip_dest_addr[31:0],alt_udp_dest_port[15:0],alt_src_addr[47:0],alt_ip_src_addr[31:0],alt_udp_src_port[15:0],encapsualted,valid,ready,s_axis_rxs_tdata[31:0],s_axis_rxs_tkeep[3:0],s_axis_rxs_tlast,s_axis_rxs_tvalid,s_axis_rxs_tready,s_axis_rxd_tdata[31:0],s_axis_rxd_tkeep[3:0],s_axis_rxd_tlast,s_axis_rxd_tvalid,s_axis_rxd_tready";
 attribute X_CORE_INFO : string;
 attribute X_CORE_INFO of stub : architecture is "decoder,Vivado 2018.3.1";
 begin

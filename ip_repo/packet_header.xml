@@ -3,7 +3,7 @@
   <spirit:vendor>utoronto.ca</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>packet_header</spirit:name>
-  <spirit:version>1.1</spirit:version>
+  <spirit:version>1.2</spirit:version>
   <spirit:directConnection>true</spirit:directConnection>
   <spirit:isAddressable>false</spirit:isAddressable>
   <spirit:maxMasters>100</spirit:maxMasters>

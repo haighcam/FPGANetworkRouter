@@ -18,8 +18,7 @@ module s_axis_fifo #(
 	output reg [31:0] data,
 	output reg [31:0] write_data,
     output reg [FIFO_ADDR_SIZE-1:0] data_len,
-    output wire ready,
-    output reg [1:0] mst_exec_state
+    output wire ready
 );
 
 localparam [1:0]    IDLE = 2'd0,
@@ -28,8 +27,8 @@ localparam [1:0]    IDLE = 2'd0,
 localparam FIFO_SIZE = FIFO_SIZE_WORDS * 4;
 localparam REAL_ADDR_SIZE = FIFO_ADDR_SIZE - 2;
 
-(*ram_style="block"*) reg [31:0] data_fifo [FIFO_SIZE_WORDS-1:0];
-
+reg [31:0] data_fifo [FIFO_SIZE_WORDS-1:0];
+reg [1:0] mst_exec_state;
 reg writes_done;
 
 wire [REAL_ADDR_SIZE-1: 0] real_data_len, rptr_0, rptr_1;

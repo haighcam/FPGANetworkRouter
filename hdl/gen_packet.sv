@@ -77,8 +77,7 @@ module gen_packet #(
 
     input axis_resetn,
     input axis_clk,
-    input in_flush,
-	output reg mst_exec_state
+    input in_flush
 );
 function integer clogb2 (input integer bit_depth);
 begin
@@ -101,7 +100,7 @@ reg [47:0] dest_addr, src_addr, alt_src_addr, alt_dest_addr;
 reg [31:0] ip_dest_addr, ip_src_addr, alt_ip_dest_addr, alt_ip_src_addr, data;
 reg [15:0] udp_dest_port, udp_src_port, alt_udp_dest_port, alt_udp_src_port, txc_cnt, txc_cnt_int;
 reg encapsulated, m_axis_txd_tvalid_int, m_axis_txd_tlast_int, m_axis_txc_tvalid_int, m_axis_txc_tlast_int;
-reg flush_fifo_int, send_header, valid_int;
+reg flush_fifo_int, send_header, valid_int, mst_exec_state;
 
 wire [15:0] ip_checksum_data [8:0];
 wire [15:0] udp_checksum_data [2:0];
@@ -139,14 +138,6 @@ ip_checksum ip_checksum_inst (
     .data(ip_checksum_data),
     .checksum(ip_header_checksum)
 );
-
-/* assign udp_checksum_data[0] = udp_src_port;
-assign udp_checksum_data[1] = udp_dest_port;
-assign udp_checksum_data[2] = cur_udp_pkt_size;
-udp_checksum udp_checksum_inst (
-    .data(udp_checksum_data),
-    .checksum(udp_header_checksum)
-); */
 
 assign udp_header_checksum = 16'd0;
 
@@ -396,15 +387,5 @@ module ip_checksum (
 wire [15:0] sum;
 wire [3:0] c;
 assign {c, sum} = data[0] + data[1] + data[2] + data[3] + data[4] + data[5] + data[6] + data[7] + data[8];
-assign checksum = (c + sum) ^ 16'hFFFF;
-endmodule
-
-module udp_checksum (
-    input wire [15:0] data [2:0],
-    output wire [15:0] checksum
-);
-wire [15:0] sum;
-wire [3:0] c;
-assign {c, sum} = data[0] + data[1] + data[2];
 assign checksum = (c + sum) ^ 16'hFFFF;
 endmodule

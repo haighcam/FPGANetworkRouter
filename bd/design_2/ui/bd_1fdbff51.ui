@@ -2,81 +2,77 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
 #  -string -flagsOSRD
-preplace port eth_rgmii -pg 1 -y 2490 -defaultsOSRD
-preplace port eth_mdio_mdc -pg 1 -y 2470 -defaultsOSRD
-preplace port sys_clock -pg 1 -y 2580 -defaultsOSRD
-preplace port reset -pg 1 -y 2480 -defaultsOSRD
-preplace portBus phy_reset_out -pg 1 -y 2550 -defaultsOSRD
-preplace inst vio_0 -pg 1 -lvl 2 -y 1870 -defaultsOSRD
-preplace inst decoder_0 -pg 1 -lvl 3 -y 910 -defaultsOSRD
-preplace inst mux_0 -pg 1 -lvl 3 -y 2020 -defaultsOSRD
-preplace inst mux_1 -pg 1 -lvl 3 -y 1530 -defaultsOSRD
-preplace inst eth_controller_0 -pg 1 -lvl 4 -y 2130 -defaultsOSRD
-preplace inst encoder_0 -pg 1 -lvl 4 -y 1560 -defaultsOSRD
-preplace inst mux_2 -pg 1 -lvl 3 -y 1670 -defaultsOSRD
-preplace inst mux_3 -pg 1 -lvl 3 -y 1250 -defaultsOSRD
-preplace inst mux_4 -pg 1 -lvl 3 -y 1840 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 2 -y 240 -defaultsOSRD
-preplace inst mux_5 -pg 1 -lvl 3 -y 1390 -defaultsOSRD
-preplace inst ila_1 -pg 1 -lvl 3 -y 2230 -defaultsOSRD
-preplace inst ila_2 -pg 1 -lvl 5 -y 2000 -defaultsOSRD
-preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 2500 -defaultsOSRD
-preplace inst ila_3 -pg 1 -lvl 4 -y 1900 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 2570 -defaultsOSRD
-preplace inst axi_ethernet_0 -pg 1 -lvl 5 -y 2510 -defaultsOSRD
-preplace netloc decoder_0_fifo_data_len 1 1 3 380 520 NJ 520 1300
-preplace netloc config_ready 1 2 2 760 2120 NJ
+preplace port eth_rgmii -pg 1 -y 1320 -defaultsOSRD
+preplace port eth_mdio_mdc -pg 1 -y 1300 -defaultsOSRD
+preplace port sys_clock -pg 1 -y 1500 -defaultsOSRD
+preplace port reset -pg 1 -y 1400 -defaultsOSRD
+preplace portBus phy_reset_out -pg 1 -y 1380 -defaultsOSRD
+preplace inst vio_0 -pg 1 -lvl 2 -y 1120 -defaultsOSRD
+preplace inst decoder_0 -pg 1 -lvl 3 -y 730 -defaultsOSRD
+preplace inst mux_0 -pg 1 -lvl 3 -y 1230 -defaultsOSRD
+preplace inst mux_1 -pg 1 -lvl 3 -y 80 -defaultsOSRD
+preplace inst encoder_0 -pg 1 -lvl 4 -y 940 -defaultsOSRD
+preplace inst eth_controller_0 -pg 1 -lvl 4 -y 1240 -defaultsOSRD
+preplace inst mux_2 -pg 1 -lvl 3 -y 240 -defaultsOSRD
+preplace inst mux_3 -pg 1 -lvl 3 -y 1070 -defaultsOSRD
+preplace inst mux_4 -pg 1 -lvl 3 -y 1420 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 2 -y 720 -defaultsOSRD
+preplace inst mux_5 -pg 1 -lvl 3 -y 380 -defaultsOSRD
+preplace inst ila_1 -pg 1 -lvl 3 -y 1640 -defaultsOSRD
+preplace inst ila_2 -pg 1 -lvl 5 -y 1580 -defaultsOSRD
+preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 1420 -defaultsOSRD
+preplace inst ila_3 -pg 1 -lvl 4 -y 1450 -defaultsOSRD
+preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 1490 -defaultsOSRD
+preplace inst axi_ethernet_0 -pg 1 -lvl 5 -y 1340 -defaultsOSRD
 preplace netloc dest_ip_addr 1 2 1 740
-preplace netloc decoder_0_src_addr 1 1 3 210 620 NJ 620 1420
-preplace netloc mux_5_C 1 3 1 1330
-preplace netloc decoder_0_udp_dest_port 1 1 3 220 630 NJ 630 1350
-preplace netloc decoder_0_alt_ip_src_addr 1 1 3 330 580 880 580 1260
-preplace netloc decoder_0_alt_udp_src_port 1 1 3 260 1170 810 1170 1260
+preplace netloc config_ready 1 2 2 770 1320 1350J
+preplace netloc decoder_0_src_addr 1 1 3 280 510 NJ 510 1290
+preplace netloc mux_5_C 1 3 1 1320
+preplace netloc decoder_0_udp_dest_port 1 1 3 270 500 NJ 500 1310
+preplace netloc decoder_0_alt_ip_src_addr 1 1 3 230 470 650 460 1160
+preplace netloc decoder_0_alt_udp_src_port 1 1 3 290 940 720 960 1120
 preplace netloc axi_ethernet_0_rgmii 1 5 1 NJ
-preplace netloc mux_3_C 1 3 1 1340
-preplace netloc decoder_0_ip_dest_addr 1 1 3 240 600 NJ 600 1400
-preplace netloc decoder_0_alt_ip_dest_addr 1 1 3 320 550 890 550 1270
-preplace netloc encoder_0_mst_exec_state 1 1 4 300 660 NJ 660 NJ 660 1780
-preplace netloc dest_udp_port 1 2 1 850
+preplace netloc mux_3_C 1 3 1 1200
+preplace netloc decoder_0_ip_dest_addr 1 1 3 260 490 NJ 490 1340
+preplace netloc decoder_0_alt_ip_dest_addr 1 1 3 210 160 640 160 1150
+preplace netloc dest_udp_port 1 2 1 640
 preplace netloc axi_ethernet_0_phy_rst_n 1 5 1 NJ
-preplace netloc mux_0_out 1 3 1 1390
-preplace netloc decoder_0_alt_udp_dest_port 1 1 3 250 1160 840 1160 1270
-preplace netloc mux_2_out 1 3 1 N
+preplace netloc mux_0_out 1 3 1 1240
+preplace netloc decoder_0_alt_udp_dest_port 1 1 3 220 460 640 470 1130
+preplace netloc mux_2_out 1 3 1 1300
 preplace netloc sys_clock_1 1 0 1 NJ
-preplace netloc decoder_0_m_axis_packet 1 3 1 1310
-preplace netloc mux_4_C 1 3 1 1340
-preplace netloc src_addr 1 2 2 770 2100 NJ
-preplace netloc decoder_0_dest_addr 1 1 3 270 500 NJ 500 1380
-preplace netloc decoder_0_mst_exec_state 1 1 3 350 610 NJ 610 1240
-preplace netloc encoder_0_m_axis_txc 1 4 1 1810
-preplace netloc decoder_0_fifo_state 1 1 3 370 530 NJ 530 1290
-preplace netloc decoder_0_alt_dest_addr 1 1 3 310 540 860 540 1280
-preplace netloc clk_wiz_1_locked 1 1 1 270
-preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 3 820 2110 1420 2040 1790
-preplace netloc clk_wiz_1_clk_out1 1 1 4 200 920 790 1920 1410 2030 1820
-preplace netloc encoder_0_m_axis_txd 1 4 1 1830
-preplace netloc eth_controller_0_M_AXI 1 4 1 1800
-preplace netloc axi_ethernet_0_m_axis_rxd 1 2 4 900 560 NJ 560 NJ 560 2120
-preplace netloc drop_packets 1 2 2 840J 1760 1400
-preplace netloc dest_addr 1 2 1 750
-preplace netloc decoder_0_valid 1 1 3 290 650 NJ 650 1370
-preplace netloc decoder_0_udp_src_port 1 1 3 230 640 NJ 640 1410
-preplace netloc clk_wiz_1_clk_out2 1 1 4 370 2620 NJ 2620 NJ 2620 NJ
-preplace netloc src_udp_port 1 2 1 830
-preplace netloc src_ip_addr 1 2 1 800
-preplace netloc eth_controller_0_config_done 1 1 4 380 2000 850J 1940 1280J 2000 1780
-preplace netloc ila_1_trig_in_ack 1 2 1 780
-preplace netloc decoder_0_ip_src_addr 1 1 3 340 480 NJ 480 1360
-preplace netloc encoder_0_ready 1 3 1 1320
-preplace netloc clk_wiz_1_clk_out3 1 1 4 340 2600 NJ 2600 NJ 2600 NJ
-preplace netloc axi_ethernet_0_m_axis_rxs 1 2 4 910 570 NJ 570 NJ 570 2110
-preplace netloc mux_1_out 1 3 1 1250
-preplace netloc decoder_0_encapsualted 1 1 3 360 510 NJ 510 1390
-preplace netloc decoder_0_alt_src_addr 1 1 3 280 590 870 590 1250
-preplace netloc reset_1 1 0 2 10 2480 NJ
+preplace netloc decoder_0_m_axis_packet 1 3 1 1220
+preplace netloc mux_4_C 1 3 1 1260
+preplace netloc src_addr 1 2 2 690 1310 1270J
+preplace netloc decoder_0_dest_addr 1 1 3 240 480 NJ 480 1350
+preplace netloc encoder_0_m_axis_txc 1 4 1 1730
+preplace netloc decoder_0_alt_dest_addr 1 1 3 270 920 750 940 1140
+preplace netloc clk_wiz_1_locked 1 1 1 250
+preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 3 780 1330 1280 1330 1720
+preplace netloc clk_wiz_1_clk_out1 1 1 4 200 950 680 1500 1230 1350 1730
+preplace netloc eth_controller_0_M_AXI 1 4 1 N
+preplace netloc encoder_0_m_axis_txd 1 4 1 1710
+preplace netloc axi_ethernet_0_m_axis_rxd 1 2 4 800 1340 NJ 1340 1700J 1170 2000
+preplace netloc dest_addr 1 2 1 760
+preplace netloc drop_packets 1 2 2 790 1150 1250J
+preplace netloc decoder_0_valid 1 1 3 260 990 NJ 990 1190
+preplace netloc decoder_0_udp_src_port 1 1 3 240 960 710J 930 1170
+preplace netloc clk_wiz_1_clk_out2 1 1 4 220J 1320 630J 1510 1320J 1360 1700
+preplace netloc src_udp_port 1 2 1 660
+preplace netloc src_ip_addr 1 2 1 630
+preplace netloc decoder_0_ip_src_addr 1 1 3 290 520 NJ 520 1260
+preplace netloc eth_controller_0_config_done 1 1 4 290 1530 NJ 1530 1230J 1550 1690
+preplace netloc ila_1_trig_in_ack 1 2 1 730
+preplace netloc encoder_0_ready 1 2 3 810 970 1180J 710 1700
+preplace netloc clk_wiz_1_clk_out3 1 1 4 280J 1520 NJ 1520 1350J 1540 1740
+preplace netloc axi_ethernet_0_m_axis_rxs 1 2 4 810 530 NJ 530 NJ 530 2010
+preplace netloc mux_1_out 1 3 1 1330
+preplace netloc decoder_0_encapsualted 1 1 3 250 980 NJ 980 1210
+preplace netloc decoder_0_alt_src_addr 1 1 3 280 930 700 950 1130
+preplace netloc reset_1 1 0 2 20 1400 NJ
 preplace netloc axi_ethernet_0_mdio 1 5 1 NJ
-preplace netloc ila_0_trig_out1 1 2 3 730 1930 1320 1990 NJ
-levelinfo -pg 1 -10 110 560 1080 1610 1980 2150 -top 0 -bot 2680
+preplace netloc ila_0_trig_out1 1 2 3 670 1540 1340 1570 NJ
+levelinfo -pg 1 0 110 460 960 1520 1870 2030 -top 0 -bot 1740
 "
 }
 {

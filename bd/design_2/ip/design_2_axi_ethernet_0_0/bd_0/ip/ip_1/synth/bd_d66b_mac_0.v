@@ -61,7 +61,7 @@
 // The entity declaration for the block level example design.
 //------------------------------------------------------------------------------
 
-(* CORE_GENERATION_INFO = "bd_d66b_mac_0,bd_d66b_mac_0_support,{x_ipProduct=Vivado 2018.3.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=tri_mode_ethernet_mac,x_ipVersion=9.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,x_ipLicense=tri_mode_eth_mac@2015.04(bought),x_ipLicense=eth_avb_endpoint@2015.04(design_linking),c_component_name=bd_d66b_mac_0,c_physical_interface=RGMII,c_half_duplex=false,c_has_host=true,c_has_mdio=true,c_mdio_external=false,c_axilite_freq=150.00,c_add_filter=true,c_at_entries=4,c_family=artix7,c_mac_speed=TRI_SPEED,c_int_clk_src=User_Clk2,c_int_mode_type=BASEX,c_has_stats=true,c_num_stats=34,c_cntr_rst=false,c_stats_width=64,c_avb=false,c_1588=0,c_tx_inband_cf_enable=false,c_rx_inband_ts_enable=false,c_tx_tuser_width=1,c_rx_vec_width=79,c_tx_vec_width=79,c_addr_width=12,c_pfc=false,c_mii_io=true,c_data_rate=1_Gbps}" *)
+(* CORE_GENERATION_INFO = "bd_d66b_mac_0,bd_d66b_mac_0_support,{x_ipProduct=Vivado 2018.3.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=tri_mode_ethernet_mac,x_ipVersion=9.0,x_ipCoreRevision=13,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,x_ipLicense=tri_mode_eth_mac@2015.04(bought),x_ipLicense=eth_avb_endpoint@2015.04(design_linking),c_component_name=bd_d66b_mac_0,c_physical_interface=RGMII,c_half_duplex=false,c_has_host=true,c_has_mdio=true,c_mdio_external=false,c_axilite_freq=150.00,c_add_filter=false,c_at_entries=0,c_family=artix7,c_mac_speed=TRI_SPEED,c_int_clk_src=User_Clk2,c_int_mode_type=BASEX,c_has_stats=true,c_num_stats=34,c_cntr_rst=false,c_stats_width=64,c_avb=false,c_1588=0,c_tx_inband_cf_enable=false,c_rx_inband_ts_enable=false,c_tx_tuser_width=1,c_rx_vec_width=79,c_tx_vec_width=79,c_addr_width=12,c_pfc=false,c_mii_io=true,c_data_rate=1_Gbps}" *)
 (* X_CORE_INFO = "bd_d66b_mac_0_support,Vivado 2018.3.1" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module bd_d66b_mac_0  (
@@ -97,7 +97,6 @@ module bd_d66b_mac_0  (
       output               rx_axis_mac_tlast,
       output               rx_axis_mac_tuser,
 
-      output      [4:0]    rx_axis_filter_tuser,
 
       // Transmitter Interface
       //-----------------------------
@@ -202,8 +201,6 @@ module bd_d66b_mac_0  (
       .rx_axis_mac_tvalid                 (rx_axis_mac_tvalid),
       .rx_axis_mac_tlast                  (rx_axis_mac_tlast),
       .rx_axis_mac_tuser                  (rx_axis_mac_tuser),
-      .rx_axis_filter_tuser               (rx_axis_filter_tuser),
-
       // Transmitter Interface
       //-----------------------------
       .tx_enable                          (tx_enable),

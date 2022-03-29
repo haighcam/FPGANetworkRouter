@@ -180,7 +180,7 @@ proc create_root_design { parentCell } {
   set axi_ethernet_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernet:7.1 axi_ethernet_0 ]
   set_property -dict [ list \
    CONFIG.ETHERNET_BOARD_INTERFACE {eth_rgmii} \
-   CONFIG.Frame_Filter {true} \
+   CONFIG.Frame_Filter {false} \
    CONFIG.MDIO_BOARD_INTERFACE {eth_mdio_mdc} \
    CONFIG.PHYRST_BOARD_INTERFACE {phy_reset_out} \
    CONFIG.PHY_TYPE {RGMII} \
@@ -278,24 +278,37 @@ proc create_root_design { parentCell } {
    CONFIG.ALL_PROBE_SAME_MU_CNT {1} \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {18} \
+   CONFIG.C_NUM_OF_PROBES {14} \
    CONFIG.C_PROBE0_MU_CNT {1} \
    CONFIG.C_PROBE10_MU_CNT {1} \
+   CONFIG.C_PROBE10_WIDTH {32} \
    CONFIG.C_PROBE11_MU_CNT {1} \
    CONFIG.C_PROBE12_MU_CNT {1} \
+   CONFIG.C_PROBE12_WIDTH {1} \
    CONFIG.C_PROBE13_MU_CNT {1} \
-   CONFIG.C_PROBE14_WIDTH {2} \
-   CONFIG.C_PROBE16_WIDTH {2} \
-   CONFIG.C_PROBE17_WIDTH {32} \
+   CONFIG.C_PROBE13_WIDTH {1} \
+   CONFIG.C_PROBE14_WIDTH {1} \
+   CONFIG.C_PROBE15_WIDTH {1} \
+   CONFIG.C_PROBE16_WIDTH {1} \
+   CONFIG.C_PROBE17_WIDTH {1} \
+   CONFIG.C_PROBE18_WIDTH {1} \
+   CONFIG.C_PROBE19_WIDTH {1} \
    CONFIG.C_PROBE1_MU_CNT {1} \
+   CONFIG.C_PROBE1_WIDTH {32} \
    CONFIG.C_PROBE2_MU_CNT {1} \
+   CONFIG.C_PROBE2_WIDTH {16} \
    CONFIG.C_PROBE3_MU_CNT {1} \
+   CONFIG.C_PROBE3_WIDTH {48} \
    CONFIG.C_PROBE4_MU_CNT {1} \
+   CONFIG.C_PROBE4_WIDTH {32} \
    CONFIG.C_PROBE5_MU_CNT {1} \
    CONFIG.C_PROBE6_MU_CNT {1} \
    CONFIG.C_PROBE7_MU_CNT {1} \
+   CONFIG.C_PROBE7_WIDTH {32} \
    CONFIG.C_PROBE8_MU_CNT {1} \
+   CONFIG.C_PROBE8_WIDTH {16} \
    CONFIG.C_PROBE9_MU_CNT {1} \
+   CONFIG.C_PROBE9_WIDTH {48} \
    CONFIG.C_SLOT_0_AXI_PROTOCOL {AXI4S} \
    CONFIG.C_TRIGOUT_EN {true} \
  ] $ila_0
@@ -423,10 +436,10 @@ proc create_root_design { parentCell } {
    CONFIG.C_NUM_PROBE_IN {1} \
    CONFIG.C_NUM_PROBE_OUT {8} \
    CONFIG.C_PROBE_OUT0_WIDTH {48} \
-   CONFIG.C_PROBE_OUT1_WIDTH {48} \
-   CONFIG.C_PROBE_OUT2_WIDTH {32} \
-   CONFIG.C_PROBE_OUT3_WIDTH {32} \
-   CONFIG.C_PROBE_OUT4_WIDTH {16} \
+   CONFIG.C_PROBE_OUT1_WIDTH {32} \
+   CONFIG.C_PROBE_OUT2_WIDTH {16} \
+   CONFIG.C_PROBE_OUT3_WIDTH {48} \
+   CONFIG.C_PROBE_OUT4_WIDTH {32} \
    CONFIG.C_PROBE_OUT5_WIDTH {16} \
  ] $vio_0
 
@@ -452,13 +465,13 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets encoder_0_m_axis_txd] [get_bd_in
   connect_bd_net -net config_ready [get_bd_pins eth_controller_0/config_valid] [get_bd_pins mux_0/sel] [get_bd_pins mux_1/sel] [get_bd_pins mux_2/sel] [get_bd_pins mux_3/sel] [get_bd_pins mux_4/sel] [get_bd_pins mux_5/sel] [get_bd_pins vio_0/probe_out6]
   connect_bd_net -net decoder_0_alt_dest_addr [get_bd_pins decoder_0/alt_dest_addr] [get_bd_pins ila_0/probe6] [get_bd_pins mux_0/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_dest_addr]
-  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins ila_0/probe8] [get_bd_pins mux_1/A]
+  connect_bd_net -net decoder_0_alt_ip_dest_addr [get_bd_pins decoder_0/alt_ip_dest_addr] [get_bd_pins ila_0/probe7] [get_bd_pins mux_1/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_ip_dest_addr]
-  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins ila_0/probe9] [get_bd_pins mux_5/A]
+  connect_bd_net -net decoder_0_alt_ip_src_addr [get_bd_pins decoder_0/alt_ip_src_addr] [get_bd_pins ila_0/probe10] [get_bd_pins mux_5/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_ip_src_addr]
-  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins ila_0/probe7] [get_bd_pins mux_3/A]
+  connect_bd_net -net decoder_0_alt_src_addr [get_bd_pins decoder_0/alt_src_addr] [get_bd_pins ila_0/probe9] [get_bd_pins mux_3/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_src_addr]
-  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins ila_0/probe10] [get_bd_pins mux_2/A]
+  connect_bd_net -net decoder_0_alt_udp_dest_port [get_bd_pins decoder_0/alt_udp_dest_port] [get_bd_pins ila_0/probe8] [get_bd_pins mux_2/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_udp_dest_port]
   connect_bd_net -net decoder_0_alt_udp_src_port [get_bd_pins decoder_0/alt_udp_src_port] [get_bd_pins ila_0/probe11] [get_bd_pins mux_4/A]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_udp_src_port]
@@ -466,26 +479,22 @@ set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_alt_udp_src_port]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_dest_addr]
   connect_bd_net -net decoder_0_encapsualted [get_bd_pins decoder_0/encapsualted] [get_bd_pins encoder_0/encapsulated] [get_bd_pins ila_0/probe12]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_encapsualted]
-  connect_bd_net -net decoder_0_fifo_data_len [get_bd_pins decoder_0/fifo_data_len] [get_bd_pins ila_0/probe17]
-  connect_bd_net -net decoder_0_fifo_state [get_bd_pins decoder_0/fifo_state] [get_bd_pins ila_0/probe16]
-  connect_bd_net -net decoder_0_ip_dest_addr [get_bd_pins decoder_0/ip_dest_addr] [get_bd_pins encoder_0/ip_dest_addr] [get_bd_pins ila_0/probe2]
+  connect_bd_net -net decoder_0_ip_dest_addr [get_bd_pins decoder_0/ip_dest_addr] [get_bd_pins encoder_0/ip_dest_addr] [get_bd_pins ila_0/probe1]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_ip_dest_addr]
-  connect_bd_net -net decoder_0_ip_src_addr [get_bd_pins decoder_0/ip_src_addr] [get_bd_pins encoder_0/ip_src_addr] [get_bd_pins ila_0/probe3]
+  connect_bd_net -net decoder_0_ip_src_addr [get_bd_pins decoder_0/ip_src_addr] [get_bd_pins encoder_0/ip_src_addr] [get_bd_pins ila_0/probe4]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_ip_src_addr]
-  connect_bd_net -net decoder_0_mst_exec_state [get_bd_pins decoder_0/mst_exec_state] [get_bd_pins ila_0/probe14]
-  connect_bd_net -net decoder_0_src_addr [get_bd_pins decoder_0/src_addr] [get_bd_pins encoder_0/src_addr] [get_bd_pins ila_0/probe1]
+  connect_bd_net -net decoder_0_src_addr [get_bd_pins decoder_0/src_addr] [get_bd_pins encoder_0/src_addr] [get_bd_pins ila_0/probe3]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_src_addr]
-  connect_bd_net -net decoder_0_udp_dest_port [get_bd_pins decoder_0/udp_dest_port] [get_bd_pins encoder_0/udp_dest_port] [get_bd_pins ila_0/probe4]
+  connect_bd_net -net decoder_0_udp_dest_port [get_bd_pins decoder_0/udp_dest_port] [get_bd_pins encoder_0/udp_dest_port] [get_bd_pins ila_0/probe2]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_udp_dest_port]
   connect_bd_net -net decoder_0_udp_src_port [get_bd_pins decoder_0/udp_src_port] [get_bd_pins encoder_0/udp_src_port] [get_bd_pins ila_0/probe5]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_udp_src_port]
   connect_bd_net -net decoder_0_valid [get_bd_pins decoder_0/valid] [get_bd_pins encoder_0/valid] [get_bd_pins ila_0/probe13]
 set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_valid]
-  connect_bd_net -net dest_addr [get_bd_pins mux_3/B] [get_bd_pins vio_0/probe_out1]
-  connect_bd_net -net dest_ip_addr [get_bd_pins mux_5/B] [get_bd_pins vio_0/probe_out3]
+  connect_bd_net -net dest_addr [get_bd_pins mux_3/B] [get_bd_pins vio_0/probe_out3]
+  connect_bd_net -net dest_ip_addr [get_bd_pins mux_5/B] [get_bd_pins vio_0/probe_out4]
   connect_bd_net -net dest_udp_port [get_bd_pins mux_4/B] [get_bd_pins vio_0/probe_out5]
   connect_bd_net -net drop_packets [get_bd_pins encoder_0/drop] [get_bd_pins vio_0/probe_out7]
-  connect_bd_net -net encoder_0_mst_exec_state [get_bd_pins encoder_0/mst_exec_state] [get_bd_pins ila_0/probe15]
   connect_bd_net -net encoder_0_ready [get_bd_pins decoder_0/ready] [get_bd_pins encoder_0/ready]
   connect_bd_net -net eth_controller_0_config_done [get_bd_pins eth_controller_0/config_done] [get_bd_pins vio_0/probe_in0]
   connect_bd_net -net ila_0_trig_out1 [get_bd_pins ila_0/trig_out] [get_bd_pins ila_1/trig_in] [get_bd_pins ila_2/trig_in] [get_bd_pins ila_3/trig_in]
@@ -499,8 +508,8 @@ set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets decoder_0_valid]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins clk_wiz_1/resetn] [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
   connect_bd_net -net rst_clk_wiz_1_100M_peripheral_aresetn [get_bd_pins axi_ethernet_0/axi_rxd_arstn] [get_bd_pins axi_ethernet_0/axi_rxs_arstn] [get_bd_pins axi_ethernet_0/axi_txc_arstn] [get_bd_pins axi_ethernet_0/axi_txd_arstn] [get_bd_pins axi_ethernet_0/s_axi_lite_resetn] [get_bd_pins decoder_0/aresetn] [get_bd_pins encoder_0/aresetn] [get_bd_pins eth_controller_0/aresetn] [get_bd_pins rst_clk_wiz_1_100M/peripheral_aresetn]
   connect_bd_net -net src_addr [get_bd_pins eth_controller_0/config_unicast_addr] [get_bd_pins mux_0/B] [get_bd_pins vio_0/probe_out0]
-  connect_bd_net -net src_ip_addr [get_bd_pins mux_1/B] [get_bd_pins vio_0/probe_out2]
-  connect_bd_net -net src_udp_port [get_bd_pins mux_2/B] [get_bd_pins vio_0/probe_out4]
+  connect_bd_net -net src_ip_addr [get_bd_pins mux_1/B] [get_bd_pins vio_0/probe_out1]
+  connect_bd_net -net src_udp_port [get_bd_pins mux_2/B] [get_bd_pins vio_0/probe_out2]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_1/clk_in1]
 
   # Create address segments

@@ -280,7 +280,7 @@ proc create_root_design { parentCell } {
    CONFIG.Enable_AVB {false} \
    CONFIG.Enable_MDIO {true} \
    CONFIG.Enable_Priority_Flow_Control {false} \
-   CONFIG.Frame_Filter {true} \
+   CONFIG.Frame_Filter {false} \
    CONFIG.Half_Duplex {false} \
    CONFIG.Int_Mode_Type {BASEX} \
    CONFIG.MAC_Speed {Tri_speed} \
@@ -288,7 +288,7 @@ proc create_root_design { parentCell } {
    CONFIG.MII_IO {true} \
    CONFIG.Make_MDIO_External {false} \
    CONFIG.Management_Interface {true} \
-   CONFIG.Number_of_Table_Entries {4} \
+   CONFIG.Number_of_Table_Entries {0} \
    CONFIG.Physical_Interface {RGMII} \
    CONFIG.RX_Inband_TS_Enable {false} \
    CONFIG.Statistics_Counters {true} \

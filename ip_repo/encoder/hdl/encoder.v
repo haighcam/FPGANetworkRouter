@@ -29,26 +29,22 @@ module encoder #(
     input wire s_axis_tvalid,
 
     input [47:0] dest_addr,
-    input [47:0] src_addr,
-    input [47:0] alt_dest_addr,
-    input [47:0] alt_src_addr,
     input [31:0] ip_dest_addr,
-    input [31:0] ip_src_addr,
-    input [31:0] alt_ip_dest_addr,
-    input [31:0] alt_ip_src_addr,
     input [15:0] udp_dest_port,
+    input [47:0] src_addr,
+    input [31:0] ip_src_addr,
     input [15:0] udp_src_port,
+    input [47:0] alt_dest_addr,
+    input [31:0] alt_ip_dest_addr,
     input [15:0] alt_udp_dest_port,
+    input [47:0] alt_src_addr,
+    input [31:0] alt_ip_src_addr,
     input [15:0] alt_udp_src_port,
     input encapsulated,
     input valid,
     output ready,
-    input drop,
-    output mst_exec_state
+    input drop
 );
-
-wire mst_exec_state_int;
-assign mst_exec_state = mst_exec_state_int;
 
 gen_packet #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS)) gen_packet_inst (
     .in_dest_addr(dest_addr),
@@ -83,7 +79,6 @@ gen_packet #(.FIFO_SIZE_WORDS(FIFO_SIZE_WORDS)) gen_packet_inst (
     .s_axis_tlast(s_axis_tlast),
     .s_axis_tready(s_axis_tready),
     .axis_resetn(aresetn),
-    .axis_clk(aclk),
-    .mst_exec_state(mst_exec_state_int)
+    .axis_clk(aclk)
 );
 endmodule

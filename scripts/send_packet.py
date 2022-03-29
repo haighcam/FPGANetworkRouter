@@ -1,7 +1,7 @@
 import socket
 import nvgre
 
-DESL_NUM = 5
+DESL_NUM = int(input("Host DESL Number: "))
 
 address = (
     "1.1."+str(DESL_NUM)+".2",
@@ -32,11 +32,14 @@ packet = nvgre.NVGRE_MOD(
     payload
 ).frame()
 
-client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-client.bind(src_address)
-client.sendto(packet, address)
-print("sent", packet, address)
+try:
+    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    client.bind(src_address)
+    client.sendto(packet, address)
+    print("sent", packet, address)
 
-#while True:
-data, addr = client.recvfrom(1024)
-print("recived", data, addr)
+    #while True:
+    data, addr = client.recvfrom(1024)
+    print("recived", data, addr)
+except:
+    raise

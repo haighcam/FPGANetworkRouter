@@ -1,30 +1,51 @@
 {
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
 #  -string -flagsOSRD
-preplace port drop -pg 1 -y 280 -defaultsOSRD
-preplace port m_axis_txc_tlast_0 -pg 1 -y 230 -defaultsOSRD
-preplace port m_axis_txd_tready_0 -pg 1 -y 250 -defaultsOSRD
-preplace port m_axis_txd_tvalid_0 -pg 1 -y 130 -defaultsOSRD
-preplace port aclk -pg 1 -y 300 -defaultsOSRD
-preplace port aresetn -pg 1 -y 320 -defaultsOSRD
-preplace inst decoder_0 -pg 1 -lvl 2 -y 150 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -y 150 -defaultsOSRD
-preplace inst encoder_0 -pg 1 -lvl 3 -y 180 -defaultsOSRD
-preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 350 -defaultsOSRD
-preplace netloc axi4stream_vip_0_M_AXIS 1 1 1 240
-preplace netloc m_axis_txd_tready_0_1 1 0 4 NJ 250 230J 290 NJ 290 950
-preplace netloc encoder_0_m_axis_txd_tvalid 1 3 1 950J
-preplace netloc drop_1 1 0 3 NJ 280 NJ 280 610J
-preplace netloc decoder_0_m_axis_packet 1 2 1 610
-preplace netloc xlconstant_0_dout 1 1 1 NJ
-preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 30 90 260 50 600J
-preplace netloc decoder_0_packet_header 1 2 1 590
-preplace netloc encoder_0_m_axis_txc_tlast 1 3 1 960J
-preplace netloc aclk_1 1 0 3 20 80 250 40 620J
-levelinfo -pg 1 0 130 430 790 980 -top 0 -bot 420
+preplace port drop -pg 1 -y 440 -defaultsOSRD
+preplace port m_axis_txc_tlast_0 -pg 1 -y 290 -defaultsOSRD
+preplace port m_axis_txd_tready_0 -pg 1 -y 260 -defaultsOSRD
+preplace port m_axis_txd_tvalid_0 -pg 1 -y 230 -defaultsOSRD
+preplace port aclk -pg 1 -y 110 -defaultsOSRD
+preplace port aresetn -pg 1 -y 190 -defaultsOSRD
+preplace inst decoder_0 -pg 1 -lvl 2 -y 230 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -y 320 -defaultsOSRD
+preplace inst encoder_0 -pg 1 -lvl 3 -y 260 -defaultsOSRD
+preplace inst axi4stream_vip_0 -pg 1 -lvl 1 -y 180 -defaultsOSRD
+preplace inst address_buffer_0 -pg 1 -lvl 2 -y 650 -defaultsOSRD
+preplace netloc axi4stream_vip_0_M_AXIS 1 1 1 N
+preplace netloc decoder_0_src_addr 1 1 2 300 500 720
+preplace netloc decoder_0_udp_dest_port 1 1 2 290 470 700
+preplace netloc decoder_0_alt_udp_src_port 1 2 1 760
+preplace netloc decoder_0_alt_ip_src_addr 1 2 1 780
+preplace netloc decoder_0_ip_dest_addr 1 1 2 280 460 710
+preplace netloc decoder_0_alt_ip_dest_addr 1 2 1 850
+preplace netloc address_buffer_0_out_udp_dest_port 1 2 1 810
+preplace netloc decoder_0_alt_udp_dest_port 1 2 1 820
+preplace netloc m_axis_txd_tready_0_1 1 0 4 0J 10 NJ 10 NJ 10 1210
+preplace netloc encoder_0_m_axis_txd_tvalid 1 3 1 NJ
+preplace netloc drop_1 1 0 3 NJ 440 NJ 440 820J
+preplace netloc decoder_0_m_axis_packet 1 2 1 N
+preplace netloc address_buffer_0_out_udp_src_port 1 2 1 870
+preplace netloc address_buffer_0_out_dest_addr 1 2 1 770
+preplace netloc decoder_0_dest_addr 1 1 2 310 510 730
+preplace netloc xlconstant_0_dout 1 1 1 230J
+preplace netloc address_buffer_0_out_src_addr 1 2 1 840
+preplace netloc address_buffer_0_out_ip_dest_addr 1 2 1 790
+preplace netloc decoder_0_alt_dest_addr 1 2 1 830
+preplace netloc decoder_0_udp_src_port 1 1 2 270 480 690
+preplace netloc decoder_0_valid 1 1 2 250 430 740
+preplace netloc rst_aclk_100M_peripheral_aresetn 1 0 3 20 110 240 30 860J
+preplace netloc decoder_0_ip_src_addr 1 1 2 260 450 680
+preplace netloc encoder_0_ready 1 1 3 240 490 NJ 490 1210
+preplace netloc encoder_0_m_axis_txc_tlast 1 3 1 NJ
+preplace netloc address_buffer_0_out_ip_src_addr 1 2 1 860
+preplace netloc decoder_0_encapsualted 1 2 1 750
+preplace netloc decoder_0_alt_src_addr 1 2 1 800
+preplace netloc aclk_1 1 0 3 10 100 220 20 870J
+levelinfo -pg 1 -20 120 500 1040 1230 -top 0 -bot 790
 "
 }
 {
-   "da_clkrst_cnt":"5"
+   "da_clkrst_cnt":"6"
 }
