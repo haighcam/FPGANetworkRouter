@@ -143,7 +143,7 @@ assign udp_header_checksum = 16'd0;
 
 assign ready = !valid_int;
 always @(posedge axis_clk) begin
-	if (!axis_resetn || ((mst_exec_state == SEND_PACKET) && pkt_last_word))
+	if (!axis_resetn || ((mst_exec_state == SEND_PACKET) && pkt_last_word) || in_flush)
 		valid_int <= 0;
 	else if (valid) begin
 		valid_int <= 1;
