@@ -27,8 +27,8 @@
  */
 
 #define DESLNUM(s) s##4
-#define SRC_PORT 22
-#define DEST_PORT 7
+#define SRC_PORT 7
+#define DEST_PORT 22
 
 //Standard library includes
 #include <stdio.h>
@@ -326,7 +326,7 @@ static void udp_client_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, con
 		return;
 	}
 
-	xil_printf("Packet received, %d bytes, from port %d of IP %d.%d.%d.%d\n", p->tot_len, port, ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr));
+	//xil_printf("Packet received, %d bytes, from port %d of IP %d.%d.%d.%d\n", p->tot_len, port, ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr), ip4_addr1(addr));
 	//Print packet contents to terminal
 	char* packet_data = (char*) malloc(p->tot_len);
 	pbuf_copy_partial(p, packet_data, p->tot_len, 0); //Note - inefficient way to access packet data

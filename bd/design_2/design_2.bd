@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3CC7E3274A1DAF75",
+      "boundary_crc": "0xF2BD9CC80EDAF8AD",
       "device": "xc7a200tsbg484-1",
       "name": "design_2",
       "synth_flow_mode": "Hierarchical",
@@ -25,7 +25,11 @@
       "mux_4": "",
       "eth_controller_0": "",
       "encoder_0": "",
-      "decoder_0": ""
+      "decoder_0": "",
+      "bcam_0": "",
+      "xlconstant_0": "",
+      "ila_5": "",
+      "network_firewall_0": ""
     },
     "interface_ports": {
       "eth_mdio_mdc": {
@@ -92,6 +96,38 @@
             "value": "0.000"
           }
         }
+      },
+      "SD1": {
+        "direction": "O"
+      },
+      "SD7": {
+        "direction": "O"
+      },
+      "SD8": {
+        "direction": "O"
+      },
+      "SD4": {
+        "direction": "O"
+      },
+      "sd_reset": {
+        "type": "rst",
+        "direction": "O",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "SD2": {
+        "direction": "O"
+      },
+      "SD3": {
+        "direction": "I"
       }
     },
     "components": {
@@ -212,6 +248,18 @@
           "CLKOUT3_USED": {
             "value": "true"
           },
+          "CLKOUT4_JITTER": {
+            "value": "175.402"
+          },
+          "CLKOUT4_PHASE_ERROR": {
+            "value": "98.575"
+          },
+          "CLKOUT4_REQUESTED_OUT_FREQ": {
+            "value": "25.000"
+          },
+          "CLKOUT4_USED": {
+            "value": "true"
+          },
           "CLK_IN1_BOARD_INTERFACE": {
             "value": "sys_clock"
           },
@@ -221,11 +269,14 @@
           "MMCM_CLKOUT2_DIVIDE": {
             "value": "8"
           },
+          "MMCM_CLKOUT3_DIVIDE": {
+            "value": "40"
+          },
           "MMCM_DIVCLK_DIVIDE": {
             "value": "1"
           },
           "NUM_OUT_CLKS": {
-            "value": "3"
+            "value": "4"
           },
           "PRIM_SOURCE": {
             "value": "Single_ended_clock_capable_pin"
@@ -264,13 +315,16 @@
             "value": "1"
           },
           "C_NUM_PROBE_IN": {
-            "value": "1"
+            "value": "5"
           },
           "C_NUM_PROBE_OUT": {
-            "value": "8"
+            "value": "11"
           },
           "C_PROBE_OUT0_WIDTH": {
             "value": "48"
+          },
+          "C_PROBE_OUT10_WIDTH": {
+            "value": "7"
           },
           "C_PROBE_OUT1_WIDTH": {
             "value": "32"
@@ -891,33 +945,63 @@
       "decoder_0": {
         "vlnv": "utoronto.ca:user:decoder:1.2",
         "xci_name": "design_2_decoder_0_0"
+      },
+      "bcam_0": {
+        "vlnv": "utoronto.ca:user:bcam:1.0",
+        "xci_name": "design_2_bcam_0_0"
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_2_xlconstant_0_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "ila_5": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_2_ila_4_0",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "11"
+          },
+          "C_PROBE10_WIDTH": {
+            "value": "3"
+          },
+          "C_PROBE4_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE5_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE6_WIDTH": {
+            "value": "32"
+          },
+          "C_PROBE8_WIDTH": {
+            "value": "7"
+          },
+          "C_PROBE9_WIDTH": {
+            "value": "3"
+          }
+        }
+      },
+      "network_firewall_0": {
+        "vlnv": "utoronto.ca:user:network_firewall:1.0",
+        "xci_name": "design_2_network_firewall_0_0"
       }
     },
     "interface_nets": {
-      "axi_ethernet_0_rgmii": {
-        "interface_ports": [
-          "eth_rgmii",
-          "axi_ethernet_0/rgmii"
-        ]
-      },
-      "decoder_0_m_axis_packet": {
-        "interface_ports": [
-          "decoder_0/m_axis_packet",
-          "encoder_0/s_axis_packet",
-          "ila_3/SLOT_0_AXIS"
-        ]
-      },
       "axi_ethernet_0_m_axis_rxs": {
         "interface_ports": [
           "decoder_0/s_axis_rxs",
           "axi_ethernet_0/m_axis_rxs"
-        ]
-      },
-      "axi_ethernet_0_m_axis_rxd": {
-        "interface_ports": [
-          "decoder_0/s_axis_rxd",
-          "axi_ethernet_0/m_axis_rxd",
-          "ila_1/SLOT_0_AXIS"
         ]
       },
       "encoder_0_m_axis_txc": {
@@ -933,16 +1017,36 @@
           "ila_2/SLOT_0_AXIS"
         ]
       },
-      "axi_ethernet_0_mdio": {
-        "interface_ports": [
-          "eth_mdio_mdc",
-          "axi_ethernet_0/mdio"
-        ]
-      },
       "eth_controller_0_M_AXI": {
         "interface_ports": [
           "eth_controller_0/M_AXI",
           "axi_ethernet_0/s_axi"
+        ]
+      },
+      "axi_ethernet_0_rgmii": {
+        "interface_ports": [
+          "eth_rgmii",
+          "axi_ethernet_0/rgmii"
+        ]
+      },
+      "decoder_0_m_axis_packet": {
+        "interface_ports": [
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis_packet",
+          "ila_3/SLOT_0_AXIS"
+        ]
+      },
+      "axi_ethernet_0_m_axis_rxd": {
+        "interface_ports": [
+          "decoder_0/s_axis_rxd",
+          "axi_ethernet_0/m_axis_rxd",
+          "ila_1/SLOT_0_AXIS"
+        ]
+      },
+      "axi_ethernet_0_mdio": {
+        "interface_ports": [
+          "eth_mdio_mdc",
+          "axi_ethernet_0/mdio"
         ]
       }
     },
@@ -960,7 +1064,10 @@
           "ila_3/clk",
           "eth_controller_0/aclk",
           "encoder_0/aclk",
-          "decoder_0/aclk"
+          "decoder_0/aclk",
+          "bcam_0/clk",
+          "ila_5/clk",
+          "network_firewall_0/axi_clk"
         ]
       },
       "rst_clk_wiz_1_100M_peripheral_aresetn": {
@@ -973,7 +1080,9 @@
           "axi_ethernet_0/axi_rxs_arstn",
           "eth_controller_0/aresetn",
           "encoder_0/aresetn",
-          "decoder_0/aresetn"
+          "decoder_0/aresetn",
+          "bcam_0/resetn",
+          "network_firewall_0/axi_aresetn"
         ]
       },
       "clk_wiz_1_locked": {
@@ -1077,7 +1186,8 @@
         "ports": [
           "decoder_0/alt_ip_dest_addr",
           "mux_1/A",
-          "ila_0/probe7"
+          "ila_0/probe7",
+          "network_firewall_0/alt_ip_dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1092,7 +1202,8 @@
         "ports": [
           "decoder_0/alt_ip_src_addr",
           "mux_5/A",
-          "ila_0/probe10"
+          "ila_0/probe10",
+          "network_firewall_0/alt_ip_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1137,7 +1248,8 @@
         "ports": [
           "decoder_0/valid",
           "ila_0/probe13",
-          "encoder_0/valid"
+          "encoder_0/valid",
+          "network_firewall_0/valid"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1152,7 +1264,8 @@
         "ports": [
           "decoder_0/ip_dest_addr",
           "ila_0/probe1",
-          "encoder_0/ip_dest_addr"
+          "encoder_0/ip_dest_addr",
+          "network_firewall_0/ip_dest_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1271,12 +1384,6 @@
           "eth_controller_0/config_valid"
         ]
       },
-      "drop_packets": {
-        "ports": [
-          "vio_0/probe_out7",
-          "encoder_0/drop"
-        ]
-      },
       "mux_3_C": {
         "ports": [
           "mux_3/C",
@@ -1299,7 +1406,8 @@
         "ports": [
           "decoder_0/ip_src_addr",
           "ila_0/probe4",
-          "encoder_0/ip_src_addr"
+          "encoder_0/ip_src_addr",
+          "network_firewall_0/ip_src_addr"
         ],
         "hdl_attributes": {
           "DEBUG": {
@@ -1338,6 +1446,164 @@
         "ports": [
           "vio_0/probe_out4",
           "mux_5/B"
+        ]
+      },
+      "clk_wiz_1_clk_out4": {
+        "ports": [
+          "clk_wiz_1/clk_out4",
+          "bcam_0/clk_25"
+        ]
+      },
+      "bcam_0_SD1": {
+        "ports": [
+          "bcam_0/SD1",
+          "SD1"
+        ]
+      },
+      "bcam_0_SD7": {
+        "ports": [
+          "bcam_0/SD7",
+          "SD7"
+        ]
+      },
+      "bcam_0_SD8": {
+        "ports": [
+          "bcam_0/SD8",
+          "SD8"
+        ]
+      },
+      "bcam_0_SD4": {
+        "ports": [
+          "bcam_0/SD4",
+          "SD4"
+        ]
+      },
+      "bcam_0_sd_reset": {
+        "ports": [
+          "bcam_0/sd_reset",
+          "sd_reset"
+        ]
+      },
+      "bcam_0_SD2": {
+        "ports": [
+          "bcam_0/SD2",
+          "SD2"
+        ]
+      },
+      "SD3_0_1": {
+        "ports": [
+          "SD3",
+          "bcam_0/SD3"
+        ]
+      },
+      "vio_0_probe_out9": {
+        "ports": [
+          "vio_0/probe_out9",
+          "bcam_0/read_en"
+        ]
+      },
+      "vio_0_probe_out10": {
+        "ports": [
+          "vio_0/probe_out10",
+          "bcam_0/r_addr"
+        ]
+      },
+      "bcam_0_wr_complete": {
+        "ports": [
+          "bcam_0/wr_complete",
+          "vio_0/probe_in1"
+        ]
+      },
+      "bcam_0_match": {
+        "ports": [
+          "bcam_0/match",
+          "ila_5/probe7",
+          "network_firewall_0/match"
+        ]
+      },
+      "bcam_0_match_addr": {
+        "ports": [
+          "bcam_0/match_addr",
+          "ila_5/probe8",
+          "network_firewall_0/match_addr"
+        ]
+      },
+      "network_firewall_0_match_en": {
+        "ports": [
+          "network_firewall_0/match_en",
+          "bcam_0/match_en",
+          "ila_5/probe4"
+        ]
+      },
+      "network_firewall_0_frame": {
+        "ports": [
+          "network_firewall_0/frame",
+          "bcam_0/data_in",
+          "ila_5/probe6"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "network_firewall_0/s_axis_valid"
+        ]
+      },
+      "network_firewall_0_state_out": {
+        "ports": [
+          "network_firewall_0/state_out",
+          "vio_0/probe_in2",
+          "ila_5/probe9"
+        ]
+      },
+      "network_firewall_0_next_state_out": {
+        "ports": [
+          "network_firewall_0/next_state_out",
+          "vio_0/probe_in3",
+          "ila_5/probe10"
+        ]
+      },
+      "bcam_0_rdata": {
+        "ports": [
+          "bcam_0/rdata",
+          "ila_5/probe5"
+        ]
+      },
+      "bcam_0_r_valid": {
+        "ports": [
+          "bcam_0/r_valid",
+          "ila_5/probe0"
+        ]
+      },
+      "network_firewall_0_drop": {
+        "ports": [
+          "network_firewall_0/drop",
+          "ila_5/probe1",
+          "encoder_0/drop"
+        ]
+      },
+      "network_firewall_0_transmit": {
+        "ports": [
+          "network_firewall_0/transmit",
+          "ila_5/probe2"
+        ]
+      },
+      "network_firewall_0_ready": {
+        "ports": [
+          "network_firewall_0/ready",
+          "ila_5/probe3"
+        ]
+      },
+      "vio_0_probe_out7": {
+        "ports": [
+          "vio_0/probe_out7",
+          "vio_0/probe_in4"
+        ]
+      },
+      "vio_0_probe_out8": {
+        "ports": [
+          "vio_0/probe_out8",
+          "bcam_0/write_en",
+          "network_firewall_0/writing"
         ]
       }
     },

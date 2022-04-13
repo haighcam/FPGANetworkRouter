@@ -1,17 +1,23 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3.1 (win64) Build 2489853 Tue Mar 26 04:20:25 MDT 2019
-//Date        : Mon Mar 28 23:54:21 2022
-//Host        : BA3145WS18 running 64-bit major release  (build 9200)
+//Date        : Wed Mar 30 04:42:37 2022
+//Host        : BA3145WS23 running 64-bit major release  (build 9200)
 //Command     : generate_target design_2.bd
 //Design      : design_2
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=17,numReposBlks=17,numNonXlnxBlks=2,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=6,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_2,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=21,numReposBlks=21,numNonXlnxBlks=4,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=6,da_clkrst_cnt=6,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "design_2.hwdef" *) 
 module design_2
-   (eth_mdio_mdc_mdc,
+   (SD1,
+    SD2,
+    SD3,
+    SD4,
+    SD7,
+    SD8,
+    eth_mdio_mdc_mdc,
     eth_mdio_mdc_mdio_i,
     eth_mdio_mdc_mdio_o,
     eth_mdio_mdc_mdio_t,
@@ -23,7 +29,14 @@ module design_2
     eth_rgmii_txc,
     phy_reset_out,
     reset,
+    sd_reset,
     sys_clock);
+  output SD1;
+  output SD2;
+  input SD3;
+  output SD4;
+  output SD7;
+  output SD8;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 eth_mdio_mdc MDC" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME eth_mdio_mdc, CAN_DEBUG false" *) output eth_mdio_mdc_mdc;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 eth_mdio_mdc MDIO_I" *) input eth_mdio_mdc_mdio_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 eth_mdio_mdc MDIO_O" *) output eth_mdio_mdc_mdio_o;
@@ -36,8 +49,10 @@ module design_2
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 eth_rgmii TXC" *) output eth_rgmii_txc;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.PHY_RESET_OUT RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.PHY_RESET_OUT, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output [0:0]phy_reset_out;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SD_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SD_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output sd_reset;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN design_2_sys_clock, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000" *) input sys_clock;
 
+  wire SD3_0_1;
   wire [31:0]axi_ethernet_0_m_axis_rxd_TDATA;
   wire [3:0]axi_ethernet_0_m_axis_rxd_TKEEP;
   wire axi_ethernet_0_m_axis_rxd_TLAST;
@@ -59,9 +74,21 @@ module design_2
   wire [3:0]axi_ethernet_0_rgmii_TD;
   wire axi_ethernet_0_rgmii_TXC;
   wire axi_ethernet_0_rgmii_TX_CTL;
+  wire bcam_0_SD1;
+  wire bcam_0_SD2;
+  wire bcam_0_SD4;
+  wire bcam_0_SD7;
+  wire bcam_0_SD8;
+  wire bcam_0_match;
+  wire [6:0]bcam_0_match_addr;
+  wire bcam_0_r_valid;
+  wire [31:0]bcam_0_rdata;
+  wire bcam_0_sd_reset;
+  wire bcam_0_wr_complete;
   wire clk_wiz_1_clk_out1;
   wire clk_wiz_1_clk_out2;
   wire clk_wiz_1_clk_out3;
+  wire clk_wiz_1_clk_out4;
   wire clk_wiz_1_locked;
   wire [0:0]config_ready;
   (* DEBUG = "true" *) (* MARK_DEBUG *) wire [47:0]decoder_0_alt_dest_addr;
@@ -86,7 +113,6 @@ module design_2
   wire [47:0]dest_addr;
   wire [31:0]dest_ip_addr;
   wire [15:0]dest_udp_port;
-  wire [0:0]drop_packets;
   wire [31:0]encoder_0_m_axis_txc_TDATA;
   wire [3:0]encoder_0_m_axis_txc_TKEEP;
   wire encoder_0_m_axis_txc_TLAST;
@@ -117,13 +143,31 @@ module design_2
   wire [47:0]mux_3_C;
   wire [15:0]mux_4_C;
   wire [31:0]mux_5_C;
+  wire network_firewall_0_drop;
+  wire [31:0]network_firewall_0_frame;
+  wire network_firewall_0_match_en;
+  wire [2:0]network_firewall_0_next_state_out;
+  wire network_firewall_0_ready;
+  wire [2:0]network_firewall_0_state_out;
+  wire network_firewall_0_transmit;
   wire reset_1;
   wire [0:0]rst_clk_wiz_1_100M_peripheral_aresetn;
   wire [47:0]src_addr;
   wire [31:0]src_ip_addr;
   wire [15:0]src_udp_port;
   wire sys_clock_1;
+  wire [6:0]vio_0_probe_out10;
+  wire [0:0]vio_0_probe_out7;
+  wire [0:0]vio_0_probe_out8;
+  wire [0:0]vio_0_probe_out9;
+  wire [0:0]xlconstant_0_dout;
 
+  assign SD1 = bcam_0_SD1;
+  assign SD2 = bcam_0_SD2;
+  assign SD3_0_1 = SD3;
+  assign SD4 = bcam_0_SD4;
+  assign SD7 = bcam_0_SD7;
+  assign SD8 = bcam_0_SD8;
   assign axi_ethernet_0_mdio_MDIO_I = eth_mdio_mdc_mdio_i;
   assign axi_ethernet_0_rgmii_RD = eth_rgmii_rd[3:0];
   assign axi_ethernet_0_rgmii_RXC = eth_rgmii_rxc;
@@ -136,6 +180,7 @@ module design_2
   assign eth_rgmii_txc = axi_ethernet_0_rgmii_TXC;
   assign phy_reset_out[0] = axi_ethernet_0_phy_rst_n;
   assign reset_1 = reset;
+  assign sd_reset = bcam_0_sd_reset;
   assign sys_clock_1 = sys_clock;
   design_2_axi_ethernet_0_0 axi_ethernet_0
        (.axi_rxd_arstn(rst_clk_wiz_1_100M_peripheral_aresetn),
@@ -191,11 +236,33 @@ module design_2
         .s_axis_txd_tlast(encoder_0_m_axis_txd_TLAST),
         .s_axis_txd_tready(encoder_0_m_axis_txd_TREADY),
         .s_axis_txd_tvalid(encoder_0_m_axis_txd_TVALID));
+  design_2_bcam_0_0 bcam_0
+       (.SD1(bcam_0_SD1),
+        .SD2(bcam_0_SD2),
+        .SD3(SD3_0_1),
+        .SD4(bcam_0_SD4),
+        .SD7(bcam_0_SD7),
+        .SD8(bcam_0_SD8),
+        .clk(clk_wiz_1_clk_out1),
+        .clk_25(clk_wiz_1_clk_out4),
+        .data_in(network_firewall_0_frame),
+        .match(bcam_0_match),
+        .match_addr(bcam_0_match_addr),
+        .match_en(network_firewall_0_match_en),
+        .r_addr(vio_0_probe_out10),
+        .r_valid(bcam_0_r_valid),
+        .rdata(bcam_0_rdata),
+        .read_en(vio_0_probe_out9),
+        .resetn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .sd_reset(bcam_0_sd_reset),
+        .wr_complete(bcam_0_wr_complete),
+        .write_en(vio_0_probe_out8));
   design_2_clk_wiz_1_0 clk_wiz_1
        (.clk_in1(sys_clock_1),
         .clk_out1(clk_wiz_1_clk_out1),
         .clk_out2(clk_wiz_1_clk_out2),
         .clk_out3(clk_wiz_1_clk_out3),
+        .clk_out4(clk_wiz_1_clk_out4),
         .locked(clk_wiz_1_locked),
         .resetn(reset_1));
   design_2_decoder_0_0 decoder_0
@@ -241,7 +308,7 @@ module design_2
         .alt_udp_src_port(mux_2_out),
         .aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
         .dest_addr(decoder_0_dest_addr),
-        .drop(drop_packets),
+        .drop(network_firewall_0_drop),
         .encapsulated(decoder_0_encapsualted),
         .ip_dest_addr(decoder_0_ip_dest_addr),
         .ip_src_addr(decoder_0_ip_src_addr),
@@ -336,6 +403,19 @@ module design_2
         .probe7(1'b0),
         .probe8(1'b0),
         .trig_in(ila_0_trig_out1));
+  design_2_ila_4_0 ila_5
+       (.clk(clk_wiz_1_clk_out1),
+        .probe0(bcam_0_r_valid),
+        .probe1(network_firewall_0_drop),
+        .probe10(network_firewall_0_next_state_out),
+        .probe2(network_firewall_0_transmit),
+        .probe3(network_firewall_0_ready),
+        .probe4(network_firewall_0_match_en),
+        .probe5(bcam_0_rdata),
+        .probe6(network_firewall_0_frame),
+        .probe7(bcam_0_match),
+        .probe8(bcam_0_match_addr),
+        .probe9(network_firewall_0_state_out));
   design_2_mux_0_0 mux_0
        (.A(decoder_0_alt_dest_addr),
         .B(src_addr),
@@ -366,6 +446,27 @@ module design_2
         .B(dest_ip_addr),
         .C(mux_5_C),
         .sel(config_ready));
+  design_2_network_firewall_0_0 network_firewall_0
+       (.alt_ip_dest_addr(decoder_0_alt_ip_dest_addr),
+        .alt_ip_src_addr(decoder_0_alt_ip_src_addr),
+        .axi_aresetn(rst_clk_wiz_1_100M_peripheral_aresetn),
+        .axi_clk(clk_wiz_1_clk_out1),
+        .drop(network_firewall_0_drop),
+        .frame(network_firewall_0_frame),
+        .ip_dest_addr(decoder_0_ip_dest_addr),
+        .ip_src_addr(decoder_0_ip_src_addr),
+        .m_axis_ready(1'b1),
+        .match(bcam_0_match),
+        .match_addr(bcam_0_match_addr),
+        .match_en(network_firewall_0_match_en),
+        .next_state_out(network_firewall_0_next_state_out),
+        .ready(network_firewall_0_ready),
+        .s_axis_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axis_valid(xlconstant_0_dout),
+        .state_out(network_firewall_0_state_out),
+        .transmit(network_firewall_0_transmit),
+        .valid(decoder_0_valid),
+        .writing(vio_0_probe_out8));
   design_2_rst_clk_wiz_1_100M_0 rst_clk_wiz_1_100M
        (.aux_reset_in(1'b1),
         .dcm_locked(clk_wiz_1_locked),
@@ -376,12 +477,21 @@ module design_2
   design_2_vio_0_0 vio_0
        (.clk(clk_wiz_1_clk_out1),
         .probe_in0(eth_controller_0_config_done),
+        .probe_in1(bcam_0_wr_complete),
+        .probe_in2(network_firewall_0_state_out),
+        .probe_in3(network_firewall_0_next_state_out),
+        .probe_in4(vio_0_probe_out7),
         .probe_out0(src_addr),
         .probe_out1(src_ip_addr),
+        .probe_out10(vio_0_probe_out10),
         .probe_out2(src_udp_port),
         .probe_out3(dest_addr),
         .probe_out4(dest_ip_addr),
         .probe_out5(dest_udp_port),
         .probe_out6(config_ready),
-        .probe_out7(drop_packets));
+        .probe_out7(vio_0_probe_out7),
+        .probe_out8(vio_0_probe_out8),
+        .probe_out9(vio_0_probe_out9));
+  design_2_xlconstant_0_0 xlconstant_0
+       (.dout(xlconstant_0_dout));
 endmodule

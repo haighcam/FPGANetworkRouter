@@ -1,4 +1,4 @@
-
+/// A simple FIFO that stores data from a AXI stream interface and allows random reads to it.
 `timescale 1 ns / 1 ps
 
 module s_axis_fifo #(

@@ -22,7 +22,7 @@
 
 module blank(
     output A
-    );
+);
 reg a = 0;
 assign A = a;
 endmodule

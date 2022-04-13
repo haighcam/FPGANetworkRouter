@@ -1,8 +1,12 @@
+"""
+	requires colorama to run
+"""
+
 import msvcrt
 import socket
 import nvgre
 import selectors
-from colorama.colorama import init, Fore, Style
+from colorama import init, Fore, Style
 
 init()
 
@@ -25,7 +29,8 @@ addresses = [
     ("222.173.222.173", "11:11:11:11:11:11"),
     ("105.105.105.105", "22:22:22:22:22:22"),
     ("66.4.32.105", "33:33:33:33:33:33"),
-    ("252.0.14.206", "00:0A:35:00:00:{:02}".format(DEST_DESL_NUM))
+    ("252.0.14.206", "00:0A:35:00:00:{:02}".format(DEST_DESL_NUM)),
+    ("24.5.73.205", "55:55:55:55:55:55")
 ]
 
 client_num = {nvgre.get_mac(addr[1]):i for i, addr in enumerate(addresses)}
@@ -33,6 +38,7 @@ Formats = [
     Fore.CYAN,
     Fore.GREEN,
     Fore.YELLOW,
+    "",
     ""
 ]
 
@@ -55,7 +61,7 @@ try:
         if msvcrt.kbhit():
             key = msvcrt.getch()[0]
             opt = key - offset
-            if opt < 0 or opt > 3: continue
+            if opt < 0 or opt > 4: continue
             if src is None:
                 if opt == 3: continue
                 src = opt
@@ -82,6 +88,7 @@ try:
                 n = nvgre.NVGRE_MOD.from_packet(data)
                 n_src = client_num.get(n.src_eth, None)
                 n_dest = client_num.get(n.dst_eth, None)
+                if n_dest == 3: continue
                 if n_src is None or n_dest is None:
                     print("Unknown source or destination", nvgre.str_mac(n.src_eth), nvgre.str_mac(n.dst_eth))
                     raise

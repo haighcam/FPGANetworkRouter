@@ -1,8 +1,0 @@
-Vivado Simulator 2018.3
-Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: C:/DESL/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 24b4826d41f24a53b321b410acb05441 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_AlgoFSM_behav xil_defaultlib.tb_AlgoFSM xil_defaultlib.glbl -log elaborate.log 
-Using 2 slave threads.
-Starting static elaboration
-WARNING: [VRFC 10-3091] actual bit length 7 differs from formal bit length 9 for port 'read_address' [C:/Users/taylo600/algoFSM/tb_AlgoFSM.v:58]
-Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
