@@ -1,0 +1,327 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xC72EC2B38016F829",
+      "device": "xc7a200tsbg484-1",
+      "name": "design_3",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2018.3.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "axi4stream_vip_0": "",
+      "xlconstant_0": "",
+      "encoder_0": "",
+      "decoder_0": "",
+      "address_buffer_0": ""
+    },
+    "ports": {
+      "aclk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "aresetn",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_3_aclk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "aresetn": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "drop": {
+        "direction": "I"
+      },
+      "m_axis_txd_tready_0": {
+        "direction": "I"
+      },
+      "m_axis_txc_tlast_0": {
+        "direction": "O"
+      },
+      "m_axis_txd_tvalid_0": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "axi4stream_vip_0": {
+        "vlnv": "xilinx.com:ip:axi4stream_vip:1.1",
+        "xci_name": "design_3_axi4stream_vip_0_0",
+        "parameters": {
+          "HAS_ACLKEN": {
+            "value": "0"
+          },
+          "HAS_TKEEP": {
+            "value": "1"
+          },
+          "HAS_TLAST": {
+            "value": "1"
+          },
+          "HAS_TREADY": {
+            "value": "1"
+          },
+          "HAS_TSTRB": {
+            "value": "0"
+          },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
+          "TDATA_NUM_BYTES": {
+            "value": "4"
+          },
+          "TDEST_WIDTH": {
+            "value": "0"
+          },
+          "TID_WIDTH": {
+            "value": "0"
+          },
+          "TUSER_WIDTH": {
+            "value": "0"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_3_xlconstant_0_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "encoder_0": {
+        "vlnv": "utoronto.ca:user:encoder:1.1",
+        "xci_name": "design_3_encoder_0_1"
+      },
+      "decoder_0": {
+        "vlnv": "utoronto.ca:user:decoder:1.2",
+        "xci_name": "design_3_decoder_0_1",
+        "parameters": {
+          "NUM_HEADERS": {
+            "value": "1"
+          }
+        }
+      },
+      "address_buffer_0": {
+        "vlnv": "utoronto.ca:user:address_buffer:1.0",
+        "xci_name": "design_3_address_buffer_0_0"
+      }
+    },
+    "interface_nets": {
+      "decoder_0_m_axis_packet": {
+        "interface_ports": [
+          "decoder_0/m_axis_packet",
+          "encoder_0/s_axis_packet"
+        ]
+      },
+      "axi4stream_vip_0_M_AXIS": {
+        "interface_ports": [
+          "axi4stream_vip_0/M_AXIS",
+          "decoder_0/s_axis_rxd"
+        ]
+      }
+    },
+    "nets": {
+      "aclk_1": {
+        "ports": [
+          "aclk",
+          "axi4stream_vip_0/aclk",
+          "encoder_0/aclk",
+          "decoder_0/aclk",
+          "address_buffer_0/clk"
+        ]
+      },
+      "rst_aclk_100M_peripheral_aresetn": {
+        "ports": [
+          "aresetn",
+          "axi4stream_vip_0/aresetn",
+          "encoder_0/aresetn",
+          "decoder_0/aresetn"
+        ]
+      },
+      "drop_1": {
+        "ports": [
+          "drop",
+          "encoder_0/drop"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "decoder_0/s_axis_rxs_tvalid"
+        ]
+      },
+      "m_axis_txd_tready_0_1": {
+        "ports": [
+          "m_axis_txd_tready_0",
+          "encoder_0/m_axis_txd_tready"
+        ]
+      },
+      "encoder_0_m_axis_txc_tlast": {
+        "ports": [
+          "encoder_0/m_axis_txc_tlast",
+          "m_axis_txc_tlast_0"
+        ]
+      },
+      "encoder_0_m_axis_txd_tvalid": {
+        "ports": [
+          "encoder_0/m_axis_txd_tvalid",
+          "m_axis_txd_tvalid_0"
+        ]
+      },
+      "decoder_0_alt_dest_addr": {
+        "ports": [
+          "decoder_0/alt_dest_addr",
+          "encoder_0/alt_dest_addr"
+        ]
+      },
+      "decoder_0_alt_ip_dest_addr": {
+        "ports": [
+          "decoder_0/alt_ip_dest_addr",
+          "encoder_0/alt_ip_dest_addr"
+        ]
+      },
+      "decoder_0_alt_udp_dest_port": {
+        "ports": [
+          "decoder_0/alt_udp_dest_port",
+          "encoder_0/alt_udp_dest_port"
+        ]
+      },
+      "decoder_0_alt_src_addr": {
+        "ports": [
+          "decoder_0/alt_src_addr",
+          "encoder_0/alt_src_addr"
+        ]
+      },
+      "decoder_0_alt_ip_src_addr": {
+        "ports": [
+          "decoder_0/alt_ip_src_addr",
+          "encoder_0/alt_ip_src_addr"
+        ]
+      },
+      "decoder_0_alt_udp_src_port": {
+        "ports": [
+          "decoder_0/alt_udp_src_port",
+          "encoder_0/alt_udp_src_port"
+        ]
+      },
+      "decoder_0_encapsualted": {
+        "ports": [
+          "decoder_0/encapsualted",
+          "encoder_0/encapsulated"
+        ]
+      },
+      "decoder_0_valid": {
+        "ports": [
+          "decoder_0/valid",
+          "encoder_0/valid",
+          "address_buffer_0/valid"
+        ]
+      },
+      "encoder_0_ready": {
+        "ports": [
+          "encoder_0/ready",
+          "decoder_0/ready",
+          "address_buffer_0/ready"
+        ]
+      },
+      "decoder_0_dest_addr": {
+        "ports": [
+          "decoder_0/dest_addr",
+          "address_buffer_0/in_dest_addr"
+        ]
+      },
+      "decoder_0_ip_dest_addr": {
+        "ports": [
+          "decoder_0/ip_dest_addr",
+          "address_buffer_0/in_ip_dest_addr"
+        ]
+      },
+      "decoder_0_udp_dest_port": {
+        "ports": [
+          "decoder_0/udp_dest_port",
+          "address_buffer_0/in_udp_dest_port"
+        ]
+      },
+      "decoder_0_src_addr": {
+        "ports": [
+          "decoder_0/src_addr",
+          "address_buffer_0/in_src_addr"
+        ]
+      },
+      "decoder_0_ip_src_addr": {
+        "ports": [
+          "decoder_0/ip_src_addr",
+          "address_buffer_0/in_ip_src_addr"
+        ]
+      },
+      "decoder_0_udp_src_port": {
+        "ports": [
+          "decoder_0/udp_src_port",
+          "address_buffer_0/in_udp_src_port"
+        ]
+      },
+      "address_buffer_0_out_dest_addr": {
+        "ports": [
+          "address_buffer_0/out_dest_addr",
+          "encoder_0/dest_addr"
+        ]
+      },
+      "address_buffer_0_out_ip_dest_addr": {
+        "ports": [
+          "address_buffer_0/out_ip_dest_addr",
+          "encoder_0/ip_dest_addr"
+        ]
+      },
+      "address_buffer_0_out_udp_dest_port": {
+        "ports": [
+          "address_buffer_0/out_udp_dest_port",
+          "encoder_0/udp_dest_port"
+        ]
+      },
+      "address_buffer_0_out_src_addr": {
+        "ports": [
+          "address_buffer_0/out_src_addr",
+          "encoder_0/src_addr"
+        ]
+      },
+      "address_buffer_0_out_ip_src_addr": {
+        "ports": [
+          "address_buffer_0/out_ip_src_addr",
+          "encoder_0/ip_src_addr"
+        ]
+      },
+      "address_buffer_0_out_udp_src_port": {
+        "ports": [
+          "address_buffer_0/out_udp_src_port",
+          "encoder_0/udp_src_port"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_AlgoFSM_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_AlgoFSM" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="412745456fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="142"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="/tb_AlgoFSM/testAlgorithm/S" type="array">
+      <obj_property name="ElementShortName">S[3:0]</obj_property>
+      <obj_property name="ObjectShortName">S[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/testAlgorithm/NS" type="array">
+      <obj_property name="ElementShortName">NS[3:0]</obj_property>
+      <obj_property name="ObjectShortName">NS[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/ALGO_ready" type="logic">
+      <obj_property name="ElementShortName">ALGO_ready</obj_property>
+      <obj_property name="ObjectShortName">ALGO_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/resetn" type="logic">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/match" type="logic">
+      <obj_property name="ElementShortName">match</obj_property>
+      <obj_property name="ObjectShortName">match</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/testAlgorithm/matchedMemAddress" type="array">
+      <obj_property name="ElementShortName">matchedMemAddress[6:0]</obj_property>
+      <obj_property name="ObjectShortName">matchedMemAddress[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/rdata" type="array">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/read_en" type="logic">
+      <obj_property name="ElementShortName">read_en</obj_property>
+      <obj_property name="ObjectShortName">read_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/match_en" type="logic">
+      <obj_property name="ElementShortName">match_en</obj_property>
+      <obj_property name="ObjectShortName">match_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/r_addr" type="array">
+      <obj_property name="ElementShortName">r_addr[6:0]</obj_property>
+      <obj_property name="ObjectShortName">r_addr[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/drop" type="logic">
+      <obj_property name="ElementShortName">drop</obj_property>
+      <obj_property name="ObjectShortName">drop</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/ALGO_ready" type="logic">
+      <obj_property name="ElementShortName">ALGO_ready</obj_property>
+      <obj_property name="ObjectShortName">ALGO_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/testAlgorithm/match_enable" type="logic">
+      <obj_property name="ElementShortName">match_enable</obj_property>
+      <obj_property name="ObjectShortName">match_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_valid" type="logic">
+      <obj_property name="ElementShortName">en_valid</obj_property>
+      <obj_property name="ObjectShortName">en_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/drop" type="logic">
+      <obj_property name="ElementShortName">drop</obj_property>
+      <obj_property name="ObjectShortName">drop</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/encapsulated" type="logic">
+      <obj_property name="ElementShortName">encapsulated</obj_property>
+      <obj_property name="ObjectShortName">encapsulated</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_dest_addr" type="array">
+      <obj_property name="ElementShortName">en_dest_addr[47:0]</obj_property>
+      <obj_property name="ObjectShortName">en_dest_addr[47:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_ip_dest" type="array">
+      <obj_property name="ElementShortName">en_ip_dest[31:0]</obj_property>
+      <obj_property name="ObjectShortName">en_ip_dest[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_dest_port" type="array">
+      <obj_property name="ElementShortName">en_dest_port[15:0]</obj_property>
+      <obj_property name="ObjectShortName">en_dest_port[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_src_addr" type="array">
+      <obj_property name="ElementShortName">en_src_addr[47:0]</obj_property>
+      <obj_property name="ObjectShortName">en_src_addr[47:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_ip_src" type="array">
+      <obj_property name="ElementShortName">en_ip_src[31:0]</obj_property>
+      <obj_property name="ObjectShortName">en_ip_src[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/en_src_port" type="array">
+      <obj_property name="ElementShortName">en_src_port[15:0]</obj_property>
+      <obj_property name="ObjectShortName">en_src_port[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_AlgoFSM/next_hop" type="array">
+      <obj_property name="ElementShortName">next_hop[2:0]</obj_property>
+      <obj_property name="ObjectShortName">next_hop[2:0]</obj_property>
+   </wvobject>
+</wave_config>
