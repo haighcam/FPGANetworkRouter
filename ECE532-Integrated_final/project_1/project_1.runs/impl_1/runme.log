@@ -1,0 +1,340 @@
+
+*** Running vivado
+    with args -log algorithmFSM.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source algorithmFSM.tcl -notrace
+
+
+****** Vivado v2018.1 (64-bit)
+  **** SW Build 2188600 on Wed Apr  4 18:40:38 MDT 2018
+  **** IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source algorithmFSM.tcl -notrace
+Command: link_design -top algorithmFSM -part xc7a200tsbg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Netlist 29-17] Analyzing 204 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.1
+INFO: [Device 21-403] Loading part xc7a200tsbg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/taylo600/tutorial.xdc]
+WARNING: [Vivado 12-584] No ports matched 'swt[0]'. [C:/Users/taylo600/tutorial.xdc:1]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:1]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[0]'. [C:/Users/taylo600/tutorial.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[1]'. [C:/Users/taylo600/tutorial.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[1]'. [C:/Users/taylo600/tutorial.xdc:4]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[2]'. [C:/Users/taylo600/tutorial.xdc:5]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:5]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[2]'. [C:/Users/taylo600/tutorial.xdc:6]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:6]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[3]'. [C:/Users/taylo600/tutorial.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[3]'. [C:/Users/taylo600/tutorial.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[4]'. [C:/Users/taylo600/tutorial.xdc:9]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:9]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[4]'. [C:/Users/taylo600/tutorial.xdc:10]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:10]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[5]'. [C:/Users/taylo600/tutorial.xdc:11]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:11]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[5]'. [C:/Users/taylo600/tutorial.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[6]'. [C:/Users/taylo600/tutorial.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:13]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'swt[6]'. [C:/Users/taylo600/tutorial.xdc:14]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:14]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[0]'. [C:/Users/taylo600/tutorial.xdc:16]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:16]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[0]'. [C:/Users/taylo600/tutorial.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[1]'. [C:/Users/taylo600/tutorial.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:18]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[1]'. [C:/Users/taylo600/tutorial.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[2]'. [C:/Users/taylo600/tutorial.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[2]'. [C:/Users/taylo600/tutorial.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:21]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[3]'. [C:/Users/taylo600/tutorial.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[3]'. [C:/Users/taylo600/tutorial.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[4]'. [C:/Users/taylo600/tutorial.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[4]'. [C:/Users/taylo600/tutorial.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[5]'. [C:/Users/taylo600/tutorial.xdc:26]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:26]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[5]'. [C:/Users/taylo600/tutorial.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[6]'. [C:/Users/taylo600/tutorial.xdc:28]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:28]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[6]'. [C:/Users/taylo600/tutorial.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/taylo600/tutorial.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/taylo600/tutorial.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 28 Warnings, 28 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 680.797 ; gain = 359.918
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.559 . Memory (MB): peak = 695.703 ; gain = 14.906
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.077 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.088 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.092 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1289.305 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.095 . Memory (MB): peak = 1289.305 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: b402cec6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1289.305 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+23 Infos, 28 Warnings, 28 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1289.305 ; gain = 608.508
+INFO: [Timing 38-480] Writing timing data to binary archive.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/taylo600/project_1/project_1.runs/impl_1/algorithmFSM_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file algorithmFSM_drc_opted.rpt -pb algorithmFSM_drc_opted.pb -rpx algorithmFSM_drc_opted.rpx
+Command: report_drc -file algorithmFSM_drc_opted.rpt -pb algorithmFSM_drc_opted.pb -rpx algorithmFSM_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/DESL/Xilinx/Vivado/2018.1/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file C:/Users/taylo600/project_1/project_1.runs/impl_1/algorithmFSM_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1289.305 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 37d5af94
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1289.305 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1289.305 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+ERROR: [Place 30-415] IO Placement failed due to overutilization. This design contains 445 I/O ports
+ while the target  device: 7a200t package: sbg484, contains only 285 available user I/O. The target device has 285 usable I/O pins of which 0 are already occupied by user-locked I/Os.
+ To rectify this issue:
+ 1. Ensure you are targeting the correct device and package.  Select a larger device or different package if necessary.
+ 2. Check the top-level ports of the design to ensure the correct number of ports are specified.
+ 3. Consider design changes to reduce the number of I/Os necessary.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+ERROR: [Place 30-68] Instance clk_IBUF_BUFG_inst (BUFG) is not placed
+ERROR: [Place 30-68] Instance clk_IBUF_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[0]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[10]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[11]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[12]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[13]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[14]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[15]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[16]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[17]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[18]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[19]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[1]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[20]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[21]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[22]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[23]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[24]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[25]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[26]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[27]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[28]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[29]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[2]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[30]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[31]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[3]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[4]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[5]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[6]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[7]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[8]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance data_in_OBUF[9]_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[0]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[10]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[11]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[12]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[13]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[14]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[15]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[16]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[17]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[18]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[19]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[1]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[20]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[21]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[22]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[23]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[24]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[25]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[26]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[27]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[28]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[29]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[2]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[30]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[31]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[32]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[33]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[34]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[35]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[36]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[37]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[38]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[39]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[3]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[40]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[41]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[42]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[43]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[44]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[45]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[46]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[47]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[4]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[5]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[6]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[7]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[8]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_dest_addr_IBUF[9]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[0]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[10]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[11]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[12]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[13]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[14]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[15]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[16]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[17]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[18]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[19]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[1]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[20]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[21]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[22]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[23]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[24]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance decoder_ip_dest_addr_IBUF[25]_inst (IBUF) is not placed
+INFO: [Common 17-14] Message 'Place 30-68' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 36a8ddf0
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1304.148 ; gain = 14.844
+Phase 1 Placer Initialization | Checksum: 36a8ddf0
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1304.148 ; gain = 14.844
+ERROR: [Place 30-99] Placer failed with error: 'IO Clock Placer failed'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+Ending Placer Task | Checksum: 36a8ddf0
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1304.148 ; gain = 14.844
+INFO: [Common 17-83] Releasing license: Implementation
+42 Infos, 28 Warnings, 28 Critical Warnings and 103 Errors encountered.
+place_design failed
+ERROR: [Common 17-69] Command failed: Placer could not place all instances
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 30 04:23:18 2022...
